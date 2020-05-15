@@ -1,0 +1,30 @@
+.selector-card {
+  width: 350px;
+  height: 300px;
+  max-height: 300px;
+  -webkit-perspective: 500px;
+  perspective: 500px;
+}
+
+.short-description {
+  height: 50px;
+  overflow: auto;
+}
+
+
+.mat-card-image {
+  max-height: 100px;
+  width: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mat-card-actions .mat-button,
+.mat-card-actions .mat-stroked-button {
+  margin-left: 0;
+  margin-right: 0;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+}

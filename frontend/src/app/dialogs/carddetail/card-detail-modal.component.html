@@ -1,0 +1,15 @@
+<div class="modal-holder"  [ngStyle]="{ '::ng-deep  background-color': data.Color }">
+  <app-card-selector-card *ngIf="!question" [card]="data" [detail]="true"></app-card-selector-card>
+  <p id="title" *ngIf="question && !canEdit" (click)="changeEdit()">{{data.Title}} </p>
+  <input id="title-editor" *ngIf="question && canEdit" #name placeholder="Title" [(ngModel)]="data.Title"
+    (keyup.enter)="saveTitle()" appFocusOnShow AutoSizeInput/>
+  <p>Notes:</p>
+  <mat-form-field id="note-area">
+    <textarea matInput [(ngModel)]="data.note" cdkTextareaAutosize cdkAutosizeMinRows="2" cdkAutosizeMaxRows="5"
+      #autosize="cdkTextareaAutosize"></textarea>
+  </mat-form-field>
+  <i mat-button class="material-icons" (click)="onNoClick()">
+    close
+  </i>
+
+</div>

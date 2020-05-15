@@ -1,0 +1,23 @@
+<div class="group-card">
+  <div class="group-header">
+    <div id="title" *ngIf="!canEdit" appClickStopPropagation>
+      <h2 (mousedown)="check($event)" (click)="editTitle($event)">{{ group.title }}</h2>
+    </div>
+
+    <mat-form-field class="example-full-width" *ngIf="canEdit" appClickStopPropagation>
+      <input #name matInput placeholder="Title" [(ngModel)]="group.title" (keyup.enter)="saveTitle()"
+        (focusout)="saveTitle()" appFocusOnShow />
+    </mat-form-field>
+
+    <span (click)="deleted.emit(group)" *ngIf="group.selected" class="material-icons">
+      delete
+    </span>
+  </div>
+  <div class="group-content">
+    <div cdkDropList id="{{ group.title }}" [cdkDropListData]="group.cards" class="card-list"
+      (cdkDropListDropped)="drop($event)">
+      <app-card cdkDrag *ngFor="let card of group.cards" class="card-listitem"
+        [ngStyle]="{ 'background-color': card.Color }" [card]="card" (save)="dropped.emit()"></app-card>
+    </div>
+  </div>
+</div>

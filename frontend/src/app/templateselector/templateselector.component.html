@@ -1,0 +1,20 @@
+<div class="modal-holder">
+  <h1 mat-dialog-title>Select a Template</h1>
+  <div mat-dialog-content>
+    <div fxLayout="row" fxFlex.md="70" fxLayoutWrap class="card-deck-container">
+      <div fxFlex *ngFor="let template of templates" class="card-item" (click)="selectTemplate(template)">
+        <mat-card class="template-card">
+          <mat-card-header>
+            <mat-card-title>{{template.title}}</mat-card-title>
+          </mat-card-header>
+          <img mat-card-image src="{{template.image}}"
+            alt="">
+        </mat-card>
+      </div>
+    </div>
+  </div>
+
+  <i mat-button class="material-icons" (click)="onNoClick()">
+    close
+  </i>
+</div>

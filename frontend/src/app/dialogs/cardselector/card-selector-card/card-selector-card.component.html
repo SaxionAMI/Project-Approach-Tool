@@ -1,0 +1,31 @@
+<div class="selector-card">
+  <ngx-flip [flip]="flipDiv">
+    <mat-card front [ngStyle]="{ 'background-color': card.Color }">
+      <mat-card-header>
+        <mat-card-title>{{card.Title}}</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image src="{{card.Picture}}">
+      <mat-card-content>
+        <p class="short-description">
+          {{card.ShortDescription}}
+        </p>
+      </mat-card-content>
+      <mat-card-actions *ngIf="!detail">
+        <button class="select-btn" mat-stroked-button (click)="flipDiv = !flipDiv;$event.stopPropagation()" appClickStopPropagation> More information</button>
+      </mat-card-actions>
+    </mat-card>
+    <mat-card back [ngStyle]="{ 'background-color': card.Color }">
+      <mat-card-header>
+        <mat-card-title>{{card.Title}}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          {{card.LongDescription}}
+        </p>
+      </mat-card-content>
+      <mat-card-actions *ngIf="!detail">
+        <button class="select-btn" mat-stroked-button (click)="flipDiv = !flipDiv;$event.stopPropagation()" appClickStopPropagation>Less information</button>
+      </mat-card-actions>
+    </mat-card>
+  </ngx-flip>
+</div>
