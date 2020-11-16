@@ -2,10 +2,11 @@
 
 @include mat-core();
 
-$hbo-theme-primary: mat-palette();
-$hbo-theme-accent:  mat-palette($mat-pink, A200, A100, A400);
+$hbo-theme-primary: mat-palette($mat-deep-purple);
+$hbo-theme-accent:  mat-palette($mat-light-blue);
 
 // The warn palette is optional (defaults to red).
 $hbo-theme-warn:    mat-palette($mat-red);
 
 $hbo-theme-theme: mat-light-theme($hbo-theme-primary,$hbo-theme-accent,$hbo-theme-warn)
+

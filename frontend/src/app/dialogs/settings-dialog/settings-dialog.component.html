@@ -1,0 +1,77 @@
+<h3>Export data</h3>
+<button mat-raised-button (click)="onExport()">EXPORT DATA</button>
+
+<h3>Delete account</h3>
+<button mat-raised-button (click)="onDeleteAccount()">DELETE ACCOUNT</button>
+
+<h3>Change personal data</h3>
+
+<mat-form-field matInput>
+  <mat-label>first name</mat-label>
+  <input
+    matInput
+    #firstName
+    type="text"
+    maxlength="60"
+    name="firstName"
+    [formControl]="firstNameControl"
+    required
+  />
+  <mat-error *ngIf="firstNameControl.invalid"
+    >You must enter a valid first name</mat-error
+  >
+  <mat-hint align="end">{{ firstName.value.length }} / 60</mat-hint>
+</mat-form-field>
+<mat-form-field matInput>
+  <mat-label>last name</mat-label>
+  <input
+    matInput
+    #lastName
+    type="text"
+    maxlength="60"
+    name="lastName"
+    [formControl]="lastNameControl"
+    required
+  />
+  <mat-error *ngIf="lastNameControl.invalid"
+    >You must enter a valid last name</mat-error
+  >
+  <mat-hint align="end">{{ lastName.value.length }} / 60</mat-hint>
+</mat-form-field>
+
+<mat-form-field matInput>
+  <mat-label>School</mat-label>
+  <input
+    matInput
+    #school
+    type="text"
+    maxlength="60"
+    name="school"
+    [formControl]="schoolControl"
+    required
+  />
+  <mat-error *ngIf="schoolControl.invalid"
+    >You must enter a valid school</mat-error
+  >
+  <mat-hint align="end">{{ school.value.length }} / 60</mat-hint>
+</mat-form-field>
+<mat-form-field matInput>
+  <mat-label>Study</mat-label>
+  <input
+    matInput
+    #study
+    type="text"
+    maxlength="60"
+    name="study"
+    [formControl]="studyControl"
+    required
+  />
+  <mat-error *ngIf="studyControl.invalid"
+    >You must enter a valid study</mat-error
+  >
+  <mat-hint align="end">{{ study.value.length }} / 60</mat-hint>
+</mat-form-field>
+<div class="buttonWrap">
+  <button mat-raised-button (click)="onSave()">SAVE</button>
+  <button mat-button (click)="onClose()">CANCEL</button>
+</div>

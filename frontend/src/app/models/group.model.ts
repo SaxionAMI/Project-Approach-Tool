@@ -1,9 +1,9 @@
 import { Card } from './card.model';
-
+import { Position } from './position.model'
 export class Group {
   id: number;
   title: string;
-  location: { x: number; y: number };
-  cards: any[];
+  location: Position;
+  cards: Card[];
   selected: boolean;
 }

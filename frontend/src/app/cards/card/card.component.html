@@ -1,0 +1,6 @@
+<div class="card-container" (click)="openDetail()" *ngIf="card.title != ''" >
+    {{card.title}}
+</div>
+<mat-form-field *ngIf="card.title == ''">
+  <input #question matInput placeholder="Question" [formControl]="cardControl" (ngModelChange)='whileTyping()' (focusout)="saveTitle()" (keyup.enter)="saveTitle()" autofocus />
+</mat-form-field>

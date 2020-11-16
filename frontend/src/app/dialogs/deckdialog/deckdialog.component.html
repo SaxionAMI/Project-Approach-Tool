@@ -1,0 +1,25 @@
+<h1>Select your decks</h1>
+
+<div *ngFor="let deck of allDecks">
+  <section class="section">
+    <span>
+      <mat-checkbox [checked]="checkIfDeckIsInArray(deck)" (change)="selectThisDeck(deck)">
+        {{deck.title}}
+      </mat-checkbox>
+    </span>
+    <span>
+      <ul>
+        <li *ngFor="let type of deck.types">
+          <mat-checkbox [checked]="checkIfTypeIsInArray(deck, type)" (change)="selectThisType(deck, type)">
+            {{type}}
+          </mat-checkbox>
+        </li>
+      </ul>
+    </span>
+  </section>
+</div>
+
+<div class="buttonWrap">
+    <button mat-raised-button (click)="onSave()">SAVE</button>
+    <button mat-button (click)="onClose()">CANCEL</button>
+    </div>

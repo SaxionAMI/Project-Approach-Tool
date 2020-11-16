@@ -1,0 +1,45 @@
+mat-card {
+  background-color: white;
+  margin: auto;
+  margin-top: 15%;
+  min-height: 230px;
+  width: 60%;
+}
+
+.buttonWrap {
+  text-align: center;
+}
+
+.btn-login {
+  margin-top: 3%;
+  margin-bottom: 5%;
+  background-color: #04abd6;
+  color: white;
+  width: 50%;
+}
+
+.inputField {
+  width: 51%;
+  margin-bottom: 2%;
+  margin-top: 5%;
+}
+
+.forms {
+  display: block;
+  text-align: center;
+}
+
+h3{
+  color: #04abd6;
+}
+
+.wrapper{
+  min-height: 230px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1{
+  font: 500 20px/32px Roboto, "Helvetica Neue", sans-serif;
+}

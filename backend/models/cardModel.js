@@ -3,37 +3,37 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var CardSchema = new Schema({
-  Title: {
-    type: String,
-    required: [(true, "Title is required")]
-  },
-  ShortDescription: {
-    type: String,
-    required: [(true, "Short Description is required")]
-  },
-  LongDescription: {
+  id: {
     type: String
   },
-  Type: {
-      type: String,
-    required: [true, "Deck type is required"]
+  title: {
+    type: String,
   },
-  Note: {
-      type: String,
+  shortDescription: {
+    type: String,
   },
-  Picture: {
-      type: String
+  longDescription: {
+    type: String,
   },
-  ReflectiveQuestions: {
-     type: String
+  type: {
+    type: String,
+    required: [true, "Card type is required"],
   },
-  Color: {
-     type: String
+  note: {
+    type: String,
   },
-  Deck: {
+  picture: {
+    type: String,
+  },
+  color: {
+    type: String,
+  },
+  reflectiveQuestions: {
+    type: String,
+  },
+  deck:{
     type: String
   }
-
 });
 
 module.exports = mongoose.model("Card", CardSchema);

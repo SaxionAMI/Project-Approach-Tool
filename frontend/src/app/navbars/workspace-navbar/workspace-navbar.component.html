@@ -1,0 +1,131 @@
+<mat-toolbar data-html2canvas-ignore="true">
+  <mat-toolbar-row data-html2canvas-ignore="true">
+    <img
+      class="app-logo"
+      src="../../../assets/image/Logo-wide.png"
+      (click)="goBack()"
+    />
+    <span id="title-container">
+      <input
+        *ngIf="workspaceConfig.canEditTitle"
+        id="title"
+        #name
+        matInput
+        [(ngModel)]="workspace.title"
+        (keyup.enter)="moveFocusToSubtitle()"
+        (focusout)="moveFocusToSubtitle()"
+        appFocusOnShow
+        AutoSizeInput
+        placeholder="Title"
+      />
+      <p
+        joyrideStep="step7"
+        title="Title"
+        [stepContent]="step7Content"
+        id="title"
+        #title
+        *ngIf="!workspaceConfig.canEditTitle"
+        (click)="openTitle()"
+      >
+        {{ workspace.title }}
+      </p>
+    </span>
+    <div class="active-user-container">
+      <button
+        *ngFor="let user of activeUsers"
+        class="active-user-button"
+        [style.background-color]="user.color"
+        matTooltip="{{ user.fullName }}&#13;{{ user.email }}"
+        [matTooltipClass]="'active-user-tooltip'"
+        mat-fab
+      >
+        {{ getAbbriviation(user.fullName) }}
+      </button>
+    </div>
+
+    <button id="question-button" mat-icon-button [matMenuTriggerFor]="menuHelp">
+      <mat-icon class="settings-icon">help_outline</mat-icon>
+    </button>
+    <mat-menu #menuHelp="matMenu" class="customize">
+      <a mat-menu-item href="mailto:info@projectapproachtool.nl">
+        Report issue
+      </a>
+      <button mat-menu-item (click)="restartOnboarding()">Restart tour</button>
+      <button mat-menu-item (click)="openPrivacy()">Privacy statement</button>
+      <button mat-menu-item (click)="openAbout()">About</button>
+    </mat-menu>
+    <button id="profile-button" mat-fab [matMenuTriggerFor]="menuProfile">
+      {{ getAbbriviation(fullName) }}
+    </button>
+    <mat-menu #menuProfile="matMenu" class="customize">
+      <p class="menuMail">{{ fullName }}</p>
+      <p class="menuMail">{{ email }}</p>
+      <mat-divider></mat-divider>
+      <button mat-menu-item (click)="openSettings()">Settings</button>
+      <button mat-menu-item (click)="onLogout()">Logout</button>
+    </mat-menu>
+    <button
+      joyrideStep="step20"
+      title="Inviting another user"
+      [stepContent]="step20Content"
+      mat-raised-button
+      id="inviteBtn"
+      (click)="openInviteModal()"
+    >
+      Share
+    </button>
+  </mat-toolbar-row>
+
+  <mat-toolbar-row data-html2canvas-ignore="true">
+    <span id="goal-container">
+      <input
+        id="goal"
+        *ngIf="workspaceConfig.canEditGoal"
+        #sbtitle
+        matInput
+        [(ngModel)]="workspace.goal"
+        (keyup.enter)="saveGoal()"
+        (focusout)="saveGoal()"
+        appFocusOnShow
+        AutoSizeInput
+        placeholder="Goal"
+        appClickStopPropagation
+      />
+      <p
+        joyrideStep="step8"
+        title="Goal"
+        [stepContent]="step8Content"
+        id="goal"
+        #goal
+        *ngIf="!workspaceConfig.canEditGoal"
+        (click)="openGoal()"
+        appClickStopPropagation
+      >
+        {{ workspace.goal }}
+      </p>
+    </span>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<ng-template #step7Content>
+  <br />
+  This is the project title, You can adjusted the title by <b>clicking</b> on it.<br/>
+  <br />
+</ng-template>
+
+<ng-template #step8Content>
+  <br />
+  This is the project goal, this defines the main goal of the project. <br/>
+  You can adjust the goal by <b>clicking</b> on it. <br/>
+  <br />
+</ng-template>
+8
+<ng-template #step20Content>
+  <br />
+  With this button you can <b>invite</b> other users. <br /> 
+  So you can cooperate with other users on <br /> 
+  the same project approach. <br />
+  <br />
+  Only users with <b>existing</b> accounts can be added. <br />
+  <br />
+</ng-template>

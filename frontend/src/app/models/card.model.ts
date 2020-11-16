@@ -1,11 +1,13 @@
 export class Card {
-    _id: string;
-    Id: string;
-    Title: string;
-    ShortDescription: string;
-    LongDescription: string;
-    Type: string;
-    Picture: string;
-    Color: string;
-    note: string;
+    _id?: string;
+    id?: string;
+    title?: string;
+    shortDescription?: string;
+    longDescription?: string;
+    type: string;
+    picture?: string;
+    color?: string;
+    note?: string;
+    deck?: string;
 }
+

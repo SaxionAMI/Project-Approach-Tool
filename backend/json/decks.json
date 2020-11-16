@@ -1,0 +1,26 @@
+[
+  {
+    "_id": "5e30276e8b5f721a0cc1f415",
+    "title": "ICT",
+    "shortDescription": "This deck contains all research methods cards for the ICT studies.",
+    "types": ["Lab", "Field", "Showroom", "Workshop", "Library"]
+  },
+  {
+    "_id": "5e30276e8b5f721a0cc1f416",
+    "title": "CMD",
+    "shortDescription": "This deck contains all research methods cards for the ICT studies.",
+    "types": ["Lab", "Field", "Showroom", "Workshop", "Library", "Deliverables"]
+  },
+  {
+    "_id": "5e30276e8b5f721a0cc1f417",
+    "title": "ENGINEERING",
+    "shortDescription": "This deck contains all research methods cards for the ICT studies.",
+    "types": ["Lab", "Field", "Showroom", "Workshop", "Library", "Deliverables"]
+  },
+  {
+    "_id": "5e30276e8b5f721a0cc1f418",
+    "title": "STEPPING STONES",
+    "shortDescription": "This deck contains all stepping stone cards for the all studies.",
+    "types": ["Deliverables"]
+  }
+]

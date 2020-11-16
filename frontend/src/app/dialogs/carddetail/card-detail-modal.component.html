@@ -1,7 +1,7 @@
-<div class="modal-holder"  [ngStyle]="{ '::ng-deep  background-color': data.Color }">
+<div class="modal-holder"  [ngStyle]="{ '::ng-deep  background-color': data.color }">
   <app-card-selector-card *ngIf="!question" [card]="data" [detail]="true"></app-card-selector-card>
-  <p id="title" *ngIf="question && !canEdit" (click)="changeEdit()">{{data.Title}} </p>
-  <input id="title-editor" *ngIf="question && canEdit" #name placeholder="Title" [(ngModel)]="data.Title"
+  <p id="title" *ngIf="question && !canEdit" (click)="changeEdit()">{{data.title}} </p>
+  <input id="title-editor" *ngIf="question && canEdit" #name placeholder="Title" [formControl]="titleControl"
     (keyup.enter)="saveTitle()" appFocusOnShow AutoSizeInput/>
   <p>Notes:</p>
   <mat-form-field id="note-area">

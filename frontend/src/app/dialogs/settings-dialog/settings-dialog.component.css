@@ -1,0 +1,29 @@
+.mat-raised-button {
+  width: 200px;
+  height: 40px;
+  margin: 2%;
+  background-color: #04abd6;
+  color: white;
+}
+
+.mat-button {
+  width: 200px;
+  height: 40px;
+  margin: 2%;
+  color: #04abd6;
+  background-color: white;
+}
+
+.buttonWrap {
+  margin-top: 3%;
+  text-align: center;
+}
+
+input {
+    color: black;
+    width: 100%;
+  }
+  
+  mat-form-field {
+    width: 100%;
+  }

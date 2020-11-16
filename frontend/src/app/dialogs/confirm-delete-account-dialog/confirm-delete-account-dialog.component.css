@@ -1,0 +1,19 @@
+
+  .buttonWrap {
+    text-align: center;
+  }
+  
+  .mat-raised-button {
+    width: 20%;
+    height: 40px;
+    margin: 2%;
+    background-color: #04abd6;
+    color: white;
+  }
+  
+  .mat-button {
+    width: 20%;
+    height: 40px;
+    margin: 2%;
+    color: #04abd6;
+  }

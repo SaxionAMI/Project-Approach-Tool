@@ -1,21 +1,21 @@
-import { Directive, OnInit, ElementRef } from '@angular/core';
+import { Directive, OnInit, ElementRef } from "@angular/core";
 
 @Directive({
-  selector: '[appFocusOnShow]'
+  selector: "[appFocusOnShow]",
 })
 export class FocusOnShowDirective implements OnInit {
-
   constructor(private el: ElementRef) {
-    if (!el.nativeElement['focus']) {
-      throw new Error('Element does not accept focus.');
+    if (!el.nativeElement["focus"]) {
+      throw new Error("Element does not accept focus.");
     }
   }
-
-
+  /**
+   * This method will start on initializing
+   * @returns void
+   */
   ngOnInit(): void {
     const input: HTMLInputElement = this.el.nativeElement as HTMLInputElement;
     setTimeout(() => input.focus());
     input.select();
   }
-
 }

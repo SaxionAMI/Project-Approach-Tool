@@ -1,0 +1,30 @@
+<app-navbar></app-navbar>
+<mat-card>
+  <h1>Please login</h1>
+  <div class="forms" *ngIf="!emailSent">
+    <mat-form-field class="inputField" matInput>
+      <mat-label>Email</mat-label>
+      <input
+        matInput
+        #wsGoal
+        type="text"
+        maxlength="60"
+        name="email"
+        [formControl]="loginEmailControl"
+      />
+      <mat-error *ngIf="loginEmailControl.invalid"
+        >You must enter a valid email</mat-error
+      >
+    </mat-form-field>
+  </div>
+  <div class="buttonWrap" *ngIf="!emailSent">
+    <button mat-raised-button class="btn-login" (click)="onLogin()">
+      LOGIN
+    </button>
+  </div>
+  <div class="wrapper" *ngIf="emailSent">
+  <h3 class="mat-h3" >
+    A login link has been sent to your email: {{ email }}
+  </h3>
+</div>
+</mat-card>

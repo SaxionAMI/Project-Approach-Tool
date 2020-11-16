@@ -1,0 +1,80 @@
+<app-loading [type]="type" *ngIf="!newUser"></app-loading>
+<mat-toolbar *ngIf="newUser">
+  <mat-toolbar-row>
+    <h1>Project Approach Tool</h1>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-card *ngIf="newUser"id="outerCard">
+  <h1 class="mat-display-1">Registration</h1>
+  <div class="forms">
+    <form>
+      <div>
+      <mat-form-field class="nameInput firstnameInput" matInput>
+        <mat-label>First name</mat-label>
+        <input
+          matInput
+          #wsTitle
+          type="text"
+          maxlength="60"
+          [formControl]="firstNameControl"
+          required
+        />
+        <mat-error *ngIf="firstNameControl.invalid"
+          >You must enter a valid first name</mat-error
+        >
+        <mat-hint align="end">{{ wsTitle.value.length }} / 60</mat-hint>
+      </mat-form-field>
+      <mat-form-field class="nameInput" matInput>
+        <mat-label>Last name</mat-label>
+        <input
+          matInput
+          #wsLName
+          type="text"
+          maxlength="60"
+          [formControl]="lastNameControl"
+          required
+        />
+        <mat-error *ngIf="lastNameControl.invalid"
+          >You must enter a valid last name</mat-error
+        >
+        <mat-hint align="end">{{ wsLName.value.length }} / 60</mat-hint>
+      </mat-form-field>
+    </div>
+      <mat-form-field>
+        <mat-label>School</mat-label>
+        <input
+          matInput
+          #wsLName
+          type="text"
+          maxlength="60"
+          [formControl]="schoolControl"
+          required
+        />
+        <mat-error *ngIf="schoolControl.invalid"
+          >You must enter a valid last name</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Study</mat-label>
+        <input
+          matInput
+          #wsLName
+          type="text"
+          maxlength="60"
+          [formControl]="studyControl"
+          required
+        />
+        <mat-error *ngIf="studyControl.invalid"
+          >You must enter a valid last name</mat-error
+        >
+      </mat-form-field>
+    </form>
+  </div>
+  <mat-error class="errorAboveButtons" *ngIf="showErrorRequiredValues"
+    >All fields require a value !</mat-error
+  >
+  <div class="buttonWrap">
+    <button mat-raised-button (click)="onContinue()">CONTINUE</button>
+  </div>
+</mat-card>

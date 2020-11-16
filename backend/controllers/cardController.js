@@ -1,46 +1,84 @@
-var mongoose = require("mongoose"),
-    Card = mongoose.model("Card");
+const mongoose = require("mongoose");
+const Card = mongoose.model("Card");
 
-exports.getCards = function(req, res) {
-    Card.find({}, function(err, result) {
-    if (err) res.send(err);
-    res.json(result);
+// only get the Method cards
+exports.getMethodCards = function (req, res) {
+  Card.find({ deck: "ICT" }).then((cards) => {
+    res.status(200).json(cards);
+  }).catch((err) => {
+    res.status(500).send({
+      message:
+        err.message || "Some error occurred while finding the stepping stones.",
+    });
   });
 };
 
-exports.getSteppingStoneCards = function(req, res) {
-  Card.find({Deck: "Stepping stone"}, function (err, task) {
-    if (err) res.send(err);
-    res.json(task);
-  });
-}
-
-// TODO Check if the Deck is available
-exports.createCard = function(req, res) {
-  var newCard = new Card(req.body);
-  newCard.save(function(err, result) {
-    if (err) res.send(err);
-    res.json(result);
+// only get the Stepping stone cards
+exports.getSteppingStoneCards = function (req, res) {
+  Card.find({ deck: "Stepping stone" }).then((cards) => {
+    res.status(200).json(cards);
+  }).catch((err) => {
+    res.status(500).send({
+      message:
+        err.message || "Some error occurred while finding the stepping stones.",
+    });
   });
 };
 
-exports.getCard = function (req, res) {
-    Card.findById(req.params.cardId, function(err, task) {
-      if (err) res.send(err);
-      res.json(task);
+// create a new card
+exports.createCard = function (req, res) {
+  const newCard = new Card(req.body);
+  newCard
+    .save()
+    .then((card) => {
+      res.status(200).json(card);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: err.message || "Some error occurred while creating the card.",
+      });
     });
 };
 
-exports.deleteCard = function (req, res) {
-    Card.remove(
-      {
-        _id: req.params.cardId
-      },
-      function(err, task) {
-        if (err) res.send(err);
-        res.json({ message: "card deleted" });
-      }
-    );
+// get a card by id
+exports.getCard = function (req, res) {
+  Card.findById(req.params.cardId)
+    .then((card) => {
+      res.json(card);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: err.message || "Some error occurred while finding the card.",
+      });
+    });
 };
 
-// TODO get cards by deck
+// delete a card by _id
+exports.deleteCard = function (req, res) {
+  Card.remove({
+    _id: req.params.cardId,
+  })
+    .then((card) => {
+      if (err) res.send(err);
+      res.status(200).json({ message: "card deleted" });
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: err.message || "Some error occurred while deleting the card.",
+      });
+    });
+};
+
+// get all cards from a certain deck
+exports.getCardsByDeck = function (req, res) {
+  Card.find({ deck: req.params.deck })
+    .then((cards) => {
+      res.status(200).json(cards);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while finding the cards by deck.",
+      });
+    });
+};

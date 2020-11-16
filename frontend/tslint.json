@@ -1,6 +1,7 @@
 {
   "extends": "tslint:recommended",
   "rules": {
+    "completed-docs": [true, "enums", "functions", "methods"],
     "array-type": false,
     "arrow-parens": false,
     "deprecation": {
@@ -53,12 +54,13 @@
       "trace"
     ],
     "no-empty": false,
+    "no-string-literal": false,
     "no-inferrable-types": [
-      true,
+      false,
       "ignore-params"
     ],
+    "jsdoc-format": true,
     "no-non-null-assertion": true,
-    "no-redundant-jsdoc": true,
     "no-switch-case-fall-through": true,
     "no-var-requires": false,
     "object-literal-key-quotes": [
@@ -69,9 +71,10 @@
     "ordered-imports": false,
     "quotemark": [
       true,
-      "single"
+      "double"
     ],
-    "trailing-comma": false,
+    "trailing-comma": true,
+    "no-shadowed-variable": false,
     "no-conflicting-lifecycle": true,
     "no-host-metadata-property": true,
     "no-input-rename": true,

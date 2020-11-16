@@ -1,20 +1,28 @@
-import { Component, OnInit, Inject, ViewChild, ElementRef, ChangeDetectorRef } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {
+  Component,
+  OnInit,
+  Inject,
+  ViewChild,
+  ElementRef,
+  ChangeDetectorRef,
+} from "@angular/core";
+import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 
-import { Card } from 'src/app/models/card.model';
-import { GroupComponent } from 'src/app/group/group.component';
-
+import { Card } from "src/app/models/card.model";
+import { GroupComponent } from "src/app/group/group.component";
+import { FormControl } from "@angular/forms";
 
 @Component({
-  selector: 'app-card-detail-modal',
-  templateUrl: './card-detail-modal.component.html',
-  styleUrls: ['./card-detail-modal.component.css']
+  selector: "app-card-detail-modal",
+  templateUrl: "./card-detail-modal.component.html",
+  styleUrls: ["./card-detail-modal.component.css"],
 })
 export class CardDetailModalComponent implements OnInit {
-  question = false;
-  canEdit = false;
+  titleControl = new FormControl("", []);
+  question: boolean = false;
+  canEdit: boolean = false;
 
-  @ViewChild('title-editor') vc: ElementRef;
+  @ViewChild("title-editor") vc: ElementRef;
 
   constructor(
     public dialogRef: MatDialogRef<GroupComponent>,
@@ -22,25 +30,41 @@ export class CardDetailModalComponent implements OnInit {
     private cd: ChangeDetectorRef
   ) {}
 
-  ngOnInit() {
-    if (this.data.Type === 'Question') {
+  /**
+   * This method will start on initializing.
+   * @returns void
+   */
+  ngOnInit(): void {
+    if (this.data.type === "Question") {
       this.question = true;
+      this.titleControl.setValue(this.data.title);
     }
   }
 
-  changeEdit() {
+  /**
+   * Change the edit state.
+   * @returns void
+   */
+  changeEdit(): void {
     this.canEdit = true;
     this.cd.detectChanges();
-    this.vc.nativeElement.focus();
-    // setTimeout(() => );
   }
 
-  saveTitle() {
-    if (this.data.Title !== ''){
-      this.canEdit = false;
+  /**
+   * Save the card title.
+   * @returns void
+   */
+  saveTitle(): void {
+    if (this.titleControl.value !== "") {
+      this.data.title = this.titleControl.value;
     }
+    this.dialogRef.close(this.data.title);
   }
 
+  /**
+   * Close the dialog.
+   * @returns void
+   */
   onNoClick(): void {
     this.dialogRef.close();
   }

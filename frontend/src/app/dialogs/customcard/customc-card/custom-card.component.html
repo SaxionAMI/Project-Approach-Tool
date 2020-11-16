@@ -3,15 +3,15 @@
 <mat-dialog-content >
   <form  #cardForm="ngForm">
     <mat-form-field class="form-group">
-      <input matInput placeholder="Title" [(ngModel)]="card.Title"  name='title' required>
+      <input matInput placeholder="Title" [(ngModel)]="card.title"  name='title' required>
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput placeholder="Short Description" [(ngModel)]="card.ShortDescription" name='shortDs' required>
+      <input matInput placeholder="Short Description" [(ngModel)]="card.shortDescription" name='shortDs' required>
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput placeholder="Long Description" [(ngModel)]="card.LongDescription" name='longDs'>
+      <input matInput placeholder="Long Description" [(ngModel)]="card.longDescription" name='longDs'>
     </mat-form-field>
 
     <mat-form-field>
@@ -19,7 +19,7 @@
     </mat-form-field>
 
     <p>Pick the card color:</p>
-    <input [(colorPicker)]="card.Color" [style.background]="card.Color" />
+    <input [(colorPicker)]="card.color" [style.background]="card.color" />
 
   </form>
 </mat-dialog-content>
