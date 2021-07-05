@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const User = mongoose.model("User");
 const crypto = require("crypto");
 const key = process.env.CRYPTOSECRET;
-const admin = require("firebase-admin");
+const admin = require("../firebaseModule");
 
 //  create a user account
 exports.postUser = function (req, res) {
@@ -87,19 +87,24 @@ exports.getExportReadyUserData = function (req, res) {
 //  update user account
 exports.updateUser = function (req, res) {
   const uid = req.params.uid;
-  const user = new User(req.body);
-  user.firstName = cipherText(user.firstName);
-  user.lastName = cipherText(user.lastName);
-  user.email = cipherText(user.email);
-  User.findOneAndUpdate({ uid: uid }, user)
-    .then((user) => {
-      res.status(200).json(user);
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message: err.message || "Some error occurred while updating the user.",
-      });
-    });
+  User.exists({uid: uid}).then(exists => {
+    if (exists) {
+      const user = new User(req.body);
+      user.firstName = cipherText(user.firstName);
+      user.lastName = cipherText(user.lastName);
+      user.email = cipherText(user.email);
+      User.findOneAndUpdate({ uid: uid }, user)
+        .then((user) => {
+          res.status(200).json(user);
+        })
+        .catch((err) => {
+          res.status(500).send({
+            message: err.message || "Some error occurred while updating the user.",
+          });
+        });
+    }
+    else exports.postUser(req, res);
+  });
 };
 
 //  delete user account
@@ -116,6 +121,56 @@ exports.deleteUser = function (req, res) {
       });
     });
 };
+
+exports.getUserRoles = function(req, res) {
+  User.find({}).then(users => {
+    const roles = users.map(x => ({
+      uid: x.uid,
+      firstName: decipherText(x.firstName),
+      lastName: decipherText(x.lastName),
+      role: x.role,
+      school: x.school,
+      study: x.study
+    }));
+    res.status(200).json(roles);
+  }).catch(error => {
+    console.error(error);
+    res.status(500).send("Some error occurred while retrieving user roles.");
+  })
+}
+
+exports.setUserRole = function(req, res) {
+  const userId = req.params.uid;
+  const role = req.body.role;
+  const supportedRoles = ['student', 'teacher', 'admin'];
+
+  if (!userId || !role) {
+    res.status(400).send("Missing one or more required request parameters.")
+    return;
+  }
+  if (!supportedRoles.includes(role)) {
+    res.status(400).send('\'' + role + '\' is not a supported user role.');
+  }
+  User.updateOne({uid: userId}, {
+    $set: {role: role}
+  }).then(_ => {
+    admin.auth().setCustomUserClaims(userId, { role: role }).then(_ => {
+      User.findOne({uid: userId}).then(x => {
+        res.status(200).json({
+          uid: x.uid,
+          firstName: x.firstName,
+          lastName: x.lastName,
+          role: x.role,
+          school: x.school,
+          study: x.study
+        });
+      })
+    });
+  }).catch(error => {
+    console.error(error);
+    res.status(500).send("Some error occurred while assigning the new user role.");
+  });
+}
 
 /**
  * This method deciphers user information, so it can be used in the mail

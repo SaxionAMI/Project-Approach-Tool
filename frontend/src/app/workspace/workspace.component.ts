@@ -11,9 +11,9 @@ import { Card } from "../models/card.model";
 import { CdkDragEnd } from "@angular/cdk/drag-drop";
 import { MatDialog } from "@angular/material/dialog";
 import { Workspace } from "../models/workspace.model";
-import "leader-line";
+//import { LeaderLine } from "leader-line";
 import { DOCUMENT } from "@angular/common";
-declare let LeaderLine: any;
+//declare let LeaderLine: any;
 import {
   MatSnackBar,
   MatSnackBarRef,
@@ -32,6 +32,11 @@ import { DeckdialogComponent } from "../dialogs/deckdialog/deckdialog.component"
 import { JoyrideService } from "ngx-joyride";
 import { MatMenuTrigger } from "@angular/material/menu";
 import { User } from "../models/user.model";
+import { VTActionOpenCatalog } from "../models/virtual-teacher/actions/secondary/vt-action-open-catalog";
+import { VTActionOpenSearch } from "../models/virtual-teacher/actions/secondary/vt-action-open-search";
+import { VTCatalogActionService } from "../services/virtual-teacher/vt-catalog-action/vt-catalog-action.service";
+import { VTWorkspaceData } from "../models/virtual-teacher/workspace-data/VTWorkspaceData";
+import LeaderLine from "leader-line-new";
 
 @Component({
   selector: "app-workspace",
@@ -39,16 +44,17 @@ import { User } from "../models/user.model";
   styleUrls: ["./workspace.component.css"],
 })
 export class WorkspaceComponent implements OnInit {
-  workspace: Workspace = new Workspace();
+  workspace: Workspace = Workspace.blank();
   workspaceConfig: workspaceConfig = new workspaceConfig();
   connect: Group[] = [];
   mouseTracker: any;
   trashCan: any[] = [];
   cards: Card[];
-  lines: typeof LeaderLine[] = [];
+  //lines: typeof LeaderLine[] = [];
+  lines: LeaderLineWithId[] = [];
   firstSnackbarRef: MatSnackBarRef<SimpleSnackBar>;
   secondSnackbarRef: MatSnackBarRef<SimpleSnackBar>;
-  tempLine: typeof LeaderLine;
+  tempLine: LeaderLine;
   loading: boolean = true;
   styling: string = "";
   type: string = "workspace";
@@ -69,6 +75,16 @@ export class WorkspaceComponent implements OnInit {
   mousePositionForMovement: Position = { x: 0, y: 0 };
   mouseLivePosition: Position = { x: 0, y: 0 };
 
+  searchPhrase: string = '';
+
+  get cardsMatchingSearchPhrase() {
+    if (this.categorySelected === 'Search') {
+      if (!this.searchPhrase || this.searchPhrase.length == 0) return [];
+      else return this.cardsOfSelectedDeck.filter(x => x.title.includes(this.searchPhrase));
+    }
+    else return [];
+  }
+
   constructor(
     public dialog: MatDialog,
     @Inject(DOCUMENT) private document,
@@ -80,7 +96,8 @@ export class WorkspaceComponent implements OnInit {
     private socketService: SocketService,
     private router: Router,
     private cardService: CardService,
-    private joyrideService: JoyrideService
+    private joyrideService: JoyrideService,
+    private vtCatalogService: VTCatalogActionService
   ) {
     location.onPopState(() => {
       this.removeArrows();
@@ -88,12 +105,16 @@ export class WorkspaceComponent implements OnInit {
       this.socketService.leaveRoom(this.room);
     });
   }
+
   /**
    * This method will start on initializing.
    * It contains most socket observers and the start of the second part of the onboarding tour.
    * @returns void
    */
   ngOnInit(): void {
+    this.vtCatalogService.openCatalogTab.subscribe(x => this.openCatalog(x));
+    this.vtCatalogService.openSearchTab.subscribe(x => this.openSearch(x));
+
     this.loading = false;
     if (localStorage.getItem("ActiveOnboardingWorkspace") === "true") {
       this.joyrideService
@@ -137,6 +158,12 @@ export class WorkspaceComponent implements OnInit {
       this.updateArrows(); 
     });
 
+    this.socketService.on('rejoinRoomIfAny').subscribe(() => {
+      this.authService.getUserUID().then((uid) => {
+        this.socketService.connectSocketToRoom(this.room, uid);
+      });
+    })
+
     this.socketService.on("updateGroupTitle").subscribe((res) => {
       this.workspace.groups.find((group) => group.id === res.id).title =
         res.title;
@@ -151,7 +178,7 @@ export class WorkspaceComponent implements OnInit {
     });
 
     this.socketService.on("addCardToSpawnlist").subscribe((res) => {
-      this.workspace.spawnList.cards.push(res);
+      this.workspace.spawnList.cards.push(new Card(res));
     });
 
     this.socketService.on("moveCardToGroup").subscribe(async (res) => {
@@ -178,7 +205,7 @@ export class WorkspaceComponent implements OnInit {
     });
 
     this.socketService.on("addGroupToWorkspace").subscribe((res) => {
-      this.workspace.groups.push(res);
+      this.workspace.groups.push(new Group(res));
     });
 
     this.socketService.on("addArrowToWorkspace").subscribe((res) => {
@@ -187,7 +214,7 @@ export class WorkspaceComponent implements OnInit {
     });
 
     this.socketService.on("addQuestionToWorkspace").subscribe((res) => {
-      this.workspace.spawnList.cards.push(res);
+      this.workspace.spawnList.cards.push(new Card(res));
     });
 
     this.socketService.on("updateQuestionInGroup").subscribe((res) => {
@@ -280,10 +307,10 @@ export class WorkspaceComponent implements OnInit {
       for (const line of this.workspace.storedLines) {
         if (line.start === res.id || line.end === res.id) {
           for (const ln of this.lines) {
-            if (ln._id === line.id) {
-              ln.remove();
+            if (ln.id == line.id) {
+              ln.line.remove();
               this.workspace.storedLines = this.workspace.storedLines.filter(
-                (lnr) => lnr.id !== ln._id
+                (lnr) => lnr.id !== ln.id
               );
             }
           }
@@ -298,7 +325,7 @@ export class WorkspaceComponent implements OnInit {
     this.workspaceService
       .getWorkspaceById(this.route.snapshot.params.id)
       .subscribe(async (res) => {
-        this.workspace = res;
+        this.workspace = new Workspace(res);
         this.loading = false;
         await this.delay(500);
         this.drawArrows();
@@ -348,9 +375,15 @@ export class WorkspaceComponent implements OnInit {
    * @returns void
    */
   onScroll(): void {
-    this.lines.forEach((line) => {
-      line.position();
-    });
+    this.updateArrows();
+  }
+
+  /**
+   * this method repositions the arrows when scrolling the workspace
+   * @returns void
+   */
+   onResized(): void {
+    this.updateArrows();
   }
 
   /**
@@ -361,10 +394,10 @@ export class WorkspaceComponent implements OnInit {
    */
   onCustomCard(result: any): void {
     result.id = Date.now().toString();
-    this.workspace.customCards.push(result);
-    this.workspace.spawnList.cards.push(result);
+    this.workspace.customCards.push(new Card(result));
+    this.workspace.spawnList.cards.push(new Card(result));
     this.updateWorkspace();
-    this.socketService.addCardToSpawnlist(this.room, result);
+    this.socketService.addCardToSpawnlist(this.room, new Card(result), new VTWorkspaceData(this.workspace));
   }
 
   /**
@@ -374,13 +407,16 @@ export class WorkspaceComponent implements OnInit {
    */
   drawArrows(): void {
     this.workspace.storedLines.forEach((line) => {
-      const newline = new LeaderLine(
-        this.document.getElementById(line.start),
-        this.document.getElementById(line.end),
-        this.workspaceConfig.leaderLineOptions
-      );
-      line.id = newline._id;
-      this.lines.push(newline);
+      const start = this.document.getElementById(line.start);
+      const end = this.document.getElementById(line.end);
+      if (!start || !end) {
+        const index = this.workspace.storedLines.indexOf(line);
+        this.workspace.storedLines.splice(index, 1);
+      }
+      else {
+        const newline = new LeaderLine(start, end, this.workspaceConfig.leaderLineOptions);
+        this.lines.push(new LeaderLineWithId(line.id, newline));
+      }
     });
   }
 
@@ -451,7 +487,7 @@ export class WorkspaceComponent implements OnInit {
    * @returns void
    */
   addArrow(group: Group): void {
-    let line: typeof LeaderLine;
+    let line: LeaderLineWithId;
     if (this.workspaceConfig.click === 0) {
       // Add first group element to the temporarily array
       this.connect.push(group);
@@ -482,19 +518,26 @@ export class WorkspaceComponent implements OnInit {
       this.tempLine = null;
       this.connect.push(group);
       // tslint:disable-next-line: no-unused-expression
-      line = new LeaderLine(
-        this.document.getElementById(this.connect[0].id),
-        this.document.getElementById(this.connect[1].id),
-        this.workspaceConfig.leaderLineOptions
+      let newLineId = this.workspace.storedLines.length;
+      while(this.workspace.storedLines.find(x => x.id == newLineId)) {
+        newLineId++;
+      }
+      //todo assign line number
+      line = new LeaderLineWithId(
+        newLineId, new LeaderLine(
+          this.document.getElementById(this.connect[0].id),
+          this.document.getElementById(this.connect[1].id),
+          this.workspaceConfig.leaderLineOptions
+        )
       );
       this.lines.push(line);
       const newLine = {
-        id: line._id,
+        id: line.id,
         start: this.connect[0].id,
         end: this.connect[1].id,
       };
       this.workspace.storedLines.push(newLine);
-      this.socketService.addArrowToWorkspace(this.room, newLine);
+      this.socketService.addArrowToWorkspace(this.room, newLine, new VTWorkspaceData(this.workspace));
 
       this.workspaceConfig.click = 0;
       this.connect = [];
@@ -513,8 +556,8 @@ export class WorkspaceComponent implements OnInit {
     this.workspace.storedLines.forEach((line) => {
       if (line.start === group.id || line.end === group.id) {
         this.lines.forEach((ln) => {
-          if (ln._id === line.id) {
-            ln.position();
+          if (ln.id === line.id) {
+            ln.line.position();
           }
         });
       }
@@ -526,16 +569,16 @@ export class WorkspaceComponent implements OnInit {
    * @returns void
    */
   addGroup(): void {
-    const group = {
+    const group = new Group({
       id: Date.now(),
       title: "title",
       location: { x: 600, y: 500 },
       cards: [],
-      selected: false,
-    };
+      selected: false
+    });
     this.workspace.groups.push(group);
     this.updateWorkspace();
-    this.socketService.addGroupToWorkspace(this.room, group);
+    this.socketService.addGroupToWorkspace(this.room, group, new VTWorkspaceData(this.workspace));
   }
 
   /**
@@ -549,7 +592,7 @@ export class WorkspaceComponent implements OnInit {
     this.workspaceConfig.canEditTitle = false;
     this.updateWorkspace();
     this.socketService.removeEffectFromTitle(this.room);
-    this.socketService.updateWorkspaceTitle(this.room, this.workspace.title);
+    this.socketService.updateWorkspaceTitle(this.room, this.workspace.title, new VTWorkspaceData(this.workspace));
   }
 
   /**
@@ -562,7 +605,7 @@ export class WorkspaceComponent implements OnInit {
     }
     this.workspaceConfig.canEditGoal = false;
     this.socketService.removeEffectFromGoal(this.room);
-    this.socketService.updateWorkspaceGoal(this.room, this.workspace.goal);
+    this.socketService.updateWorkspaceGoal(this.room, this.workspace.goal, new VTWorkspaceData(this.workspace));
     this.updateWorkspace();
   }
 
@@ -573,9 +616,9 @@ export class WorkspaceComponent implements OnInit {
    */
   addCard(card: Card): void {
     card.id = Date.now().toString();
-    this.workspace.spawnList.cards.push(card);
+    this.workspace.spawnList.cards.push(new Card(card));
     this.updateWorkspace();
-    this.socketService.addCardToSpawnlist(this.room, card);
+    this.socketService.addCardToSpawnlist(this.room, card, new VTWorkspaceData(this.workspace));
   }
 
   /**
@@ -585,7 +628,7 @@ export class WorkspaceComponent implements OnInit {
    */
   removeArrows(): void {
     for (const line of this.lines) {
-      line.remove();
+      line.line.remove();
     }
   }
 
@@ -594,28 +637,31 @@ export class WorkspaceComponent implements OnInit {
    * @returns void
    */
   addResearchQuestion(): void {
-    const question = {
+    const question = new Card({
       type: "Question",
       id: Date.now().toString(),
       title: "",
-    };
+      feedback: undefined,
+    });
     this.workspace.spawnList.cards.push(question);
     this.updateWorkspace();
-    this.socketService.addQuestionToWorkspace(this.room, question);
+    this.socketService.addQuestionToWorkspace(this.room, question, new VTWorkspaceData(this.workspace));
   }
 
   /**
    * Saves group location after the user moved it
    * @param  {CdkDragEnd} event - this is the event from ending a drag
    * @param  {Group} group - this is a group object
-   * @returns Promise - returns a void promise because it is a async method
    */
-  async onDragEnded(event: CdkDragEnd, group: Group): Promise<void> {
+  onDragEnded(event: CdkDragEnd, group: Group) {
+    console.log('On drag ended')
     const x = Math.round(event.source.getFreeDragPosition().x / 100) * 100;
     const y = Math.round(event.source.getFreeDragPosition().y / 100) * 100;
     group.location = { x, y };
+    console.log(group);
     this.socketService.removeEffectFromGroup(this.room, group);
-    this.socketService.moveGroup(this.room, group);
+    this.socketService.moveGroup(this.room, group, new VTWorkspaceData(this.workspace));
+    
     this.updateArrows();
     this.updateWorkspace();
   }
@@ -627,19 +673,25 @@ export class WorkspaceComponent implements OnInit {
    * @returns void
    */
   cardDropped(value: any): void {
+    console.log(value);
+    this.socketService.moveCardToGroup(this.room, new Card(value), new VTWorkspaceData(this.workspace));
     this.updateWorkspace();
-    this.socketService.moveCardToGroup(this.room, value);
     setTimeout(() => this.updateArrows());
   }
 
+  private lastCalled: Date;
   /**
    * this updates the position of each arrow.
-   * @returns Promise - returns a void promise because it is a async method
    */
-  async updateArrows(): Promise<void> {
-    await this.delay(0);
+  updateArrows() {
+    const now = new Date();
+    if (this.lastCalled && (now.getTime() - this.lastCalled.getTime()) < 10) {
+      return;
+    }
+    this.lastCalled = new Date();
+    //await this.delay(0);
     this.lines.forEach((line) => {
-      line.position();
+      line.line.position();
     });
   }
 
@@ -648,12 +700,18 @@ export class WorkspaceComponent implements OnInit {
    * @returns void
    */
   updateWorkspace(): void {
+    console.log('On drag ended')
     html2canvas(this.document.getElementById("screen"), {
       allowTaint: true,
       useCORS: false,
     }).then((canvas) => {
       const imgData = canvas.toDataURL("image/png");
       this.workspace.image = imgData;
+    })
+    .catch(error => {
+      console.error('caught error during html2canvas render: ' + error);
+    })
+    .finally(() => {
       this.workspaceService.upsertWorkspaceById(this.workspace).subscribe();
     });
   }
@@ -682,7 +740,7 @@ export class WorkspaceComponent implements OnInit {
    * @returns void
    */
   changeGroupTitle(group: Group): void {
-    this.socketService.updateGroupTitle(this.room, group);
+    this.socketService.updateGroupTitle(this.room, group, new VTWorkspaceData(this.workspace));
   }
 
   /**
@@ -692,7 +750,7 @@ export class WorkspaceComponent implements OnInit {
    */
   saveCardQuestionTitle(card: Card): void {
     console.log(card);
-    this.socketService.updateQuestionInGroup(this.room, card);
+    this.socketService.updateQuestionInGroup(this.room, card, new VTWorkspaceData(this.workspace));
     this.updateWorkspace();
   }
 
@@ -702,7 +760,8 @@ export class WorkspaceComponent implements OnInit {
    * @returns void
    */
   swapCardPositionWithinGroup(cards: []): void {
-    this.socketService.updateCardPositionWithinGroup(this.room, cards);
+    this.socketService.updateCardPositionWithinGroup(this.room, cards, new VTWorkspaceData(this.workspace));
+    this.updateWorkspace();
   }
 
   /**
@@ -712,7 +771,7 @@ export class WorkspaceComponent implements OnInit {
    */
   saveCardQuestionTitleInSpawnlist(card: Card): void {
     this.socketService.removeEffectFromCard(this.room, card);
-    this.socketService.updateQuestionInSpawnlist(this.room, card);
+    this.socketService.updateQuestionInSpawnlist(this.room, card, new VTWorkspaceData(this.workspace));
     this.updateWorkspace();
   }
 
@@ -731,7 +790,7 @@ export class WorkspaceComponent implements OnInit {
    * @returns void
    */
   changeNoteInSpawnlist(card: Card): void {
-    this.socketService.updateNoteInSpawnlistCard(this.room, card);
+    this.socketService.updateNoteInSpawnlistCard(this.room, card, new VTWorkspaceData(this.workspace));
     this.updateWorkspace();
   }
 
@@ -741,7 +800,7 @@ export class WorkspaceComponent implements OnInit {
    * @returns void
    */
   changeNoteInGroup(card: Card): void {
-    this.socketService.updateNoteInGroupCard(this.room, card);
+    this.socketService.updateNoteInGroupCard(this.room, card, new VTWorkspaceData(this.workspace));
     this.updateWorkspace();
   }
 
@@ -805,13 +864,57 @@ export class WorkspaceComponent implements OnInit {
     }
   }
 
+  async searchCards() {
+    if (this.searchPhrase && this.searchPhrase.length > 0) {
+      const limit = 10;
+      const toSearchFor = this.preloadedCardsOfAllDecks.filter(x => {
+        return x.title.toLowerCase().includes(this.searchPhrase.toLowerCase())
+      });
+      const cards = []
+      this.cardsOfSelectedDeck = [];
+      for(let i = 0; i < limit && i < toSearchFor.length; i++) {
+        const card = toSearchFor[i]
+        cards.push(card);
+      }
+      this.cardsOfSelectedDeck = cards.sort((a, b) => {
+        if (a.type < b.type) return -1;
+        else if (b.type < a.type) return 1;
+        else if (a.title < b.title) return -1;
+        else if (b.title < a.title) return 1;
+        else return 0;
+      })
+    }
+    else {
+      this.cardsOfSelectedDeck = [];
+    }
+  }
+
   /**
    * This toggles the sidebar open or closed.
    * @param  {string} category - the category to open
    * @returns Promise - returns a promise because it is an async method
    */
   async toggleSidebar(category: string): Promise<void> {
-    if (category !== "general") {
+    if (category === 'Search') {
+      if (category === this.categorySelected) {
+        this.isShowing = false;
+        this.cardsOfSelectedDeck = [];
+        this.preloadedCardsOfAllDecks.forEach((card) => {
+          if (card.type === category) {
+            this.cardsOfSelectedDeck.push(card);
+          }
+        });
+        this.categorySelected = "";
+        this.repeatUpdate();
+      }
+      else {
+        this.categorySelected = category;
+        this.isShowing = true;
+        this.cardsOfSelectedDeck = [];
+        this.repeatUpdate();
+      }
+    }
+    else if (category !== "general") {
       if (category === this.categorySelected && category !== "general") {
         this.isShowing = false;
         this.cardsOfSelectedDeck = [];
@@ -852,6 +955,12 @@ export class WorkspaceComponent implements OnInit {
         this.isShowing = false;
         this.repeatUpdate();
       }
+    }
+  }
+
+  private onSearchChanged() {
+    if (this.categorySelected === 'Search') {
+      
     }
   }
 
@@ -987,9 +1096,9 @@ export class WorkspaceComponent implements OnInit {
         this.workspace.storedLines[i].end === item
       ) {
         const index = this.lines.findIndex(
-          (line) => line._id === this.workspace.storedLines[i].id
+          (line) => line.id === this.workspace.storedLines[i].id
         );
-        this.lines[index].remove();
+        this.lines[index].line.remove();
         this.lines.splice(index, 1);
         this.workspace.storedLines.splice(i, 1);
         i--;
@@ -999,7 +1108,7 @@ export class WorkspaceComponent implements OnInit {
       (group) => group.id === item
     );
     const Ws = this.workspace.groups.find((group) => group.id === item);
-    this.socketService.removeGroup(this.room, Ws);
+    this.socketService.removeGroup(this.room, Ws, new VTWorkspaceData(this.workspace));
     this.workspace.groups.splice(Wsindex, 1);
     this.updateWorkspace();
   }
@@ -1026,7 +1135,7 @@ export class WorkspaceComponent implements OnInit {
       this.updateWorkspace();
       this.socketService.removeCardFromSpawnlist(this.room, {
         cardIndex: indexSpawnlist,
-      });
+      }, new VTWorkspaceData(this.workspace));
     } else {
       this.workspace.groups.forEach((group) => {
         const indexCardId = group.cards.findIndex((card) => card.id === item);
@@ -1041,9 +1150,53 @@ export class WorkspaceComponent implements OnInit {
           this.socketService.removeCardFromGroup(this.room, {
             groupId: group.id,
             cardIndex: index,
-          });
+          }, new VTWorkspaceData(this.workspace));
         }
       });
     }
   }
+
+  openSearch(data: VTActionOpenSearch) {
+    this.searchPhrase = data.searchPhrase;
+    this.toggleSidebar('Search');
+    this.searchCards();
+  }
+
+  openCatalog(data: VTActionOpenCatalog) {
+    console.log('Opening catalog tab: ', data)
+    switch(data.catalogTab.toLowerCase()) {
+      case 'field': 
+        this.tryOpenCatalogTab('Field');
+        break;
+      case 'library': 
+        this.tryOpenCatalogTab('Library');
+        break;
+      case 'workshop': 
+        this.tryOpenCatalogTab('Workshop');
+        break;
+      case 'lab': 
+        this.tryOpenCatalogTab('Lab');
+        break;
+      case 'showroom': 
+        this.tryOpenCatalogTab('Showroom');
+        break;
+      case 'deliverables': 
+        this.tryOpenCatalogTab('Deliverables')
+        break;
+      default: break;
+    }
+  }
+
+  tryOpenCatalogTab(name: string) {
+    if (this.checkForType(name)) this.toggleSidebar(name);
+  }
 }
+
+export class LeaderLineWithId {
+  constructor(id: number, line: LeaderLine) {
+    this.id = id;
+    this.line = line;
+  }
+  line: LeaderLine
+  id: number
+};

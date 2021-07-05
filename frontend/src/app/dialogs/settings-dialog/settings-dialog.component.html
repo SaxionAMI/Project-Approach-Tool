@@ -1,10 +1,24 @@
-<h3>Export data</h3>
-<button mat-raised-button (click)="onExport()">EXPORT DATA</button>
+<div id="buttons-container" class="flex">
+  <button mat-icon-button [matMenuTriggerFor]="menu" id="action-menu" class="top-button">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="onExport()">
+      <mat-icon>file_download</mat-icon>
+      <span>Export my data</span>
+    </button>
+    <button mat-menu-item (click)="onDeleteAccount()">
+      <mat-icon>delete_forever</mat-icon>
+      <span>Delete my account</span>
+    </button>
+  </mat-menu>
+  <h3 class="flex-grow" id="title">Change personal data</h3>
+  <button mat-icon-button (click)="onClose()" class="top-button">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
 
-<h3>Delete account</h3>
-<button mat-raised-button (click)="onDeleteAccount()">DELETE ACCOUNT</button>
 
-<h3>Change personal data</h3>
 
 <mat-form-field matInput>
   <mat-label>first name</mat-label>
@@ -71,7 +85,15 @@
   >
   <mat-hint align="end">{{ study.value.length }} / 60</mat-hint>
 </mat-form-field>
-<div class="buttonWrap">
-  <button mat-raised-button (click)="onSave()">SAVE</button>
-  <button mat-button (click)="onClose()">CANCEL</button>
-</div>
+<mat-form-field matInput>
+  <mat-label>Role</mat-label>
+  <input
+    matInput
+    #role
+    type="text"
+    name="role"
+    [formControl]="roleControl"
+    readonly
+  />
+</mat-form-field>
+<button mat-raised-button color="primary" (click)="onSave()" id="save">Save & close</button>

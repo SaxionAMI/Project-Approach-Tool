@@ -70,7 +70,7 @@ export class CreateWorkspaceComponent implements OnInit {
    */
   async onSave(): Promise<void> {
     if (this.titleControl.valid && this.goalControl.valid) {
-      const newWorkspace: Workspace = new Workspace();
+      const newWorkspace: Workspace = Workspace.blank();
       const workspace: Workspace = this.templates[this.lockedElement];
       if (workspace !== undefined) {
         newWorkspace.title = this.titleControl.value;

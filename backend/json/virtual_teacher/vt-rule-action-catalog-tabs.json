@@ -1,0 +1,26 @@
+[
+    {
+        "type": "Field",
+        "display": "Field"
+    },
+    {
+        "type": "Library",
+        "display": "Library"
+    },
+    {
+        "type": "Workshop",
+        "display": "Workshop"
+    },
+    {
+        "type": "Lab",
+        "display": "Lab"
+    },
+    {
+        "type": "Showroom",
+        "display": "Showroom"
+    },
+    {
+        "type": "Deliverables",
+        "display": "Stepping Stones"
+    }
+]

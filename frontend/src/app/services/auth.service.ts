@@ -3,6 +3,7 @@ import { AngularFireAuth } from "@angular/fire/auth";
 import { Router } from "@angular/router";
 import { actionCodeSettings } from "../../environments/environment";
 import { CookieService } from "ngx-cookie-service";
+import firebase from "firebase";
 
 @Injectable({
   providedIn: "root",
@@ -87,6 +88,31 @@ export class AuthService {
       });
     });
     return value.toString();
+  }
+
+  async getUserEmail(): Promise<string> {
+    const value = await new Promise((resolve, reject) => {
+      this.afAuth.onAuthStateChanged((user) => {
+        if (user) {
+          resolve(user.email);
+        }
+        else {
+          resolve(null);
+        }
+      })
+    })
+    return value.toString();
+  }
+
+  hasRole(role): Promise<boolean> {
+    return new Promise((resolve, reject) => {
+      firebase.auth().currentUser.getIdTokenResult().then(token => {
+        if (token.claims.role === role) resolve(true);
+        else resolve(false);
+      }, () => {
+        resolve(false)
+      });
+    })
   }
 
   /**

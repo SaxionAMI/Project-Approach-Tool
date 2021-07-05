@@ -1,0 +1,29 @@
+<div id="settings-container" *ngIf="isInDOM" [ngClass]="isOpened ? 'shown' : 'hidden'">
+    <div id="settings-panel" [ngClass]="isOpened ? 'shown' : 'hidden'" class="flex-container max-height max-width">
+        <div class="flex-item" id="rule-options">
+            <div class="flex-container max-width">
+                <h4 class="flex-item grow-1" id="focus-options-title">Focus options</h4>
+            </div>
+            <i>Do you need some time to focus? You can disable the Virtual Teacher at any time.</i>
+            <div id="vt-on-off-indicator" [ngClass]="vtEnabled ? 'enabled' : 'disabled'" (click)="toggleVTClicked()">
+                <strong>Virtual Teacher is:</strong>
+                <mat-icon>{{vtEnabled ? 'power_settings_new' : 'mode_standby'}}</mat-icon>
+                <span>{{vtEnabled ? 'enabled' : 'disabled'}}</span>
+                <i>Click to {{vtEnabled ? 'disable' : 'enable'}}</i>
+            </div>
+            
+        </div>
+        <div class="flex-item separator vertical"></div>
+        <div class="flex-item grow-2">
+            <div class="flex-container max-width">
+                <h3 class="flex-item grow-1" id="rule-options-title">Virtual Teacher settings</h3>
+                <button (click)="closeClicked()" class="flex-item" id="close-button" mat-icon-button>
+                    <mat-icon>close</mat-icon>
+                </button>
+            </div>
+            <div>
+                <app-vt-rules-list [getIsRuleEnabled]="getIsRuleEnabled" [setIsRuleEnabled]="setIsRuleEnabled" [showRule]="showRule"></app-vt-rules-list>
+            </div>
+        </div>
+    </div>
+</div>

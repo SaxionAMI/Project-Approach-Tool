@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="header">
+        <span>{{display}}</span>
+        <button mat-icon-button color="primary" [matMenuTriggerFor]="conditionMenu" *ngIf="supportsMultiCondition">
+            <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #conditionMenu="matMenu">
+            <button mat-menu-item *ngFor="let x of multiConditionTypes" (click)="wrapClicked(x.type)">Wrap in {{x.display}}</button>
+            <button mat-menu-item (click)="unwrapClicked()">Unwrap (destroy other)</button>
+        </mat-menu>
+        <button mat-icon-button color="warn" (click)="deleteClicked()">
+            <mat-icon>delete</mat-icon>
+        </button>
+    </div>
+    <table class="attributes">
+        <tr>
+            <th>Scope:</th>
+            <td>
+                <select [(ngModel)]="scope" [class.invalid]="!scopeValid && scopeChanged">
+                    <option *ngFor="let x of supportedScopes" [value]="x.type">{{x.display}}</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th>Strategy:</th>
+            <td>
+                <select [(ngModel)]="strategy" [class.invalid]="!strategyValid && strategyChanged">
+                    <option *ngFor="let x of supportedStrategies" [value]="x.identifier">{{x.display}}</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th>Comparison:</th>
+            <td>
+                <select [(ngModel)]="comparison" [class.invalid]="!comparisonValid && comparisonChanged">
+                    <option *ngFor="let y of supportedComparisons" [value]="y.type">{{y.display}}</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th>Compare with:</th>
+            <td>
+                <input type="number" [min]="minValue" [max]="maxValue" [(ngModel)]="value" [class.invalid]="!valueValid && valueChanged">
+            </td>
+        </tr>
+    </table>
+</div>
+

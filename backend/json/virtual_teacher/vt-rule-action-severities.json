@@ -1,0 +1,22 @@
+[
+    {
+        "type": "warning",
+        "display": "Warning",
+        "selectable": true
+    },
+    {
+        "type": "information",
+        "display": "Information",
+        "selectable": true
+    },
+    {
+        "type": "question",
+        "display": "Question",
+        "selectable": true
+    },
+    {
+        "type": "metrics",
+        "display": "Statistics",
+        "selectable": false
+    }
+]

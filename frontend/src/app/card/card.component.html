@@ -1,6 +1,0 @@
-<div class="card-container" (click)="openDetail()" *ngIf="!canEdit" >
-    {{card.Title}}
-</div>
-<mat-form-field *ngIf="canEdit">
-  <input #question matInput placeholder="Question" [(ngModel)]="card.Title" (keyup.enter)="saveTitle()" autofocus />
-</mat-form-field>

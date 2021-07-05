@@ -1,0 +1,83 @@
+[
+    {
+        "display": "Count deliverables",
+        "type": "VtCountDeliverablesCondition",
+        "archetype": "count",
+        "supportsMultiCondition": true,
+        "canBeRootCondition": true,
+        "selectable": true,
+        "description": "Counts the number of Stepping Stone deliverables, and performs the action to the right if the comparison succeeds."
+    },
+    {
+        "display": "Count methods in strategy",
+        "type": "VtCountMethodsInStrategyCondition",
+        "archetype": "count",
+        "supportsMultiCondition": true,
+        "canBeRootCondition": true,
+        "selectable": true,
+        "description": "Counts the number of research methods of a given strategy (e.g. Field), and performs the action to the right if the comparison succeeds."
+    },
+    {
+        "display": "Count research questions",
+        "type": "VtCountResearchQuestionsCondition",
+        "archetype": "count",
+        "supportsMultiCondition": true,
+        "canBeRootCondition": true,
+        "selectable": true,
+        "description": "Counts the number of research questions, and performs the action to the right if the comparison succeeds."
+    },
+    {
+        "display": "Count total methods",
+        "type": "VtCountTotalMethodsCondition",
+        "archetype": "count",
+        "supportsMultiCondition": true,
+        "canBeRootCondition": true,
+        "selectable": true,
+        "description": "Counts the total number of research methods of all strategies combined, and performs the action to the right if the comparison succeeds."
+    },
+    {
+        "display": "Count unique strategies",
+        "type": "VtCountUniqueStrategiesCondition",
+        "archetype": "count",
+        "supportsMultiCondition": true,
+        "canBeRootCondition": true,
+        "selectable": true,
+        "description": "Counts the number of used research strategies, and performs the action to the right if the comparison succeeds."
+    },
+    {
+        "display": "Calculate strategy representation",
+        "type": "VtStrategyRepresentationCondition",
+        "archetype": "parameterless",
+        "supportsMultiCondition": false,
+        "canBeRootCondition": true,
+        "selectable": false,
+        "description": "Calculates Strategy Representation statistics about the project approach. This condition always performs the action to the right, regardless of the result."
+    },
+    {
+        "display": "Calculate triangulation",
+        "type": "VtTriangulationCondition",
+        "archetype": "parameterless",
+        "supportsMultiCondition": false,
+        "canBeRootCondition": true,
+        "selectable": false,
+        "description": "Calculates Triangulation statistics about the project approach. This condition always performs the action to the right, regardless of the result."
+    },
+    {
+        "display": "Boolean AND",
+        "type": "VtBoolAndCondition",
+        "archetype": "multiCondition",
+        "supportsMultiCondition": false,
+        "canBeRootCondition": true,
+        "selectable": true,
+        "description": "Chains two conditions like a boolean AND gate. Performs the action to the right when both conditions succeed."
+    },
+    {
+        "display": "Boolean OR",
+        "type": "VtBoolOrCondition",
+        "archetype": "multiCondition",
+        "supportsMultiCondition": false,
+        "canBeRootCondition": true,
+        "selectable": true,
+        "description": "Chains two conditions like a boolean OR gate. Performs the action to the right when either one or both conditions succeed."
+    }
+]

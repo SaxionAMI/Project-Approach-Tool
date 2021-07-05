@@ -9,7 +9,7 @@ import { MatDialogRef } from "@angular/material/dialog";
   styleUrls: ["./custom-card.component.css"],
 })
 export class CustomCardComponent {
-  card: Card = new Card();
+  card: Card = Card.blank();
   color: string = "#ff0000";
   submitted: boolean = false;
 

@@ -1,0 +1,29 @@
+div {
+    width: 35pt;
+    height: 35pt;
+    font-size:15pt;
+    border-radius:50%;
+    background-color:silver;
+    color: black;
+    text-align:center;
+    margin:auto;
+    line-height:33pt;
+    cursor:pointer;
+    margin-left:5px;
+    margin-right:5px;
+}
+
+div > mat-icon {
+    vertical-align: middle;
+}
+
+div.active {
+    background-color:#04abd6;
+    color: white;
+}
+
+div.off {
+    background-color:white;
+    color:gray;
+    border: solid gray 2px;
+}

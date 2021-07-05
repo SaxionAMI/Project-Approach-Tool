@@ -23,6 +23,7 @@ export class SettingsDialogComponent implements OnInit {
   ]);
   studyControl = new FormControl("", [Validators.required, Validators.min(1)]);
   schoolControl = new FormControl("", [Validators.required, Validators.min(1)]);
+  roleControl = new FormControl("");
   passwordControl = new FormControl("", [
     Validators.required,
     Validators.min(1),
@@ -49,18 +50,47 @@ export class SettingsDialogComponent implements OnInit {
    * @returns void
    */
   ngOnInit(): void {
+    console.log('test')
     this.authService.getUserUID().then((uid) => {
-      this.userService.getUserByUid(uid).subscribe((user) => {
-        this.user = user;
-        this.firstNameControl.setValue(user.firstName);
-        this.lastNameControl.setValue(user.lastName);
-        this.studyControl.setValue(user.study);
-        this.schoolControl.setValue(user.school);
-      });
+      console.log('Got user with uid ' + uid);
+      if (uid)  {
+        this.userService.getUserByUid(uid).subscribe((user) => {
+          console.log('got DB user with uid ' + uid, user);
+          if (user == null) {
+            this.newUser(uid);
+          }
+          else {
+            this.user = user;
+            this.firstNameControl.setValue(user.firstName);
+            this.lastNameControl.setValue(user.lastName);
+            this.studyControl.setValue(user.study);
+            this.schoolControl.setValue(user.school);
+            this.roleControl.setValue(user.role);
+          }
+        }, () => {
+          this.newUser(uid);
+        });
+      }
+      else {
+        console.warn('User uid not found!');
+      }
+    }).catch(error => {
+      console.error(error);
     });
   }
 
-  /**
+  private newUser(uid: string) {
+    console.log('User not found --- making new user');
+    //fix for when user wasn't saved correctly.
+    this.authService.getUserEmail().then(email => {
+      this.user = new User();
+      this.user.uid = uid;
+      this.user.email = email;
+      this.roleControl.setValue('student');
+    })
+  }
+
+  /**de
    * Save user data
    * @returns void
    */
@@ -76,7 +106,7 @@ export class SettingsDialogComponent implements OnInit {
     });
   }
 
-  /**
+  /*
    * Open the dialog, ask for confirmation and then delete the account
    * @returns void
    */

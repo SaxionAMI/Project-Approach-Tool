@@ -204,3 +204,45 @@ body {
     border: 2px solid #04abd6;
     background-color: #fff;
   }
+
+  ::ng-deep body {
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+
+  #content {
+    overflow-x: auto;
+    overflow-y: auto;
+    padding-right:70px;
+  }
+
+  #page {
+    position:absolute;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+  }
+
+  #groups-container {
+    position:absolute;
+    top:0;
+    right:0;
+    left:0;
+    bottom:0;
+    overflow:scroll;
+  }
+
+  #groups-container > div {
+    width:auto;
+    height:auto;
+  }
+
+  .searchField {
+    margin:10px;
+    width:470px;
+  }
+
+  .searchHint {
+    margin:10px;
+  }

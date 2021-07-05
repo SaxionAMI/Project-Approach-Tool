@@ -26,6 +26,11 @@ const UserSchema = new Schema({
   study: {
     type: String,
     required: true
+  },
+  role: {
+    type: String,
+    required: false,
+    default: 'student'
   }
 });
 

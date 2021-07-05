@@ -44,6 +44,29 @@ button.mat-menu-item {
   color: #000000;
 }
 
+#settings-button {
+  color: white;
+  height: 60px;
+  width: 60px;
+  font-size: 32pt;
+  right: 180px;
+  margin-top: 30px;
+  position: absolute;
+  box-shadow: none;
+  background-color:#ccaa00;
+}
+
+#settings-button mat-icon {
+  font-size:32pt;
+  line-height: 28px;
+  width:auto;
+  height:auto;
+}
+
+#settings-button:hover {
+  background-color:#ffcc22
+}
+
 #profile-button {
   color: white;
   height: 60px;
@@ -73,15 +96,6 @@ mat-divider {
   min-height: 400px;
 }
 
-#question-button {
-  width: 40px;
-  height: 40px;
-  right: 20px;
-  top: 12px;
-  padding: 32px;
-  position: absolute;
-}
-
 .settings-icon {
   font-size: 50px;
   position: absolute;
@@ -106,4 +120,52 @@ mat-divider {
   color: #04abd6;
   border: 2px solid #04abd6;
   background-color: #fff;
+}
+
+#question-button{
+  color: white;
+  height: 60px;
+  width: 60px;
+  font-size: 32pt;
+  right: 20px;
+  margin-top: 30px;
+  position: absolute;
+  box-shadow: none;
+  background-color:#aa66cc;
+}
+
+#question-button mat-icon{
+  margin-left:1px;
+  color:white;
+  font-size:32pt;
+  line-height: 22px;
+  width:auto;
+  height:auto;
+}
+
+#question-button:hover {
+  background-color:#cc88dd;
+}
+
+#workspaces-button {
+  color: white;
+  height: 60px;
+  width: 60px;
+  font-size: 32pt;
+  right: 180px;
+  margin-top: 30px;
+  position: absolute;
+  box-shadow: none;
+  background-color:#44aa44;
+}
+
+#workspaces-button mat-icon {
+  font-size:28pt;
+  line-height: 28px;
+  width:auto;
+  height:auto;
+}
+
+#workspaces-button:hover {
+  background-color:#44bb44
 }

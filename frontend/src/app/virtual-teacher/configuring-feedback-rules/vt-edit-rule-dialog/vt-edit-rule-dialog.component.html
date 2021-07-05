@@ -1,0 +1,37 @@
+<div container [class.opened]="rule != null" (keyup.escape)="discardChanges()" >
+    <div closebanner (click)="discardChanges()">
+
+    </div>
+    <div contents>
+        <div class="header" *ngIf="rule !== null">
+            <button id="close" mat-raised-button color="warn" (click)="discardChanges()">
+                <mat-icon>cancel</mat-icon>
+                Close
+            </button>
+            <h3 class="title">
+                <div>{{creating ? 'New rule: ' : 'Edit rule: '}}</div>
+                <mat-form-field>
+                    <input type="text" matInput [(ngModel)]="rule.title" placeholder="Rule name" (change)="validate()">
+                </mat-form-field>
+            </h3>
+            <button id="save" mat-raised-button color="primary" (click)="saveChanges()" [disabled]="!isValid">
+                <mat-icon>save</mat-icon>
+                Save
+            </button>
+        </div>
+        <div class="attributes">
+            <mat-form-field *ngIf="rule !== null">
+                <mat-label>Rule description</mat-label>
+                <input type="text" matInput [(ngModel)]="rule.description" placeholder="Please enter a clear description of this rule." (change)="validate()">
+            </mat-form-field>
+        </div>
+        <div class="body" *ngIf="rule !== null">
+            <app-vt-rule-feedbackmode-selector #phaseSelector [rule]="rule" (onValidated)="onPhasesValidated($event)"></app-vt-rule-feedbackmode-selector>
+            <app-vt-rule-condition-selector #conditionSelector [rule]="rule" (onValidated)="onConditionValidated($event)"></app-vt-rule-condition-selector>
+            <app-vt-rule-action-selector #actionSelector [rule]="rule" (onValidated)="onActionValidated($event)"></app-vt-rule-action-selector>
+        </div>
+        <div class="footer" *ngIf="rule !== null">
+            
+        </div>
+    </div>
+</div>

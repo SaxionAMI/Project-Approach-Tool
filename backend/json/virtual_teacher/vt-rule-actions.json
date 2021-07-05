@@ -1,0 +1,32 @@
+[
+    {
+        "type": "VTRuleActionShowFeedbackBubble",
+        "display": "Show feedback bubble",
+        "primary": true,
+        "selectable": true
+    },
+    {
+        "type": "VTRuleActionShowMetrics",
+        "display": "Show statistics",
+        "primary": true,
+        "selectable": false
+    },
+    {
+        "type": "VTOpenCatalogAction",
+        "display": "Open card catalog",
+        "primary": false,
+        "selectable": true
+    },
+    {
+        "type": "VTOpenSearchAction",
+        "display": "Search cards",
+        "primary": false,
+        "selectable": true 
+    },
+    {
+        "type": "VTOpenWebsiteAction",
+        "display": "Open external website",
+        "primary": false,
+        "selectable": true
+    }
+]

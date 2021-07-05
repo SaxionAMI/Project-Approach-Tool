@@ -3,13 +3,24 @@ import { User } from "../models/user.model";
 import { HttpClient } from "@angular/common/http";
 import * as config from "../config";
 import { Observable } from "rxjs";
+import { UserRole } from "../models/user-role.model";
 
 @Injectable({
   providedIn: "root",
 })
 export class UserService {
-  userExtension = "user";
+  readonly userExtension = "user";
+  readonly roleExtension = "role";
+
   constructor(private httpClient: HttpClient) {}
+
+  getUserRoles(): Observable<UserRole[]> {
+    return this.httpClient.get<UserRole[]>(config.apiUrl + this.userExtension + "/" + this.roleExtension)
+  }
+
+  setUserRole(userId, role): Observable<UserRole> {
+    return this.httpClient.post<UserRole>(config.apiUrl + this.userExtension + "/" + userId + "/" + this.roleExtension, { role: role });
+  }
 
   /**
    * this method is used to post a user

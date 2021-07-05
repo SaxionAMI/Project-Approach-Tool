@@ -15,6 +15,11 @@
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   z-index: 10;
   width: 100%;
+  height: auto !important;
+}
+
+mat-toolbar-row#goal {
+  height:24px !important;
 }
 
 ::ng-deep .customize {
@@ -52,7 +57,8 @@
 #goal-container {
   color: #a9a9a9;
   font-size: 22px;
-  margin-bottom: 50px;
+  /*margin-bottom: 50px;*/
+  margin-bottom: 12px;
   width: 80%;
 }
 
@@ -123,17 +129,35 @@ img {
 
 #inviteBtn {
   color: white;
-  background-color: #04abd6;
-  right: 180px;
-  margin-top: 32px;
+  height: 60px;
+  width: 60px;
+  font-size: x-large;
+  right: 260px;
+  margin-top: 30px;
   position: absolute;
+  background-color: #00aaaa;
+  box-shadow: none;
+}
+
+#inviteBtn mat-icon {
+  margin-left:-4px;
+  font-size:28pt;
+  line-height: 28px;
+  width:auto;
+  height:auto;
+}
+
+#inviteBtn:hover {
+  background-color:#00bbbb;
 }
 
 .active-user-container {
   display: inline-block;
   position: absolute;
-  right: 270px;
+  right: 340px;
   margin-top: 30px;
+  padding-right:20px;
+  border-right:solid gray 1px;
 }
 
 .active-user-button {
@@ -182,11 +206,42 @@ img {
 }
 
 .app-logo {
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 90px;
   position: absolute;
-  top: 15px;
-  left: 12px;
+  top: 0px;
+  left: 0px;
+  cursor:pointer;
+  border-radius:5px;
+  background-color:transparent;
+}
+
+.app-logo:hover {
+  background-color:#ddd;
+}
+
+.app-logo img {
+  position:absolute;
+  top:20px;
+  left:10px;
+  width:50px;
+  height:50px;
+  display:block;
+}
+
+.app-logo:hover img {
+  display:none;
+}
+
+.app-logo mat-icon {
+  color:black;
+  font-size:32pt;
+  display:none;
+  margin-left:10px;
+}
+
+.app-logo:hover mat-icon {
+  display:block;
 }
 
 .settings-icon {
@@ -195,10 +250,51 @@ img {
   color: darkgray;
 }
 
-#question-button{
-  width: 40px;
-  height: 40px;
-  right: 40px;
-  margin-top: 32px;
+#settings-button {
+  color: white;
+  height: 60px;
+  width: 60px;
+  font-size: 32pt;
+  right: 180px;
+  margin-top: 30px;
   position: absolute;
+  box-shadow: none;
+  background-color:#ccaa00;
+}
+
+#settings-button mat-icon {
+  font-size:32pt;
+  line-height: 28px;
+  width:auto;
+  height:auto;
+}
+
+#settings-button:hover {
+  background-color:#ffcc22
+}
+
+#question-button{
+  color: white;
+  height: 60px;
+  width: 60px;
+  font-size: 32pt;
+  right: 20px;
+  margin-top: 30px;
+  position: absolute;
+  box-shadow: none;
+  background-color:#aa66cc;
+}
+
+#question-button mat-icon{
+  margin-left:9px;
+  margin-top:-2px;
+  color:white;
+  font-size:32pt;
+  line-height: 28px;
+  width:auto;
+  height:auto;
+}
+
+#question-button:hover {
+  background-color:#cc88dd;
 }

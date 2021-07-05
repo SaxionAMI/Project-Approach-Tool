@@ -1,10 +1,12 @@
 <mat-toolbar data-html2canvas-ignore="true">
   <mat-toolbar-row data-html2canvas-ignore="true">
-    <img
-      class="app-logo"
-      src="../../../assets/image/Logo-wide.png"
-      (click)="goBack()"
-    />
+    <button class="app-logo" mat-icon-button (click)="goBack()">
+      <img
+        src="../../../assets/image/Logo-wide.png"
+        title="Back to workspaces"
+      />
+      <mat-icon>arrow_back</mat-icon>
+    </button>
     <span id="title-container">
       <input
         *ngIf="workspaceConfig.canEditTitle"
@@ -30,6 +32,15 @@
         {{ workspace.title }}
       </p>
     </span>
+    <button
+      title="Settings"
+      *ngIf="isTeacher()"
+      id="settings-button"
+      (click)="openTeacherSettings()"
+      mat-fab
+    >
+      <mat-icon>settings</mat-icon>
+    </button>
     <div class="active-user-container">
       <button
         *ngFor="let user of activeUsers"
@@ -43,7 +54,7 @@
       </button>
     </div>
 
-    <button id="question-button" mat-icon-button [matMenuTriggerFor]="menuHelp">
+    <button id="question-button" mat-icon-button [matMenuTriggerFor]="menuHelp" mat-fab>
       <mat-icon class="settings-icon">help_outline</mat-icon>
     </button>
     <mat-menu #menuHelp="matMenu" class="customize">
@@ -71,12 +82,13 @@
       mat-raised-button
       id="inviteBtn"
       (click)="openInviteModal()"
+      mat-fab
     >
-      Share
+      <mat-icon>share</mat-icon>
     </button>
   </mat-toolbar-row>
 
-  <mat-toolbar-row data-html2canvas-ignore="true">
+  <mat-toolbar-row data-html2canvas-ignore="true" id="goal">
     <span id="goal-container">
       <input
         id="goal"

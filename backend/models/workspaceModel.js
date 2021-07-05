@@ -29,6 +29,12 @@ var workspaceSchema = new Schema({
   },
   decks: {
     type: "Mixed"
+  },
+  disabledRuleIds: {
+    type: ["String"]
+  },
+  permanentDisableVT: {
+    type: Boolean
   }
 });
 

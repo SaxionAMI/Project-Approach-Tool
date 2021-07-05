@@ -17,6 +17,7 @@ import { MatDialog } from "@angular/material/dialog";
 import { Position } from "../models/position.model";
 import { Card } from "../models/card.model";
 import { SocketService } from "../services/socket.service";
+import { VTPrimaryAction } from "../models/virtual-teacher/actions/vt-primary-action";
 
 @Component({
   selector: "app-group",
@@ -194,5 +195,12 @@ export class GroupComponent implements OnInit {
    */
   onDragCardEnded(card: Card): void {
     this.socketService.removeEffectFromCard(this.room, card);
+  }
+
+  
+  onFeedbackClicked(feedbacks: VTPrimaryAction[]) {
+    if (feedbacks.length > 0) {
+      feedbacks[0].perform();
+    }
   }
 }

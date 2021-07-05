@@ -1,0 +1,36 @@
+.container {
+    border: solid #ff8888 2px;
+    display: flex;
+    flex-direction: column;
+    min-height:300px;
+}
+
+.arrow {
+    width:48px;
+    height:32px;
+}
+
+.header {
+    color:white;
+    background-color:#ff8888;
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    margin:-2px;
+}
+
+.header h3 {
+    margin:10px;
+    flex-grow:1;
+    padding:0px;
+}
+
+.phases {
+    padding:20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.phases mat-checkbox {
+    margin-bottom:20px;
+}
