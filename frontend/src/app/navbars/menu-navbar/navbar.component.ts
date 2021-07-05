@@ -24,6 +24,7 @@ export class NavbarComponent implements OnInit {
 
   email: string = "";
   fullName: string = "";
+  role: string = "";
   constructor(
     private router: Router,
     private authService: AuthService,
@@ -38,6 +39,7 @@ export class NavbarComponent implements OnInit {
    */
   ngOnInit(): void {
     if (
+      this.router.url === "/teacher/settings" ||
       this.router.url === "/workspaces" ||
       this.router.url === "/workspace/create"
     ) {
@@ -46,6 +48,7 @@ export class NavbarComponent implements OnInit {
           if (user) {
             this.email = user.email;
             this.fullName = user.firstName + " " + user.lastName;
+            this.role = user.role;
           } else {
             this.router.navigate(["/load"], {
               queryParams: { finishRegistration: true },
@@ -79,6 +82,10 @@ export class NavbarComponent implements OnInit {
    */
   checkIfDisplayedHere(route): boolean {
     return this.router.url.indexOf(route) === 0;
+  }
+
+  hasRole(role): Promise<boolean> {
+    return this.authService.hasRole(role);
   }
 
   /**
@@ -167,5 +174,17 @@ export class NavbarComponent implements OnInit {
    */
   checkIfPrivacy(): boolean{
     return this.router.url === "/privacy-statement";
+  }
+
+  openTeacherSettings(): void {
+    this.router.navigate(["teacher/settings"]);
+  }
+
+  openWorkspaces(): void {
+    this.router.navigate(["workspaces"]);
+  }
+
+  isTeacher() {
+    return this.role == 'teacher' || this.role == 'admin';
   }
 }

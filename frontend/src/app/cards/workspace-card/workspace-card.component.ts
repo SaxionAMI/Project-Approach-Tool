@@ -60,7 +60,7 @@ export class WorkspaceCardComponent {
    * @returns void
    */
   createCopy(): void {
-    const ws: Workspace = new Workspace();
+    const ws: Workspace = Workspace.blank();
     ws.goal = this.workspace.goal;
     ws.groups = this.workspace.groups;
     ws.image = this.workspace.image;

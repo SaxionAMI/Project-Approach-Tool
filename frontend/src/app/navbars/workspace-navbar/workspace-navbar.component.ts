@@ -37,6 +37,7 @@ export class WorkspaceNavbarComponent implements OnInit {
   firstName: string = "";
   lastName: string = "";
   fullName: string = "";
+  role: string = "";
   activeUsers: any[] = [];
   displayInfo: boolean = false;
 
@@ -61,6 +62,7 @@ export class WorkspaceNavbarComponent implements OnInit {
           this.firstName = user.firstName;
           this.lastName = user.lastName;
           this.fullName = user.firstName + " " + user.lastName;
+          this.role = user.role;
         } else {
           this.router.navigate(["/load"], {
             queryParams: { FinishRegistration: true },
@@ -254,5 +256,13 @@ export class WorkspaceNavbarComponent implements OnInit {
    */
   openPrivacy(): void {
     window.open(window.location.origin + "/privacy-statement", "_blank");
+  }
+
+  openTeacherSettings(): void {
+    window.open(window.location.origin + "/teacher/settings", "_blank");
+  }
+
+  isTeacher() {
+    return this.role == 'teacher' || this.role == 'admin';
   }
 }

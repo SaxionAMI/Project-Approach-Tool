@@ -1,0 +1,27 @@
+.button-container {
+    width:100%;
+    display:flex;
+    justify-content: space-between;
+}
+
+button {
+    margin-top:20px;
+    padding:10px;
+    border:solid gray 1px;
+    cursor:pointer;
+}
+
+button:hover {
+    background-color:rgba(0,0,0,0.3);
+}
+
+button.primary {
+    background-color:rgba(4,171,214,1);
+    border:none;
+    box-shadow:2px 2px 4px rgba(0,0,0,0.5);
+    color:white;
+}
+
+button.primary:hover {
+    background-color:rgba(4,171,214,0.5);
+}

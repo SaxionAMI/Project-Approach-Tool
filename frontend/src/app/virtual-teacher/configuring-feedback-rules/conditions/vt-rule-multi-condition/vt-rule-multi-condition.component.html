@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="header">
+        <select [(ngModel)]="chainType" [class.invalid]="!chainTypeValid">
+            <option *ngFor="let type of multiConditionTypes" [ngValue]="type" [title]="type.description">{{type.display}}</option>
+        </select>
+        <button mat-icon-button color="primary" [matMenuTriggerFor]="conditionMenu">
+            <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #conditionMenu="matMenu">
+            <button mat-menu-item *ngFor="let x of multiConditionTypes" (click)="wrapClicked(x.type)">Wrap in {{x.display}}</button>
+            <button mat-menu-item (click)="unwrapClicked()">Unwrap (destroy other)</button>
+        </mat-menu>
+        <button (click)="deleteClicked()" mat-icon-button color="warn">
+            <mat-icon>delete</mat-icon>
+        </button>
+    </div>
+    
+    <div class="conditions">
+        <ng-template appDynamicComponentAnchor id="condition1"></ng-template>
+        <div *ngIf="conditionComponent1 == null" class="placeholder" [matMenuTriggerFor]="addCondition1">Click to add a condition</div>
+        <mat-menu #addCondition1="matMenu">
+            <button mat-menu-item *ngFor="let item of supportedConditions" (click)="addChild(item.type)">{{item.display}}</button>
+        </mat-menu>
+        <div class="separator"></div>
+        <ng-template appDynamicComponentAnchor id="condition2"></ng-template>
+        <div *ngIf="conditionComponent2 == null" class="placeholder" [matMenuTriggerFor]="addCondition2">Click to add a condition</div>
+        <mat-menu #addCondition2="matMenu">
+            <button mat-menu-item *ngFor="let item of supportedConditions" (click)="addChild(item.type)">{{item.display}}</button>
+        </mat-menu>
+    </div>
+</div>

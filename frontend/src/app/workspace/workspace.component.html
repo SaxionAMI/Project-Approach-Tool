@@ -16,6 +16,7 @@
   *ngIf="!loading"
   class="sidenav-container"
   [ngStyle]="{ visibility: loading ? 'hidden' : 'visible' }"
+  id="page"
 >
   <mat-drawer mode="side" opened>
     <div style="height: 90px"></div>
@@ -111,6 +112,16 @@
         />
       </button>
       <button
+        title="Search"
+        mat-icon-button
+        (click)="toggleSidebar('Search')"
+      >
+        <img
+          class="sidebar-btn"
+          src="../../assets/image/icons/logo-search.png"
+        />
+      </button>
+      <button
         joyrideStep="step19"
         title="Selecting a deck"
         [stepContent]="step19Content"
@@ -132,7 +143,7 @@
       <mat-drawer mode="side" class="sidebar-extended" [opened]="isShowing">
         <div style="height: 90px"></div>
         <div
-          *ngIf="this.categorySelected != 'general'"
+          *ngIf="this.categorySelected != 'general' && this.categorySelected !== 'Search'"
           fxLayout="row wrap"
           fxLayoutAlign="flex-start"
         >
@@ -143,6 +154,30 @@
             [detail]="false"
             (click)="addCard(card)"
           ></app-card-selector-card>
+        </div>
+        <div *ngIf="this.categorySelected == 'Search'"
+          fxLayout="column"
+          fxLayoutGap="5px"
+          fxLayoutAlign="stretch">
+          <mat-form-field class="searchField"
+            fxFlex="0 1 calc(100% - 5px)">
+            <mat-label>Search phrase:</mat-label>
+            <input matInput type="text" placeholder="..." [(ngModel)]="searchPhrase" (input)="searchCards()"/>
+          </mat-form-field>
+          <div 
+            fxLayout="row wrap"
+            fxLayoutGap="5px"
+            fxLayoutAlign="flex-start">
+            <app-card-selector-card
+              *ngFor="let card of cardsOfSelectedDeck"
+              fxFlex="0 1 calc(50% - 5px)"
+              [card]="card"
+              [detail]="false"
+              (click)="addCard(card)"
+            ></app-card-selector-card>
+          </div>
+          <span class="searchHint" *ngIf="!searchPhrase">To begin, please specify a search phrase.</span>
+          <span class="searchHint" *ngIf="searchPhrase">Not what you're looking for? Try a different search phrase.</span>
         </div>
         <div
           *ngIf="this.categorySelected == 'general'"
@@ -182,7 +217,7 @@
         </div>
       </mat-drawer>
       <mat-drawer-content id="content" data-html2canvas-ignore="true">
-        <div class="workspace-container" cdkDropListGroup (scroll)="onScroll()">
+        <div class="workspace-container" cdkDropListGroup>
           <div
             id="spawn-list"
             *ngIf="workspace.spawnList.cards.length > 0"
@@ -212,30 +247,34 @@
               ></app-card>
             </div>
           </div>
-          <app-group
-            (contextmenu)="onContextMenu($event, group.id)"
-            class="group-item"
-            *ngFor="let group of workspace.groups"
-            [id]="group.id"
-            cdkDrag
-            [group]="group"
-            [room]="room"
-            [cdkDragFreeDragPosition]="group.location"
-            (cdkDragStarted)="onDrag(group)"
-            (cdkDragMoved)="drag(group)"
-            (cdkDragEnded)="onDragEnded($event, group)"
-            (mousedown)="check($event)"
-            (click)="
-              workspaceConfig.drawing ? addArrow(group) : select(group, $event)
-            "
-            (dropped)="cardDropped($event)"
-            (title)="changeGroupTitle(group)"
-            (cardQuestion)="saveCardQuestionTitle($event)"
-            (swapped)="swapCardPositionWithinGroup($event)"
-            (changedNote)="changeNoteInGroup($event)"
-          >
-          </app-group>
-
+          <div id="groups-container" (scroll)="onScroll()" (resized)="onResized()">
+            <div>
+              <app-group
+                (contextmenu)="onContextMenu($event, group.id)"
+                class="group-item"
+                *ngFor="let group of workspace.groups"
+                [id]="group.id"
+                cdkDrag
+                [group]="group"
+                [room]="room"
+                [cdkDragFreeDragPosition]="group.location"
+                (cdkDragStarted)="onDrag(group)"
+                (cdkDragMoved)="drag(group)"
+                (cdkDragEnded)="onDragEnded($event, group)"
+                (mousedown)="check($event)"
+                (click)="
+                  workspaceConfig.drawing ? addArrow(group) : select(group, $event)
+                "
+                (dropped)="cardDropped($event)"
+                (title)="changeGroupTitle(group)"
+                (cardQuestion)="saveCardQuestionTitle($event)"
+                (swapped)="swapCardPositionWithinGroup($event)"
+                (changedNote)="changeNoteInGroup($event)"
+              >
+              </app-group>
+            </div>
+          </div>
+          <app-vt-dashboard [room]="room" [workspace]="workspace"></app-vt-dashboard>
         </div></mat-drawer-content
       >
     </mat-drawer-container>
@@ -422,3 +461,5 @@
     <button *ngIf="checkIfCardContextMenu === true" mat-menu-item (click)="removeCard(item)">Remove card</button>
 	</ng-template>
 </mat-menu>
+
+<app-vt-settings-student></app-vt-settings-student>

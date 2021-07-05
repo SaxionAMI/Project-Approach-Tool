@@ -24,7 +24,7 @@ export class WorkspaceService {
    */
   postWorkspace(workspace: Workspace): Observable<Workspace> {
     return this.httpClient
-      .post<Workspace>(config.apiUrl + this.workspaceUrlExtension, workspace)
+      .post<Workspace>(config.apiUrl + this.workspaceUrlExtension, workspace.data())
       .pipe();
   }
 
@@ -34,10 +34,12 @@ export class WorkspaceService {
    * @returns Observable
    */
   upsertWorkspaceById(workspace: Workspace): Observable<Workspace> {
+    const clone = workspace.data();
+    console.log(clone);
     return this.httpClient
       .post<Workspace>(
-        config.apiUrl + this.workspaceUrlExtension + "/" + workspace._id,
-        workspace
+        config.apiUrl + this.workspaceUrlExtension + "/" + clone._id,
+        clone
       )
       .pipe();
   }

@@ -24,10 +24,29 @@
       <mat-icon>add</mat-icon>
     </button>
     <button
+      title="Settings"
+      *ngIf="(checkIfDisplayedHere('/workspaces') || checkIfDisplayedHere('/workspaces/create')) && isTeacher()"
+      id="settings-button"
+      (click)="openTeacherSettings()"
+      mat-fab
+    >
+      <mat-icon>settings</mat-icon>
+    </button>
+    <button
+      title="Workspaces"
+      *ngIf="checkIfDisplayedHere('/teacher/settings')"
+      id="workspaces-button"
+      (click)="openWorkspaces()"
+      mat-fab
+    >
+      <mat-icon>account_tree</mat-icon>
+    </button>
+    <button
       joyrideStep="step2"
       title="Profile"
       [stepContent]="step2Content"
       *ngIf="
+        checkIfDisplayedHere('/teacher/settings') ||
         checkIfDisplayedHere('/workspaces') ||
         checkIfDisplayedHere('/workspace/create')
       "

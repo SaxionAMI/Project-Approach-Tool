@@ -9,11 +9,19 @@ import {
   AngularFireAuthGuard,
   redirectUnauthorizedTo,
   redirectLoggedInTo,
+  customClaims,
 } from "@angular/fire/auth-guard";
 import { WorkspaceGuard } from "./guards/workspace.guard";
 import { AboutComponent } from './about/about.component';
 import { PrivacyComponent } from './privacy/privacy.component';
+import { pipe } from "rxjs";
+import { map } from "rxjs/operators";
+import { TeacherSettingsPageComponent } from "./teacher-settings-page/teacher-settings-page.component";
 
+const teacherOnly = () => pipe(customClaims, map(claims => {
+  console.log(claims);
+  return claims.role === 'teacher' || claims.role === 'admin'
+}));
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(["login"]);
 const redirectLoggedInToWorkspaces = () => redirectLoggedInTo(["workspaces"]);
 
@@ -43,6 +51,12 @@ const routes: Routes = [
     component: WorkspaceComponent,
     canActivate: [AngularFireAuthGuard, WorkspaceGuard],
     data: { authGuardPipe: redirectUnauthorizedToLogin },
+  },
+  {
+    path: "teacher/settings",
+    component: TeacherSettingsPageComponent,
+    canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: teacherOnly },
   },
   { path: "about", component: AboutComponent},
   { path: "privacy-statement", component: PrivacyComponent},

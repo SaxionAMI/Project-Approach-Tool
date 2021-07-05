@@ -22,3 +22,8 @@ If you have to serve it on different server, then use NGINX or a similar tool to
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
+## Omitted files
+
+Note that this GIT repo is intentionally missing some files that are required to run the app. These files contain sensitive information such as API keys. 
+To ensure that this information doesn't become public, these files have been omitted and a template file has been provided in its place.
+

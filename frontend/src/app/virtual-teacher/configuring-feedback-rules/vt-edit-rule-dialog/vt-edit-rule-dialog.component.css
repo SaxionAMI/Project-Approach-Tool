@@ -1,0 +1,110 @@
+div[container] {
+    position:fixed;
+    top:0vh;
+    right:0;
+    left:0;
+    bottom:0;
+    pointer-events: none;
+    transition: background-color 0.2s ease-out;
+    -moz-transition: background-color 0.2s ease-out;
+    -webkit-transition: background-color 0.2s ease-out;
+    -o-transition: background-color 0.2s ease-out;
+    background-color:rgba(0,0,0,0);
+    z-index:50;
+}
+
+div[container].opened {
+    margin-top:0;
+    background-color:rgba(0,0,0,0.3);
+    pointer-events:all !important;
+}
+
+div[container] div[contents] {
+    z-index:60;
+    position: absolute;
+    top:100vh;
+    left:0;
+    right:0;
+    height:100vh;
+    background-color:white;
+    transition: top 0.2s ease-out;
+    -moz-transition: top 0.2s ease-out;
+    -webkit-transition: top 0.2s ease-out;
+    -o-transition: top 0.2s ease-out;
+    padding:20px;
+    box-sizing: border-box;
+}
+
+div[container].opened div[contents] {
+    top:100px;
+}
+
+div[container].opened div[closebanner] {
+    z-index:60;
+    position:absolute;
+    top:0;
+    right:0;
+    left:0;
+    height:10vh;
+    background-color:rgba(0,0,0,0.01);
+    cursor:pointer;
+}
+
+div[contents] .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+h3.title {
+    width:70vw;
+    display:flex;
+    align-items:baseline;
+}
+
+h3.title mat-form-field {
+    flex-grow:1;
+    margin-left:20px;
+}
+
+h3.title mat-form-field input {
+    width:100%;
+}
+
+button#close,
+button#save {
+    width: 100px !important;
+    height:50px !important;
+    font-size:14pt;
+}
+
+button#close:hover,
+button#save:hover {
+    opacity:0.75;
+}
+
+div[contents] .body {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: stretch;
+}
+
+div[contents] .body app-vt-rule-feedbackmode-selector{
+    flex-grow:1;
+    flex-basis: 15%;
+}
+
+div[contents] .body app-vt-rule-condition-selector{
+    flex-grow:2;
+    flex-basis: 25%;
+}
+
+div[contents] .body app-vt-rule-action-selector{
+    flex-grow:4;
+    flex-basis: 60%;
+}
+
+div[contents] .attributes mat-form-field {
+    width:100%;
+}

@@ -1,0 +1,22 @@
+[
+    {
+        "display": "Field",
+        "identifier": "Field"
+    },
+    {
+        "display": "Library",
+        "identifier": "Library"
+    },
+    {
+        "display": "Workshop",
+        "identifier": "Workshop"
+    },
+    {
+        "display": "Lab",
+        "identifier": "Lab"
+    },
+    {
+        "display": "Showroom",
+        "identifier": "Showroom"
+    }
+]
