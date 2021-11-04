@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import * as config from "src/app/config";
+import { apiUrl } from '@app/config';
 import { Observable } from 'rxjs';
 import { VTRule } from 'src/app/models/virtual-teacher/rules/vt-rule';
 import { VTConfigurableAction } from 'src/app/models/virtual-teacher/rules/vt-configurable-action';
@@ -31,62 +31,62 @@ export class VtRulesService {
   constructor(private httpClient: HttpClient) { }
 
   getVtRules(): Observable<VTRule[]> {
-    return this.httpClient.get<VTRule[]>(config.apiUrl + this.vtRuleRoute).pipe();
+    return this.httpClient.get<VTRule[]>(apiUrl + this.vtRuleRoute).pipe();
   }
 
   getVtRulesForEditing(): Observable<VTRule[]> {
-    return this.httpClient.get<VTRule[]>(config.apiUrl + this.vtRuleRouteForEditing).pipe();
+    return this.httpClient.get<VTRule[]>(apiUrl + this.vtRuleRouteForEditing).pipe();
   }
 
 
 
   getVtActions(): Observable<VTConfigurableAction[]> {
-    return this.httpClient.get<VTConfigurableAction[]>(config.apiUrl + this.vtActions).pipe();
+    return this.httpClient.get<VTConfigurableAction[]>(apiUrl + this.vtActions).pipe();
   }
 
   getVtConditions(): Observable<VTConfigurableCondition[]> {
-    return this.httpClient.get<VTConfigurableCondition[]>(config.apiUrl + this.vtConditions).pipe();
+    return this.httpClient.get<VTConfigurableCondition[]>(apiUrl + this.vtConditions).pipe();
   }
 
   getVtComparisons(): Observable<VTConfigurableComparison[]> {
-    return this.httpClient.get<VTConfigurableComparison[]>(config.apiUrl + this.vtComparisons).pipe();
+    return this.httpClient.get<VTConfigurableComparison[]>(apiUrl + this.vtComparisons).pipe();
   }
 
   getVtScopes(): Observable<VTConfigurableScope[]> {
-    return this.httpClient.get<VTConfigurableScope[]>(config.apiUrl + this.vtScopes).pipe();
+    return this.httpClient.get<VTConfigurableScope[]>(apiUrl + this.vtScopes).pipe();
   }
 
   getVtSeverities(): Observable<VTConfigurableSeverity[]> {
-    return this.httpClient.get<VTConfigurableSeverity[]>(config.apiUrl + this.vtSeverities).pipe();
+    return this.httpClient.get<VTConfigurableSeverity[]>(apiUrl + this.vtSeverities).pipe();
   }
 
   getVtCatalogTabs(): Observable<VTConfigurableCatalogTab[]> {
-    return this.httpClient.get<VTConfigurableCatalogTab[]>(config.apiUrl + this.vtCatalogTabs).pipe();
+    return this.httpClient.get<VTConfigurableCatalogTab[]>(apiUrl + this.vtCatalogTabs).pipe();
   }
 
   getVtPhases(): Observable<VTConfigurablePhase[]> {
-    return this.httpClient.get<VTConfigurablePhase[]>(config.apiUrl + this.vtPhases).pipe();
+    return this.httpClient.get<VTConfigurablePhase[]>(apiUrl + this.vtPhases).pipe();
   }
 
   getVtStrategies(): Observable<VTConfigurableStrategy[]> {
-    return this.httpClient.get<VTConfigurableStrategy[]>(config.apiUrl + this.vtStrategies).pipe();
+    return this.httpClient.get<VTConfigurableStrategy[]>(apiUrl + this.vtStrategies).pipe();
   }
 
 
 
   createRule(rule: VTRule): Observable<VTRule> {
-    return this.httpClient.post<any>(config.apiUrl + this.vtRuleRoute, rule).pipe();
+    return this.httpClient.post<any>(apiUrl + this.vtRuleRoute, rule).pipe();
   }
 
   updateRule(rule: VTRule): Observable<VTRule> {
-    return this.httpClient.post<any>(config.apiUrl + this.vtRuleRoute + "\\" + rule._id, rule).pipe();
+    return this.httpClient.post<any>(apiUrl + this.vtRuleRoute + "\\" + rule._id, rule).pipe();
   }
 
   deleteRule(id: string): Observable<VTRule> {
-    return this.httpClient.delete<any>(config.apiUrl + this.vtRuleRoute + "\\" + id).pipe();
+    return this.httpClient.delete<any>(apiUrl + this.vtRuleRoute + "\\" + id).pipe();
   }
 
   setRuleEnabled(id: string, enable: boolean): Observable<VTRule> {
-    return this.httpClient.post<any>(config.apiUrl + this.vtRuleRoute + "\\" + id + "\\set-enabled", { enable: enable }).pipe();
+    return this.httpClient.post<any>(apiUrl + this.vtRuleRoute + "\\" + id + "\\set-enabled", { enable: enable }).pipe();
   }
 }
