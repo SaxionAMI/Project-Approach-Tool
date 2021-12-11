@@ -1,8 +1,8 @@
 "use strict";
-var mongoose = require("mongoose");
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-var workspaceSchema = new Schema({
+const workspaceSchema = new Schema({
   groups: {
     type: ["Mixed"],
   },

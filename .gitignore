@@ -20,6 +20,9 @@
 *.tar
 *.zip
 
+/_fontend
+_frontend
+
 # Logs and databases #
 ######################
 *.log
