@@ -32,6 +32,20 @@ export class CardService {
   }
 
   /**
+   * Updates a card
+   * @param cardId Id of the card to update
+   * @param fields Updated card fields
+   * @returns Observable with updated card
+   * @deprecated Update workspace instead
+   */
+  updateCard(cardId: string | number, fields: Partial<Card>): Observable<Card> {
+    return this.httpClient.put<Card>(
+      `${config.apiUrl}${this.cardUrlExtension}/${cardId}`,
+      fields
+    );
+  }
+
+  /**
    * get cards by deck
    * @param  {string} deck - a deck type
    * @returns Observable

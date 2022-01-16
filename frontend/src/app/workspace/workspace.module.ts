@@ -45,6 +45,9 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { VtRuleActionComponentBase } from './components/virtual-teacher/configuring-feedback-rules/vt-rule-action-selector/vt-rule-action-component-base';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatInputModule } from '@angular/material/input';
+import { ProjectPlanningComponent } from './components/project-planning/project-planning.component';
+import { RouterModule } from "@angular/router";
+import { DxGanttModule } from 'devextreme-angular';
 
 @NgModule({
   declarations: [
@@ -122,6 +125,7 @@ import { MatInputModule } from '@angular/material/input';
     VtRuleOpenCatalogTabComponent,
     VtRuleCountMethodsInStrategyConditionComponent,
     VtRuleOpenSearchTabComponent,
+    ProjectPlanningComponent,
   ],
   exports: [
     VtRuleConditionComponentBase,
@@ -200,6 +204,7 @@ import { MatInputModule } from '@angular/material/input';
     VtRuleOpenSearchTabComponent,
   ],
   imports: [
+    RouterModule,
     CommonModule,
     CoreModule,
     SharedModule,
@@ -217,7 +222,8 @@ import { MatInputModule } from '@angular/material/input';
     MatSidenavModule,
     MatProgressBarModule,
     DragDropModule,
-    MatInputModule
+    MatInputModule,
+    DxGanttModule,
   ],
   entryComponents: [VtDisableDialogComponent]
 })

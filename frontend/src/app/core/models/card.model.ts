@@ -51,6 +51,11 @@ export class Card {
   data(): ICardData {
     return new CardData(this);
   }
+
+  update({startDate, endDate}: Partial<Card>): void {
+    this.startDate = startDate;
+    this.endDate = endDate;
+  }
 }
 
 export class CardData implements ICardData {

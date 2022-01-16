@@ -6,6 +6,7 @@ const workspace = require("../controllers/workspaceController.js");
 //  The post and upsert routings
 Router.post("/workspace", workspace.postWorkspace);
 Router.post("/workspace/:_id", workspace.upsertWorkspaceById);
+Router.put("/workspace/:_id", workspace.updateWorkspaceFields);
 Router.post("/workspaces", workspace.getWorkspacesByUID);
 
 //  The get routings

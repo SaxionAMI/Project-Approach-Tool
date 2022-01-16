@@ -40,6 +40,30 @@ exports.createCard = function (req, res) {
     });
 };
 
+// update existing card
+exports.updateCard = function (req, res) {
+  // const filter = { id: Number(req.params.cardId) };
+
+  Card.find().then((card) => {
+     res.status(200).json(card);
+  }).catch((err) => {
+    res.status(404).send({
+      message: err.message || "Card not found",
+    });
+  });
+
+  // Card.findOneAndUpdate(filter, req.body, { new: true })
+  //   .then((card) => {
+  //     console.log("-----", card);
+  //     res.status(200).json(card);
+  //   })
+  //   .catch((err) => {
+  //     res.status(500).send({
+  //       message: err.message || "Some error occurred while creating the card.",
+  //     });
+  //   });
+};
+
 // get a card by id
 exports.getCard = function (req, res) {
   Card.findById(req.params.cardId)

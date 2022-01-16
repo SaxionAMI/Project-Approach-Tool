@@ -30,10 +30,12 @@ import { MatCardModule } from "@angular/material/card";
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatNativeDateModule } from "@angular/material/core";
+import { RouterModule } from "@angular/router";
 
 @NgModule({
   declarations: [AppComponent, AboutComponent, PrivacyComponent],
   imports: [
+    RouterModule,
     AngularFireModule.initializeApp(angularFirebaseConfig),
     AngularFireAuthModule,
     AppRoutingModule,

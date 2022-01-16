@@ -5,6 +5,7 @@ import { Card, ICardData } from "./card.model";
 import { Deck } from "./deck.model";
 import { VTFeedbackCategoriesModel } from "./virtual-teacher/vt-feedback-categories-model";
 import { TOUCH_BUFFER_MS } from "@angular/cdk/a11y";
+import { flatten } from "@angular/compiler";
 
 export class Workspace {
   _id: string;
@@ -56,6 +57,15 @@ export class Workspace {
   data(): IWorkspaceData {
     return new WorkspaceData(this);
   }
+
+  updateCards(changes: Partial<Card>[]): WorkspaceData {
+    const cards = flatten(this.groups.map(group => group.cards)).filter(card => changes.map(change => change.id).includes(card.id));
+    console.log('cards to update', cards);
+
+    cards.forEach(card => card.update(changes.find(change => change.id === card.id)));
+    console.log('updated cards', cards);
+    return this.data();
+  }
 }
 
 export class WorkspaceData implements IWorkspaceData {
@@ -100,5 +110,5 @@ export declare interface IWorkspaceData {
   customCards: ICardData[];
   decks: Deck[];
   disabledRuleIds: string[];
-  permanentDisableVT: boolean; 
+  permanentDisableVT: boolean;
 }

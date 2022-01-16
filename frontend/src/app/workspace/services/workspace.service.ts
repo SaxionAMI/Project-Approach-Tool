@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Workspace } from "@app/core/models/workspace.model";
+import { Workspace, WorkspaceData } from "@app/core/models/workspace.model";
 import { Observable } from "rxjs";
 import * as config from "@app/config";
 import { Card } from "@app/core/models/card.model";
@@ -23,8 +23,6 @@ export class WorkspaceService {
    * @returns Observable
    */
   postWorkspace(workspace: Workspace): Observable<Workspace> {
-    console.log('workspace', workspace);
-
     return this.httpClient
       .post<Workspace>(config.apiUrl + this.workspaceUrlExtension, workspace.data())
       .pipe();
@@ -37,13 +35,20 @@ export class WorkspaceService {
    */
   upsertWorkspaceById(workspace: Workspace): Observable<Workspace> {
     const clone = workspace.data();
-    console.log(clone);
     return this.httpClient
       .post<Workspace>(
         config.apiUrl + this.workspaceUrlExtension + "/" + clone._id,
         clone
       )
       .pipe();
+  }
+
+  updateWorkspaceGroups(workspace: WorkspaceData): Observable<WorkspaceData> {
+    return this.httpClient
+      .put<WorkspaceData>(
+        config.apiUrl + this.workspaceUrlExtension + "/" + workspace._id,
+        {groups: workspace.groups}
+      );
   }
 
   /**

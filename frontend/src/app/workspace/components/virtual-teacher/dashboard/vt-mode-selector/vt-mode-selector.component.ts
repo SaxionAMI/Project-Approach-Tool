@@ -1,4 +1,5 @@
 import { Component, OnInit, Output } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { VTFeedbackService } from 'src/app/workspace/services/virtual-teacher/vt-feedback-service/vt-feedback.service';
 
 @Component({
@@ -9,6 +10,7 @@ import { VTFeedbackService } from 'src/app/workspace/services/virtual-teacher/vt
 export class VtModeSelectorComponent implements OnInit {
   private _actualMode: String = 'creating';
   private _selectedMode: String = 'creating';
+  private workspaceId: number | string;
 
   get isVtEnabled() {
     return this.feedbackService.isEnabled;
@@ -30,17 +32,23 @@ export class VtModeSelectorComponent implements OnInit {
     return this._actualMode;
   }
 
-  constructor(private feedbackService: VTFeedbackService) {
+  constructor(private feedbackService: VTFeedbackService, private router: Router, private route: ActivatedRoute) {
     feedbackService.on(VTFeedbackService.EVENT_SET_FEEDBACK_MODE, mode => this.setSelectedMode(mode));
   }
 
   ngOnInit(): void {
+    this.workspaceId = this.route.snapshot.params.id;
   }
 
   onModeSelected(mode: String) {
     if (this.selectedMode === mode) return;
+
     this.selectedMode = mode;
     this.feedbackService.setFeedbackMode(this.selectedMode);
+
+    if (this.selectedMode === 'planning') {
+      this.router.navigate(['/workspace/planning', this.workspaceId]);
+    }
   }
 
   private setSelectedMode(value) {

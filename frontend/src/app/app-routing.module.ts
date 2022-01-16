@@ -17,6 +17,7 @@ import { PrivacyComponent } from './privacy/privacy.component';
 import { pipe } from "rxjs";
 import { map } from "rxjs/operators";
 import { TeacherSettingsPageComponent } from "./teacher/containers/teacher-settings-page/teacher-settings-page.component";
+import { ProjectPlanningComponent } from "./workspace/components/project-planning/project-planning.component";
 
 const teacherOnly = () => pipe(customClaims, map(claims => {
   console.log(claims);
@@ -47,10 +48,21 @@ const routes: Routes = [
     data: { authGuardPipe: redirectUnauthorizedToLogin },
   },
   {
-    path: "workspace/:id",
-    component: WorkspaceComponent,
+    path: 'workspace/:id',
+    // component: WorkspaceComponent,
     canActivate: [AngularFireAuthGuard, WorkspaceGuard],
     data: { authGuardPipe: redirectUnauthorizedToLogin },
+    children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        component: WorkspaceComponent,
+      },
+    ],
+  },
+  {
+    path: 'workspace/planning/:id',
+    component: ProjectPlanningComponent,
   },
   {
     path: "teacher/settings",
