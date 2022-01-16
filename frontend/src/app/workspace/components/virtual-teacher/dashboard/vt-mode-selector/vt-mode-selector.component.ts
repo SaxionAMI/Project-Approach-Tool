@@ -17,6 +17,7 @@ export class VtModeSelectorComponent implements OnInit {
   get selectedMode(): String {
     return this._selectedMode;
   };
+
   set selectedMode(value: String) {
     this._selectedMode = value;
   }

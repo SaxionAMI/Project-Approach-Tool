@@ -32,7 +32,7 @@ import { VtRuleConditionComponentBase } from './components/virtual-teacher/confi
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -44,6 +44,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { VtRuleActionComponentBase } from './components/virtual-teacher/configuring-feedback-rules/vt-rule-action-selector/vt-rule-action-component-base';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -215,7 +216,9 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MatFormFieldModule,
     MatSidenavModule,
     MatProgressBarModule,
-    DragDropModule
-  ]
+    DragDropModule,
+    MatInputModule
+  ],
+  entryComponents: [VtDisableDialogComponent]
 })
 export class WorkspaceModule { }

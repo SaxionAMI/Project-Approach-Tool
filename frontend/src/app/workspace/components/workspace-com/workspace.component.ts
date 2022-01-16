@@ -800,6 +800,8 @@ export class WorkspaceComponent implements OnInit {
    * @returns void
    */
   changeNoteInGroup(card: Card): void {
+    console.log(card);
+
     this.socketService.updateNoteInGroupCard(this.room, card, new VTWorkspaceData(this.workspace));
     this.updateWorkspace();
   }

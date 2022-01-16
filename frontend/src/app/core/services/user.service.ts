@@ -39,6 +39,8 @@ export class UserService {
    * @returns Observable
    */
   getUserByUid(uid: string): Observable<User> {
+    console.log('ID', uid);
+
     return this.httpClient.get<User>(
       config.apiUrl + this.userExtension + "/" + uid
     );

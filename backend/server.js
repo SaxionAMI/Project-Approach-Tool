@@ -57,8 +57,8 @@ const server = app.listen(port, () =>
   console.log(`PAT back-end app listening on port ${port}!`)
 );
 
-//virtual teacher
-const vt = require('./virtualTeacherModule');
+// virtual teacher
+const vt = require("./virtualTeacherModule");
 
 // socket module
 const io = require("socket.io")(server);
@@ -66,12 +66,12 @@ const socketModule = require("./socketModule")(io);
 
 // virtual teacher socket hooks
 // when the first user connects to a room, starts a virtual teacher instance that is bound to the lifecycle of that room.
-socketModule.on('joinWorkspace', (workspace, socketId) => {
+socketModule.on("joinWorkspace", (workspace, socketId) => {
   vt.tryCreateVtInstance(workspace, socketId);
-})
-socketModule.on('leaveWorkspace', (workspace) => {
+});
+socketModule.on("leaveWorkspace", (workspace) => {
   vt.tryRemoveVtInstance(workspace);
-})
+});
 
 //  unprotected route
 app.get("/invite/:id", mail.confirmInvite);

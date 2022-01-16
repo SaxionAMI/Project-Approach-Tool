@@ -27,6 +27,9 @@ import { SharedModule } from "./shared/shared.module";
 import { AuthModule } from "./auth/auth.module";
 import { TeacherModule } from "./teacher/teacher.module";
 import { MatCardModule } from "@angular/material/card";
+import { MatDialogModule } from "@angular/material/dialog";
+import { MatDatepickerModule } from "@angular/material/datepicker";
+import { MatNativeDateModule } from "@angular/material/core";
 
 @NgModule({
   declarations: [AppComponent, AboutComponent, PrivacyComponent],
@@ -48,6 +51,9 @@ import { MatCardModule } from "@angular/material/card";
     AuthModule,
     TeacherModule,
     MatCardModule,
+    MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   providers: [
     AngularFireAuthGuard,

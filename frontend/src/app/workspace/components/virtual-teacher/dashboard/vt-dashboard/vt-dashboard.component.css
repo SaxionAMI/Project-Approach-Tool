@@ -2,7 +2,7 @@
     position:fixed;
     bottom: 1.8vh;
     right: 70px;
-    width: 400px;
+    width: 480px;
     height: 120px;
     margin:0;
     background-color:white;
@@ -66,7 +66,7 @@
       line-height:50px !important;
       margin-left:-5px;
   }
-  
+
   .button-row {
     display: flex;
     flex-direction: column;
@@ -92,11 +92,11 @@
   #button-warning:hover {
     color:#ff9999;
   }
-  
+
   #button-info:hover {
     color:#99ccff;
   }
-  
+
   #button-question:hover {
     color:#bb99ff;
   }

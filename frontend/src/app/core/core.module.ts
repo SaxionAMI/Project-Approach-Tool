@@ -67,11 +67,7 @@ import { MatRippleModule } from '@angular/material/core';
     JoyrideModule.forRoot(),
     MatDividerModule,
     MatProgressSpinnerModule,
-    MatDialogModule,
     MatRippleModule,
-    MatButtonModule,
-    MatIconModule,
-    MatToolbarModule
   ],
   exports: [
     WorkspaceNavbarComponent,
@@ -79,7 +75,7 @@ import { MatRippleModule } from '@angular/material/core';
     LoadingComponent,
     NavbarComponent,
     WorkspaceNavbarComponent,
-    NavbarComponent
+    NavbarComponent,
   ],
   entryComponents: [JoyrideStepComponent, GenericApiErrorDialogComponent],
 })

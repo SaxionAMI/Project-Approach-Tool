@@ -33,6 +33,14 @@ const CardSchema = new Schema({
   },
   deck: {
     type: String
+  },
+  startDate: {
+    type: Date,
+    required: [true, "Start date is required"],
+  },
+  endDate: {
+    type: Date,
+    required: [true, "End date is required"],
   }
 });
 

@@ -192,7 +192,7 @@ export class SocketService {
    * @returns void
    */
   updateNoteInGroupCard(room: string, card: Card, workspace: VTWorkspaceData): void  {
-    this.socket.emit("updateNoteInGroupCard", { room, data: card.data(), workspace: workspace});
+    this.socket.emit("updateNoteInGroupCard", { room, data: new Card(card).data(), workspace: workspace});
   }
 
   /**

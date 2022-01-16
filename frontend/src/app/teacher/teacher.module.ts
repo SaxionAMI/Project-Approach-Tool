@@ -5,6 +5,9 @@ import { CoreModule } from '@app/core/core.module';
 import { SharedModule } from '@app/shared/shared.module';
 import { UserRoleListComponent } from './components/user-role-list/user-role-list.component';
 import { WorkspaceModule } from '@app/workspace/workspace.module';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
 @NgModule({
   declarations: [
     TeacherSettingsPageComponent,
@@ -14,7 +17,9 @@ import { WorkspaceModule } from '@app/workspace/workspace.module';
     CommonModule,
     CoreModule,
     SharedModule,
-    WorkspaceModule
+    WorkspaceModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
   exports: [
     TeacherSettingsPageComponent,

@@ -42,6 +42,7 @@ exports.checkIfValidEmail = function (req, res) {
 //  get a user by uid
 exports.getUserByUid = function (req, res) {
   const uid = req.params.uid;
+  console.log("request", req.params);
   User.findOne({ uid: uid })
     .then((user) => {
       const userObj = user;
@@ -87,7 +88,7 @@ exports.getExportReadyUserData = function (req, res) {
 //  update user account
 exports.updateUser = function (req, res) {
   const uid = req.params.uid;
-  User.exists({uid: uid}).then(exists => {
+  User.exists({ uid: uid }).then((exists) => {
     if (exists) {
       const user = new User(req.body);
       user.firstName = cipherText(user.firstName);
@@ -102,8 +103,7 @@ exports.updateUser = function (req, res) {
             message: err.message || "Some error occurred while updating the user.",
           });
         });
-    }
-    else exports.postUser(req, res);
+    } else exports.postUser(req, res);
   });
 };
 
@@ -123,8 +123,8 @@ exports.deleteUser = function (req, res) {
 };
 
 exports.getUserRoles = function(req, res) {
-  User.find({}).then(users => {
-    const roles = users.map(x => ({
+  User.find({}).then((users) => {
+    const roles = users.map((x) => ({
       uid: x.uid,
       firstName: decipherText(x.firstName),
       lastName: decipherText(x.lastName),
@@ -133,29 +133,29 @@ exports.getUserRoles = function(req, res) {
       study: x.study
     }));
     res.status(200).json(roles);
-  }).catch(error => {
+  }).catch((error) => {
     console.error(error);
     res.status(500).send("Some error occurred while retrieving user roles.");
-  })
-}
+  });
+};
 
 exports.setUserRole = function(req, res) {
   const userId = req.params.uid;
   const role = req.body.role;
-  const supportedRoles = ['student', 'teacher', 'admin'];
+  const supportedRoles = ["student", "teacher", "admin"];
 
   if (!userId || !role) {
-    res.status(400).send("Missing one or more required request parameters.")
+    res.status(400).send("Missing one or more required request parameters.");
     return;
   }
   if (!supportedRoles.includes(role)) {
-    res.status(400).send('\'' + role + '\' is not a supported user role.');
+    res.status(400).send("'" + role + "' is not a supported user role.");
   }
-  User.updateOne({uid: userId}, {
-    $set: {role: role}
-  }).then(_ => {
-    admin.auth().setCustomUserClaims(userId, { role: role }).then(_ => {
-      User.findOne({uid: userId}).then(x => {
+  User.updateOne({ uid: userId }, {
+    $set: { role: role }
+  }).then((_) => {
+    admin.auth().setCustomUserClaims(userId, { role: role }).then((_) => {
+      User.findOne({ uid: userId }).then((x) => {
         res.status(200).json({
           uid: x.uid,
           firstName: x.firstName,
@@ -164,13 +164,13 @@ exports.setUserRole = function(req, res) {
           school: x.school,
           study: x.study
         });
-      })
+      });
     });
-  }).catch(error => {
+  }).catch((error) => {
     console.error(error);
     res.status(500).send("Some error occurred while assigning the new user role.");
   });
-}
+};
 
 /**
  * This method deciphers user information, so it can be used in the mail

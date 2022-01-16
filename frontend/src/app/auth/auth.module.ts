@@ -9,6 +9,7 @@ import { CoreModule } from '@app/core/core.module';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatIconModule,
     MatButtonModule,
     CoreModule,
+    MatInputModule,
     MatFormFieldModule,
     MatCardModule,
     MatToolbarModule

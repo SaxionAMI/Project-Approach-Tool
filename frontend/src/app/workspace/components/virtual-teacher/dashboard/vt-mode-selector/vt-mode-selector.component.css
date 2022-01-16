@@ -65,7 +65,8 @@
 
 
 .vt-mode-bubble#vt-mode-editing,
-.vt-mode-bubble#vt-mode-reviewing
+.vt-mode-bubble#vt-mode-reviewing,
+.vt-mode-bubble#vt-mode-planning
 {
     margin-left:2vw;
 }

@@ -7,22 +7,29 @@
         <div [class]="actualMode"></div>
         <div [class]="actualMode"></div>
     </div>
-    <div [ngClass]="!pending && actualMode == 'creating' ? 'vt-mode-bubble active' : 'vt-mode-bubble'" 
+    <div [ngClass]="!pending && actualMode == 'creating' ? 'vt-mode-bubble active' : 'vt-mode-bubble'"
         id="vt-mode-creating" (click)="onModeSelected('creating')">
         <div>
             <mat-icon>add</mat-icon>
         </div>
         <span>Creating</span>
     </div>
-    <div [ngClass]="!pending && actualMode == 'editing' ? 'vt-mode-bubble active' : 'vt-mode-bubble'"  
+    <div [ngClass]="!pending && actualMode == 'editing' ? 'vt-mode-bubble active' : 'vt-mode-bubble'"
         id="vt-mode-editing" (click)="onModeSelected('editing')">
         <div>
             <mat-icon>build</mat-icon>
         </div>
         <span>Editing</span>
     </div>
-    <div [ngClass]="!pending && actualMode == 'reviewing' ? 'vt-mode-bubble active' : 'vt-mode-bubble'" 
-        id="vt-mode-reviewing" 
+    <div [ngClass]="!pending && actualMode == 'planning' ? 'vt-mode-bubble active' : 'vt-mode-bubble'"
+        id="vt-mode-planning" (click)="onModeSelected('planning')">
+        <div>
+            <mat-icon>calendar_today</mat-icon>
+        </div>
+        <span>Planning</span>
+    </div>
+    <div [ngClass]="!pending && actualMode == 'reviewing' ? 'vt-mode-bubble active' : 'vt-mode-bubble'"
+        id="vt-mode-reviewing"
         (click)="onModeSelected('reviewing')">
         <div>
             <mat-icon>search</mat-icon>
