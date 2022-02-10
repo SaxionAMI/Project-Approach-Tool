@@ -458,6 +458,7 @@ export class WorkspaceComponent implements OnInit {
   /**
    * This is the first step in setting a arrow
    * @returns void
+   * @deprecated
    */
   startArrow(): void {
     // Check if there is two phase in workspace if not show warning snackbar

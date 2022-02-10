@@ -173,14 +173,15 @@
             class="general-image"
             src="/assets/image/phase.png"
             (click)="addGroup()" />
-          <img
+          <!-- Removed due to the encountered critical bugs -->
+          <!-- <img
             joyrideStep="step11"
             title="Arrow"
             [stepContent]="step11Content"
             fxFlex="0 1 calc(50% - 10px)"
             class="general-image"
             src="/assets/image/arrow.png"
-            (click)="startArrow()" />
+            (click)="startArrow()" /> -->
           <img
             joyrideStep="step12"
             title="Question"
@@ -246,7 +247,6 @@
               </app-group>
             </div>
           </div>
-          <!-- TODO: add router outlet here -->
           <router-outlet></router-outlet>
           <app-vt-dashboard [room]="room" [workspace]="workspace"></app-vt-dashboard>
         </div>

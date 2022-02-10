@@ -84,17 +84,19 @@ export class ProjectPlanningComponent implements OnInit {
     this.workspaceTitle$ = this.workspace$.pipe(map(workspace => workspace.title));
 
     this.activities$ = this.workspace$.pipe(map(workspace => {
-      return workspace.groups.reduce((acc, next) => {
+      const sortedGroups = workspace.groups.sort((a, b) => a.location.x - b.location.x);
+
+      return sortedGroups.reduce((acc, next) => {
         const parentActivity = {id: `${next.id}`, title: next.title, color: '#aaa', isGroup: true};
-        const childActivities = next.cards.map(card => ({
+        const childActivities = next.cards.filter(card => !!card.color).map(card => ({
           id: `${card.id}`,
           title: card.title,
           color: card.color,
           type: card.type,
           note: card.note,
           picture: card.picture,
-          start: card.startDate ?? '2022-01-05', //startDate
-          end: card.endDate?? '2022-01-10', //endDate
+          start: card.startDate ?? '2022-02-03', //startDate
+          end: card.endDate?? '2022-02-04', //endDate
           parentId: parentActivity.id,
           isGroup: false,
         }));
