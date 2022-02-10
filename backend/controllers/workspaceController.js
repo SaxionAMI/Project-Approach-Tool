@@ -16,6 +16,19 @@ exports.upsertWorkspaceById = function (req, res) {
     });
 };
 
+// update workspace fields
+exports.updateWorkspaceFields = function (req, res) {
+   Workspace.findByIdAndUpdate(req.params._id, req.body, { new: true })
+    .then((card) => {
+      res.status(200).json(card);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: err.message || "Some error occurred while creating the card.",
+      });
+    });
+};
+
 //  get a workspace by id
 exports.getWorkspaceById = function (req, res) {
   Workspace.findById(req.params._id)

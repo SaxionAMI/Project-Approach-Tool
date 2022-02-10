@@ -1,8 +1,8 @@
 "use strict";
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-var CardSchema = new Schema({
+const CardSchema = new Schema({
   id: {
     type: String
   },
@@ -31,8 +31,16 @@ var CardSchema = new Schema({
   reflectiveQuestions: {
     type: String,
   },
-  deck:{
+  deck: {
     type: String
+  },
+  startDate: {
+    type: Date,
+    required: [true, "Start date is required"],
+  },
+  endDate: {
+    type: Date,
+    required: [true, "End date is required"],
   }
 });
 

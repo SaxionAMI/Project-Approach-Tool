@@ -1,0 +1,55 @@
+<div *ngIf="metric" class="metric-container">
+    <h3>Research strategies</h3>
+    <div class="metric-row">
+        <span class="mini-icon">
+            <img src="/assets/image/icons/logo-field.png"/>
+        </span>
+        <span class="prefix">Field</span>
+        <div class="progress-bar">
+            <mat-progress-bar mode="determinate" [value]="fieldPercentage"></mat-progress-bar>
+        </div>
+        <span class="suffix">{{fieldPercentage}}%</span>
+    </div>
+    <div class="metric-row">
+        <span class="mini-icon">
+            <img src="/assets/image/icons/logo-library.png"/>
+        </span>
+        <span class="prefix">Library</span>
+        <div class="progress-bar">
+            <mat-progress-bar mode="determinate" [value]="libraryPercentage"></mat-progress-bar>
+        </div>
+        <span class="suffix">{{libraryPercentage}}%</span>
+    </div>
+    <div class="metric-row">
+        <span class="mini-icon">
+            <img src="/assets/image/icons/logo-workshop.png"/>
+        </span>
+        <span class="prefix">Workshop</span>
+        <div class="progress-bar">
+            <mat-progress-bar mode="determinate" [value]="workshopPercentage"></mat-progress-bar>
+        </div>
+        <span class="suffix">{{workshopPercentage}}%</span>
+    </div>
+    <div class="metric-row">
+        <span class="mini-icon">
+            <img src="/assets/image/icons/logo-lab.png"/>
+        </span>
+        <span class="prefix">Lab</span>
+        <div class="progress-bar">
+            <mat-progress-bar mode="determinate" [value]="labPercentage"></mat-progress-bar>
+        </div>
+        <span class="suffix">{{labPercentage}}%</span>
+    </div>
+    <div class="metric-row">
+        <span class="mini-icon">
+            <img src="/assets/image/icons/logo-showroom.png"/>
+        </span>
+        <span class="prefix">Showroom</span>
+        <div class="progress-bar">
+            <mat-progress-bar mode="determinate" [value]="showroomPercentage"></mat-progress-bar>
+        </div>
+        <span class="suffix">{{showroomPercentage}}%</span>
+    </div>
+</div>
+<button id="secondary" *ngIf="metric && metric.secondaryAction" (click)="metric.secondaryAction.perform()">{{metric.secondaryAction.displayText}}</button>
+<hr/>

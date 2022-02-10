@@ -1,0 +1,53 @@
+<app-workspace-navbar
+  *ngIf="workspace$ | async as workspace"
+  [workspace]="workspace"
+  [workspaceConfig]="workspaceConfig"
+  (logout)="onLogout()"
+  (back)="onBack()"
+  [lines]="lines"
+  [workspace]="workspace"></app-workspace-navbar>
+<app-loading *ngIf="loading" [type]="'workspace'"></app-loading>
+<dx-gantt height="700" [scaleType]="'days'" [firstDayOfWeek]="1" *ngIf="!loading" (onTaskUpdated)="onChanges($event)">
+  <dxo-tasks [dataSource]="activities$ | async"></dxo-tasks>
+  <dxi-column dataField="title"
+    *ngIf="workspaceTitle$ | async as title"
+    [caption]="title + ' | Planning'" [width]="300"></dxi-column>
+  <dxi-column
+    dataField="start"
+    caption="Start Date"
+    dataType="date"
+    format='d MMM yyyy'></dxi-column>
+  <dxi-column
+    dataField="end"
+    caption="End Date"
+    dataType="date"
+    format="d MMM yyyy"></dxi-column>
+  <dxo-toolbar>
+    <dxi-item name="collapseAll"></dxi-item>
+    <dxi-item name="expandAll"></dxi-item>
+    <dxi-item name="separator"></dxi-item>
+    <dxi-item name="zoomIn"></dxi-item>
+    <dxi-item name="zoomOut"></dxi-item>
+    <dxi-item widget="dxButton" [options]="exportButtonOptions"> </dxi-item>
+  </dxo-toolbar>
+  <dxo-validation [autoUpdateParentTasks]="true"></dxo-validation>
+  <dxo-editing
+    [enabled]="true"
+    [allowDependencyAdding]="false"
+    [allowResourceAdding]="false"
+    [allowResourceUpdating]="false"
+    [allowTaskResourceUpdating]="false"
+    [allowAdding]="false"
+    [allowDeleting]="false"
+    [allowTaskAdding]="false"
+    [allowTaskDeleting]="false"></dxo-editing>
+  <!-- Custom activity template -->
+  <div
+    *dxTemplate="let item of 'taskContentTemplate'"
+    style.width="{{ item.taskSize.width }}px"
+    [style.backgroundColor]="item.data.color">
+    <div class="custom-task-wrapper">
+      <div class="custom-task-title">{{ item.data.title }}</div>
+    </div>
+  </div>
+</dx-gantt>

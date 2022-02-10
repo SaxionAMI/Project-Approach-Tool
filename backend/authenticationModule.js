@@ -13,8 +13,7 @@ module.exports = async function (req, res, next) {
   if (req.params[0].includes("/api-docs/")) {
     next();
     return;
-  }
-  else if (!req.headers.authorization) {
+  } else if (!req.headers.authorization) {
     rejectAuth(res);
     return;
   }
@@ -24,24 +23,24 @@ module.exports = async function (req, res, next) {
     .verifyIdToken(req.headers.authorization)
     .catch(() => rejectAuth(res));
   if (!decodedToken) {
-    rejectAuth(res); 
+    rejectAuth(res);
     return;
   };
 
 
   const dbUser = await User
-    .findOne({uid: decodedToken.uid})
+    .findOne({ uid: decodedToken.uid })
     .catch(() => console.warn(`User ${decodedToken.uid} does not exist in the local DB.`));
 
-  if (dbUser && dbUser.email == teacherEmail && dbUser.role !== 'admin') {
-    //user did not have teacher role, so it must be re-enabled.
-    dbUser.role = 'admin';
-    await User.findOneAndUpdate({uid: dbUser.uid}, dbUser);
+  if (dbUser && dbUser.email == teacherEmail && dbUser.role !== "admin") {
+    // user did not have teacher role, so it must be re-enabled.
+    dbUser.role = "admin";
+    await User.findOneAndUpdate({ uid: dbUser.uid }, dbUser);
   }
 
   if (dbUser != null) {
     const authUser = await admin.auth().getUser(decodedToken.uid);
-    const userRole = authUser.customClaims ? authUser.customClaims['role'] : '';
+    const userRole = authUser.customClaims ? authUser.customClaims["role"] : "";
     if (userRole !== dbUser.role) {
       await admin
         .auth()

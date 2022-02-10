@@ -11,6 +11,7 @@ Router.get("/card/deck/:deck", card.getCardsByDeck);
 
 //  The post and upsert routings
 Router.post("/card", card.createCard);
+Router.put("/card/:cardId", card.updateCard);
 
 // The delete routings
 Router.delete("/card/:cardId", card.deleteCard);

@@ -1,8 +1,8 @@
 "use strict";
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-var DeckSchema = new Schema({
+const DeckSchema = new Schema({
   title: {
     type: String,
     required: [(true, "Title is required")],
@@ -11,7 +11,7 @@ var DeckSchema = new Schema({
     type: String,
     required: [(true, "Short Description is required")],
   },
-  types:{
+  types: {
     type: [String],
     required: true
   }
