@@ -38,7 +38,7 @@
     "leader-line": "^1.0.5",
     "leader-line-new": "^1.1.9",
     "lodash": "^4.17.21",
-    "minimist": "^1.2.5",
+    "minimist": "^1.2.6",
     "ngx-autosize-input": "^2.3.7",
     "ngx-color-picker": "^9.1.0",
     "ngx-cookie-service": "^3.1.3",
