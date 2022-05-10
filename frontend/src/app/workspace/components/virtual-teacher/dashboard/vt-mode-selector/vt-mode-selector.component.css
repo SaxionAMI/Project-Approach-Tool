@@ -1,0 +1,178 @@
+.vt-mode-container {
+    position:relative;
+    width:auto;
+    height:auto;
+    display:flex;
+}
+
+.vt-mode-bubble {
+    width:auto;
+    height:auto;
+    z-index:30;
+}
+
+.vt-mode-bubble > div {
+    width: 2.5vw;
+    height: 2.5vw;
+    font-size:15pt;
+    border-radius:50%;
+    background-color:silver;
+    text-align:center;
+    margin:auto;
+    line-height:2.4vw;
+    cursor:pointer;
+    animation-name: to-inactive;
+    animation-duration: 0.3s;
+    animation-timing-function: ease-out;
+    -moz-animation-timing-function: ease-out;
+    -webkit-animation-timing-function: ease-out;
+    -o-animation-timing-function: ease-out;
+    box-shadow: 0px 1px 4px rgba(0,0,0,0.5);
+    transition: box-shadow 0.2s ease-out;
+    -moz-transition: box-shadow 0.2s ease-out;
+    -webkit-transition: box-shadow 0.2s ease-out;
+    -o-transition: box-shadow 0.2s ease-out;
+}
+
+.vt-mode-bubble.active > div {
+    width: 2.5vw;
+    height: 2.5vw;
+    font-size:15pt;
+    border-radius:50%;
+    background-color:#04abd6;
+    text-align:center;
+    margin:auto;
+    line-height:2.4vw;
+    animation-name: to-active;
+    border-width:0px;
+    box-shadow: 0px 0px 0px rgba(0,0,0,0.3);
+}
+
+.vt-mode-bubble > div > mat-icon {
+    display:block;
+    color:black;
+    cursor:pointer;
+    font-size:24pt;
+    width:2.5vw;
+    height:2.5vw;
+    line-height:2.5vw;
+}
+
+.vt-mode-bubble.active > div > mat-icon {
+    color:white;
+}
+
+
+
+.vt-mode-bubble#vt-mode-editing,
+.vt-mode-bubble#vt-mode-reviewing,
+.vt-mode-bubble#vt-mode-planning
+{
+    margin-left:2vw;
+}
+
+.vt-mode-bubble > span {
+    width:100%;
+    text-align:center;
+    color:black;
+}
+
+.vt-mode-bubble.active > span {
+    width:100%;
+    text-align:center;
+    color:#008bad;
+}
+
+.vt-mode-track {
+    position: absolute;
+    top: 0.75vw;
+    height: 1vw;
+    left:5%;
+    right: 7%;
+    background-color:silver;
+    z-index: 20;
+    border-radius:0.5vw;
+}
+
+.vt-mode-track div {
+    position: absolute;
+    top: 0%;
+    left:0%;
+    bottom:0%;
+    right:100%;
+    background-color: #04abd6;
+    z-index: 22;
+    border-radius:50%;
+    transition: left 0.3s ease-out, right 0.1s ease-in;
+    -webkit-transition: left 0.3s ease-out, right 0.1s ease-in;
+    -moz-transition: left 0.3s ease-out, right 0.1s ease-in;
+    -o-transition: left 0.3s ease-out, right 0.1s ease-in;
+}
+
+.vt-mode-track div:nth-child(2) {
+    transition: left 0.1s ease-in, right 0.3s ease-out;
+    -webkit-transition: left 0.1s ease-in, right 0.3s ease-out;
+    -moz-transition: left 0.1s ease-in, right 0.3s ease-out;
+    -o-transition: left 0.1s ease-in, right 0.3s ease-out;
+}
+
+.vt-mode-track div.creating {
+    left:0%;
+    right:100%;
+}
+
+.vt-mode-track div.editing {
+    left:40%;
+    right:60%;
+}
+
+.vt-mode-track div.reviewing {
+    left:100%;
+    right:0%;
+}
+
+@keyframes to-active {
+    from {
+        background-color:silver;
+        color:black;
+    }
+    to {
+        background-color: #04abd6;
+        color:white;
+    }
+}
+
+@keyframes to-inactive {
+    from {
+        background-color: #04abd6;
+        color:white;
+    }
+    to {
+        background-color:silver;
+        color:black;
+    }
+}
+
+.vt-disabled-overlay {
+    position: absolute;
+    top: 0%;
+    left:0%;
+    bottom:0%;
+    right:0%;
+    background-color:rgba(255,255,255,0.75);
+    text-align:center;
+    display:flex;
+    flex-direction: column;
+    color:#660000;
+    z-index:50;
+    justify-content: space-around;
+}
+
+.vt-disabled-overlay i {
+    display:flex;
+    justify-content: right;
+}
+
+.vt-disabled-overlay mat-icon {
+    margin-left:5px;
+}

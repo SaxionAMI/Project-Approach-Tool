@@ -1,0 +1,512 @@
+[
+  {
+    "_id": "5e30276e8b5f801a0cc1f450",
+    "__v": 0,
+    "color": "#817DAF",
+    "deck": "CMD",
+    "picture": "../assets/research methods illustraties/png/AB-Testing.png",
+    "shortDescription": "A minor change in a design may alter user behaviour in ways that are hard to detect in a usability test. An A/B test allows you to compare real-world user behaviour across different versions of a product.",
+    "title": "A/B Testing",
+    "type": "Lab"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f451",
+    "__v": 0,
+    "color": "#817DAF",
+    "deck": "CMD",
+    "picture": "../assets/research methods illustraties/png/Usability-testing.png",
+    "shortDescription": "Detect problems users have with your design and correct these before the product goes live.",
+    "title": "Usability testing",
+    "type": "Lab"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f452",
+    "__v": 0,
+    "color": "#817DAF",
+    "deck": "CMD",
+    "picture": "../assets/research methods illustraties/png/Biometrics.png",
+    "shortDescription": "To get objective data about users' attention and physical state.",
+    "title": "Biometrics",
+    "type": "Lab"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f453",
+    "__v": 0,
+    "color": "#817DAF",
+    "deck": "CMD",
+    "picture": "../assets/research methods illustraties/png/Thinking-aloud.png",
+    "shortDescription": "Understand the reasons behind user behaviour, or uncover the mental models of the user in a usability test.",
+    "title": "Thinking aloud",
+    "type": "Lab"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f454",
+    "__v": 0,
+    "color": "#817DAF",
+    "deck": "CMD",
+    "picture": "../assets/research methods illustraties/png/Online-analytics.png",
+    "shortDescription": "Gain insights from real usage statistics in order to continue improving a website, app or social media campaign after it is in use, or monitor it’s use for marketing purposes.",
+    "title": "Online analytics",
+    "type": "Lab"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f455",
+    "__v": 0,
+    "color": "#817DAF",
+    "deck": "CMD",
+    "picture": "../assets/research methods illustraties/png/Wizard-of-Oz.png",
+    "shortDescription": "A Wizard of Oz: acting out the systems functionality, can help when a system has not been build yet, but a realistic user test is necessary to drive design.",
+    "title": "Wizard of Oz",
+    "type": "Lab"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f456",
+    "__v": 0,
+    "color": "#817DAF",
+    "deck": "CMD",
+    "picture": "../assets/research methods illustraties/png/Field-trial.png",
+    "shortDescription": "Participants never act completely naturally in a lab setting, so consider testing your product in the ‘wild’. This can be particularly valuable when real-life disturbances are important for your design, as is the case with mobile apps.",
+    "title": "Field Trial",
+    "type": "Lab"
+  },
+  {
+    "_id": "5e3023158b5f801a0cc1f457",
+    "__v": 0,
+    "color": "#5DBCB3",
+    "deck": "CMD",
+    "picture": "../assets/research methods illustraties/png/Survey.png",
+    "shortDescription": "Collect information (mostly quantitative) from a large sample of your target group.",
+    "title": "Survey",
+    "type": "Field"
+  },
+  {
+    "_id": "5e3023158b5f801a0cc1f458",
+    "__v": 0,
+    "color": "#5DBCB3",
+    "deck": "CMD",
+    "picture": "../assets/research methods illustraties/png/Interview.png",
+    "shortDescription": "Learn from potential users of your new product and other stakeholders.",
+    "title": "Interview",
+    "type": "Field"
+  },
+  {
+    "_id": "5e3023158b5f801a0cc1f459",
+    "__v": 0,
+    "color": "#5DBCB3",
+    "deck": "CMD",
+    "picture": "../assets/research methods illustraties/png/Focus-group.png",
+    "shortDescription": "Efficiently gather opinions and experiences through group discussions with stakeholders, users or experts.",
+    "title": "Focus group",
+    "type": "Field"
+  },
+  {
+    "_id": "5e3023158b5f801a0cc1f460",
+    "__v": 0,
+    "color": "#5DBCB3",
+    "deck": "CMD",
+    "picture": "../assets/research methods illustraties/png/Card-sorting.png",
+    "shortDescription": "Find out what information organisation structures are considered intuitive by users.",
+    "title": "Card sorting",
+    "type": "Field"
+  },
+  {
+    "_id": "5e3023158b5f801a0cc1f461",
+    "__v": 0,
+    "color": "#5DBCB3",
+    "deck": "CMD",
+    "picture": "../assets/research methods illustraties/png/Diary-study.png",
+    "shortDescription": "Report detailed information about routines and long-term experience.",
+    "title": "Diary study",
+    "type": "Field"
+  },
+  {
+    "_id": "5e3023158b5f801a0cc1f462",
+    "__v": 0,
+    "color": "#5DBCB3",
+    "deck": "CMD",
+    "picture": "../assets/research methods illustraties/png/Participant-observation.png",
+    "shortDescription": "Sometimes the best design ideas arise from ‘first hand’ experience with the situation you are designing for; so “be the user”.",
+    "title": "Participant observation",
+    "type": "Field"
+  },
+  {
+    "_id": "5e3023158b5f801a0cc1f463",
+    "__v": 0,
+    "color": "#5DBCB3",
+    "deck": "CMD",
+    "picture": "../assets/research methods illustraties/png/Cultural-probes.png",
+    "shortDescription": "Probes can be used to gather inspirational rather than factual information from users. They give insights in peoples lives, values and thoughts.",
+    "title": "Cultural probes",
+    "type": "Field"
+  },
+  {
+    "_id": "5e3023158b5f801a0cc1f464",
+    "__v": 0,
+    "color": "#5DBCB3",
+    "deck": "CMD",
+    "picture": "../assets/research methods illustraties/png/Fly-on-the-wall.png",
+    "shortDescription": "Find out how people act in real life by using a non-obtrusive observation technique.",
+    "title": "Fly on the wall",
+    "type": "Field"
+  },
+  {
+    "_id": "5e3022d38b5f801a0cc1f466",
+    "__v": 0,
+    "color": "#F6DC92",
+    "deck": "CMD",
+    "picture": "../assets/research methods illustraties/png/heuristic-evaluation.png",
+    "shortDescription": "Complementary to user research, or when user research is too costly, a heuristic evaluation can be used to detect and repair usability errors.",
+    "title": "Heuristic Evaluation",
+    "type": "Showroom"
+  },
+  {
+    "_id": "5e3022d38b5f801a0cc1f467",
+    "__v": 0,
+    "color": "#F6DC92",
+    "deck": "CMD",
+    "picture": "../assets/research methods illustraties/png/Product-review.png",
+    "shortDescription": "Ensure the product is perfect before it is released to the client or users.",
+    "title": "(Product) Quality Review",
+    "type": "Showroom"
+  },
+  {
+    "_id": "5e3022d38b5f801a0cc1f469",
+    "__v": 0,
+    "color": "#F6DC92",
+    "deck": "CMD",
+    "picture": "../assets/research methods illustraties/png/Peer-review.png",
+    "shortDescription": "“With many eye-balls on the code, all bugs are shallow.” Colleagues and experts can help position and improve your work, certainly if it needs to be reused by them.",
+    "title": "Peer Review",
+    "type": "Showroom"
+  },
+  {
+    "_id": "5e3022d38b5f801a0cc1f469",
+    "__v": 0,
+    "color": "#F6DC92",
+    "deck": "CMD",
+    "picture": "../assets/research methods illustraties/png/Unique-Selling-Points.png",
+    "shortDescription": "In a competitive business situation you need to be able to identify and communicate clearly and concisely what it is that sets you apart.",
+    "title": "USP (Unique Selling Points)",
+    "type": "Showroom"
+  },
+  {
+    "_id": "5e3022d38b5f801a0cc1f470",
+    "__v": 0,
+    "color": "#F6DC92",
+    "deck": "CMD",
+    "picture": "../assets/research methods illustraties/png/Provocative-prototyping.png",
+    "shortDescription": "Friendly provocation can help uncover hidden values and requirements from your stakeholders.",
+    "title": "Provocative Prototyping",
+    "type": "Showroom"
+  },
+  {
+    "_id": "5e3022d38b5f801a0cc1f471",
+    "__v": 0,
+    "color": "#F6DC92",
+    "deck": "CMD",
+    "picture": "../assets/research methods illustraties/png/Co-reflection.png",
+    "shortDescription": "Involve stakeholders and other experts early in the design process in order to set an innovative direction and to create openness for novel ideas among stakeholders.",
+    "title": "Co-reflection",
+    "type": "Showroom"
+  },
+  {
+    "_id": "5e3022d38b5f801a0cc1f472",
+    "__v": 0,
+    "color": "#F6DC92",
+    "deck": "CMD",
+    "picture": "../assets/research methods illustraties/png/Expo.png",
+    "shortDescription": "By placing your work in the spotlight, you learn about its value for others in ways you might not expect yourself.",
+    "title": "Expo",
+    "type": "Showroom"
+  },
+  {
+    "_id": "5e3022138b5f801a0cc1f473",
+    "__v": 0,
+    "color": "#80C4D2",
+    "deck": "CMD",
+    "picture": "../assets/research methods illustraties/png/Prototyping.png",
+    "shortDescription": "Develop, evaluate or communicate a concept, design or problem solution to make your ideas concrete, to learn whether they work and to discover the technical limitations or possibilities.",
+    "title": "Prototyping",
+    "type": "Workshop"
+  },
+  {
+    "_id": "5e3022138b5f801a0cc1f474",
+    "__v": 0,
+    "color": "#80C4D2",
+    "deck": "CMD",
+    "picture": "../assets/research methods illustraties/png/Co-creation.png",
+    "shortDescription": "Gain inspiration from your users by involving them in the design process. Co-creation may lead to unexpected and sensible project outcomes.",
+    "title": "Co-creation",
+    "type": "Workshop"
+  },
+  {
+    "_id": "5e3022138b5f801a0cc1f475",
+    "__v": 0,
+    "color": "#80C4D2",
+    "deck": "CMD",
+    "picture": "../assets/research methods illustraties/png/Storytelling.png",
+    "shortDescription": "Make abstract concepts concrete and strengthen the empathy for the user in your team by using storytelling.",
+    "title": "Storytelling",
+    "type": "Workshop"
+  },
+  {
+    "_id": "5e3022138b5f801a0cc1f476",
+    "__v": 0,
+    "color": "#80C4D2",
+    "deck": "CMD",
+    "picture": "../assets/research methods illustraties/png/Sketching.png",
+    "shortDescription": "Explore and communicate forms and ideas.",
+    "title": "Sketching",
+    "type": "Workshop"
+  },
+  {
+    "_id": "5e3022138b5f801a0cc1f477",
+    "__v": 0,
+    "color": "#80C4D2",
+    "deck": "CMD",
+    "picture": "../assets/research methods illustraties/png/Ideation.png",
+    "shortDescription": "Generate and develop new ideas.",
+    "title": "Ideation",
+    "type": "Workshop"
+  },
+  {
+    "_id": "5e3022138b5f801a0cc1f478",
+    "__v": 0,
+    "color": "#80C4D2",
+    "deck": "CMD",
+    "picture": "../assets/research methods illustraties/png/Tinkering---check.png",
+    "shortDescription": "Come up with novel idea's based on technical opportunities and affordances.",
+    "title": "Tinkering",
+    "type": "Workshop"
+  },
+  {
+    "_id": "5e3022138b5f801a0cc1f479",
+    "__v": 0,
+    "color": "#80C4D2",
+    "deck": "CMD",
+    "picture": "../assets/research methods illustraties/png/Scamper.png",
+    "shortDescription": "When it is hard to develop an initial idea into an elegant solution, a morphological technique such as scamper can help.",
+    "title": "Scamper",
+    "type": "Workshop"
+  },
+  {
+    "_id": "5e3022138b5f801a0cc1f480",
+    "__v": 0,
+    "color": "#80C4D2",
+    "deck": "CMD",
+    "picture": "../assets/research methods illustraties/png/Proof-of-concept.png",
+    "shortDescription": "Demonstrate the desirability or the feasibility of your idea or design.",
+    "title": "Proof of Concept",
+    "type": "Workshop"
+  },
+  {
+    "_id": "5e3022138b5f801a0cc1f481",
+    "__v": 0,
+    "color": "#80C4D2",
+    "deck": "CMD",
+    "picture": "../assets/research methods illustraties/png/Morphological-chart_2.png",
+    "shortDescription": "Generating ideas in a systematic manner.",
+    "title": "Morphological chart",
+    "type": "Workshop"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f482",
+    "__v": 0,
+    "color": "#D1F087",
+    "deck": "CMD",
+    "picture": "../assets/research methods illustraties/png/Competitive-analysis.png",
+    "shortDescription": "Find a niche or unique selling point competitors are not filling.",
+    "title": "Competitive analysis",
+    "type": "Library"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f483",
+    "__v": 0,
+    "color": "#D1F087",
+    "deck": "CMD",
+    "picture": "../assets/research methods illustraties/png/Literature-study.png",
+    "shortDescription": "Find general information, guidance and best practices.",
+    "title": "Literature study",
+    "type": "Library"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f484",
+    "__v": 0,
+    "color": "#D1F087",
+    "deck": "CMD",
+    "picture": "../assets/research methods illustraties/png/Best-good-and-bad-practices.png",
+    "shortDescription": "Incorporating what has proven to work somewhere else forms the basis of any high-quality project.",
+    "title": "Best good and bad practices",
+    "type": "Library"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f485",
+    "__v": 0,
+    "color": "#D1F087",
+    "deck": "CMD",
+    "picture": "../assets/research methods illustraties/png/Expert-interview.png",
+    "shortDescription": "A domain expert can put you on the right track when you enter a new domain or field of expertise. The expert can recommend sources, give you a sense of direction or point out common pitfalls.",
+    "title": "Expert interview",
+    "type": "Library"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f486",
+    "__v": 0,
+    "color": "#D1F087",
+    "deck": "CMD",
+    "picture": "../assets/research methods illustraties/png/Design-pattern-research.png",
+    "shortDescription": "Applying well-known design patterns improves the quality (and structure) of the designed software.",
+    "title": "Design pattern research",
+    "type": "Library"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f487",
+    "__v": 0,
+    "color": "#D1F087",
+    "deck": "CMD",
+    "picture": "../assets/research methods illustraties/png/Benchmark-creations.png",
+    "shortDescription": "Existing products in your niche can be a valuable reference and source of inspiration.",
+    "title": "Benchmark creation",
+    "type": "Library"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f488",
+    "__v": 0,
+    "color": "#D1F087",
+    "deck": "CMD",
+    "picture": "../assets/research methods illustraties/png/Trend-analysis.png",
+    "shortDescription": "Catch up with novel developments before your competitors do.",
+    "title": "Trend analysis",
+    "type": "Library"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f541",
+    "__v": 0,
+    "color": "#ff4d8e",
+    "deck": "CMD",
+    "picture": "../assets/research methods illustraties/png/Scenario-_--Explore-user-requirements.png",
+    "shortDescription": "To specify a series of events to observe the behaviour of the developed solution.",
+    "title": "Scenario",
+    "type": "Deliverables"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f542",
+    "__v": 0,
+    "color": "#ff4d8e",
+    "deck": "CMD",
+    "picture": "../assets/research methods illustraties/png/Requirement-list.png",
+    "shortDescription": "To create a starting point for design choices during the project, and to measure whether the project succeeded.",
+    "title": "Requirement list",
+    "type": "Deliverables"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f543",
+    "__v": 0,
+    "color": "#ff4d8e",
+    "deck": "CMD",
+    "picture": "../assets/research methods illustraties/png/Business-model-canvas.png",
+    "shortDescription": "Develop a structured visualisation of how a new company can reach its customers and earn revenue in order to understand, discuss, create, and analyse a new business idea.",
+    "title": "Business model canvas",
+    "type": "Deliverables"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f544",
+    "__v": 0,
+    "color": "#ff4d8e",
+    "deck": "CMD",
+    "picture": "../assets/research methods illustraties/png/Morphological-chart_2.png",
+    "shortDescription": "A comparison chart, or comparison table, describes and compares attributes and characteristics of existing products or tools in order to determine the best option for your project.",
+    "title": "Comparison chart",
+    "type": "Deliverables"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f545",
+    "__v": 0,
+    "color": "#ff4d8e",
+    "deck": "CMD",
+    "picture": "../assets/research methods illustraties/png/Concept.png",
+    "shortDescription": "When you develop a new product or service, the concept summarizes 'the big idea' or 'the main principle' on which your solution will be based. For example, most traditional churches have a floor plan based on a cross so God can recognize a church from the sky. Validate your concept(s) with stakeholders to determine desirability and feasibility.",
+    "title": "Concept",
+    "type": "Deliverables"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f546",
+    "__v": 0,
+    "color": "#ff4d8e",
+    "deck": "CMD",
+    "picture": "../assets/research methods illustraties/png/Design-specification.png",
+    "shortDescription": "Describe the characteristics of a product, like a website or an application, in order to inform the designers and developers who are involved.",
+    "title": "Design specification",
+    "type": "Deliverables"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f547",
+    "__v": 0,
+    "color": "#ff4d8e",
+    "deck": "CMD",
+    "picture": "../assets/research methods illustraties/png/Mood-board.png",
+    "shortDescription": "Before you start to make a design, a mood board can help describe the ‘mood’ or the ‘feel’ of the envisioned product.",
+    "title": "Mood board",
+    "type": "Deliverables"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f548",
+    "__v": 0,
+    "color": "#ff4d8e",
+    "deck": "CMD",
+    "picture": "../assets/research methods illustraties/png/Empathy-map.png",
+    "shortDescription": "Summarize and synthetize findings from observations and interviews in a structured way. Empathy maps can offer valuable and unexpected insights in the user.",
+    "title": "Empathy map",
+    "type": "Deliverables"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f549",
+    "__v": 0,
+    "color": "#ff4d8e",
+    "deck": "CMD",
+    "picture": "../assets/research methods illustraties/png/Persona.png",
+    "shortDescription": "Represent the user in discussions about the design in an elegant way.",
+    "title": "Persona",
+    "type": "Deliverables"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f550",
+    "__v": 0,
+    "color": "#ff4d8e",
+    "deck": "CMD",
+    "picture": "../assets/research methods illustraties/png/Customer-journey.png",
+    "shortDescription": "Visualize the user experience of a service over time and across the different interaction moments (touch points) within the service.",
+    "title": "Customer journey",
+    "type": "Deliverables"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f551",
+    "__v": 0,
+    "color": "#ff4d8e",
+    "deck": "CMD",
+    "picture": "../assets/research methods illustraties/png/Inspiration-wall.png",
+    "shortDescription": "Save and organize creative ideas during a project, or even permanently, in order to have access to them very quickly and let ideas ‘simmer’ for a while.",
+    "title": "Inspiration wall",
+    "type": "Deliverables"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f552",
+    "__v": 0,
+    "color": "#ff4d8e",
+    "deck": "CMD",
+    "picture": "../assets/research methods illustraties/png/Task-analysis.png",
+    "shortDescription": "When your product has to support people performing some kind of task (for example repairing a car), a task analysis will help you and other designers understand the task better.",
+    "title": "Task analysis",
+    "type": "Deliverables"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f553",
+    "__v": 0,
+    "color": "#ff4d8e",
+    "deck": "CMD",
+    "picture": "../assets/research methods illustraties/png/Risk-analysis.png",
+    "shortDescription": "Determine which risks are acceptable by making an inventory of the possible threats in a project and determining the probability and impact of each threat. Possibly also determine the effect in, for example, terms of costs.",
+    "title": "Risk analysis",
+    "type": "Deliverables"
+  }
+]

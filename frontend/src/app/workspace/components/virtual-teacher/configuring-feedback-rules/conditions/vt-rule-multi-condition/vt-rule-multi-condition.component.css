@@ -1,0 +1,86 @@
+.container {
+    border: solid #4488ff 1px;
+    display:flex;
+    flex-direction: column;
+    align-items:stretch;
+    height:auto;
+    margin:10px;
+    font-size:11pt;
+}
+
+.header {
+    font-size:11pt;
+    font-weight:bold;
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    padding-left:20px;
+}
+
+.header select {
+    flex-grow:1;
+    font-size:11pt;
+}
+
+.attributes {
+    background-color:white;
+}
+
+.placeholder {
+    padding:20px;
+    border: dashed #4488ff 2px;
+    color: #4488ff;
+    cursor:pointer;
+}
+
+.placeholder:hover  {
+    background-color:#cceeff;
+}
+
+
+.attributes {
+    padding:20px;
+}
+
+.conditions {
+    padding:20px;
+}
+
+.attributes tr th {
+    width:10em;
+    font-weight:600;
+}
+
+.attributes tr td input,
+.attributes tr td select {
+    width:100%;
+}
+
+.separator {
+    margin-bottom:20px;
+    height:0px;
+}
+
+input, select {
+    background-color:white;
+    border: solid black 1px;
+}
+
+input:hover, select:hover {
+    background-color:#cceeff;
+}
+
+input:focus, select:focus {
+    background-color:white;
+    border: solid #4488ff 1px;
+}
+
+input.invalid,
+select.invalid {
+    border:solid red 1px;
+}
+
+input.invalid:hover,
+select.invalid:hover {
+    background-color:#ffdddd;
+}

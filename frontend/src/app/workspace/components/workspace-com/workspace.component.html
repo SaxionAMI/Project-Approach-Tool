@@ -1,0 +1,380 @@
+<app-loading *ngIf="loading" [type]="type"></app-loading>
+<app-workspace-navbar
+  *ngIf="!loading"
+  [lines]="lines"
+  [workspace]="workspace"
+  [workspaceConfig]="workspaceConfig"
+  (customCard)="onCustomCard($event)"
+  (goal)="saveGoal()"
+  (title)="moveFocusToSubtitle()"
+  (logout)="onLogout()"
+  (invitedUsers)="onUserInvite($event)"
+  (removeUser)="onRevokeAccesForUser($event)"
+  (back)="onBack()"></app-workspace-navbar>
+<mat-drawer-container
+  *ngIf="!loading"
+  class="sidenav-container"
+  [ngStyle]="{ visibility: loading ? 'hidden' : 'visible' }"
+  id="page">
+  <mat-drawer mode="side" opened>
+    <div style="height: 90px"></div>
+    <div class="button-row">
+      <button
+        joyrideStep="step9"
+        title="The elements"
+        [stepContent]="step9Content"
+        (next)="onboardingOpenSidebar()"
+        [doneTemplate]="doneButton"
+        [nextTemplate]="nextButton"
+        [prevTemplate]="prevButton"
+        class="general-btn"
+        mat-icon-button
+        (click)="toggleSidebar('general')">
+        <mat-icon class="general-icon">build</mat-icon>
+      </button>
+      <button
+        joyrideStep="step13"
+        title="Field research methods"
+        [stepContent]="step13Content"
+        (prev)="onboardingOpenSidebar()"
+        *ngIf="checkForType('Field')"
+        mat-icon-button
+        (click)="toggleSidebar('Field')">
+        <img
+          class="sidebar-btn"
+          src="/assets/image/icons/logo-field.png" />
+      </button>
+      <button
+        joyrideStep="step14"
+        title="Lab research methods"
+        [stepContent]="step14Content"
+        *ngIf="checkForType('Lab')"
+        mat-icon-button
+        (click)="toggleSidebar('Lab')">
+        <img class="sidebar-btn" src="/assets/image/icons/logo-lab.png" />
+      </button>
+      <button
+        joyrideStep="step15"
+        title="Library research methods"
+        [stepContent]="step15Content"
+        *ngIf="checkForType('Library')"
+        mat-icon-button
+        (click)="toggleSidebar('Library')">
+        <img
+          class="sidebar-btn"
+          src="/assets/image/icons/logo-library.png" />
+      </button>
+      <button
+        joyrideStep="step16"
+        title="Showroom research methods"
+        [stepContent]="step16Content"
+        *ngIf="checkForType('Showroom')"
+        mat-icon-button
+        (click)="toggleSidebar('Showroom')">
+        <img
+          class="sidebar-btn"
+          src="/assets/image/icons/logo-showroom.png" />
+      </button>
+      <button
+        joyrideStep="step17"
+        title="Workshop research methods"
+        [stepContent]="step17Content"
+        *ngIf="checkForType('Workshop')"
+        mat-icon-button
+        (click)="toggleSidebar('Workshop')">
+        <img
+          class="sidebar-btn"
+          src="/assets/image/icons/logo-workshop.png" />
+      </button>
+      <button
+        joyrideStep="step18"
+        title="Stepping stones"
+        [stepContent]="step18Content"
+        *ngIf="checkForType('Deliverables')"
+        mat-icon-button
+        (click)="toggleSidebar('Deliverables')">
+        <img
+          class="sidebar-btn"
+          src="/assets/image/icons/logo-stepping-stones.png" />
+      </button>
+      <button
+        title="Search"
+        mat-icon-button
+        (click)="toggleSidebar('Search')">
+        <img
+          class="sidebar-btn"
+          src="/assets/image/icons/logo-search.png" />
+      </button>
+      <button
+        joyrideStep="step19"
+        title="Selecting a deck"
+        [stepContent]="step19Content"
+        stepPosition="top"
+        class="settings-sidebar"
+        mat-icon-button
+        (click)="openDeckSettings()">
+        <mat-icon class="settings-icon">settings</mat-icon>
+      </button>
+    </div>
+  </mat-drawer>
+  <mat-drawer-content>
+    <mat-drawer-container
+      class="sidenav-container"
+      [ngStyle]="{ visibility: loading ? 'hidden' : 'visible' }"
+      id="screen">
+      <mat-drawer mode="side" class="sidebar-extended" [opened]="isShowing">
+        <div style="height: 90px"></div>
+        <div
+          *ngIf="this.categorySelected != 'general' && this.categorySelected !== 'Search'"
+          fxLayout="row wrap"
+          fxLayoutAlign="flex-start">
+          <app-card-selector-card
+            *ngFor="let card of cardsOfSelectedDeck"
+            fxFlex="0 1 calc(50% - 5px)"
+            [card]="card"
+            [detail]="false"
+            (click)="addCard(card)"></app-card-selector-card>
+        </div>
+        <div *ngIf="this.categorySelected == 'Search'"
+          fxLayout="column"
+          fxLayoutGap="5px"
+          fxLayoutAlign="stretch">
+          <mat-form-field class="searchField"
+            fxFlex="0 1 calc(100% - 5px)">
+            <mat-label>Search phrase:</mat-label>
+            <input matInput type="text" placeholder="..." [(ngModel)]="searchPhrase" (input)="searchCards()" />
+          </mat-form-field>
+          <div
+            fxLayout="row wrap"
+            fxLayoutGap="5px"
+            fxLayoutAlign="flex-start">
+            <app-card-selector-card
+              *ngFor="let card of cardsOfSelectedDeck"
+              fxFlex="0 1 calc(50% - 5px)"
+              [card]="card"
+              [detail]="false"
+              (click)="addCard(card)"></app-card-selector-card>
+          </div>
+          <span class="searchHint" *ngIf="!searchPhrase">To begin, please specify a search phrase.</span>
+          <span class="searchHint" *ngIf="searchPhrase">Not what you're looking for? Try a different search
+            phrase.</span>
+        </div>
+        <div
+          *ngIf="this.categorySelected == 'general'"
+          fxLayout="column wrap"
+          fxLayoutGap="5px"
+          fxLayoutAlign="flex-start">
+          <img
+            joyrideStep="step10"
+            title="Phase"
+            [stepContent]="step10Content"
+            (prev)="onboardingOpenSidebar()"
+            fxFlex="0 1 calc(50% - 10px)"
+            class="general-image"
+            src="/assets/image/phase.png"
+            (click)="addGroup()" />
+          <!-- Removed due to the encountered critical bugs -->
+          <!-- <img
+            joyrideStep="step11"
+            title="Arrow"
+            [stepContent]="step11Content"
+            fxFlex="0 1 calc(50% - 10px)"
+            class="general-image"
+            src="/assets/image/arrow.png"
+            (click)="startArrow()" /> -->
+          <img
+            joyrideStep="step12"
+            title="Question"
+            [stepContent]="step12Content"
+            (next)="onboardingOpenSidebar()"
+            fxFlex="0 1 calc(50% - 10px)"
+            class="general-image"
+            src="/assets/image/question.png"
+            (click)="addResearchQuestion()" />
+        </div>
+      </mat-drawer>
+      <mat-drawer-content id="content" data-html2canvas-ignore="true">
+        <div class="workspace-container" cdkDropListGroup>
+          <div
+            id="spawn-list"
+            *ngIf="workspace.spawnList.cards.length > 0"
+            data-html2canvas-ignore="true">
+            <div
+              cdkDropList
+              id="{{ workspace.spawnList.id }}"
+              [cdkDropListData]="workspace.spawnList.cards"
+              class="card-list">
+              <app-card
+                *ngFor="let card of workspace.spawnList.cards"
+                (contextmenu)="onContextMenu($event, card)"
+                class="card-listitem"
+                cdkDrag
+                (cdkDragStarted)="onDragCard(card)"
+                (cdkDragEnded)="onDragCardEnded(card)"
+                [ngStyle]="{ 'background-color': card.color }"
+                id="{{ card.id ? card.id : card._id }}"
+                [card]="card"
+                [room]="room"
+                (removeEffect)="removeEffectFromCard(card)"
+                (save)="saveCardQuestionTitleInSpawnlist(card)"
+                (changeText)="setEffectOnCardInSpawnlist(card)"
+                (changedNote)="changeNoteInSpawnlist(card)"></app-card>
+            </div>
+          </div>
+          <div id="groups-container" (scroll)="onScroll()" (resized)="onResized()">
+            <div>
+              <app-group
+                (contextmenu)="onContextMenu($event, group.id)"
+                class="group-item"
+                *ngFor="let group of workspace.groups"
+                [id]="group.id"
+                cdkDrag
+                [group]="group"
+                [room]="room"
+                [cdkDragFreeDragPosition]="group.location"
+                (cdkDragStarted)="onDrag(group)"
+                (cdkDragMoved)="drag(group)"
+                (cdkDragEnded)="onDragEnded($event, group)"
+                (mousedown)="check($event)"
+                (click)="
+                  workspaceConfig.drawing ? addArrow(group) : select(group, $event)
+                "
+                (dropped)="cardDropped($event)"
+                (title)="changeGroupTitle(group)"
+                (cardQuestion)="saveCardQuestionTitle($event)"
+                (swapped)="swapCardPositionWithinGroup($event)"
+                (changedNote)="changeNoteInGroup($event)">
+              </app-group>
+            </div>
+          </div>
+          <router-outlet></router-outlet>
+          <app-vt-dashboard [room]="room" [workspace]="workspace"></app-vt-dashboard>
+        </div>
+      </mat-drawer-content>
+    </mat-drawer-container>
+  </mat-drawer-content>
+</mat-drawer-container>
+<div
+  id="mouseTracker"
+  [style.top.px]="workspaceConfig.top"
+  [style.left.px]="workspaceConfig.left"></div>
+<div
+  joyrideStep="step6"
+  title="Workspace"
+  [stepContent]="step6Content"
+  stepPosition="center"></div>
+<div
+  joyrideStep="step21"
+  title="Deleting"
+  [stepContent]="step21Content"
+  stepPosition="center"></div>
+<div
+  joyrideStep="step22"
+  title="The end"
+  [stepContent]="step22Content"
+  stepPosition="center"></div>
+<ng-template #doneButton>
+  <button class="onboard-btn">done</button>
+</ng-template>
+<ng-template #nextButton>
+  <button class="onboard-btn">next</button>
+</ng-template>
+<ng-template #prevButton>
+  <button class="onboard-btn">prev</button>
+</ng-template>
+<ng-template #step6Content>
+  <br /> This is a workspace. A project approach example is displayed here.<br />
+  <br /> Click <b>next</b> to continue with the walkthrough of the workspace. <br /> Or click the <b>X</b> in the right
+  top corner to stop the workspace tour. <br />
+  <br />
+</ng-template>
+<ng-template #step9Content>
+  <br /> These elements will create the structure of your project approach. <br />
+  <br /> Click <b>next</b> to learn more about these elements. <br />
+  <br />
+</ng-template>
+<ng-template #step10Content>
+  <br /> This is a <b>phase</b>, one of the main elements. <br /> This is used to group and prioritize cards. <br />
+  <br /> You can add one to the workspace by <b>clicking</b> on it. <br />
+  <br />
+</ng-template>
+<ng-template #step11Content>
+  <br /> An <b>arrow</b> is used to define the flow of the project approach. <br /> This arrow connects two phases to
+  each other. <br />
+  <br /> You can add an arrow by <b>clicking</b> this button. Then you will have to select <br /> the start phase and
+  after that the end phase. <br />
+  <br />
+</ng-template>
+<ng-template #step12Content>
+  <br /> This is a <b>question</b>, one of the main elements. <br /> This is used to place research questions within a
+  <b>phase</b>. <br />
+  <br /> You can add one to the workspace by <b>clicking</b> on it. <br />
+  <br />
+</ng-template>
+<ng-template #step13Content>
+  <br /> You can apply field research methods to get to know your end users, <br /> their needs and desires. <br />
+  <br /> You can add a card to the workspace by <b>clicking</b> on it. <br /> Afterwards you can drag them into
+  <b>phases</b>. <br />
+  <br />
+</ng-template>
+<ng-template #step14Content>
+  <br /> With lab research, you can test (parts of) your solution, <br /> to find out if things indeed work as intended.
+  <br />
+  <br /> You can add a card to the workspace by <b>clicking</b> on it. <br /> Afterwards you can drag them into
+  <b>phases</b>. <br />
+  <br />
+</ng-template>
+<ng-template #step15Content>
+  <br /> Library research is done to explore what has already been done and <br /> what guidelines and theories exist
+  that could help you further your solution. <br />
+  <br /> You can add a card to the workspace by <b>clicking</b> on it. <br /> Afterwards you can drag them into
+  <b>phases</b>. <br />
+  <br />
+</ng-template>
+<ng-template #step16Content>
+  <br /> Research within the showroom strategy is conducted to compare <br /> your ideas with available work. <br />
+  <br /> You can add a card to the workspace by <b>clicking</b> on it. <br /> Afterwards you can drag them into
+  <b>phases</b>. <br />
+  <br />
+</ng-template>
+<ng-template #step17Content>
+  <br /> Workshop research is done to explore possibilities to gain <br /> insights into what is possible and how things
+  could work (better). <br />
+  <br /> You can add a card to the workspace by <b>clicking</b> on it. <br /> Afterwards you can drag them into
+  <b>phases</b>. <br />
+  <br />
+</ng-template>
+<ng-template #step18Content>
+  <br /> Stepping stones are used to define outcomes of activities. <br />
+  <br /> You can add a card to the workspace by <b>clicking</b> on it. <br /> Afterwards you can drag them into
+  <b>phases</b>. <br />
+  <br />
+</ng-template>
+<ng-template #step19Content>
+  <br /> With this button different types of decks can be <br /> selected. Check before making a project approach <br />
+  which decks fit your study best. <br />
+  <br />
+</ng-template>
+<ng-template #step21Content>
+  <br /> You can <b>delete cards and groups</b> by <b>right clicking</b> on them. <br /> This will open a menu in which
+  you can remove them. <br />
+  <br />
+</ng-template>
+<ng-template #step22Content>
+  <br /> This is the end of the tour. <br />
+  <br /> You can always <b>restart</b> the tour, by clicking <br />
+  <b>restart tour</b> in the help menu. <br />
+  <br />
+</ng-template>
+<div style="visibility: hidden; position: fixed"
+  [style.left]="contextMenuPosition.x"
+  [style.top]="contextMenuPosition.y"
+  [matMenuTriggerFor]="contextMenu">
+</div>
+<mat-menu #contextMenu="matMenu">
+  <ng-template matMenuContent let-item="item">
+    <button *ngIf="checkIfCardContextMenu === false" mat-menu-item (click)="removePhase(item)">Remove phase</button>
+    <button *ngIf="checkIfCardContextMenu === true" mat-menu-item (click)="removeCard(item)">Remove card</button>
+  </ng-template>
+</mat-menu>
+<app-vt-settings-student></app-vt-settings-student>

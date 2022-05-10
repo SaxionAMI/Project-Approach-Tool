@@ -1,0 +1,72 @@
+.container {
+    border: solid #ff8844 1px;
+    border-radius: 3px;
+    padding:20px;
+    display:flex;
+    flex-direction: column;
+    align-items: stretch;
+    font-size:11pt;
+}
+
+.container .header {
+    margin:0px;
+}
+
+.header {
+    display: flex;
+    flex-direction:row;
+    justify-content: space-between;
+    align-items:baseline;
+}
+
+.header span {
+    flex-grow: 1;
+}
+
+.header button {
+    flex-grow: 0;
+}
+
+.attributes {
+    border: none;
+}
+
+.attributes tr td, 
+.attributes tr th {
+    border:none;
+}
+
+
+.attributes tr th {
+    width:7em;
+    font-weight:600;
+}
+
+.attributes tr td input,
+.attributes tr td select {
+    width:100%;
+}
+
+input, select {
+    background-color:white;
+    border: solid #444 1px;
+}
+
+input:hover, select:hover {
+    background-color:#cceeff;
+}
+
+input:focus, select:focus {
+    background-color:white;
+    border: solid #4488ff 1px;
+}
+
+input.invalid,
+select.invalid {
+    border:solid red 1px;
+}
+
+input.invalid:hover,
+select.invalid:hover {
+    background-color:#ffdddd;
+}

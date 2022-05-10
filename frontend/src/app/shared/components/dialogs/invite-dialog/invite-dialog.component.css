@@ -1,0 +1,55 @@
+mat-form-field {
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 5%;
+}
+
+.buttonWrap {
+  margin-top: 3%;
+  text-align: center;
+}
+
+.mat-raised-button {
+  width: 200px;
+  height: 40px;
+  margin: 2%;
+  background-color: #04abd6;
+  color: white;
+}
+
+.mat-button {
+  width: 200px;
+  height: 40px;
+  margin: 2%;
+  color: #04abd6;
+  background-color: white;
+}
+
+.container {
+  height: 300px;
+  overflow: auto;
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 5%;
+  border: solid 1px lightgray;
+  box-shadow: none;
+}
+
+table {
+  width: 100%;
+}
+
+th.mat-header-cell:last-of-type,
+td.mat-cell:last-of-type,
+td.mat-footer-cell:last-of-type {
+  padding-right: 0%;
+}
+
+.mat-chip.mat-standard-chip.mat-chip-selected.mat-primary{
+  background-color: #04abd6;
+}
+
+mat-error{
+  color: red;
+  margin-left: 10%;
+}

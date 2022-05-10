@@ -1,0 +1,13 @@
+<h1>Disable Virtualt Teacher?</h1>
+<div mat-dialog-content>
+    <p>If you disable the Virtual Teacher, Project Approach Tool won't be able to give you feedback on your project approach.</p>
+    <p>Are you sure you want to disable the Virtual Teacher?</p>
+
+    <mat-checkbox color="primary" [(ngModel)]="temporary">
+        Automatically re-enable upon start of next session
+    </mat-checkbox>
+    <div class="button-container">
+        <button mat-button id="keep-enabled" class="primary" (click)="onKeepEnableClicked()">No, keep enabled.</button>
+        <button mat-button id="disable" (click)="onDisableClicked()">Yes, disable.</button>
+    </div>
+</div>

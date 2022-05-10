@@ -1,0 +1,29 @@
+config:
+  target: "http://localhost:13788"
+  processor: "../processor.js"
+  ensure:
+    max: 500 # fail if max response time exceeds 500ms
+    maxErrorRate: 1 # fail if error rate exceeds 1%
+  socketio:
+    transports: ["websocket"]
+  phases:
+    - duration: 1          
+      arrivalRate: 1
+scenarios:
+  - engine: "socketio"
+    flow:
+      - function: "returnGroup"
+      - emit:
+          channel: "connectRoom"
+          data:
+            {
+              "room": "5efc3c57a32ae41ad4485e20",
+              "data": "OTPgQaFi0fNN67r1iaWRlzlbafX2",
+            }
+      - think: 60
+      - emit:
+          channel: "moveGroup"
+          data: { "room": "5efc3c57a32ae41ad4485e20", "data": "{{group}}"}
+      - emit:
+          channel: "leaveRoom"
+          data: { "room": "5efc3c57a32ae41ad4485e20" }

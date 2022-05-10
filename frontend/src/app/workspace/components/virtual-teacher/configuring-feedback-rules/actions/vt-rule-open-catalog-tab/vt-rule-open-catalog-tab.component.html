@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="header">
+        <span>{{display}}</span>
+        <button mat-icon-button color="warn" (click)="deleteClicked()">
+            <mat-icon>delete</mat-icon>
+        </button>
+    </div>
+    <table class="attributes">
+        <tr>
+            <th>Catalog tab:</th>
+            <td>
+                <select [(ngModel)]="catalogTab" [class.invalid]="!catalogTabValid && catalogTabChanged">
+                    <option *ngFor="let x of configurableCatalogTabs" [value]="x.type">{{x.display}}</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th>Display as:</th>
+            <td>
+                <input type="text" [(ngModel)]="displayAs" [class.invalid]="!displayAsValid && displayAsChanged" placeholder="e.g. Open Website"/>
+            </td>
+        </tr>
+    </table>
+</div>
+

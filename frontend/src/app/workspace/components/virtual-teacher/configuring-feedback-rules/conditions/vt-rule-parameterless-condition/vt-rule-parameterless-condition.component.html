@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="header">
+        <span>{{display}}</span>
+        <button mat-icon-button color="primary" [matMenuTriggerFor]="conditionMenu" *ngIf="supportsMultiCondition">
+            <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #conditionMenu="matMenu">
+            <button mat-menu-item *ngFor="let x of multiConditionTypes" (click)="wrapClicked(x.type)">Wrap in {{x.display}}</button>
+            <button mat-menu-item (click)="unwrapClicked()">Unwrap (destroy other)</button>
+        </mat-menu>
+        <button mat-icon-button color="warn" (click)="deleteClicked()">
+            <mat-icon>delete</mat-icon>
+        </button>
+    </div>
+</div>
+

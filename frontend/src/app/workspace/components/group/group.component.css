@@ -1,0 +1,181 @@
+.card-list {
+  border: solid 1px #ccc;
+  min-height: 60px;
+  background: white;
+  border-radius: 4px;
+  overflow: hidden;
+  display: block;
+}
+
+.card-listitem {
+  margin: 10px;
+  border-bottom: solid 1px #ccc;
+  color: rgba(0, 0, 0, 0.87);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  cursor: move;
+  background: white;
+  font-size: 14px;
+  position: relative;
+  z-index: 0;
+}
+
+.group-card {
+  position: relative;
+  min-width: 200px;
+  background-color: #04abd6;
+  color: white;
+}
+
+button.mat-raised-button.mat-button-base {
+  width: 100%;
+  font-size: 20px;
+  box-shadow: none;
+  line-height: 58px;
+  border-radius: 0;
+}
+
+.mat-raised-button {
+  box-sizing: border-box;
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  outline: 0;
+  border: none;
+}
+
+.drag-handle {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #ccc;
+  cursor: move;
+  width: 24px;
+  height: 24px;
+  z-index: 1;
+}
+
+#title {
+  display: inline-block;
+  max-width: 100%;
+}
+
+.group-header {
+  justify-content: center;
+  text-align: center;
+  top: 0px;
+  width: 100%;
+  padding-bottom:25px;
+
+  position: relative;
+}
+
+.material-icons {
+  position: absolute;
+  top: 28%;
+  right: 10px;
+  width: 24px;
+  height: 24px;
+}
+
+.group-content {
+  position: relative;
+}
+
+input{
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  color: white;
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: center;
+}
+
+#feedback-icons {
+  position:absolute;
+  bottom:0;
+  right:0;
+  width:100%;
+  height:auto;
+}
+
+.feedback-icon {
+  display:inline-block;
+  width:33.333%;
+  height:25px;
+  opacity:1;
+  vertical-align: middle;
+  font-weight:bold;
+  font-size:16pt;
+  position:relative;
+  cursor:pointer;
+  border:solid rgba(0,0,0,0.25) 1px;
+  border-top-width:0;
+  box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+}
+
+.feedback-icon.disabled {
+  opacity: 0.25;
+  cursor:default;
+}
+
+.feedback-icon.warning {
+  color:white;
+  background-color:#ff8888;
+}
+
+.feedback-icon.info {
+  color:white;
+  background-color:#88bbff;
+}
+
+.feedback-icon.question {
+  color:white;
+  background-color:#aa88ff;
+}
+
+.feedback-icon.warning:hover {
+  color:white;
+  background-color:#ff9999;
+}
+
+.feedback-icon.info:hover {
+  color:white;
+  background-color:#99ccff;
+}
+
+.feedback-icon.question:hover {
+  color:white;
+  background-color:#bb99ff;
+}
+
+.badge {
+  width:20px;
+  height:20px;
+  position:absolute;
+  right:0;
+  bottom:0;
+  background-color:#ff8800;
+  color:white;
+  font-size:14pt;
+  line-height:20px;
+  border-radius:50%;
+  border: solid white 1px;
+}
+
+#scroll-dummy {
+  width:1px;
+  height:1px;
+  margin-left:180%;
+  margin-top:0%;
+  background-color:black;
+  opacity: 0.01;
+  pointer-events: none;
+}

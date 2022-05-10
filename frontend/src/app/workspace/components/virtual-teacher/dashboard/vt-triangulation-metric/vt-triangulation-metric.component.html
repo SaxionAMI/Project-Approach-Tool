@@ -1,0 +1,19 @@
+<div *ngIf="metric" class="metric-container">
+    <h3>Triangulation</h3>
+    <div class="metric-row">
+        <span class="prefix">Overview</span>
+        <div class="progress-bar">
+            <mat-progress-bar mode="determinate" [value]="overviewCertaintyPercentage"></mat-progress-bar>
+        </div>
+        <span class="suffix">Certainty</span>
+    </div>
+    <div class="metric-row">
+        <span class="prefix">Fit</span>
+        <div class="progress-bar">
+            <mat-progress-bar mode="determinate" [value]="fitExpertisePercentage"></mat-progress-bar>
+        </div>
+        <span class="suffix">Expertise</span>
+    </div>
+</div>
+<button id="secondary" *ngIf="metric && metric.secondaryAction" (click)="metric.secondaryAction.perform()">{{metric.secondaryAction.displayText}}</button>
+<hr/>

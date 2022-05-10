@@ -1,0 +1,54 @@
+<form [formGroup]="emailForm">
+<mat-form-field>
+    <mat-chip-list #chipList aria-label="email selection" formArrayName="emails">
+      <mat-chip
+        *ngFor="let email of emails"
+        [color]="(email.invalid)?'warn':''"
+        [selectable]="selectable"
+        [removable]="removable"
+        (removed)="remove(email)"
+        [selected]="true">
+        {{email.value}}
+        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+      </mat-chip>
+      <input
+        placeholder=" Invite..."
+        #emailInput
+        [matChipInputFor]="chipList"
+        (matChipInputTokenEnd)="add($event)">
+    </mat-chip-list>
+</mat-form-field>
+<mat-error *ngIf="displayErrorEmailIncorrect">Invalid email has been entered!</mat-error>
+<mat-error *ngIf="displayErrorEmailInUse">Invited email has been entered!</mat-error>
+<mat-error *ngIf="displayErrorAccountDoesNotExist">the email that has been entered is not a known email, account needs to be created!</mat-error>
+</form>
+
+<div class="container mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> Email </th>
+        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+      </ng-container>
+      <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef> Role </th>
+        <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+      </ng-container>
+      <ng-container matColumnDef="options">
+        <th mat-header-cell *matHeaderCellDef> Options </th>
+        <td mat-cell id="last" *matCellDef="let element"> <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+            <mat-menu #menu="matMenu" class="customize">
+              <button mat-menu-item (click)="confirmRevokeInvite(element)">Revoke invitation</button>
+            </mat-menu>
+          </button>  
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+
+<div class="buttonWrap">
+<button mat-raised-button (click)="onInvite()" [disabled]="validateArray() == false">INVITE</button>
+<button mat-button (click)="onClose()">CANCEL</button>
+</div>

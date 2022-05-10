@@ -1,0 +1,300 @@
+#add-button {
+  position: absolute;
+  left: 15px;
+  bottom: 0;
+  margin-bottom: -25px;
+  color: #5c473f;
+  background: #04abd6;
+  overflow: s;
+}
+
+.mat-toolbar {
+  background-color: #ffffff;
+  position: sticky;
+  top: 0;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  z-index: 10;
+  width: 100%;
+  height: auto !important;
+}
+
+mat-toolbar-row#goal {
+  height:24px !important;
+}
+
+::ng-deep .customize {
+  background: #ffffff;
+}
+
+.mat-menu-item {
+  color: #5c473f;
+}
+
+#title-container {
+  color: #5c473f;
+  margin-bottom: 15px;
+  margin-top: 5px;
+  border: none;
+  width: 80%;
+}
+
+#title:focus {
+  outline: none;
+}
+#title {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  letter-spacing: 0.05em;
+  font-size: 36px;
+  color: #5c473f;
+  border: none;
+  margin: 0px;
+  width: fit-content !important;
+  margin-left: 60px;
+}
+
+#goal-container {
+  color: #a9a9a9;
+  font-size: 22px;
+  /*margin-bottom: 50px;*/
+  margin-bottom: 12px;
+  width: 80%;
+}
+
+#goal:focus {
+  outline: none;
+  border: none;
+}
+
+#goal {
+  color: #a9a9a9;
+  font-size: 22px;
+  margin: 0px;
+  border: none;
+  width: fit-content;
+  margin-left: 60px;
+}
+
+#return-button {
+  position: absolute;
+  color: #000000;
+  background-color: transparent;
+  box-shadow: none;
+  margin-top: 36px;
+}
+
+.button24 {
+  width: 36px;
+  height: 36px;
+}
+.icon24 {
+  font-size: 36px;
+  margin-top: -16px;
+  margin-left: -10px;
+}
+
+#profile-button {
+  color: white;
+  height: 60px;
+  width: 60px;
+  font-size: x-large;
+  right: 100px;
+  margin-top: 30px;
+  position: absolute;
+  background-color: #04abd6;
+  box-shadow: none;
+}
+
+.menuMail {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 0 16px;
+}
+
+mat-divider {
+  background-color: gray;
+  width: 90%;
+  margin-left: 5%;
+}
+
+img {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 29px;
+}
+
+#inviteBtn {
+  color: white;
+  height: 60px;
+  width: 60px;
+  font-size: x-large;
+  right: 260px;
+  margin-top: 30px;
+  position: absolute;
+  background-color: #00aaaa;
+  box-shadow: none;
+}
+
+#inviteBtn mat-icon {
+  margin-left:-4px;
+  font-size:28pt;
+  line-height: 28px;
+  width:auto;
+  height:auto;
+}
+
+#inviteBtn:hover {
+  background-color:#00bbbb;
+}
+
+.active-user-container {
+  display: inline-block;
+  position: absolute;
+  right: 340px;
+  margin-top: 30px;
+  padding-right:20px;
+  border-right:solid gray 1px;
+}
+
+.active-user-button {
+  box-shadow: none;
+  height: 60px;
+  width: 60px;
+  font-size: x-large;
+  margin: 0px 0px 0px -10px;
+  overflow: visible;
+  border: 3px solid white;
+  color: white;
+  /* background-color: transparent !important; */
+}
+
+#infoFullName {
+  font-size: 16px;
+  font: bold;
+}
+
+#infoEmail {
+  font-size: 12px;
+}
+
+#infoCard {
+  padding: 5px;
+  position: absolute;
+  border: 1px solid lightgray;
+}
+
+::ng-deep.active-user-tooltip {
+  background-color: white !important;
+  color: black !important;
+  font-size: 16px !important;
+  border: solid lightgray 1px;
+  white-space: pre-line !important;
+}
+
+::ng-deep.active-user-tooltip ::first-line {
+  font-weight: bold !important;
+}
+
+.mat-toolbar {
+  box-shadow: none;
+  border-bottom: solid 1px lightgray;
+  height: 90px;
+}
+
+.app-logo {
+  width: 70px;
+  height: 90px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  cursor:pointer;
+  border-radius:5px;
+  background-color:transparent;
+}
+
+.app-logo:hover {
+  background-color:#ddd;
+}
+
+.app-logo img {
+  position:absolute;
+  top:20px;
+  left:10px;
+  width:50px;
+  height:50px;
+  display:block;
+}
+
+.app-logo:hover img {
+  display:none;
+}
+
+.app-logo mat-icon {
+  color:black;
+  font-size:32pt;
+  display:none;
+  margin-left:10px;
+}
+
+.app-logo:hover mat-icon {
+  display:block;
+}
+
+.settings-icon {
+  font-size: 50px;
+  margin-right: 30px;
+  color: darkgray;
+}
+
+#settings-button {
+  color: white;
+  height: 60px;
+  width: 60px;
+  font-size: 32pt;
+  right: 180px;
+  margin-top: 30px;
+  position: absolute;
+  box-shadow: none;
+  background-color:#ccaa00;
+}
+
+#settings-button mat-icon {
+  font-size:32pt;
+  line-height: 28px;
+  width:auto;
+  height:auto;
+}
+
+#settings-button:hover {
+  background-color:#ffcc22
+}
+
+#question-button{
+  color: white;
+  height: 60px;
+  width: 60px;
+  font-size: 32pt;
+  right: 20px;
+  margin-top: 30px;
+  position: absolute;
+  box-shadow: none;
+  background-color:#aa66cc;
+}
+
+#question-button mat-icon{
+  margin-left:9px;
+  margin-top:-2px;
+  color:white;
+  font-size:32pt;
+  line-height: 28px;
+  width:auto;
+  height:auto;
+}
+
+#question-button:hover {
+  background-color:#cc88dd;
+}

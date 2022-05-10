@@ -1,0 +1,100 @@
+#outerCard {
+  background-color: white;
+  margin: 5%;
+  width: 90%;
+  margin-top: 200px;
+}
+
+#innerCard {
+  width: 60vw;
+  height: 60vh;
+  background-color: whitesmoke;
+  margin: auto;
+  margin-top: 2%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+h1 {
+  color: black;
+}
+
+input {
+  color: black;
+  width: 100%;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.gridlist {
+  width: 60vw;
+  height: 60vh;
+  margin-top: 2%;
+  overflow: auto;
+}
+
+app-template-card {
+  margin-bottom: 2%;
+}
+
+.buttonWrap {
+  text-align: center;
+}
+
+.mat-raised-button {
+  width: 300px;
+  height: 40px;
+  margin: 2%;
+  background-color: #04abd6;
+  color: white;
+}
+
+.mat-button{
+  width: 300px;
+  height: 40px;
+  margin: 2%;
+  color: #04abd6;
+  background-color: white;
+}
+
+.forms {
+  display: block;
+  text-align: center;
+}
+form {
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  width: 60vw;
+}
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: black !important;
+}
+.errorAboveButtons{
+  text-align: center;
+  margin-top: 2%
+}
+
+.notClicked{
+  background-color: white;
+  height: 350px;
+  width: 300px;
+  margin: 0;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 5px;
+  border: 1px solid lightgrey;
+  color: black;
+  margin-bottom: 16px;
+}
+
+.notClicked:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4);
+}
+
+img {
+  height: 250px;
+}
