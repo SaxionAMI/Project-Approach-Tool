@@ -1,0 +1,155 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    <h1>Project Approach Tool</h1>
+    <button
+      *ngIf="checkIfDisplayedHere('/workspace/create')"
+      id="return-button"
+      mat-fab
+      (click)="goBack()"
+      class="button24"
+      [disableRipple]="true"
+    >
+      <mat-icon class="icon24">keyboard_backspace</mat-icon>
+    </button>
+
+    <button
+      joyrideStep="step4"
+      title="Create workspace"
+      [stepContent]="step4Content"
+      *ngIf="checkIfDisplayedHere('/workspaces')"
+      id="add-button"
+      mat-fab
+      (click)="goToWorkspaceCreator()"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
+    <button
+      title="Settings"
+      *ngIf="(checkIfDisplayedHere('/workspaces') || checkIfDisplayedHere('/workspaces/create')) && isTeacher()"
+      id="settings-button"
+      (click)="openTeacherSettings()"
+      mat-fab
+    >
+      <mat-icon>settings</mat-icon>
+    </button>
+    <button
+      title="Workspaces"
+      *ngIf="checkIfDisplayedHere('/teacher/settings')"
+      id="workspaces-button"
+      (click)="openWorkspaces()"
+      mat-fab
+    >
+      <mat-icon>account_tree</mat-icon>
+    </button>
+    <button
+      joyrideStep="step2"
+      title="Profile"
+      [stepContent]="step2Content"
+      *ngIf="
+        checkIfDisplayedHere('/teacher/settings') ||
+        checkIfDisplayedHere('/workspaces') ||
+        checkIfDisplayedHere('/workspace/create')
+      "
+      id="profile-button"
+      mat-fab
+      #MenuTrigger="matMenuTrigger"
+      [matMenuTriggerFor]="menu"
+    >
+      {{ getAbbriviation(fullName) }}
+    </button>
+    <mat-menu #menu="matMenu" class="customize">
+      <p>{{ fullName }}</p>
+      <p>{{ email }}</p>
+      <mat-divider></mat-divider>
+      <button mat-menu-item (click)="openSettings()">Settings</button>
+      <button mat-menu-item (click)="onLogout()">Logout</button>
+    </mat-menu>
+
+    <button
+      *ngIf="!checkIfAbout() && !checkIfPrivacy()"
+      joyrideStep="step3"
+      title="Help"
+      [stepContent]="step3Content"
+      [doneTemplate]="doneButton"
+      [nextTemplate]="nextButton"
+      [prevTemplate]="prevButton"
+      id="question-button"
+      mat-icon-button
+      [matMenuTriggerFor]="menuHelp"
+    >
+      <mat-icon class="settings-icon">help_outline</mat-icon>
+    </button>
+    <mat-menu #menuHelp="matMenu" class="customize">
+      <a mat-menu-item href="mailto:info@projectapproachtool.nl">
+        Report issue
+      </a>
+      <button *ngIf="!checkIfLogin()" mat-menu-item (click)="restartOnboarding()">Restart tour</button>
+      <button mat-menu-item (click)="openPrivacy()">Privacy statement</button>
+      <button mat-menu-item (click)="openAbout()">About</button>
+    </mat-menu>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<div
+  joyrideStep="step1"
+  title="Welcome {{ fullName }},"
+  [stepContent]="step1Content"
+  stepPosition="center"
+></div>
+
+
+<ng-template #doneButton>
+  <button class="onboard-btn">Go to workspace</button>
+</ng-template>
+
+<ng-template #nextButton>
+  <button class="onboard-btn">next</button>
+</ng-template>
+
+<ng-template #prevButton>
+  <button class="onboard-btn">prev</button>
+</ng-template>
+
+<ng-template #step1Content>
+  <br />
+  This is your first time using this application, <br />
+  this tour will explain the entire application. <br />
+  <br />
+  This application is used to create a project approach. <br />
+  <br />
+  You can also skip the tour by pressing the <b>X</b> <br />
+  in the right top corner. <br />
+  <br />
+</ng-template>
+
+<ng-template #step2Content>
+  <br />
+  This is the <b>profile</b> button. <br />
+  <br />
+  Under this button the following actions can be found:
+  <br />
+  <ul>
+    <li>Settings</li>
+    <li>Logout</li>
+  </ul>
+</ng-template>
+
+<ng-template #step4Content>
+  <br />
+  With this button, a new workspace can be created<br />
+  <br />
+</ng-template>
+
+<ng-template #step3Content>
+  <br />
+  This is the <b>help</b> button. <br />
+  <br />
+  Under this button the following actions can be found:
+  <br />
+  <ul>
+    <li>Report issue</li>
+    <li>Restart tour</li>
+    <li>Privacy statement</li>
+    <li>About</li>
+  </ul>
+</ng-template>

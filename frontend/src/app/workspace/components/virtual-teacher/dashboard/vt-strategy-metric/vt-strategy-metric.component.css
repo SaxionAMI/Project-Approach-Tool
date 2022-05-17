@@ -1,0 +1,80 @@
+.metric-container {
+    width:100%;
+    height:auto;
+    padding:12px;
+    box-sizing: border-box;
+}
+
+.metric-row {
+    position:relative;
+    height:32px;
+    width:100%;
+}
+
+.mini-icon {
+    position:absolute;
+    left:0;
+    top:0;
+    bottom:0;
+    right:90%;
+}
+
+.mini-icon img {
+    width:26px;
+    height:26px;
+    margin:3px;
+}
+
+.prefix {
+    position:absolute;
+    left:10%;
+    top:0;
+    bottom:0;
+    right:70%;
+    padding-right:12px;
+    text-align:right;
+    line-height:32px;
+}
+
+.suffix {
+    position:absolute;
+    left:90%;
+    top:0;
+    bottom:0;
+    right:0;
+    padding-left:4px;
+    text-align:left;
+    line-height:32px;
+}
+
+.progress-bar {
+    position:absolute;
+    left:30%;
+    top:0;
+    bottom:0;
+    right:10%;
+    padding-top:14px;
+    padding-bottom:14px;
+}
+
+hr {
+    opacity:0.25;
+    margin:12px;
+}
+
+#secondary {
+    background-color:white;
+    border: solid gray 1px;
+    color:black;
+    padding:12px;
+    width:90%;
+    text-align:center;
+    cursor:pointer;
+    border-radius:4px;
+    margin:5%;
+    box-sizing: border-box;
+}
+
+#secondary:hover {
+    background-color: rgba(0,0,0,0.15);
+}

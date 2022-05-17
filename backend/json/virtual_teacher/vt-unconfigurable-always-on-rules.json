@@ -1,0 +1,74 @@
+[
+    {
+        "_id": "60c9d8e8b28ecbe5328c5b4a",
+        "title": "Calculate Triangulation statistics",
+        "description": "Calculate statistics about the degree of 'Triangulation' (see linked website) in the project approach.",
+        "phases": [
+            {
+                "display": "Editing",
+                "identifier": "editing"
+            },
+            {
+                "display": "Reviewing",
+                "identifier": "reviewing"
+            }
+        ],
+        "condition": {
+            "display": "Calculate triangulation",
+            "type": "VtTriangulationCondition",
+            "attributes": []
+        },
+        "action": {
+            "display": "Show statistics",
+            "type": "VTRuleActionShowMetrics",
+            "attributes": [{
+                "key": "severity", "value": "metrics"
+            }],
+            "secondaryAction": {
+                "display": "Open external website",
+                "type": "VTOpenWebsiteAction",
+                "attributes": [{
+                    "key": "url",
+                    "value": "https://maken.wikiwijs.nl/156085/1_1_2_Aanpak_bepalen_met_het_DOT_Framework#!page-6249757"
+                }]
+            }
+        }, 
+        "configurable": false
+    },
+    {
+        "_id": "60c9d8f3b28ecbe5328c5b4b",
+        "title": "Calculate research strategy balance statistics",
+        "description": "Calculate statistics about the balance between research strategies that are used globally in the project approach.",
+        "phases": [
+            {
+                "display": "Editing",
+                "identifier": "editing"
+            },
+            {
+                "display": "Reviewing",
+                "identifier": "reviewing"
+            }
+        ],
+        "condition": {
+            "display": "Calculate strategy representation",
+            "type": "VtStrategyRepresentationCondition",
+            "attributes": []
+        },
+        "action": {
+            "display": "Show statistics",
+            "type": "VTRuleActionShowMetrics",
+            "attributes": [{
+                "key": "severity", "value": "metrics"
+            }],
+            "secondaryAction": {
+                "display": "Open external website",
+                "type": "VTOpenWebsiteAction",
+                "attributes": [{
+                    "key": "url",
+                    "value": "https://maken.wikiwijs.nl/156085/1_1_2_Aanpak_bepalen_met_het_DOT_Framework#!page-6249756"
+                }]
+            }
+        }, 
+        "configurable": false
+    }   
+]

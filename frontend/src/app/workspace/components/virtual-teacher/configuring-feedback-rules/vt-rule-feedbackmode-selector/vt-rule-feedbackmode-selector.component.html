@@ -1,0 +1,9 @@
+<div class="container">
+    <div class="header">
+        <h3> In feedback mode(s): </h3>
+        <img src="/assets/image/icons/arrow-half-L.png" class="arrow right">
+    </div>
+    <div class="phases">
+        <mat-checkbox *ngFor="let phase of configurablePhases" [(ngModel)]="phase.selected" (change)="onCheckedChanged(phase)" color="primary">{{phase.display}}</mat-checkbox>
+    </div>
+</div>

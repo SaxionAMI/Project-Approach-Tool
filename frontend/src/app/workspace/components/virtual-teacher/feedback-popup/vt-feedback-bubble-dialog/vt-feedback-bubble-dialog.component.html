@@ -1,0 +1,21 @@
+<div id="container"
+    [class.warning]="severity == 'warning'"
+    [class.info]="severity == 'information'"
+    [class.question]="severity == 'question'">
+    <h2 mat-dialog-title 
+        id="header">
+        {{title}}
+
+        <button mat-button [mat-dialog-close]="result_close" id="close-header">X</button>
+    </h2>
+    <mat-dialog-content>
+    <i id="subtitle">{{subtitle}}</i>
+    <p>{{message}}</p>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <button class="action-button" mat-button [mat-dialog-close]="result_secondary_action" *ngIf="secondaryAction" id="secondaryAction">{{secondaryAction.displayText}}</button>
+        <button class="action-button" mat-button [mat-dialog-close]="result_dont_show_again" id="dont-show-again" align="end">Don't show this again</button>
+        <button class="action-button" mat-button [mat-dialog-close]="result_close" id="close">Close</button>
+    </mat-dialog-actions>
+</div>
+

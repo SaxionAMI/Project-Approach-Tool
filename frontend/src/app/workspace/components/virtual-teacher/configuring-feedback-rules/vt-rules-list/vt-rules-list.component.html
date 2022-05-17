@@ -1,0 +1,93 @@
+<div class="container">
+    <table mat-table [dataSource]="vtRules">
+        <ng-container matColumnDef="type">
+            <th mat-header-cell *matHeaderCellDef [ngClass]="typeFilterClass()" (click)="typeFilter.cycle()">
+                {{typeFilterIcon()}}
+            </th>
+            <td mat-header-cell *matCellDef="let element" [ngClass]="typeClass(element.type)">
+                {{typeIcon(element.type)}}
+            </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="isCreating">
+            <th mat-header-cell *matHeaderCellDef class="feedbackMode filterable">
+                <app-vt-feedback-mode-active-icon (click)="isCreatingFilter.cycle()" mode="creating" [state]="isCreatingFilter.state" class="feedback-mode-icon"></app-vt-feedback-mode-active-icon>
+            </th>
+            <td mat-header-cell *matCellDef="let element" class="feedbackMode">
+                <app-vt-feedback-mode-active-icon mode="creating" [active]="element.isCreating" class="feedback-mode-icon"></app-vt-feedback-mode-active-icon>
+            </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="isEditing">
+            <th mat-header-cell *matHeaderCellDef class="feedbackMode filterable">
+                <app-vt-feedback-mode-active-icon (click)="isEditingFilter.cycle()" mode="editing" [state]="isEditingFilter.state" class="feedback-mode-icon"></app-vt-feedback-mode-active-icon>
+            </th>
+            <td mat-header-cell *matCellDef="let element" class="feedbackMode">
+                <app-vt-feedback-mode-active-icon mode="editing" [active]="element.isEditing" class="feedback-mode-icon"></app-vt-feedback-mode-active-icon>
+            </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="isReviewing">
+            <th mat-header-cell *matHeaderCellDef class="feedbackMode filterable">
+                <app-vt-feedback-mode-active-icon (click)="isReviewingFilter.cycle()" mode="reviewing" [state]="isReviewingFilter.state" class="feedback-mode-icon"></app-vt-feedback-mode-active-icon>
+            </th>
+            <td mat-header-cell *matCellDef="let element" class="feedbackMode">
+                <app-vt-feedback-mode-active-icon mode="reviewing" [active]="element.isReviewing" class="feedback-mode-icon"></app-vt-feedback-mode-active-icon>
+            </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef class="description">
+                <mat-form-field>
+                    <input matInput type="text" [(ngModel)]="descriptionFilter.value" placeholder="Search description">
+                    <mat-icon matSuffix>search</mat-icon>
+                </mat-form-field>
+            </th>
+            <td mat-header-cell *matCellDef="let element" class="description">
+                {{element.name}}
+            </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="enabled">
+            <th mat-header-cell *matHeaderCellDef class="enabled filterable enabled" (click)="isEnabledFilter.cycle()">
+                <mat-checkbox [checked]="isEnabledFilter.state == 1" [indeterminate]="isEnabledFilter.state == 0" [color]="isEnabledFilter.state == 0 ? 'warn' : 'primary'">
+                    {{isEnabledFilter.state == 0 ? 'All' : isEnabledFilter.state == 1 ? 'Enabled' : 'Disabled'}}
+                </mat-checkbox>
+            </th>
+            <td mat-header-cell *matCellDef="let element" class="enabled">
+                <mat-checkbox [(ngModel)]="element.isEnabled" color="primary" (change)="onRuleEnabledChanged(element)">{{element.isEnabled ? 'Enabled' : 'Disabled'}}</mat-checkbox>
+            </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="actions" *ngIf="hasActions">
+            <th mat-header-cell *matHeaderCellDef class="action">
+                <button mat-icon-button class="action reset" (click)="resetFilters()">
+                    <mat-icon>backspace</mat-icon>Reset
+                </button>
+            </th>
+            <td mat-header-cell *matCellDef="let element" class="action">
+                <button mat-icon-button class="action edit" (click)="editRule(element)" *ngIf="element.isConfigurable">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button class="action delete" (click)="deleteRule(element)" *ngIf="element.isConfigurable">
+                    <mat-icon>delete</mat-icon>
+                </button>
+                <mat-icon *ngIf="!element.isConfigurable" color="primary" class="action">
+                    lock
+                </mat-icon>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns" [class.disabled]="!row.isEnabled"></tr>
+    </table>
+    <div class="placeholder" (click)="createRule()" *ngIf="hasActions">Click to add a new rule</div>
+</div>
+
+<app-vt-edit-rule-dialog #editRuleDialog (changesSaved)="loadRules()"></app-vt-edit-rule-dialog>

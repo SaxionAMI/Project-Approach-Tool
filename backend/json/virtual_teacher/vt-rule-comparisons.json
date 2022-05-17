@@ -1,0 +1,26 @@
+[
+    {
+        "type": "VTComparisonLT",
+        "display": "Less than <"
+    },
+    {
+        "type": "VTComparisonLTE",
+        "display": "Less than or equals <="
+    },
+    {
+        "type": "VTComparisonE",
+        "display": "Equals ="
+    },
+    {
+        "type": "VTComparisonNE",
+        "display": "Not equals <>"
+    },
+    {
+        "type": "VTComparisonGTE",
+        "display": "Greater than or equals >="
+    },
+    {
+        "type": "VTComparisonGT",
+        "display": "Greater than >"
+    }
+]

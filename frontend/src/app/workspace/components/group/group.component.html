@@ -1,0 +1,68 @@
+<div class="group-card">
+  <div class="group-header">
+    <div id="title" *ngIf="!canEdit" appClickStopPropagation>
+      <h2 (mousedown)="check($event)" (click)="editTitle($event)">
+        {{ group.title }}
+      </h2>
+    </div>
+    <div id="feedback-icons">
+      <div class="feedback-icon warning" [class.disabled]="!group.feedback.hasWarnings" (click)="onFeedbackClicked(group.feedback.warnings)">
+        !
+        <div class="badge" *ngIf="group.feedback.hasWarnings">{{group.feedback.warnings.length}}</div>
+      </div>
+      <div class="feedback-icon info" [class.disabled]="!group.feedback.hasInformations" (click)="onFeedbackClicked(group.feedback.informations)">
+        i
+        <div class="badge" *ngIf="group.feedback.hasInformations">{{group.feedback.informations.length}}</div>
+      </div>
+      <div class="feedback-icon question" [class.disabled]="!group.feedback.hasQuestions" (click)="onFeedbackClicked(group.feedback.questions)">
+        ?
+        <div class="badge" *ngIf="group.feedback.hasQuestions">{{group.feedback.questions.length}}</div>
+      </div>
+    </div>
+
+    <mat-form-field
+      class="example-full-width"
+      *ngIf="canEdit"
+      appClickStopPropagation
+    >
+      <input
+        #name
+        matInput
+        placeholder="Title"
+        [(ngModel)]="group.title"
+        (keyup.enter)="saveTitle()"
+        (focusout)="saveTitle()"
+        appFocusOnShow
+      />
+    </mat-form-field>
+  </div>
+  <div class="group-content">
+    <div
+      cdkDropList
+      id="{{ group.id }}"
+      [cdkDropListData]="group.cards"
+      class="card-list"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <app-card
+        cdkDrag
+        *ngFor="let card of group.cards"
+        class="card-listitem"
+        [ngStyle]="{ 'background-color': card.color }"
+        [card]="card"
+        [room]="room"
+        id="{{ (card.id) ? card.id : card._id }}"
+        (save)="saveCardQuestionTitle(card)"
+        (changeText)="setEffectOnCard(card)"
+        (cdkDragStarted)="onDragCard(card)"
+        (cdkDragEnded)="onDragCardEnded(card)"
+        (removeEffect)="removeEffectFromCard(card)"
+        (changedNote)="updateNoteInCard(card)"
+      ></app-card>
+    </div>
+  </div>
+</div>
+<div id="scroll-dummy"></div>
+
+
+

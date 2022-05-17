@@ -1,0 +1,10 @@
+[
+    {
+        "display": "Project approach (global)",
+        "type": "workspace"
+    },
+    {
+        "display": "Per project phase",
+        "type": "group"
+    }
+]

@@ -1,0 +1,74 @@
+<mat-drawer-container id="vt-sidebar" *ngIf="workspace && workspace.feedback">
+    <mat-drawer mode="side" opened position="end">
+        <div style="height: 90px"></div>
+        <div class="button-row">
+            <button class="vt-sidebar-btn" 
+                    [class.no-feedback]="!workspace.feedback.hasWarnings" 
+                    id="button-warning" 
+                    mat-icon-button
+                    (click)="onFeedbackClicked(workspace.feedback.warnings)">
+                <mat-icon>error</mat-icon>
+                <div class="badge" *ngIf="workspace.feedback.hasWarnings">{{workspace.feedback.warnings.length}}</div>
+            </button>
+        </div>
+        <div class="button-row">
+            <button class="vt-sidebar-btn" 
+                    [class.no-feedback]="!workspace.feedback.hasInformations" 
+                    id="button-info" 
+                    mat-icon-button
+                    (click)="onFeedbackClicked(workspace.feedback.informations)">
+                <mat-icon>info</mat-icon>
+                <div class="badge" *ngIf="workspace.feedback.hasInformations">{{workspace.feedback.informations.length}}</div>
+            </button>
+        </div>
+        <div class="button-row">
+            <button class="vt-sidebar-btn" 
+                    [class.no-feedback]="!workspace.feedback.hasQuestions" 
+                    id="button-question" 
+                    mat-icon-button
+                    (click)="onFeedbackClicked(workspace.feedback.questions)">
+                <mat-icon>help</mat-icon>
+                <div class="badge" *ngIf="workspace.feedback.hasQuestions">{{workspace.feedback.questions.length}}</div>
+            </button>
+        </div>
+        <div class="button-row">
+            <button class="vt-sidebar-btn partial-icon" 
+                    [class.no-feedback]="!workspace.feedback.hasMetrics" 
+                    id="button-metrics" 
+                    mat-icon-button
+                    (click)="onMetricsClicked()">
+                <mat-icon>insights</mat-icon>
+                <div class="badge" *ngIf="workspace.feedback.hasMetrics">{{workspace.feedback.metrics.length}}</div>
+            </button>
+        </div>
+    </mat-drawer>
+    <mat-drawer-content>
+        <mat-drawer-container id="metrics-container" [class.no-focus]="!showMetrics">
+            <mat-drawer [opened]="showMetrics" position="end">
+                <button id="button-close-metrics" 
+                        mat-icon-button
+                        (click)="onMetricsClicked()">
+                    Close metrics
+                    <mat-icon>close</mat-icon>
+                </button>
+                <app-vt-triangulation-metric [metric]="workspace.feedback.metricOfType('triangulation')"></app-vt-triangulation-metric>
+                <app-vt-strategy-metric [metric]="workspace.feedback.metricOfType('strategies')"></app-vt-strategy-metric>
+            </mat-drawer>
+        </mat-drawer-container>
+    </mat-drawer-content>
+</mat-drawer-container>
+<div class="vt-dashboard">
+    <div class="vt-dashboard-title">Virtual Teacher</div>
+    <div class="vt-dashboard-content">
+        <app-vt-mode-selector></app-vt-mode-selector>
+        <div id="separator"></div>
+        <button id="vt-settings" mat-icon-button (click)="onSettingsClicked()">
+            <div>
+                <mat-icon>settings</mat-icon>
+            </div>
+            <span>Settings</span>
+        </button>
+    </div>
+</div>
+<app-vt-feedback-bubble></app-vt-feedback-bubble>
+

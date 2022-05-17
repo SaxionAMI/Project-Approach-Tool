@@ -1,0 +1,492 @@
+[
+  {
+    "_id": "5e30215695d55b4b3c79a897",
+    "__v": 0,
+    "color": "#817DAF",
+    "deck": "ICT",
+    "picture": "../assets/research methods illustraties/png/AB-Testing.png",
+    "shortDescription": "A minor change in a design may alter user behaviour in ways that are hard to detect in a usability test. An A/B test allows you to compare real-world user behaviour across different versions of a product.",
+    "title": "A/B Testing",
+    "type": "Lab"
+  },
+  {
+    "_id": "5e30215695d55b4b3c79a898",
+    "__v": 0,
+    "color": "#817DAF",
+    "deck": "ICT",
+    "picture": "../assets/research methods illustraties/png/Inferential-Stats.png",
+    "shortDescription": "To test hypotheses based on quantitative dataset",
+    "title": "Inferential statistics",
+    "type": "Lab"
+  },
+  {
+    "_id": "5e30215695d55b4b3c79a899",
+    "__v": 0,
+    "color": "#817DAF",
+    "deck": "ICT",
+    "picture": "../assets/research methods illustraties/png/Big-data-analytics.png",
+    "shortDescription": "Gain insights by measuring and analysing data. Researching a dataset can give you useful quantitative information about the topic of interest.",
+    "title": "Data analytics",
+    "type": "Lab"
+  },
+  {
+    "_id": "5e30215695d55b4b3c79a900",
+    "__v": 0,
+    "color": "#817DAF",
+    "deck": "ICT",
+    "picture": "../assets/research methods illustraties/png/Hardware-validation.png",
+    "shortDescription": "Hardware does not always perform according to its specifications. Hardware validation ensures that the hardware performs as expected and excludes hardware as a source of errors.",
+    "title": "Hardware validation",
+    "type": "Lab"
+  },
+  {
+    "_id": "5e30215695d55b4b3c79a901",
+    "__v": 0,
+    "color": "#817DAF",
+    "deck": "ICT",
+    "picture": "../assets/research methods illustraties/png/Computer-simulation.png",
+    "shortDescription": "Computer simulations are used when a real-world process, system or event situation is not available or feasible.",
+    "title": "Computer simulation",
+    "type": "Lab"
+  },
+  {
+    "_id": "5e30215695d55b4b3c79a902",
+    "__v": 0,
+    "color": "#817DAF",
+    "deck": "ICT",
+    "picture": "../assets/research methods illustraties/png/Usability-testing.png",
+    "shortDescription": "Detect problems users have with your solution and correct them before the system goes live.",
+    "title": "Usability testing",
+    "type": "Lab"
+  },
+  {
+    "_id": "5e30215695d55b4b3c79a903",
+    "__v": 0,
+    "color": "#817DAF",
+    "deck": "ICT",
+    "picture": "../assets/research methods illustraties/png/System-test.png",
+    "shortDescription": "Solve problems before your system goes into production and demonstrate that the system operates according to its requirements.",
+    "title": "System test",
+    "type": "Lab"
+  },
+  {
+    "_id": "5e30215695d55b4b3c79a904",
+    "__v": 0,
+    "color": "#817DAF",
+    "deck": "ICT",
+    "picture": "../assets/research methods illustraties/png/Component-test.png",
+    "shortDescription": "In a component test, you test whole components or subsystems, instead of the atomic chunks of code that you test in unit tests. Test the component against its input and output relations (e.g. specified via interfaces). Component testing compares the outputs with expected results given pre-defined inputs.",
+    "title": "Component test",
+    "type": "Lab"
+  },
+  {
+    "_id": "5e30215695d55b4b3c79a905",
+    "__v": 0,
+    "color": "#817DAF",
+    "deck": "ICT",
+    "picture": "../assets/research methods illustraties/png/Unit-test.png",
+    "shortDescription": "Find certain types of bugs as early as possible and ensure your code keeps running after a change.",
+    "title": "Unit test",
+    "type": "Lab"
+  },
+  {
+    "_id": "5e30215695d55b4b3c79a906",
+    "__v": 0,
+    "color": "#817DAF",
+    "deck": "ICT",
+    "picture": "../assets/research methods illustraties/png/Non-functional-test.png",
+    "shortDescription": "Test the operating conditions under which the system delivers its intended functions.",
+    "title": "Non-functional test",
+    "type": "Lab"
+  },
+  {
+    "_id": "5e30215695d55b4b3c79a907",
+    "__v": 0,
+    "color": "#817DAF",
+    "deck": "ICT",
+    "picture": "../assets/research methods illustraties/png/Security-test.png",
+    "shortDescription": "Understand the security risks of an IT system.",
+    "title": "Security test",
+    "type": "Lab"
+  },
+  {
+    "_id": "5e3022138b5f801a0cc1f412",
+    "__v": 0,
+    "color": "#80C4D2",
+    "deck": "ICT",
+    "picture": "../assets/research methods illustraties/png/Brainstorm.png",
+    "shortDescription": "Generate and develop new ideas.",
+    "title": "Brainstorm",
+    "type": "Workshop"
+  },
+  {
+    "_id": "5e3022138b5f801a0cc1f413",
+    "__v": 0,
+    "color": "#80C4D2",
+    "deck": "ICT",
+    "picture": "../assets/research methods illustraties/png/Co-creation.png",
+    "shortDescription": "Gain inspiration from your users by involving them in the design process. Co-creation may lead to unexpected and sensible project outcomes.",
+    "title": "Co-creation",
+    "type": "Workshop"
+  },
+  {
+    "_id": "5e3022138b5f801a0cc1f414",
+    "__v": 0,
+    "color": "#80C4D2",
+    "deck": "ICT",
+    "picture": "../assets/research methods illustraties/png/Hackathon.png",
+    "shortDescription": "To find new solutions, be able to try them out quickly and involve many people in your challenge.",
+    "title": "Hackathon",
+    "type": "Workshop"
+  },
+  {
+    "_id": "5e3022138b5f801a0cc1f415",
+    "__v": 0,
+    "color": "#80C4D2",
+    "deck": "ICT",
+    "picture": "../assets/research methods illustraties/png/Root-cause-analysis.png",
+    "shortDescription": "Understand why a problem occurs and prevent it from happening again.",
+    "title": "Root cause analysis",
+    "type": "Workshop"
+  },
+  {
+    "_id": "5e3022138b5f801a0cc1f416",
+    "__v": 0,
+    "color": "#80C4D2",
+    "deck": "ICT",
+    "picture": "../assets/research methods illustraties/png/Requirements-enineering.png",
+    "shortDescription": "To define and weigh the requirements of a new design or redesign, considering the interests of all concerned stakeholders.",
+    "title": "Requirements engineering",
+    "type": "Workshop"
+  },
+  {
+    "_id": "5e3022138b5f801a0cc1f417",
+    "__v": 0,
+    "color": "#80C4D2",
+    "deck": "ICT",
+    "picture": "../assets/research methods illustraties/png/Gap-analysis.png",
+    "shortDescription": "Compare an actual situation to an ideal or desired situation. The gap analysis can be used to create plans to bridge the gaps.",
+    "title": "Gap analysis",
+    "type": "Workshop"
+  },
+  {
+    "_id": "5e3022138b5f801a0cc1f418",
+    "__v": 0,
+    "color": "#80C4D2",
+    "deck": "ICT",
+    "picture": "../assets/research methods illustraties/png/Decomposition.png",
+    "shortDescription": "Breaking a complex IT system or problem into smaller parts ensures its maintainability and robustness, and facilitates cooperation in large-scale software projects.",
+    "title": "Decomposition",
+    "type": "Workshop"
+  },
+  {
+    "_id": "5e3022138b5f801a0cc1f419",
+    "__v": 0,
+    "color": "#80C4D2",
+    "deck": "ICT",
+    "picture": "../assets/research methods illustraties/png/Multi-criteria-decision-making.png",
+    "shortDescription": "Improve the quality of complex decisions.",
+    "title": "Multi-criteria decision making",
+    "type": "Workshop"
+  },
+  {
+    "_id": "5e3022138b5f801a0cc1f420",
+    "__v": 0,
+    "color": "#80C4D2",
+    "deck": "ICT",
+    "picture": "../assets/research methods illustraties/png/Business-case-exploration.png",
+    "shortDescription": "Maximize the outcome of your efforts or investment.",
+    "title": "Business case exploration",
+    "type": "Workshop"
+  },
+  {
+    "_id": "5e3022138b5f801a0cc1f421",
+    "__v": 0,
+    "color": "#80C4D2",
+    "deck": "ICT",
+    "picture": "../assets/research methods illustraties/png/Prototyping.png",
+    "shortDescription": "Develop, evaluate or communicate a concept, design or problem solution to make your ideas concrete, to learn whether they work and to discover the technical limitations or possibilities.",
+    "title": "Prototyping",
+    "type": "Workshop"
+  },
+  {
+    "_id": "5e3022138b5f801a0cc1f422",
+    "__v": 0,
+    "color": "#80C4D2",
+    "deck": "ICT",
+    "picture": "../assets/research methods illustraties/png/Code-review.png",
+    "shortDescription": "With many eyeballs on the code, all bugs are shallow. Colleagues can help you find bugs and improve the quality of your source code.",
+    "title": "Code review",
+    "type": "Workshop"
+  },
+  {
+    "_id": "5e3022138b5f801a0cc1f423",
+    "__v": 0,
+    "color": "#80C4D2",
+    "deck": "ICT",
+    "picture": "../assets/research methods illustraties/png/IT-architecture-sketching.png",
+    "shortDescription": "Defining the IT architecture is complex and requires contributions from and interactions between software designers and/or architects. Sketching facilitates these discussions.",
+    "title": "IT architecture sketching",
+    "type": "Workshop"
+  },
+  {
+    "_id": "5e3022d38b5f801a0cc1f424",
+    "__v": 0,
+    "color": "#F6DC92",
+    "deck": "ICT",
+    "picture": "../assets/research methods illustraties/png/Benchmark-test.png",
+    "shortDescription": "A standardised set allows you to compare your product to similar products.",
+    "title": "Benchmark test",
+    "type": "Showroom"
+  },
+  {
+    "_id": "5e3022d38b5f801a0cc1f425",
+    "__v": 0,
+    "color": "#F6DC92",
+    "deck": "ICT",
+    "picture": "../assets/research methods illustraties/png/Guideline-conformity-analysis.png",
+    "shortDescription": "Conforming to guidelines and standards helps ensure the credibility of the quality of your product and prevents reliability, privacy and security issues.",
+    "title": "Guideline conformity analysis",
+    "type": "Showroom"
+  },
+  {
+    "_id": "5e3022d38b5f801a0cc1f426",
+    "__v": 0,
+    "color": "#F6DC92",
+    "deck": "ICT",
+    "picture": "../assets/research methods illustraties/png/Static-program-analysis.png",
+    "shortDescription": "Get an impression of how well your code is written and quickly find vulnerabilities, weak spots and bad smells.",
+    "title": "Static program analyis",
+    "type": "Showroom"
+  },
+  {
+    "_id": "5e3022d38b5f801a0cc1f427",
+    "__v": 0,
+    "color": "#F6DC92",
+    "deck": "ICT",
+    "picture": "../assets/research methods illustraties/png/Product-review.png",
+    "shortDescription": "Ensure that the product is perfect before it is released to the client or users.",
+    "title": "Product review",
+    "type": "Showroom"
+  },
+  {
+    "_id": "5e3022d38b5f801a0cc1f428",
+    "__v": 0,
+    "color": "#F6DC92",
+    "deck": "ICT",
+    "picture": "../assets/research methods illustraties/png/Pitch.png",
+    "shortDescription": "Get an idea of the unique selling points of the opportunity you have found, or of the idea you have to tackle a problem, and practice concise communication about them.",
+    "title": "Pitch",
+    "type": "Showroom"
+  },
+  {
+    "_id": "5e3022d38b5f801a0cc1f429",
+    "__v": 0,
+    "color": "#F6DC92",
+    "deck": "ICT",
+    "picture": "../assets/research methods illustraties/png/Ethical-check.png",
+    "shortDescription": "Norms and values differ between various people and societies. Make sure your design and development decisions do not lead to conflicts with certain norms and values.",
+    "title": "Ethical check",
+    "type": "Showroom"
+  },
+  {
+    "_id": "5e3022d38b5f801a0cc1f430",
+    "__v": 0,
+    "color": "#F6DC92",
+    "deck": "ICT",
+    "picture": "../assets/research methods illustraties/png/Peer-review_2.png",
+    "shortDescription": "Colleagues and experts can help improve your work, especially if they need to reuse it.",
+    "title": "Peer review",
+    "type": "Showroom"
+  },
+  {
+    "_id": "5e3023158b5f801a0cc1f431",
+    "__v": 0,
+    "color": "#5DBCB3",
+    "deck": "ICT",
+    "picture": "../assets/research methods illustraties/png/Document-analysis.png",
+    "shortDescription": "Documentation produced by the company can be a great first resource for understanding the organisation you are working for and their work processes.",
+    "title": "Document analysis",
+    "type": "Field"
+  },
+  {
+    "_id": "5e3023158b5f801a0cc1f432",
+    "__v": 0,
+    "color": "#5DBCB3",
+    "deck": "ICT",
+    "picture": "../assets/research methods illustraties/png/Descriptive-Stats.png",
+    "shortDescription": "To get an overview and summary of a dataset.",
+    "title": "Descriptive statistics",
+    "type": "Field"
+  },
+  {
+    "_id": "5e3023158b5f801a0cc1f433",
+    "__v": 0,
+    "color": "#5DBCB3",
+    "deck": "ICT",
+    "picture": "../assets/research methods illustraties/png/Domain-modelling.png",
+    "shortDescription": "Map the domain that your product will be part of, so you know the key concepts and the relations between them.",
+    "title": "Domain modelling",
+    "type": "Field"
+  },
+  {
+    "_id": "5e3023158b5f801a0cc1f434",
+    "__v": 0,
+    "color": "#5DBCB3",
+    "deck": "ICT",
+    "picture": "../assets/research methods illustraties/png/Problem-analyis.png",
+    "shortDescription": "Before solving a problem, it is important to understand it. Moreover, problem analysis ensures that you are not solving the wrong problem.",
+    "title": "Problem analysis",
+    "type": "Field"
+  },
+  {
+    "_id": "5e3023158b5f801a0cc1f435",
+    "__v": 0,
+    "color": "#5DBCB3",
+    "deck": "ICT",
+    "picture": "../assets/research methods illustraties/png/Focus-group.png",
+    "shortDescription": "Efficiently gather opinions and experiences through group discussions with stakeholders, users or experts.",
+    "title": "Focus group",
+    "type": "Field"
+  },
+  {
+    "_id": "5e3023158b5f801a0cc1f436",
+    "__v": 0,
+    "color": "#5DBCB3",
+    "deck": "ICT",
+    "picture": "../assets/research methods illustraties/png/Participant-observation.png",
+    "shortDescription": "Get a feeling for how your intended users will use your product by unobtrusively observing them and their behaviour in their daily environment.",
+    "title": "Observation",
+    "type": "Field"
+  },
+  {
+    "_id": "5e3023158b5f801a0cc1f437",
+    "__v": 0,
+    "color": "#5DBCB3",
+    "deck": "ICT",
+    "picture": "../assets/research methods illustraties/png/Task-analysis.png",
+    "shortDescription": "Understand the structure, flow or other aspects of a certain task. Task analysis focuses on what end users actually do to achieve their goals.",
+    "title": "Task analysis",
+    "type": "Field"
+  },
+  {
+    "_id": "5e3023158b5f801a0cc1f438",
+    "__v": 0,
+    "color": "#5DBCB3",
+    "deck": "ICT",
+    "picture": "../assets/research methods illustraties/png/Scenario-_--Explore-user-requirements.png",
+    "shortDescription": "Get a detailed view of how users will be using your solution and what their requirements are. How Talk to your clients about their expectations and describe how the different users (or stakeholders) will interact with the system under development. It is highly recommended that you directly involve end users, rather than just the client.",
+    "title": "Explore user requirements",
+    "type": "Field"
+  },
+  {
+    "_id": "5e3023158b5f801a0cc1f439",
+    "__v": 0,
+    "color": "#5DBCB3",
+    "deck": "ICT",
+    "picture": "../assets/research methods illustraties/png/Stakeholder-analysis.png",
+    "shortDescription": "Identify the stakeholders and ensure that their needs are considered.",
+    "title": "Stakeholder analysis",
+    "type": "Field"
+  },
+  {
+    "_id": "5e3023158b5f801a0cc1f440",
+    "__v": 0,
+    "color": "#5DBCB3",
+    "deck": "ICT",
+    "picture": "../assets/research methods illustraties/png/Survey.png",
+    "shortDescription": "Collect information (mostly quantitative) from a large sample of your target group.",
+    "title": "Survey",
+    "type": "Field"
+  },
+  {
+    "_id": "5e3023158b5f801a0cc1f441",
+    "__v": 0,
+    "color": "#5DBCB3",
+    "deck": "ICT",
+    "picture": "../assets/research methods illustraties/png/Interview.png",
+    "shortDescription": "Learn from potential users of your new product and other stakeholders.",
+    "title": "Interview",
+    "type": "Field"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f442",
+    "__v": 0,
+    "color": "#D1F087",
+    "deck": "ICT",
+    "picture": "../assets/research methods illustraties/png/Available-product-analysis.png",
+    "shortDescription": "Find out if what you are planning to do has already been done (in full or in part) by someone else.",
+    "title": "Available product analysis",
+    "type": "Library"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f443",
+    "__v": 0,
+    "color": "#D1F087",
+    "deck": "ICT",
+    "picture": "../assets/research methods illustraties/png/Best-good-and-bad-practices.png",
+    "shortDescription": "Incorporating what has proven to work somewhere else forms the basis of any high-quality project.",
+    "title": "Best good and bad practices",
+    "type": "Library"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f444",
+    "__v": 0,
+    "color": "#D1F087",
+    "deck": "ICT",
+    "picture": "../assets/research methods illustraties/png/Orienting-expert-interview.png",
+    "shortDescription": "A domain expert can put you on the right track when you enter a new domain or field of expertise. The expert can recommend sources, give you a sense of direction or point out common pitfalls.",
+    "title": "Expert interview",
+    "type": "Library"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f445",
+    "__v": 0,
+    "color": "#D1F087",
+    "deck": "ICT",
+    "picture": "../assets/research methods illustraties/png/Design-pattern-search.png",
+    "shortDescription": "Applying well-known design patterns improves the quality (and structure) of the designed software.",
+    "title": "Design pattern research",
+    "type": "Library"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f446",
+    "__v": 0,
+    "color": "#D1F087",
+    "deck": "ICT",
+    "picture": "../assets/research methods illustraties/png/Community-research.png",
+    "shortDescription": "Have others already tackled the problem? Incorporating your peers’ knowledge can seriously speed things up.",
+    "title": "Community research",
+    "type": "Library"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f447",
+    "__v": 0,
+    "color": "#D1F087",
+    "deck": "ICT",
+    "picture": "../assets/research methods illustraties/png/SWOT.png",
+    "shortDescription": "A SWOT analysis supports decision makers in identifying relevant factors for achieving certain goals.",
+    "title": "SWOT analysis",
+    "type": "Library"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f448",
+    "__v": 0,
+    "color": "#D1F087",
+    "deck": "ICT",
+    "picture": "../assets/research methods illustraties/png/Competitive-analysis.png",
+    "shortDescription": "Find a niche or unique selling point competitors are not filling.",
+    "title": "Competitive analysis",
+    "type": "Library"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f449",
+    "__v": 0,
+    "color": "#D1F087",
+    "deck": "ICT",
+    "picture": "../assets/research methods illustraties/png/Literature-study.png",
+    "shortDescription": "Find general information, guidance and best practices.",
+    "title": "Literature study",
+    "type": "Library"
+  }
+]

@@ -1,0 +1,42 @@
+.container {
+    border: solid #ffbb88 2px;
+    display: flex;
+    flex-direction: column;
+    min-height:300px;
+}
+
+.arrow {
+    width:48px;
+    height:32px;
+}
+
+.header {
+    color:white;
+    background-color:#ffbb88;
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    margin:-2px;
+}
+
+.header h3 {
+    margin:10px;
+    margin-left:20px;
+    flex-grow:1;
+    padding:0px;
+}
+
+.placeholder {
+    padding:20px;
+    border: dashed #ff8844 2px;
+    color:black;
+    cursor:pointer;
+}
+
+.placeholder:hover {
+    background-color:#ffeecc;
+}
+
+.actions {
+    padding:10px;
+}

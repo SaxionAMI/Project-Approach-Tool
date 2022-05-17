@@ -1,0 +1,38 @@
+.section {
+    margin: 12px 0;
+  }
+  
+  .margin {
+    margin: 0 12px;
+  }
+  
+  ul {
+    list-style-type: none;
+    margin-top: 4px;
+  }
+
+  .buttonWrap {
+    margin-top: 3%;
+    text-align: center;
+  }
+  
+  .mat-raised-button {
+    width: 100px;
+    height: 40px;
+    margin: 2%;
+    background-color: #04abd6;
+    color: white;
+  }
+  
+  .mat-button {
+    width: 100px;
+    height: 40px;
+    margin: 2%;
+    color: #04abd6;
+    background-color: white;
+  }
+
+  .mat-dialog-container{
+      width: 400px;
+  }
+

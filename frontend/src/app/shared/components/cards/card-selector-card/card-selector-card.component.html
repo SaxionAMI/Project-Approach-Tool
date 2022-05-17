@@ -1,0 +1,8 @@
+<!-- <div class="selector-card">
+  <ngx-flip [flip]="flipDiv"> -->
+    <mat-card front [ngStyle]="{ 'background-color': card.color }">
+      <mat-card-header>
+        <mat-card-title>{{card.title}}</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image src="{{card.picture}}">
+    </mat-card>

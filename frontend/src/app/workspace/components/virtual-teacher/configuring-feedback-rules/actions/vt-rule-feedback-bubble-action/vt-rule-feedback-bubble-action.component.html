@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="header">
+        <span>{{display}}</span>
+        <button mat-icon-button color="warn" (click)="deleteClicked()">
+            <mat-icon>delete</mat-icon>
+        </button>
+    </div>
+    <div class="splitLayout">
+        <table class="attributes">
+            <tr>
+                <th>Title:</th>
+                <td>
+                    <input type="text" [(ngModel)]="title" [class.invalid]="!titleValid && titleChanged">
+                </td>
+            </tr>
+            <tr>
+                <th>Subtitle:</th>
+                <td>
+                    <input type="text" [(ngModel)]="subtitle" [class.invalid]="!subtitleValid && subtitleChanged">
+                </td>
+            </tr>
+            <tr>
+                <th>Visual style:</th>
+                <td>
+                    <select [(ngModel)]="severity" [class.invalid]="!severityValid && severityChanged">
+                        <option *ngFor="let x of supportedSeverities" [value]="x.type">{{x.display}}</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2">Description:</th>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <textarea rows="5" type="text" [(ngModel)]="description" [class.invalid]="!descriptionValid && descriptionChanged"></textarea>
+                </td>
+            </tr>
+        </table>
+        <div class="separator"></div>
+        <div class="secondaryActionContainer">
+            <ng-template appDynamicComponentAnchor></ng-template>
+            <div class="placeholder" [matMenuTriggerFor]="addAction" *ngIf="secondaryActionComponent == null">Click to add a secondary action</div>
+            <mat-menu #addAction="matMenu">
+                <button mat-menu-item *ngFor="let item of supportedActions" (click)="addNewSecondaryAction(item.type)">{{item.display}}</button>
+            </mat-menu>
+        </div>
+    </div>
+</div>
+

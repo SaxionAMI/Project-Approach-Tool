@@ -1,0 +1,33 @@
+.modal-holder {
+  position: relative;
+}
+
+::ng-deep .mat-dialog-container {
+  background: white;
+  color: #5c473f;
+}
+
+#title-form {
+  background: #f3efec;
+}
+
+#note-area {
+  width: 96%;
+  background: #f3efec;
+}
+
+#title {
+  font-size: 22px;
+  color: #5c473f;
+}
+
+#title-editor {
+  font-size: 22px;
+  color: #5c473f;
+}
+
+.material-icons {
+  position: absolute;
+  top: 0px;
+  right: 5px;
+}

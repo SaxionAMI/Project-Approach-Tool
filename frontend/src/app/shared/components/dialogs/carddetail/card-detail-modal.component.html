@@ -1,0 +1,24 @@
+<div class="modal-holder" [ngStyle]="{ '::ng-deep  background-color': data.color }">
+  <app-card-selector-card *ngIf="!question" [card]="data" [detail]="true"></app-card-selector-card>
+  <p id="title" *ngIf="question && !canEdit" (click)="changeEdit()">{{data.title}} </p>
+  <input id="title-editor" *ngIf="question && canEdit" #name placeholder="Title" [formControl]="titleControl"
+    (keyup.enter)="saveTitle()" appFocusOnShow AutoSizeInput />
+  <p>Notes:</p>
+  <mat-form-field id="note-area">
+    <textarea matInput [(ngModel)]="data.note" cdkTextareaAutosize cdkAutosizeMinRows="2" cdkAutosizeMaxRows="5"
+      #autosize="cdkTextareaAutosize"></textarea>
+  </mat-form-field>
+  <mat-form-field id="start-date-area">
+    <mat-label>Choose start date</mat-label>
+    <input matInput [matDatepicker]="startDatePicker">
+    <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+    <mat-datepicker #startDatePicker></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field id="end-date-area">
+    <mat-label>Choose end date</mat-label>
+    <input matInput [matDatepicker]="endDatePicker">
+    <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+    <mat-datepicker #endDatePicker></mat-datepicker>
+  </mat-form-field>
+  <i mat-button class="material-icons" (click)="onNoClick()"> close </i>
+</div>
