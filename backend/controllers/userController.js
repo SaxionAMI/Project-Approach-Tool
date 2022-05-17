@@ -10,6 +10,7 @@ exports.postUser = function (req, res) {
   user.firstName = cipherText(user.firstName);
   user.lastName = cipherText(user.lastName);
   user.email = cipherText(user.email);
+  user.role=cipherText(user.role);
   user
     .save()
     .then((user) => {
