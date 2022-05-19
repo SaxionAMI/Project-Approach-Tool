@@ -26,6 +26,7 @@
     "angular-resize-event": "^2.1.0",
     "bufferutil": "^4.0.3",
     "canvg": "^3.0.7",
+    "cypress": "^9.6.1",
     "devextreme": "^21.2.4",
     "devextreme-angular": "^21.2.4",
     "devextreme-schematics": "^1.2.24",
