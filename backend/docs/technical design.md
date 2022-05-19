@@ -431,6 +431,9 @@ admin
         });
 ```
 
+The following sequence diagram descibes the authentication process with firebase:
+<img src="diagrams/registration.png" width="600" height="400"/>
+
 # Dataloader
 
 ```
