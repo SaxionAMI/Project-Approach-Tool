@@ -7,8 +7,8 @@
 describe('Test', function() {
     it('Login', function () {
         cy.visit('localhost:4200')
-        cy.get('input').type('test_item').should('have.value', 'test_item')
-        cy.get('.btn-login mat-focus-indicator mat-raised-button mat-button-base').click()
+        cy.get('input').type('realemail@gmail.com').should('have.value', 'realemail@gmail.com')
+        cy.get('button').contains('LOGIN').click() 
     })
 })
 
@@ -16,7 +16,6 @@ describe('Test', function() {
     it('Improper Login', function () {
         cy.visit('localhost:4200')
         cy.get('input').type('fake_login').should('have.value', 'fake_login')
-        cy.get('button').click()
-        cy.get('i').click()
+        cy.get('button').contains('LOGIN').click()
     })
 })
