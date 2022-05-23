@@ -44,3 +44,16 @@ describe('Pre-login section', function() {
     })
 
 })
+
+describe('Post-login section', function() {
+
+    // Login  
+    it('Proper Login', function () {
+        cy.visit('localhost:4200')
+        cy.get('input').type('test@projectapproachtool.nl').should('have.value', 'test@projectapproachtool.nl')
+        cy.get('button').contains('LOGIN').click() 
+        // cy.getLoginButton().click();
+
+    })
+
+})
