@@ -47,4 +47,3 @@ testem.log
 Thumbs.db
 src/environments/environment.ts
 serviceAccount.json
-cypress/support/commands.js
