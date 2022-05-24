@@ -6,6 +6,8 @@
   "scripts": {
     "test": "mocha",
     "test:report": "mocha ./test/*.js --reporter mocha-simple-html-reporter --reporter-options output=report.html",
+    "test:coverage": "nyc --reporter=test npm run test",
+    "test:coverage-html": "nyc --reporter=html npm run test",
     "start": "nodemon server.js",
     "cipher-cli": "cipher-cli.js"
   },
@@ -24,7 +26,8 @@
     "eslint-config-google": "^0.14.0",
     "mocha": "^10.0.0",
     "mocha-simple-html-reporter": "^2.0.0",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "nyc": "^15.1.0"
   },
   "dependencies": {
     "async": "^3.2.0",
