@@ -111,7 +111,7 @@ export class GroupComponent implements OnInit {
     this.socketService.removeEffectFromCard(this.room, card);
   }
 
-  /**
+  /** 
    * delete the group
    * @returns void
    */

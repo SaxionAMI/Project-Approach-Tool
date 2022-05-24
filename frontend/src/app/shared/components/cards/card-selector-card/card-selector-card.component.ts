@@ -11,6 +11,9 @@ export class CardSelectorCardComponent {
   @Input() detail: boolean;
   flipDiv: boolean = false;
 
+  // Added room 
+  @Input() room: string;
+
   @Output() childEvent = new EventEmitter();
 
   constructor() {}

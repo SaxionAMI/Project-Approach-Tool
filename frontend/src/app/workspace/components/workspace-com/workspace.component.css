@@ -76,6 +76,10 @@
   margin: 10px;
 }
 
+.card-listitem-sidebar {
+  display: flex;
+}
+
 .bucket {
   padding: 20px 10px;
   border-bottom: solid 1px #ccc;

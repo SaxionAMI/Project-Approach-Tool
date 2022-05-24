@@ -928,7 +928,7 @@ export class WorkspaceComponent implements OnInit {
         });
         this.categorySelected = "";
         this.repeatUpdate();
-      } else {
+      } else { // TODO:1: The cards are shown when entering this. 
         this.categorySelected = category;
         this.isShowing = true;
         this.cardsOfSelectedDeck = [];
