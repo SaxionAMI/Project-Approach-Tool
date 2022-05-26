@@ -11,6 +11,7 @@ const VtCatalogTab = mongoose.model("VtCatalogTab");
 const VtRule = mongoose.model("VtRule");
 const VtPhase = mongoose.model("VtPhase");
 const VtStrategy = mongoose.model("VtStrategy");
+const User = mongoose.model('User');
 const Express = require("express");
 const Router = Express.Router();
 const fs = require("fs");
@@ -94,6 +95,16 @@ fs.readFile("./json/templates.json", async(err, fileData) => {
       });
   });
 });
+
+// adds test accounts to the database
+fs.readFile("./json/users.json", async(err, fileData) => {
+  const users = JSON.parse(fileData);
+  users.forEach(async (user) => {
+    User.findByIdAndUpdate(user._id, user, { upsert: true }, (err, res) => {
+      if (err) return;
+    })
+  })
+})
 
 //  adds Virtual Teacher actions to the database
 fs.readFile("./json/virtual_teacher/vt-rule-actions.json", async(err, fileData) => {
