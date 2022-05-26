@@ -21,7 +21,6 @@ exports.generateToken = async (role) => {
         .post(`https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyCustomToken?key=${process.env.FIREBASE_API_KEY}`)
         .send({ token: customToken, returnSecureToken: true })
         .then(res => {
-            console.log(res.body.idToken);
             return res.body.idToken;
         })
         .catch(err => {
