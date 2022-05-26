@@ -10,6 +10,7 @@ import {
 import { Group } from "../../../core/models/group.model";
 import {
   CdkDragDrop,
+  copyArrayItem,
   moveItemInArray,
   transferArrayItem,
 } from "@angular/cdk/drag-drop";
@@ -137,7 +138,8 @@ export class GroupComponent implements OnInit {
         newIndex: event.currentIndex,
       });
     } else {
-      transferArrayItem(
+      copyArrayItem(
+        // transferArrayItem(
         event.previousContainer.data,
         event.container.data,
         event.previousIndex,
