@@ -1,11 +1,20 @@
 const assert = require("assert");
-const request = require('supertest');
+const request = require('supertest')('http://localhost:13788');
+const auth = require('./auth');
 
 // TODO - GET requests
 
-describe('GET/ vt-rules', () => {
-    it('should <enter>', () => {
+before(async () => {
+  global.token = await auth.generateToken('teacher');
+})
 
+describe('GET/ vt-rules', () => {
+    it('should <enter>', (done) => {
+      request
+        .get('/vt-rules')
+        .set('Authorization', global.token)
+        .expect('Content-Type', /json/)
+        .expect(200, done);
     })
 })
 
