@@ -10,11 +10,12 @@ admin.initializeApp({
 
 /**
  * This function generates a valid ID token which can be used in tests
- * @param  {any} role - the user role 
+ * @param  {string} role - the user role 
+ * @param  {string} uid - optional user ID 
  * @return {any} idToken - the valid ID token
  */
-exports.generateToken = async (role) => {
-    let customToken = await admin.auth().createCustomToken('token', { 'role': role })
+exports.generateToken = async (role, uid = 'token') => {
+    let customToken = await admin.auth().createCustomToken(uid, { 'role': role })
     
     // Exchanges custom token for an ID token 
     return await superagent
