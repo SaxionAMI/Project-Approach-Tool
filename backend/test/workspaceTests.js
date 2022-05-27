@@ -43,23 +43,25 @@ describe("POST /workspace", ()=>{
 });
 
 
-
-
-
-
-
-
-
-
-
 // test get workspace by id good weather
 describe("GET /workspace/:_id", ()=>{
     it("Should get a workspace by given id", (done)=>{
         request
-            .get("/deck/5e30276e8b5f721a0cc1f415")
+            .get("/workspace/62905d8d67e5b552986ddd2b")
             .set("Authorization", global.token)
             .expect("Content-Type", /json/)
             .expect(200, done);
+    });
+});
+
+// test get workspace by id good weather
+describe("GET /workspace/:_id", ()=>{
+    it("Should not be able to get a workspace by given id because no workspace with given id exists", (done)=>{
+        request
+            .get("/workspace/62905d8d67e5b552986ddd2bhaha")
+            .set("Authorization", global.token)
+            .expect("Content-Type", /json/)
+            .expect(500, done);
     });
 });
 
