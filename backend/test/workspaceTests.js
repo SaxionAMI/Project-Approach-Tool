@@ -54,7 +54,7 @@ describe("GET /workspace/:_id", ()=>{
     });
 });
 
-// test get workspace by id good weather
+// test get workspace by id bad weather
 describe("GET /workspace/:_id", ()=>{
     it("Should not be able to get a workspace by given id because no workspace with given id exists", (done)=>{
         request
@@ -139,4 +139,41 @@ describe("POST /workspace/:_id", ()=>{
             .expect(500, done);
     });
 });
+
+// test update workspace when no workspace exists with given id good weather
+describe("PUT /workspace/:_id", ()=>{
+    it("Should update a workspace with given request body and by the given id", (done)=>{
+        const body = {
+            _id: "62905d8d67e5b552986ddd2b",
+            title: "sample title updated with put request",
+            goal: "sample goal updated with put request",
+            image: "../../../../../assets/image/whiteSmoke.PNG"
+        };
+        request
+            .put("/workspace/62905d8d67e5b552986ddd2b")
+            .set("Authorization", global.token)
+            .send(body)
+            .expect("Content-Type", /json/)
+            .expect(200, done);
+    });
+});
+
+// test update workspace when no workspace exists with given id bad weather
+describe("PUT /workspace/:_id", ()=>{
+    it("Should not be able to update a workspace because no workspace exists with the id given ", (done)=>{
+        const body = {
+            _id: "62905d8d67e5b552986ddd2b",
+            title: "sample title updated with put request",
+            goal: "sample goal updated with put request",
+            image: "../../../../../assets/image/whiteSmoke.PNG"
+        };
+        request
+            .put("/workspace/62905d8d67e5b552986ddd2bhahhiuhoi")
+            .set("Authorization", global.token)
+            .send(body)
+            .expect("Content-Type", /json/)
+            .expect(500, done);
+    });
+});
+
 
