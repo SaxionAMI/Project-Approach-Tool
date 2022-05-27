@@ -61,7 +61,7 @@ describe("POST /deck/", ()=>{
 
 // create a deck bad weather
 describe("POST /deck/", ()=>{
-    it("Should create a deck", (done)=>{
+    it("Should not be able to create a deck because the requst body is the wrong format", (done)=>{
         const body = {
             ttle: "sample title",
             shortDescription: "sample short description",
@@ -77,3 +77,26 @@ describe("POST /deck/", ()=>{
     });
 });
 
+
+// delete a deck good weather
+describe("DELETE /deck/:deckId", ()=>{
+    it("Should delete a deck by given id", (done)=>{
+        request
+            .delete("/deck/5e30276e8b5f721a0cc1f415")
+            .set("Authorization", global.token)
+            .expect("Content-Type", /json/)
+            .expect(200, done);
+    });
+});
+
+
+// delete a deck bad weather
+describe("DELETE /deck/:deckId", ()=>{
+    it("Should not be able to delete a deck by given id because no deck exist with the given id", (done)=>{
+        request
+            .delete("/deck/wrongid")
+            .set("Authorization", global.token)
+            .expect("Content-Type", /json/)
+            .expect(500, done);
+    });
+});
