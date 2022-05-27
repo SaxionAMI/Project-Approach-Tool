@@ -90,7 +90,7 @@ exports.updateUser = function (req, res) {
   const uid = req.params.uid;
   User.exists({ uid: uid }).then((exists) => {
     if (exists) {
-      const user = new User(req.body);
+      const user = req.body;
       user.firstName = cipherText(user.firstName);
       user.lastName = cipherText(user.lastName);
       user.email = cipherText(user.email);
