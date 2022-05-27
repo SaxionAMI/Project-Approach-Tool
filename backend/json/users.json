@@ -1,0 +1,34 @@
+[{
+        "_id": "628f75c49f3bed3a7819d35b",
+        "role": "student",
+        "firstName": "0d0e1b74a0c127b41c7f807ed9b281625f3d7b60f8c1865be90d2866ed894615",
+        "lastName": "444e1fd048d8ef586c745028096e94ff",
+        "email": "64a02d924d95b4a2337d94bc0ff7563664bcc345364e834a2066c012ae41af85b0e9fbb924e504ec5eaee8a3b8b1f73b",
+        "study": "studentstudy",
+        "school": "studentschool",
+        "uid": "studentid",
+        "__v": 0
+    },
+    {
+        "_id": "628f75f30fc5406a50b091d4",
+        "role": "teacher",
+        "firstName": "f2c0b0eb764474dbbf8ff0fb36d4e44c53bbecc7b57008855207576681e62352",
+        "lastName": "9f95790c2c811ddba1641142fb8b03df",
+        "email": "53dc37699986cebe5ea0d109e764329e34556453f08c5ce80d4085d8b77b5f313a3f50f6b1fb17f4d8144f41aba0b413",
+        "study": "teacherstudy",
+        "school": "teacherschool",
+        "uid": "teacherid",
+        "__v": 0
+    },
+    {
+        "_id": "628f78280034c284147ef0e7",
+        "role": "admin",
+        "firstName": "485cf823ebef5b814d5ae3423d5ad442",
+        "lastName": "ff0c90811c30b04adee41dc196cd394e",
+        "email": "7334b21623e4edd7778a722949c6e87e0743112b0b9c72b2105f38096027899de18e74bd2661ceac1ed60341d231890f",
+        "study": "adminstudy",
+        "school": "adminschool",
+        "uid": "adminid",
+        "__v": 0
+    }
+]
