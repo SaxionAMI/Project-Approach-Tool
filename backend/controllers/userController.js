@@ -113,7 +113,7 @@ exports.deleteUser = function (req, res) {
   User.findOneAndDelete({ uid: uid })
     .then((user) => {
       admin.auth().deleteUser(uid);
-      res.json(user);
+      res.status(200).json(user);
     })
     .catch((err) => {
       res.status(500).send({
