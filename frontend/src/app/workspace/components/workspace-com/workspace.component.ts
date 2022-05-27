@@ -836,6 +836,7 @@ export class WorkspaceComponent implements OnInit {
    * @returns void
    */
   onDragCard(card: Card): void {
+    console.log(card.id);
     this.socketService.setEffectOnCard(this.room, card);
   }
 
@@ -903,8 +904,10 @@ export class WorkspaceComponent implements OnInit {
         this.isShowing = false;
         this.cardsOfSelectedDeck = [];
         this.preloadedCardsOfAllDecks.forEach((card) => {
+          const thisDate =  Date.now().toString();
           if (card.type === category) {
-            this.cardsOfSelectedDeck.push(card);
+            card.id = thisDate;
+            this.cardsOfSelectedDeck.push(new Card(card));
           }
         });
         this.categorySelected = "";
@@ -922,8 +925,10 @@ export class WorkspaceComponent implements OnInit {
         this.isShowing = false;
         this.cardsOfSelectedDeck = [];
         this.preloadedCardsOfAllDecks.forEach((card) => {
+          const thisDate =  Date.now().toString();
           if (card.type === category) {
-            this.cardsOfSelectedDeck.push(card);
+            card.id = thisDate;
+            this.cardsOfSelectedDeck.push(new Card(card));
           }
         });
         this.categorySelected = "";
@@ -933,8 +938,10 @@ export class WorkspaceComponent implements OnInit {
         this.isShowing = true;
         this.cardsOfSelectedDeck = [];
         this.preloadedCardsOfAllDecks.forEach((card) => {
+          const thisDate =  Date.now().toString();
           if (card.type === category) {
-            this.cardsOfSelectedDeck.push(card);
+            card.id = thisDate;
+            this.cardsOfSelectedDeck.push(new Card(card));
           }
         });
         this.repeatUpdate();

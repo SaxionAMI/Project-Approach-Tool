@@ -138,8 +138,8 @@ export class GroupComponent implements OnInit {
         newIndex: event.currentIndex,
       });
     } else {
-      copyArrayItem(
-        // transferArrayItem(
+      // copyArrayItem(
+        transferArrayItem(
         event.previousContainer.data,
         event.container.data,
         event.previousIndex,
