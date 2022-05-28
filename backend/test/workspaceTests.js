@@ -177,3 +177,34 @@ describe("PUT /workspace/:_id", ()=>{
 });
 
 
+// test get all workspaces that belong to one user good weather
+describe("POST /workspaces", ()=>{
+    it("Should return workspaces that belong to the user of the id given in the request body", (done)=>{
+        const body = {
+            uid: "studentid"
+        };
+        request
+            .post("/workspaces")
+            .set("Authorization", global.token)
+            .send(body)
+            .expect("Content-Type", /json/)
+            .expect(200, done);
+    });
+});
+
+// test get all workspaces that belong to one user bad weather
+describe("POST /workspaces", ()=>{
+    it("Should not return workspaces", (done)=>{
+        const body = {
+            uid: "studentidlalala"
+        };
+        request
+            .post("/workspaces")
+            .set("Authorization", global.token)
+            .send(body)
+            .expect("Content-Type", /json/)
+            .expect(500, done);
+    });
+});
+
+
