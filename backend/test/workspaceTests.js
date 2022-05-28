@@ -232,6 +232,26 @@ describe("GET /workspace/customCard/:_id", ()=>{
 });
 
 
+// test delete a workspace good weather
+describe("DELETE /workspace/:_id", ()=>{
+    it("Should delete a workspace by given workspace id", (done)=>{
+        request
+            .delete("/workspace/62905d8d67e5b552986ddd2b")
+            .set("Authorization", global.token)
+            .expect("Content-Type", /json/)
+            .expect(200, done);
+    });
+});
 
+// test delete a workspace bad weather
+describe("DELETE /workspace/:_id", ()=>{
+    it("Should not delete a workspace by given workspace id because no workspace exists with given id", (done)=>{
+        request
+            .delete("/workspace/62905d8d67e5b552986ddd2blallala")
+            .set("Authorization", global.token)
+            .expect("Content-Type", /json/)
+            .expect(500, done);
+    });
+});
 
 
