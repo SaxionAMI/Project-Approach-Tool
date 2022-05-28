@@ -208,3 +208,30 @@ describe("POST /workspaces", ()=>{
 });
 
 
+
+// test get custom cards that belong to one workspace by workspace id good weather
+describe("GET /workspace/customCard/:_id", ()=>{
+    it("Should get custom cards that belong to a workspace by given workspace id", (done)=>{
+        request
+            .get("/workspace/customCard/62905d8d67e5b552986ddd2b")
+            .set("Authorization", global.token)
+            .expect("Content-Type", /json/)
+            .expect(200, done);
+    });
+});
+
+// test get custom cards that belong to one workspace by workspace id bad weather
+describe("GET /workspace/customCard/:_id", ()=>{
+    it("Should not get custom cards", (done)=>{
+        request
+            .get("/workspace/customCard/62905d8d67e5b552986dddhhhh2blalalal")
+            .set("Authorization", global.token)
+            .expect("Content-Type", /json/)
+            .expect(500, done);
+    });
+});
+
+
+
+
+

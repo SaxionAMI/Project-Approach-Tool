@@ -15,6 +15,8 @@ Router.post("/workspaces", workspace.getWorkspacesByUID);
 
 //  The get routings
 Router.get("/workspace/:_id", workspace.getWorkspaceById);
+
+// this call is not restful
 Router.get("/workspace/customCard/:_id", workspace.getCustomCards);
 
 // The delete routings
