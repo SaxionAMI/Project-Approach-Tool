@@ -28,6 +28,16 @@ describe("GET /deck/:deckId", ()=>{
     });
 });
 
+// get a deck by id when unauthorized
+describe("GET /deck/:deckId", ()=>{
+    it("Should not get a deck because unauthorized", (done)=>{
+        request
+            .get("/deck/5e30276e8b5f721a0cc1f415")
+            .expect(403, done);
+    });
+});
+
+
 
 // get all decks good weather
 describe("GET /deck/", ()=>{
@@ -39,6 +49,16 @@ describe("GET /deck/", ()=>{
             .expect(200, done);
     });
 });
+
+// get all decks when unauthorized
+describe("GET /deck/", ()=>{
+    it("Should get no deck because unauthorized", (done)=>{
+        request
+            .get("/deck")
+            .expect(403, done);
+    });
+});
+
 
 
 // create a deck good weather
@@ -77,6 +97,24 @@ describe("POST /deck/", ()=>{
     });
 });
 
+// create a deck when unauthorized
+describe("POST /deck/", ()=>{
+    it("Should not create a deck because unauthorized", (done)=>{
+        const body = {
+            title: "sample title",
+            shortDescription: "sample short description",
+            types: ["sample type 1", "sample type 2"]
+        };
+
+        request
+            .post("/deck")
+            .send(body)
+            .expect(403, done);
+    });
+});
+
+
+
 
 // delete a deck good weather
 describe("DELETE /deck/:deckId", ()=>{
@@ -98,5 +136,14 @@ describe("DELETE /deck/:deckId", ()=>{
             .set("Authorization", global.token)
             .expect("Content-Type", /json/)
             .expect(500, done);
+    });
+});
+
+// delete a deck when unauthorized
+describe("DELETE /deck/:deckId", ()=>{
+    it("Should not delete a deck because unauthorized", (done)=>{
+        request
+            .delete("/deck/5e30276e8b5f721a0cc1f415")
+            .expect(403, done);
     });
 });
