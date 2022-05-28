@@ -42,6 +42,22 @@ describe("POST /workspace", ()=>{
     });
 });
 
+// test create a workspace when unauthorized
+describe("POST /workspace", ()=>{
+    it("Should not create a workspace because unauthorized", (done)=>{
+        const body = {
+            _id: "62905d8d67e5b552986ddd2b",
+            title: "sample title",
+            goal: "sample goal",
+            image: "../../../../../assets/image/whiteSmoke.PNG"
+        };
+        request
+            .post("/workspace")
+            .send(body)
+            .expect(403, done);
+    });
+});
+
 
 // test get workspace by id good weather
 describe("GET /workspace/:_id", ()=>{
@@ -62,6 +78,15 @@ describe("GET /workspace/:_id", ()=>{
             .set("Authorization", global.token)
             .expect("Content-Type", /json/)
             .expect(500, done);
+    });
+});
+
+// test get workspace by id when unauthorized
+describe("GET /workspace/:_id", ()=>{
+    it("Should not get a workspace by given id because unauthorized", (done)=>{
+        request
+            .get("/workspace/62905d8d67e5b552986ddd2b")
+            .expect(403, done);
     });
 });
 
@@ -103,6 +128,24 @@ describe("POST /workspace/:_id", ()=>{
     });
 });
 
+
+// test upsert a workspace when no workspace exists with given id when unauthorized
+describe("POST /workspace/:_id", ()=>{
+    it("Should not create a workspace with given request body and the given id", (done)=>{
+        const body = {
+            _id: "62905d8d67e5b552986ddd16lala",
+            title: "sample title upsert first time",
+            goal: "sample goal upsert first time",
+            image: "../../../../../assets/image/whiteSmoke.PNG"
+        };
+        request
+            .post("/workspace/62905d8d67e5b552986ddd16")
+            .send(body)
+            .expect(403, done);
+    });
+});
+
+
 // test upsert a workspace when a workspace exists with given id good weather
 describe("POST /workspace/:_id", ()=>{
     it("Should update a workspace with given request body and the given id", (done)=>{
@@ -140,7 +183,25 @@ describe("POST /workspace/:_id", ()=>{
     });
 });
 
-// test update workspace when no workspace exists with given id good weather
+
+// test upsert a workspace when a workspace exists with given id when unauthorized
+describe("POST /workspace/:_id", ()=>{
+    it("Should not update a workspace with given request body and the given id", (done)=>{
+        const body = {
+            _id: "62905d8d67e5b552986ddd16",
+            title: "sample title upsert second time",
+            goal: "sample goal upsert second time",
+            image: "../../../../../assets/image/whiteSmoke.PNG"
+        };
+        request
+            .post("/workspace/62905d8d67e5b552986ddd16")
+            .send(body)
+            .expect(403, done);
+    });
+});
+
+
+// test update workspace  with given id good weather
 describe("PUT /workspace/:_id", ()=>{
     it("Should update a workspace with given request body and by the given id", (done)=>{
         const body = {
@@ -158,7 +219,7 @@ describe("PUT /workspace/:_id", ()=>{
     });
 });
 
-// test update workspace when no workspace exists with given id bad weather
+// test update workspace with given id bad weather
 describe("PUT /workspace/:_id", ()=>{
     it("Should not be able to update a workspace because no workspace exists with the id given ", (done)=>{
         const body = {
@@ -173,6 +234,22 @@ describe("PUT /workspace/:_id", ()=>{
             .send(body)
             .expect("Content-Type", /json/)
             .expect(500, done);
+    });
+});
+
+// test update workspace  with given id when unauthorized
+describe("PUT /workspace/:_id", ()=>{
+    it("Should not update a workspace with given request body and by the given id", (done)=>{
+        const body = {
+            _id: "62905d8d67e5b552986ddd2b",
+            title: "sample title updated with put request",
+            goal: "sample goal updated with put request",
+            image: "../../../../../assets/image/whiteSmoke.PNG"
+        };
+        request
+            .put("/workspace/62905d8d67e5b552986ddd2b")
+            .send(body)
+            .expect(403, done);
     });
 });
 
@@ -207,6 +284,19 @@ describe("POST /workspaces", ()=>{
     });
 });
 
+// test get all workspaces that belong to one user when unauthorized
+describe("POST /workspaces", ()=>{
+    it("Should not return workspaces that belong to the user of the id given in the request body", (done)=>{
+        const body = {
+            uid: "studentid"
+        };
+        request
+            .post("/workspaces")
+            .send(body)
+            .expect(403, done);
+    });
+});
+
 
 
 // test get custom cards that belong to one workspace by workspace id good weather
@@ -231,6 +321,15 @@ describe("GET /workspace/customCard/:_id", ()=>{
     });
 });
 
+// test get custom cards that belong to one workspace by workspace id when unauthorized
+describe("GET /workspace/customCard/:_id", ()=>{
+    it("Should not get custom cards that belong to a workspace by given workspace id", (done)=>{
+        request
+            .get("/workspace/customCard/62905d8d67e5b552986ddd2b")
+            .expect(403, done);
+    });
+});
+
 
 // test delete a workspace good weather
 describe("DELETE /workspace/:_id", ()=>{
@@ -251,6 +350,16 @@ describe("DELETE /workspace/:_id", ()=>{
             .set("Authorization", global.token)
             .expect("Content-Type", /json/)
             .expect(500, done);
+    });
+});
+
+
+// test delete a workspace when unauthorized
+describe("DELETE /workspace/:_id", ()=>{
+    it("Should not delete a workspace by given workspace id", (done)=>{
+        request
+            .delete("/workspace/62905d8d67e5b552986ddd2b")
+            .expect(403, done);
     });
 });
 
