@@ -1,7 +1,9 @@
-beforeEach (() => {
-    // Login
-    cy.visit('localhost:4200')
+before (() => {
     cy.login()
+})
+
+beforeEach(() => {
+    cy.visit('localhost:4200')
 })
 
 describe('Post-login section', function() {
@@ -39,8 +41,9 @@ describe('Post-login section', function() {
         cy.get('mat-card').eq(0)
         cy.get('div').eq(0)
         cy.get('mat-card-title').contains('testworkplace')
-        cy.get('.mat-button-wrapper').click()
-        cy.get('button').contains('Make copy').click()
+        cy.get('#more-button').click({force:true})
+        cy.get('.mat-menu-content').should('be.visible')
+        cy.get('button').contains('Make copy').should('be.visible').click()
     })
 
     //Delete workplace
@@ -49,8 +52,17 @@ describe('Post-login section', function() {
         cy.get('mat-card').eq(0)
         cy.get('div').eq(0)
         cy.get('mat-card-title').contains('testworkplace')
-        cy.get('.mat-button-wrapper').click()
-        cy.get('button').contains('Delete').click()
+        cy.get('#more-button').click({force:true})
+        cy.get('.mat-menu-content').should('be.visible')
+        cy.get('button').contains('Delete').should('be.visible').click()
+    })
+
+    it('Enter workplace', function () {
+        cy.get('app-workspace-card')
+        cy.get('.mat-card-image').eq(0).click({force:true})
+        // cy.get('div').eq(0).click()
+
+
     })
 
 })

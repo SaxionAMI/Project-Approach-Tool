@@ -1,4 +1,5 @@
 beforeEach (() => {
+    cy.logout()
     cy.visit('localhost:4200')
 })
 
