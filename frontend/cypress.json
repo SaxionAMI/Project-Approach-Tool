@@ -1,0 +1,7 @@
+{
+    "ignoreTestFiles": "browserslist",
+    "testFiles": [ 
+        "pre-login-tests/*.js", 
+        "post-login-tests/*.js"
+    ]
+}
