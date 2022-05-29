@@ -61,11 +61,10 @@ exports.updateRule = function(req, res) {
     VtRule.exists({_id: req.params._id}), 
     'Cannot find a feedback rule with id ' + req.params._id,
     () => {
-      const rule = new VtRule(req.body);
       const validator = new VtRuleValidator();
-      const validationResult = validator.validate(rule);
+      const validationResult = validator.validate(req.body);
       sanityChecks.rejectIfValidationErrors(res, validationResult, () => {
-        VtRule.findByIdAndUpdate(req.params._id, rule).then(dbRule => {
+        VtRule.findByIdAndUpdate(req.params._id, req.body, { new: true }).then(dbRule => {
           res.status(200).json(dbRule);
         })
         .catch(error => {
@@ -85,7 +84,6 @@ exports.updateRule = function(req, res) {
  */
 exports.createRule = function(req, res) {
   const rule = new VtRule(req.body);
-  rule._id = null;
   rule.configurable = true;
   const validator = new VtRuleValidator();
   const validationResult = validator.validate(rule);
