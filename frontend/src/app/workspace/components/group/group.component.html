@@ -39,6 +39,7 @@
   <div class="group-content">
     <div
       cdkDropList
+      #groupList = "cdkDropList"
       id="{{ group.id }}"
       [cdkDropListData]="group.cards"
       class="card-list"

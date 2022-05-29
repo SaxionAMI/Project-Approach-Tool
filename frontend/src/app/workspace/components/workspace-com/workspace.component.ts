@@ -616,8 +616,8 @@ export class WorkspaceComponent implements OnInit {
    * @returns void
    */
   addCard(card: Card): void {
-    card.id = Date.now().toString();
     this.workspace.spawnList.cards.push(new Card(card));
+    card.id = Date.now().toString();
     this.updateWorkspace();
     this.socketService.addCardToSpawnlist(this.room, card, new VTWorkspaceData(this.workspace));
   }
@@ -836,6 +836,7 @@ export class WorkspaceComponent implements OnInit {
    * @returns void
    */
   onDragCard(card: Card): void {
+    console.log(card.id);
     this.socketService.setEffectOnCard(this.room, card);
   }
 
@@ -902,9 +903,17 @@ export class WorkspaceComponent implements OnInit {
       if (category === this.categorySelected) {
         this.isShowing = false;
         this.cardsOfSelectedDeck = [];
+        var temp = 0;
+        var tempCard = this.preloadedCardsOfAllDecks[0];
         this.preloadedCardsOfAllDecks.forEach((card) => {
+          const thisDate =  Date.now().toString();
+          if (tempCard != card) {
+            temp += 1;
+          }
+
           if (card.type === category) {
-            this.cardsOfSelectedDeck.push(card);
+            card.id = thisDate + temp;
+            this.cardsOfSelectedDeck.push(new Card(card));
           }
         });
         this.categorySelected = "";
@@ -921,20 +930,36 @@ export class WorkspaceComponent implements OnInit {
       if (category === this.categorySelected && category !== "general") {
         this.isShowing = false;
         this.cardsOfSelectedDeck = [];
+        var temp = 0;
+        var tempCard = this.preloadedCardsOfAllDecks[0];
         this.preloadedCardsOfAllDecks.forEach((card) => {
+          const thisDate =  Date.now().toString();
+          if (tempCard != card) {
+            temp += 1;
+          }
+
           if (card.type === category) {
-            this.cardsOfSelectedDeck.push(card);
+            card.id = thisDate + temp;
+            this.cardsOfSelectedDeck.push(new Card(card));
           }
         });
         this.categorySelected = "";
         this.repeatUpdate();
-      } else {
+      } else { // TODO:1: The cards are shown when entering this. 
         this.categorySelected = category;
         this.isShowing = true;
         this.cardsOfSelectedDeck = [];
+        var temp = 0;
+        var tempCard = this.preloadedCardsOfAllDecks[0];
         this.preloadedCardsOfAllDecks.forEach((card) => {
+          const thisDate =  Date.now().toString();
+          if (tempCard != card) {
+            temp += 1;
+          }
+
           if (card.type === category) {
-            this.cardsOfSelectedDeck.push(card);
+            card.id = thisDate + temp;
+            this.cardsOfSelectedDeck.push(new Card(card));
           }
         });
         this.repeatUpdate();

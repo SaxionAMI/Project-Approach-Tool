@@ -118,23 +118,36 @@
     </div>
   </mat-drawer>
   <mat-drawer-content>
-    <mat-drawer-container
+    <mat-drawer-container cdkDropListGroup
       class="sidenav-container"
       [ngStyle]="{ visibility: loading ? 'hidden' : 'visible' }"
       id="screen">
       <mat-drawer mode="side" class="sidebar-extended" [opened]="isShowing">
-        <div style="height: 90px"></div>
-        <div
-          *ngIf="this.categorySelected != 'general' && this.categorySelected !== 'Search'"
-          fxLayout="row wrap"
-          fxLayoutAlign="flex-start">
-          <app-card-selector-card
-            *ngFor="let card of cardsOfSelectedDeck"
-            fxFlex="0 1 calc(50% - 5px)"
+          <div style="height: 90px"></div>
+          <div cdkDropList
+            #sideList = "cdkDropList"
+            [cdkDropListData]="cardsOfSelectedDeck"
+            *ngIf="this.categorySelected != 'general' && this.categorySelected !== 'Search'"
+            fxLayout="row wrap"
+            fxLayoutAlign="flex-start"
+            >
+            <!-- TODO:2: Implement the dragging right here! --> 
+            <app-card-selector-card
+              *ngFor="let card of cardsOfSelectedDeck"
+              fxFlex="0 1 calc(50% - 5px)"
+              [detail]="false"
+              (click)="addCard(card)"
+  
+            cdkDrag
+            (cdkDragStarted)="onDragCard(card)"
+            (cdkDragEnded)="onDragCardEnded(card)"
+            class="card-listitem-sidebar"
+            id="{{ card.id ? card.id : card._id }}"
             [card]="card"
-            [detail]="false"
-            (click)="addCard(card)"></app-card-selector-card>
-        </div>
+            [room]="room"
+            
+              ></app-card-selector-card>
+          </div>
         <div *ngIf="this.categorySelected == 'Search'"
           fxLayout="column"
           fxLayoutGap="5px"
@@ -194,7 +207,8 @@
         </div>
       </mat-drawer>
       <mat-drawer-content id="content" data-html2canvas-ignore="true">
-        <div class="workspace-container" cdkDropListGroup>
+        <div class="workspace-container" >
+          <!-- TODO:3: editing + dragging the card --> 
           <div
             id="spawn-list"
             *ngIf="workspace.spawnList.cards.length > 0"

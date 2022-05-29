@@ -23,6 +23,11 @@
   z-index: 0;
 }
 
+.card-listitem-sidebar {
+  margin: 10px;
+  display: flex;
+}
+
 .group-card {
   position: relative;
   min-width: 200px;
