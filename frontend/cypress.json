@@ -1,7 +1,9 @@
 {
-    "ignoreTestFiles": "browserslist",
     "testFiles": [ 
-        "pre-login-tests/*.js", 
-        "post-login-tests/*.js"
+        "1-getting-started/*.js", 
+        "2-advanced-examples/*.js",
+        "account-creation/*.js",
+        "card-manipulation-1/*.js",
+        "workspace-manipulation/*.js"
     ]
 }
