@@ -47,5 +47,54 @@ describe("GET /template/example", ()=>{
 });
 
 
+// create a template good weather
+describe("POST /template", ()=>{
+    it("Should create a template", (done)=>{
+        const body = {
+            title: "sample template title",
+            goal: "sample template goal",
+            image: "../../../../../assets/image/whiteSmoke.PNG"
+        };
+        request
+            .post("/template")
+            .set("Authorization", global.token)
+            .send(body)
+            .expect("Content-Type", /json/)
+            .expect(200, done);
+    });
+});
+
+
+// create a template bad weather
+describe("POST /template", ()=>{
+    it("Should not create a template", (done)=>{
+        const body = {
+            title: "sample template title",
+            gooooooal: "sample template goal",
+            image: "../../../../../assets/image/whiteSmoke.PNG"
+        };
+        request
+            .post("/template")
+            .set("Authorization", global.token)
+            .send(body)
+            .expect("Content-Type", /json/)
+            .expect(500, done);
+    });
+});
+
+// create a template when unauthorized
+describe("POST /template", ()=>{
+    it("Should not create a template", (done)=>{
+        const body = {
+            title: "sample template title",
+            goal: "sample template goal",
+            image: "../../../../../assets/image/whiteSmoke.PNG"
+        };
+        request
+            .post("/template")
+            .send(body)
+            .expect(403, done);
+    });
+});
 
 
