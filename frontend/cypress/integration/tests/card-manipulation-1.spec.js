@@ -13,8 +13,8 @@ describe('Card Manipulation', function() {
         cy.get('.mat-card-image').eq(0).click({force:true})
         cy.get('#mat-dialog-0').should('be.visible')
         // Forcing true causes list to no longer be selected. why??
-        cy.get('li').click('left', { force:true , multiple: true})
-        cy.get('button').contains('SAVE').click({force:true})
+        cy.get('li').click('left', { multiple: true})
+        cy.get('button').contains('SAVE').click()
         cy.get('button').contains('build').click()
         cy.get('#screen > mat-drawer > div > div.ng-star-inserted > img:nth-child(1)').should('be.visible').click()
         cy.get('#screen > mat-drawer > div > div.ng-star-inserted > img:nth-child(2)').should('be.visible').click()

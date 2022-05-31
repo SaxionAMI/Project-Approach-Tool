@@ -53,6 +53,6 @@ describe('Account creation and verification', function() {
         // cy.get('#mat-input-1').should('have.value', 'testlastname')
         // cy.get('#mat-input-2').should('have.value', 'testschool')
         // cy.get('#mat-input-3').should('have.value', 'teststudy')
-})
+    })
 
 })
