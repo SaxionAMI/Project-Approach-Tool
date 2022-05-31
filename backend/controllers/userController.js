@@ -12,6 +12,17 @@ exports.postUser = function (req, res) {
   user.email = cipherText(user.email);
 
 
+  user
+      .save()
+      .then((user) => {
+        res.status(200).json(user);
+      })
+      .catch((err) => {
+        res.status(500).send({
+          message: err.message || "Some error occurred while creating the User.",
+        });
+      });
+
  /* user.role=user.role;
   //  validate the value of the role key in the request body
   if (user.role=="teacher"||user.role=="admin"||user.role==undefined) {
