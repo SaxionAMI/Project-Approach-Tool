@@ -10,9 +10,13 @@ exports.postUser = function (req, res) {
   user.firstName = cipherText(user.firstName);
   user.lastName = cipherText(user.lastName);
   user.email = cipherText(user.email);
-  user.role=cipherText(user.role);
+
+
+  /*
+  user.role=user.role;
   //  validate the value of the role key in the request body
   if (user.role=="teacher"||user.role=="admin"||user.role==undefined) {
+    user.role=cipherText(user.role);
     user
     .save()
     .then((user) => {
@@ -27,7 +31,8 @@ exports.postUser = function (req, res) {
     res.status(500).send({
       message: "User role submitted is not the correct format",
     });
-  }
+  }*/
+
 };
 
 //  check if the submitted email is valid
