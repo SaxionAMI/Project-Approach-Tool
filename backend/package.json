@@ -4,6 +4,7 @@
   "description": "Project Approach Tool",
   "main": "server.js",
   "scripts": {
+    "apidoc": "apidoc -i routes/ -o docs/apidoc/",
     "test": "mocha",
     "test:report": "mocha ./test/*.js --reporter mocha-simple-html-reporter --reporter-options output=report.html",
     "test:coverage": "nyc --reporter=test npm run test",
@@ -22,6 +23,7 @@
   },
   "homepage": "https://github.com/SaxionAMI/ProjectApproachToolBackend#readme",
   "devDependencies": {
+    "apidoc": "^0.51.1",
     "eslint": "^7.26.0",
     "eslint-config-google": "^0.14.0",
     "mocha": "^10.0.0",
