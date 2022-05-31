@@ -10,7 +10,6 @@ const authorization = require("../authorizationModule");
  * @apiGroup vtRules
  *
  * @apiSuccess {Object[]} rules     List of enabled rules.
- * @apiSuccess {}
  */
 Router.get("/vt-rules", vtRules.getEnabledRules);
 
@@ -19,7 +18,6 @@ Router.get("/vt-rules", vtRules.getEnabledRules);
  * @apiName get
  * @apiGroup vtRules
  *
- * @apiSuccess 
  */
 Router.get("/vt-rules/all", authorization.hasRole(['teacher','admin']), vtRules.getRules);
 
@@ -28,7 +26,6 @@ Router.get("/vt-rules/all", authorization.hasRole(['teacher','admin']), vtRules.
  * @apiName get
  * @apiGroup vtRules
  *
- * @apiSuccess 
  */
 Router.get("/vt-rules/actions", authorization.hasRole(['teacher','admin']), vtRules.getActions);
 
@@ -37,7 +34,6 @@ Router.get("/vt-rules/actions", authorization.hasRole(['teacher','admin']), vtRu
  * @apiName get
  * @apiGroup vtRules
  *
- * @apiSuccess 
  */
 Router.get("/vt-rules/conditions", authorization.hasRole(['teacher','admin']), vtRules.getConditions);
 
@@ -46,7 +42,6 @@ Router.get("/vt-rules/conditions", authorization.hasRole(['teacher','admin']), v
  * @apiName get
  * @apiGroup vtRules
  *
- * @apiSuccess 
  */
 Router.get("/vt-rules/comparisons", authorization.hasRole(['teacher','admin']), vtRules.getComparisons);
 
@@ -55,7 +50,6 @@ Router.get("/vt-rules/comparisons", authorization.hasRole(['teacher','admin']), 
  * @apiName get
  * @apiGroup vtRules
  *
- * @apiSuccess 
  */
 Router.get("/vt-rules/scopes", authorization.hasRole(['teacher','admin']), vtRules.getScopes);
 
@@ -64,7 +58,6 @@ Router.get("/vt-rules/scopes", authorization.hasRole(['teacher','admin']), vtRul
  * @apiName get
  * @apiGroup vtRules
  *
- * @apiSuccess 
  */
 Router.get("/vt-rules/catalog-tabs", authorization.hasRole(['teacher','admin']), vtRules.getCatalogTabs);
 
@@ -73,7 +66,6 @@ Router.get("/vt-rules/catalog-tabs", authorization.hasRole(['teacher','admin']),
  * @apiName get
  * @apiGroup vtRules
  *
- * @apiSuccess 
  */
 Router.get("/vt-rules/severities", authorization.hasRole(['teacher','admin']), vtRules.getSeverities);
 
@@ -82,7 +74,6 @@ Router.get("/vt-rules/severities", authorization.hasRole(['teacher','admin']), v
  * @apiName get
  * @apiGroup vtRules
  *
- * @apiSuccess 
  */
 Router.get("/vt-rules/phases", authorization.hasRole(['teacher','admin']), vtRules.getPhases);
 
@@ -91,7 +82,6 @@ Router.get("/vt-rules/phases", authorization.hasRole(['teacher','admin']), vtRul
  * @apiName get
  * @apiGroup vtRules
  *
- * @apiSuccess 
  */
 Router.get("/vt-rules/strategies", authorization.hasRole(['teacher','admin']), vtRules.getStrategies);
 
@@ -100,7 +90,6 @@ Router.get("/vt-rules/strategies", authorization.hasRole(['teacher','admin']), v
  * @apiName get
  * @apiGroup vtRules
  *
- * @apiSuccess 
  */
 Router.post("/vt-rules", authorization.hasRole(['teacher','admin']), vtRules.createRule);
 
@@ -109,7 +98,6 @@ Router.post("/vt-rules", authorization.hasRole(['teacher','admin']), vtRules.cre
  * @apiName get
  * @apiGroup vtRules
  *
- * @apiSuccess 
  */
 Router.post("/vt-rules/:_id", authorization.hasRole(['teacher','admin']), vtRules.updateRule);
 
@@ -118,7 +106,6 @@ Router.post("/vt-rules/:_id", authorization.hasRole(['teacher','admin']), vtRule
  * @apiName get
  * @apiGroup vtRules
  *
- * @apiSuccess 
  */
 Router.post("/vt-rules/:_id/set-enabled", authorization.hasRole(['teacher','admin']), vtRules.setRuleEnabled);
 
@@ -127,7 +114,6 @@ Router.post("/vt-rules/:_id/set-enabled", authorization.hasRole(['teacher','admi
  * @apiName get
  * @apiGroup vtRules
  *
- * @apiSuccess 
  */
 Router.delete("/vt-rules/:_id", authorization.hasRole(['teacher','admin']), vtRules.deleteRule);
 
