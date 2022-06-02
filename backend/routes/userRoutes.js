@@ -6,15 +6,16 @@ const authorization = require("../authorizationModule");
 
 /**
  * @api {post} /user Create new user.
+ *
+ * @apiName postUser
+ * @apiGroup user
+ * 
  * @apiBody {String} user.firstName  Users firstname.
  * @apiBody {String} user.lastName   Users lastname.
  * @apiBody {String} user.email      Users email address.
  * @apiBody {String} user.study      Users study.
  * @apiBody {String} user.school     Users school.
  * @apiBody {String} user.uid        Users ID.
- *
- * @apiName postUser
- * @apiGroup user
  * 
  * @apiSuccess {Object} user            User object.
  * @apiSuccess {String} user.role       Users role.
@@ -30,10 +31,11 @@ Router.post("/user", User.postUser);
 
 /**
  * @api {post} /user/check Check if email is valid.
- * @apiBody {String} email      Users email address.
  * 
  * @apiName checkIfValidEmail
  * @apiGroup user
+ * 
+ * @apiBody {String} email      Users email address.
  * 
  * There is no identifier for boolean below
  * @apiSuccess {Boolean} result True if use email is valid.
@@ -43,11 +45,11 @@ Router.post("/user/check", User.checkIfValidEmail);
 /**
  * @api {post} /user/:uid/role Set user role.
  * @apiParam {String} uid Users unique ID.
- *
- * @apiBody {String} role Users new role
  * 
  * @apiName setUserRole
  * @apiGroup user
+ * 
+ * @apiBody {String} role Users new role
  * 
  * @apiSuccess {Object} user            User object.
  * @apiSuccess {String} user.role       Users role.
