@@ -96,7 +96,7 @@ Router.get("/user/role", authorization.hasRole(['admin']), User.getUserRoles);
 Router.get("/user/:uid", User.getUserByUid);
 
 /**
- * @api {get} /user/export/:uid Get export ready user date.
+ * @api {get} /user/export/:uid Get export ready user data.
  * 
  * @apiParam {String} uid Users unique ID.
  * 
