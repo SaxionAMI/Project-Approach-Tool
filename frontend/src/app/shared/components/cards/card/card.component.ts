@@ -71,8 +71,11 @@ export class CardComponent {
    * @returns void
    */
   saveTitle(): void {
-    this.card.title = this.cardControl.value;
-    console.log(this.card);
+    if (this.cardControl.value == '') {
+      this.card.title = "Question";
+    } else {
+      this.card.title = this.cardControl.value;
+    }
     this.save.emit(this.card);
     this.removeEffect.emit();
   }

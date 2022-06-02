@@ -8,6 +8,7 @@ Router.get("/template", template.getTemplates);
 Router.get("/template/example", template.getExampleTemplate);
 
 //  The post and upsert routings
+// where tf is upsert in the controller??
 Router.post("/template", template.addTemplate);
 
 module.exports = Router;
