@@ -93,6 +93,7 @@ import {MatNativeDateModule} from '@angular/material/core';
     DynamicComponentAnchor,
   ],
   entryComponents: [
+    ConfirmDeleteDialogComponent,
     DeckdialogComponent,
     CardDetailModalComponent,
     InviteDialogComponent,
