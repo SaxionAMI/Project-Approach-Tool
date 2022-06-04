@@ -10,22 +10,21 @@ const authorization = require("../authorizationModule");
  * @apiName postUser
  * @apiGroup user
  * 
- * @apiBody {String} user.firstName  Users firstname.
- * @apiBody {String} user.lastName   Users lastname.
- * @apiBody {String} user.email      Users email address.
- * @apiBody {String} user.study      Users study.
- * @apiBody {String} user.school     Users school.
- * @apiBody {String} user.uid        Users ID.
+ * @apiBody {String} firstName  Users firstname.
+ * @apiBody {String} lastName   Users lastname.
+ * @apiBody {String} email      Users email address.
+ * @apiBody {String} study      Users study.
+ * @apiBody {String} school     Users school.
+ * @apiBody {String} uid        Users ID.
  * 
- * @apiSuccess {Object} user            User object.
- * @apiSuccess {String} user.role       Users role.
- * @apiSuccess {String} user._id        Users encrypted database Object ID.
- * @apiSuccess {String} user.firstName  Users encrypted firstname.
- * @apiSuccess {String} user.lastName   Users encrypted lastname.
- * @apiSuccess {String} user.email      Users encrypted email address.
- * @apiSuccess {String} user.study      Users study.
- * @apiSuccess {String} user.school     Users school.
- * @apiSuccess {String} user.uid        Users ID.
+ * @apiSuccess {String} role       Users role.
+ * @apiSuccess {String} _id        Users encrypted database Object ID.
+ * @apiSuccess {String} firstName  Users encrypted firstname.
+ * @apiSuccess {String} lastName   Users encrypted lastname.
+ * @apiSuccess {String} email      Users encrypted email address.
+ * @apiSuccess {String} study      Users study.
+ * @apiSuccess {String} school     Users school.
+ * @apiSuccess {String} uid        Users ID.
  */
 Router.post("/user", User.postUser);
 
@@ -51,13 +50,12 @@ Router.post("/user/check", User.checkIfValidEmail);
  * 
  * @apiBody {String} role Users new role
  * 
- * @apiSuccess {Object} user            User object.
- * @apiSuccess {String} user.role       Users role.
- * @apiSuccess {String} user.firstName  Users encrypted firstname.
- * @apiSuccess {String} user.lastName   Users encrypted lastname.
- * @apiSuccess {String} user.study      Users study.
- * @apiSuccess {String} user.school     Users school.
- * @apiSuccess {String} user.uid        Users ID.
+ * @apiSuccess {String} role       Users role.
+ * @apiSuccess {String} firstName  Users encrypted firstname.
+ * @apiSuccess {String} lastName   Users encrypted lastname.
+ * @apiSuccess {String} study      Users study.
+ * @apiSuccess {String} school     Users school.
+ * @apiSuccess {String} uid        Users ID.
  */
 Router.post("/user/:uid/role", authorization.hasRole(['admin']), User.setUserRole);
 
@@ -85,15 +83,14 @@ Router.get("/user/role", authorization.hasRole(['admin']), User.getUserRoles);
  * @apiName getUserByUid
  * @apiGroup user
  *
- * @apiSuccess {Object} user            User object.
- * @apiSuccess {String} user.role       Users role.
- * @apiSuccess {String} user._id        Users database Object ID.
- * @apiSuccess {String} user.firstName  Users firstname.
- * @apiSuccess {String} user.lastName   Users lastname.
- * @apiSuccess {String} user.email      Users email address.
- * @apiSuccess {String} user.study      Users study.
- * @apiSuccess {String} user.school     Users school.
- * @apiSuccess {String} user.uid        Users ID.
+ * @apiSuccess {String} role       Users role.
+ * @apiSuccess {String} _id        Users database Object ID.
+ * @apiSuccess {String} firstName  Users firstname.
+ * @apiSuccess {String} lastName   Users lastname.
+ * @apiSuccess {String} email      Users email address.
+ * @apiSuccess {String} study      Users study.
+ * @apiSuccess {String} school     Users school.
+ * @apiSuccess {String} uid        Users ID.
  */
 Router.get("/user/:uid", User.getUserByUid);
 
@@ -105,13 +102,12 @@ Router.get("/user/:uid", User.getUserByUid);
  * @apiName getExportReadyUserDate
  * @apiGroup user
  *
- * @apiSuccess {Object} user            User object.
- * @apiSuccess {String} user.role       Users role.
- * @apiSuccess {String} user.firstName  Users firstname.
- * @apiSuccess {String} user.lastName   Users lastname.
- * @apiSuccess {String} user.email      Users email address.
- * @apiSuccess {String} user.study      Users study.
- * @apiSuccess {String} user.school     Users school.
+ * @apiSuccess {String} role       Users role.
+ * @apiSuccess {String} firstName  Users firstname.
+ * @apiSuccess {String} lastName   Users lastname.
+ * @apiSuccess {String} email      Users email address.
+ * @apiSuccess {String} study      Users study.
+ * @apiSuccess {String} school     Users school.
  */
 Router.get("/user/export/:uid", User.getExportReadyUserData);
 
@@ -124,15 +120,14 @@ Router.get("/user/export/:uid", User.getExportReadyUserData);
  * @apiName updateUser
  * @apiGroup user
  *
- * @apiSuccess {Object} user            User object.
- * @apiSuccess {String} user.role       Users role.
- * @apiSuccess {String} user._id        Users database Object ID.
- * @apiSuccess {String} user.firstName  Users firstname.
- * @apiSuccess {String} user.lastName   Users lastname.
- * @apiSuccess {String} user.email      Users email address.
- * @apiSuccess {String} user.study      Users study.
- * @apiSuccess {String} user.school     Users school.
- * @apiSuccess {String} user.uid        Users ID.
+ * @apiSuccess {String} role       Users role.
+ * @apiSuccess {String} _id        Users database Object ID.
+ * @apiSuccess {String} firstName  Users firstname.
+ * @apiSuccess {String} lastName   Users lastname.
+ * @apiSuccess {String} email      Users email address.
+ * @apiSuccess {String} study      Users study.
+ * @apiSuccess {String} school     Users school.
+ * @apiSuccess {String} uid        Users ID.
  */
 Router.put("/user/:uid", User.updateUser);
 
@@ -145,15 +140,14 @@ Router.put("/user/:uid", User.updateUser);
  * @apiName deleteUser
  * @apiGroup user
  *
- * @apiSuccess {Object} user            User object.
- * @apiSuccess {String} user.role       Users role.
- * @apiSuccess {String} user._id        Users database Object ID.
- * @apiSuccess {String} user.firstName  Users encrypted firstname.
- * @apiSuccess {String} user.lastName   Users encrypted lastname.
- * @apiSuccess {String} user.email      Users encrypted email address.
- * @apiSuccess {String} user.study      Users study.
- * @apiSuccess {String} user.school     Users school.
- * @apiSuccess {String} user.uid        Users ID.
+ * @apiSuccess {String} role       Users role.
+ * @apiSuccess {String} _id        Users database Object ID.
+ * @apiSuccess {String} firstName  Users encrypted firstname.
+ * @apiSuccess {String} lastName   Users encrypted lastname.
+ * @apiSuccess {String} email      Users encrypted email address.
+ * @apiSuccess {String} study      Users study.
+ * @apiSuccess {String} school     Users school.
+ * @apiSuccess {String} uid        Users ID.
  */
 Router.delete("/user/:uid", User.deleteUser);
 

@@ -195,26 +195,75 @@ Router.get("/vt-rules/strategies", authorization.hasRole(['teacher','admin']), v
 Router.post("/vt-rules", authorization.hasRole(['teacher','admin']), vtRules.createRule);
 
 /**
- * @api {post} /vt-rules/:_id Request
- * @apiName get
+ * @api {post} /vt-rules/:_id Update an existing rule.
+ * 
+ * @apiName updateRule
  * @apiGroup vtRules
+ * 
+ * @apiParam {String} _id                   Rule ID.
  *
+ * @apiBody {String} [title]                Rule title.
+ * @apiBody {String} [description]          Rule description.
+ * @apiBody {Object} phases                 List of phases.
+ * @apiBody {Object} condition              List of conditions.
+ * @apiBody {Object} action                 List of actions.
+ * @apiBody {Boolean} [configurable]        Is rule configurable.
+ * @apiBody {Boolean} [enabled]             Is rule enabled.
+ * 
+ * @apiSuccess {String} _id                 Rule ID.
+ * @apiSuccess {String} title               Rule title.
+ * @apiSuccess {String} description         Rule description.
+ * @apiSuccess {Object[]} phase             List of rule phases.
+ * @apiSuccess {String} phase.display       Phase display.
+ * @apiSuccess {String} phase.identifier    Phase identifier.
+ * @apiSuccess {Object} condition           Rule condition object.
+ * @apiSuccess {Object} action              Rule action object.
+ * @apiSuccess {Boolean} enabled            Is rule enabled.
+ * @apiSuccess {Boolean} configurable       Is rule configurable.
  */
 Router.post("/vt-rules/:_id", authorization.hasRole(['teacher','admin']), vtRules.updateRule);
 
 /**
- * @api {post} /vt-rules/:_id/set-enabled Request
- * @apiName get
+ * @api {post} /vt-rules/:_id/set-enabled Set rule as enabled.
+ * 
+ * @apiName setRuleEnabled
  * @apiGroup vtRules
  *
+ * @apiParam {String} _id                   Rule ID.
+ * 
+ * @apiBody {Boolean} enable    Is rule enabled.
+ * 
+ * @apiSuccess {String} _id                 Rule ID.
+ * @apiSuccess {String} title               Rule title.
+ * @apiSuccess {String} description         Rule description.
+ * @apiSuccess {Object[]} phase             List of rule phases.
+ * @apiSuccess {String} phase.display       Phase display.
+ * @apiSuccess {String} phase.identifier    Phase identifier.
+ * @apiSuccess {Object} condition           Rule condition object.
+ * @apiSuccess {Object} action              Rule action object.
+ * @apiSuccess {Boolean} enabled            Is rule enabled.
+ * @apiSuccess {Boolean} configurable       Is rule configurable.
  */
 Router.post("/vt-rules/:_id/set-enabled", authorization.hasRole(['teacher','admin']), vtRules.setRuleEnabled);
 
 /**
- * @api {delete} /vt-rules/:_id Request
- * @apiName get
+ * @api {delete} /vt-rules/:_id Delete rule.
+ * 
+ * @apiName deleteRule
  * @apiGroup vtRules
  *
+ * @apiParam {String} _id                   Rule ID.
+ * 
+ * @apiSuccess {String} _id                 Rule ID.
+ * @apiSuccess {String} title               Rule title.
+ * @apiSuccess {String} description         Rule description.
+ * @apiSuccess {Object[]} phase             List of rule phases.
+ * @apiSuccess {String} phase.display       Phase display.
+ * @apiSuccess {String} phase.identifier    Phase identifier.
+ * @apiSuccess {Object} condition           Rule condition object.
+ * @apiSuccess {Object} action              Rule action object.
+ * @apiSuccess {Boolean} enabled            Is rule enabled.
+ * @apiSuccess {Boolean} configurable       Is rule configurable.
  */
 Router.delete("/vt-rules/:_id", authorization.hasRole(['teacher','admin']), vtRules.deleteRule);
 
