@@ -44,6 +44,7 @@ unit-test-job:
     
 
 cypress-test-job:
+  image: cypress/browsers:node12.14.1-chrome85-ff81
   stage: test
   script: 
      - chmod -R 755 frontend
@@ -51,7 +52,6 @@ cypress-test-job:
      - cp $environment frontend/src/environments/environment.ts
      - cd frontend
      - npm i
-     - apt-get install libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb
      - npm run cypress:test
 
 
