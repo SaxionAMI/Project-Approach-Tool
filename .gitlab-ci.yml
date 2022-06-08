@@ -23,15 +23,15 @@ stages:          # List of stages for jobs, and their order of execution
 eslint:
   stage: test
   script: 
-    - chmod -R 755 /backend
-    - cd backend 
-    - cp $backendEnv ~/backend/.env
-    - cp $adminKey ~/backend/json/adminKey.json
+    - chmod -R 755 backend
+    - cp $backendEnv backend/.env
+    - cp $adminKey backend/json/adminKey.json
+    - cd backend
     - npm i
     - npm run eslint
     - cd ../frontend
-    - cp $environment ~/frontend/src/environments/environment.ts
-    - cp $adminKey ~/fronted/serviceAccount.json
+    - cp $environment frontend/src/environments/environment.ts
+    - cp $adminKey fronted/serviceAccount.json
     - npm i
     - npm run eslint
 
@@ -46,10 +46,10 @@ build-job:       # This job runs in the build stage, which runs first.
 unit-test-job:   # This job runs in the test stage.
   stage: test    # It only starts when the job in the build stage completes successfully.
   script:
-    - chmod -R 755 /backend
+    - chmod -R 755 backend
+    - cp $backendEnv backend/.env
+    - cp $adminKey backend/json/adminKey.json
     - cd backend
-    - cp $backendEnv ~/backend/.env
-    - cp $adminKey ~/backend/json/adminKey.json
     - npm i
     - npm run test
     - npm run test:report
