@@ -3,6 +3,7 @@ before (() => {
 })
 
 beforeEach(() => {
+    cy.visit('127.0.0.1:4200')
     cy.wait(1000)
 })
 
