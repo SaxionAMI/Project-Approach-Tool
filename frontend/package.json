@@ -9,8 +9,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "eslint": "npx eslint --ext .js .",
-    "eslint-fix": "npx eslint --fix --ext .js ."
-
+    "eslint-fix": "npx eslint --fix --ext .js .",
+    "cypress:test": "npx cypress run --headless"
   },
   "private": true,
   "dependencies": {
