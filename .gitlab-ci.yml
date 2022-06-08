@@ -29,6 +29,8 @@ eslint:
     - npm i
     - npm run eslint
     - cd ../frontend
+    - cp $environment ~/frontend/src/environments/environment.ts
+    - cp $adminKey ~/fronted/serviceAccount.json
     - npm i
     - npm run eslint
 
