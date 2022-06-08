@@ -23,7 +23,7 @@ stages:          # List of stages for jobs, and their order of execution
 eslint:
   stage: test
   script: 
-    - sudo chmod -R 755 /backend
+    - chmod -R 755 /backend
     - cd backend 
     - cp $backendEnv ~/backend/.env
     - cp $adminKey ~/backend/json/adminKey.json
@@ -46,7 +46,7 @@ build-job:       # This job runs in the build stage, which runs first.
 unit-test-job:   # This job runs in the test stage.
   stage: test    # It only starts when the job in the build stage completes successfully.
   script:
-    - sudo chmod -R 755 /backend
+    - chmod -R 755 /backend
     - cd backend
     - cp $backendEnv ~/backend/.env
     - cp $adminKey ~/backend/json/adminKey.json
