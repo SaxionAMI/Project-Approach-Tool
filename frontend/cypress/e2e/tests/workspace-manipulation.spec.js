@@ -4,7 +4,7 @@ before (() => {
 
 beforeEach(() => {
     cy.viewport('macbook-16') 
-    cy.visit('127.0.0.1:4200')
+    cy.visit('localhost:4200')
     cy.wait(1000)
 })
 
