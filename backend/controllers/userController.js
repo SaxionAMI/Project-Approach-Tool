@@ -11,40 +11,42 @@ exports.postUser = function (req, res) {
   user.lastName = cipherText(user.lastName);
   user.email = cipherText(user.email);
 
-
-  user
-      .save()
-      .then((user) => {
-        res.status(200).json(user);
-      })
-      .catch((err) => {
-        res.status(500).send({
-          message: err.message || "Some error occurred while creating the User.",
-        });
-      });
-
- /* user.role=user.role;
   //  validate the value of the role key in the request body
-  if (user.role=="teacher"||user.role=="admin"||user.role==undefined) {
+  if (user.role=="teacher"||user.role=="admin") {
+    // there is a role submitted
+    //  encrypt role
     user.role=cipherText(user.role);
+
+    //  save to DB
     user
-    .save()
-    .then((user) => {
-      res.status(200).json(user);
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message: err.message || "Some error occurred while creating the User.",
-      });
-    });
+        .save()
+        .then((user) => {
+          res.status(200).json(user);
+        })
+        .catch((err) => {
+          res.status(500).send({
+            message: err.message || "Some error occurred while creating the User.",
+          });
+        });
+  } else if (user.role==undefined) {
+    //  no role submitted
+    //  save to DB
+    user
+        .save()
+        .then((user) => {
+          res.status(200).json(user);
+        })
+        .catch((err) => {
+          res.status(500).send({
+            message: err.message || "Some error occurred while creating the User.",
+          });
+        });
   } else {
+    // wrong format submitted for role
     res.status(500).send({
       message: "User role submitted is not the correct format",
     });
-  }*/
-
-
-
+  }
 };
 
 //  check if the submitted email is valid
