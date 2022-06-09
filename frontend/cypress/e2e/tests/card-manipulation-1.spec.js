@@ -49,11 +49,23 @@ describe('Card Manipulation', function() {
         cy.get('button').contains('build').click()
         cy.get('#screen > mat-drawer > div > div.ng-star-inserted > img:nth-child(1)').should('be.visible').click()
         cy.get('img').eq(1).click()
-        cy.get('app-card-selector-card').should('be.visible')
-        cy.get('mat-card').eq(0).should('be.visible').drag('.group-content').then((success) => {
-            assert.isTrue(success)
+        cy.get('.sidebar-extended').should('be.visible');
+        cy.get('mat-card').eq(0).should('be.visible').then(() => {
+            cy.get('app-card-selector-card').eq(0).then(el => {
+                const draggable = el[0]  // Pick up this
+                cy.get('.card-list').then(el => {
+                  const droppable = el[0]
+                  const coords = droppable.getBoundingClientRect()
+                  draggable.dispatchEvent(new MouseEvent('mousemove'));
+                  draggable.dispatchEvent(new MouseEvent('mousedown'));
+                  draggable.dispatchEvent(new MouseEvent('mousemove', {clientX: 10, clientY: 0}));
+                  draggable.dispatchEvent(new MouseEvent('mousemove', {clientX: coords.x+10, clientY: coords.y+10}));
+                  draggable.dispatchEvent(new MouseEvent('mouseup'));
+              
+                })
+              })
         })
-    })
+})
     
     it('View card', function () {
         cy.viewport('macbook-16') 
@@ -97,9 +109,22 @@ describe('Card Manipulation', function() {
         cy.get('img').eq(1).click()
         cy.get('app-card-selector-card').should('be.visible')
         cy.get('mat-card').eq(0).click()
-        cy.get('app-card').eq(0).should('be.visible').drag('.group-content').then((success) => {
-            assert.isTrue(success)
+        cy.get('mat-card').eq(0).should('be.visible').then(() => {
+            cy.get('app-card').eq(0).then(el => {
+                const draggable = el[0]  // Pick up this
+                cy.get('.group-content').then(el => {
+                  const droppable = el[0]
+                  const coords = droppable.getBoundingClientRect()
+                  draggable.dispatchEvent(new MouseEvent('mousemove'));
+                  draggable.dispatchEvent(new MouseEvent('mousedown'));
+                  draggable.dispatchEvent(new MouseEvent('mousemove', {clientX: 10, clientY: 0}));
+                  draggable.dispatchEvent(new MouseEvent('mousemove', {clientX: coords.x+10, clientY: coords.y+10}));
+                  draggable.dispatchEvent(new MouseEvent('mouseup'));
+              
+                })
+              })
         })
+        cy.wait(100);
         cy.get('app-card').eq(0).rightclick()
         cy.get('button').contains('Remove card').click()
     })
