@@ -11,7 +11,7 @@
     "eslint": "npx eslint --ext .js .",
     "eslint-fix": "npx eslint --fix --ext .js .",
     "cypress:test": "npx cypress run --headless",
-    "cypress:test-ci": "npm run start & wait-on http://localhost:4200"
+    "cypress:ci": "start-server-and-test npm run start http://localhost:4200 cypress:test"
   },
   "private": true,
   "dependencies": {
@@ -54,7 +54,6 @@
     "zone.js": "^0.10.3"
   },
   "devDependencies": {
-
     "@angular-devkit/architect": "~0.900",
     "@angular-devkit/build-angular": "^0.901.15",
     "@angular/cli": "^9.1.15",
@@ -85,6 +84,7 @@
     "karma-jasmine-html-reporter": "^1.6.0",
     "protractor": "^7.0.0",
     "socket.io-client": "^4.1.1",
+    "start-server-and-test": "^1.14.0",
     "ts-node": "^9.1.1",
     "typescript": "~3.8.3"
   }

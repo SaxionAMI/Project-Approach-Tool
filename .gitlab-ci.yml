@@ -52,7 +52,6 @@ cypress-test-job:
      - cp $environment frontend/src/environments/environment.ts
      - cd frontend
      - npm i
-     - npm run cypress:test-ci
-     - npm run cypress:test
+     - npm run cypress:ci
 
 
