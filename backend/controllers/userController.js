@@ -34,6 +34,7 @@ exports.postUser = function (req, res) {
   }
 };
 
+
 //  check if the submitted email is valid
 exports.checkIfValidEmail = function (req, res) {
   User.find({ email: cipherText(req.body.email) })
