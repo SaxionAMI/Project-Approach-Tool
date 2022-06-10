@@ -53,5 +53,6 @@ cypress-test-job:
      - cd frontend
      - npm i
      - npm run cypress:test-ci
+     - npm run cypress:test
 
 
