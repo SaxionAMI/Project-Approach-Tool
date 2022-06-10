@@ -210,10 +210,10 @@ body {
     background-color: #fff;
   }
 
-  ::ng-deep body {
-    overflow-x: hidden;
-    overflow-y: hidden;
-  }
+  /*::ng-deep body {*/
+  /*  overflow-x: hidden;*/
+  /*  overflow-y: hidden;*/
+  /*}*/
 
   #content {
     overflow-x: auto;
