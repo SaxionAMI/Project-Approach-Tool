@@ -50,8 +50,9 @@ cypress-test-job:
      - chmod -R 755 frontend
      - cp $adminKey frontend/serviceAccount.json
      - cp $environment frontend/src/environments/environment.ts
+     - cp $cypressEnv frontend/cypress.env.json
      - cd frontend
      - npm i
-     - npm run cypress:test
+     - npm run cypress:test-ci
 
 
