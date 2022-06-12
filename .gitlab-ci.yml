@@ -52,7 +52,7 @@ cypress-test-job:
      - cp $environment frontend/src/environments/environment.ts
      - cp $testUID frontend/cypress.env.json
      - cd frontend
-     - npm i
+     - npm i --legacy-peer-deps
      - npm run cypress:ci
 
 
