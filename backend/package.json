@@ -10,7 +10,10 @@
     "test:coverage": "nyc --reporter=test npm run test",
     "test:coverage-html": "nyc --reporter=html npm run test",
     "start": "nodemon server.js",
-    "cipher-cli": "cipher-cli.js"
+    "cipher-cli": "cipher-cli.js",
+    "eslint": "npx eslint --ext .js .",
+    "eslint-fix": "npx eslint --fix --ext .js ."
+
   },
   "repository": {
     "type": "git",

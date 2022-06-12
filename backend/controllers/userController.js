@@ -6,7 +6,9 @@ const admin = require("../firebaseModule");
 
 //  create a user account
 exports.postUser = function (req, res) {
+  // create model object from schema and construct it with the req body
   const user = new User(req.body);
+  // update fields that need to be encryted
   user.firstName = cipherText(user.firstName);
   user.lastName = cipherText(user.lastName);
   user.email = cipherText(user.email);
@@ -28,22 +30,24 @@ exports.postUser = function (req, res) {
   if (user.role=="teacher"||user.role=="admin"||user.role==undefined) {
     user.role=cipherText(user.role);
     user
-    .save()
-    .then((user) => {
-      res.status(200).json(user);
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message: err.message || "Some error occurred while creating the User.",
-      });
-    });
+        .save()
+        .then((user) => {
+          res.status(200).json(user);
+        })
+        .catch((err) => {
+          res.status(500).send({
+            message: err.message || "Some error occurred while creating the User.",
+          });
+        });
   } else {
-    res.status(500).send({
-      message: "User role submitted is not the correct format",
+    // submitted unexpected values for role
+    res.status(403).send({
+      message: "Submitted unexpected value for role",
     });
   }*/
 
 };
+
 
 //  check if the submitted email is valid
 exports.checkIfValidEmail = function (req, res) {

@@ -24,7 +24,7 @@ export class WorkspaceService {
    */
   postWorkspace(workspace: Workspace): Observable<Workspace> {
     return this.httpClient
-      .post<Workspace>(config.apiUrl + this.workspaceUrlExtension, workspace.data())
+      .post<Workspace>(config.apiUrl + this.workspaceUrlExtension, workspace)
       .pipe();
   }
 
