@@ -13,15 +13,15 @@ describe('Workspace Manipulation', function() {
     let workspaceToBeDeleted
 
     // Create workplace
-    // it('Create workplace', function () {
-    //     cy.get('#add-button').click()
-    //     cy.get('#mat-input-0').type(workspaceName).should('have.value', workspaceName)
-    //     cy.get('#mat-input-1').type('testgoal').should('have.value', 'testgoal')
-    //     cy.get('#0')
-    //     cy.get('button').contains('SAVE').click()
-    //     cy.wait(1000)
-    //     cy.get('mat-card').contains(workspaceName).should('be.visible')
-    // })
+    it('Create workplace', function () {
+        cy.get('#add-button').click()
+        cy.get('#mat-input-0').type(workspaceName).should('have.value', workspaceName)
+        cy.get('#mat-input-1').type('testgoal').should('have.value', 'testgoal')
+        cy.get('#0')
+        cy.get('button').contains('SAVE').click()
+        cy.wait(1000)
+        cy.get('mat-card').contains(workspaceName).should('be.visible')
+    })
 
     // Copy workplace
     it('Copy workplace', function () {
