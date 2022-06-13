@@ -55,5 +55,6 @@ cypress-test-job:
     - cd frontend
     - npm i --legacy-peer-deps
     - npm run cypress:ci
+    - npm run cypress:test
 
 
