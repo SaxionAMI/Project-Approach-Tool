@@ -39,6 +39,7 @@ unit-test-job:
     - cp $adminKey backend/json/adminKey.json
     - cd backend
     - npm i
+    - npm run start
     - npm run test
     - npm run test:report
     - npm run test:coverage-html
