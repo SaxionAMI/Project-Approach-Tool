@@ -21,6 +21,7 @@ eslint:
     - cp $adminKey fronted/serviceAccount.json
     - npm i
     - npm run eslint
+    - npm run eslint-fix
 
 
 
@@ -47,11 +48,12 @@ cypress-test-job:
   image: cypress/browsers:node12.14.1-chrome85-ff81
   stage: test
   script: 
-     - chmod -R 755 frontend
-     - cp $adminKey frontend/serviceAccount.json
-     - cp $environment frontend/src/environments/environment.ts
-     - cd frontend
-     - npm i
-     - npm run cypress:test
+    - chmod -R 755 frontend
+    - cp $adminKey frontend/serviceAccount.json
+    - cp $environment frontend/src/environments/environment.ts
+    - cp $testUID frontend/cypress.env.json
+    - cd frontend
+    - npm i --legacy-peer-deps
+    - npm run cypress:ci
 
 
