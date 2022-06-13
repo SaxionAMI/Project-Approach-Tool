@@ -13,9 +13,22 @@ exports.postUser = function (req, res) {
   user.lastName = cipherText(user.lastName);
   user.email = cipherText(user.email);
 
+  user
+      .save()
+      .then((user) => {
+        res.status(200).json(user);
+      })
+      .catch((err) => {
+        res.status(500).send({
+          message: err.message || "Some error occurred while creating the User.",
+        });
+      });
+
+  /*
+  user.role=user.role;
   //  validate the value of the role key in the request body
-  if (req.body.role=="teacher"||req.body.role=="admin"||req.body.role==undefined){
-    // role either not submitted or submitted with expected values
+  if (user.role=="teacher"||user.role=="admin"||user.role==undefined) {
+    user.role=cipherText(user.role);
     user
         .save()
         .then((user) => {
@@ -31,7 +44,8 @@ exports.postUser = function (req, res) {
     res.status(403).send({
       message: "Submitted unexpected value for role",
     });
-  }
+  }*/
+
 };
 
 
