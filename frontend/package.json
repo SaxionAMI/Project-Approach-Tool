@@ -11,7 +11,7 @@
     "eslint": "npx eslint --ext .js .",
     "eslint-fix": "npx eslint --fix --ext .js .",
     "cypress:test": "npx cypress run --headless",
-    "cypress:ci": "npm run start & wait-on http://localhost:4200 cypress:test"
+    "cypress:ci": "npm run start & wait-on http://localhost:4200"
   },
   "private": true,
   "dependencies": {
