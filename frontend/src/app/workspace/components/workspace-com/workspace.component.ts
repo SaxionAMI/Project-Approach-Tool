@@ -876,9 +876,12 @@ export class WorkspaceComponent implements OnInit {
       });
       const cards = []
       this.cardsOfSelectedDeck = [];
+      const thisDate =  Date.now().toString();
       for(let i = 0; i < limit && i < toSearchFor.length; i++) {
         const card = toSearchFor[i]
-        cards.push(card);
+        card.id = thisDate + i;
+        const newCard = new Card(card);
+        cards.push(newCard);
       }
       this.cardsOfSelectedDeck = cards.sort((a, b) => {
         if (a.type < b.type) return -1;
