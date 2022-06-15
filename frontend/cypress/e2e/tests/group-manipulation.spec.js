@@ -37,8 +37,14 @@ describe('Group Manipulation', function() {
     cy.get('#screen > mat-drawer > div > div.ng-star-inserted > img:nth-child(1)').should('be.visible').click()
     //group shows up in the workspace
     cy.get('app-group').should('be.visible')
+    
 
-   
+
+    //right click on the header of the group
+    cy.get('#screen > mat-drawer-content > div > div > div > app-group > div > div.group-header').rightclick()
+
+    //click on the 'remove  phase'
+    cy.get('button').contains('Remove phase').click()
 
 
 
