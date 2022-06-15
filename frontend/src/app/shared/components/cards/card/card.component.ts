@@ -62,6 +62,8 @@ export class CardComponent {
       }
       if (this.card.note !== undefined) {
         this.changedNote.emit();
+      } else {
+        this.changedNote.emit();
       }
     });
   }

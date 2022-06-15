@@ -30,7 +30,116 @@ describe('Card Manipulation', function() {
         cy.get('app-card-selector-card').should('be.visible')
         cy.get('mat-card').contains('Document analysis').should('be.visible')
     })
-    
+
+    it('Search for a card and drag it into the group', function () {
+        cy.viewport('macbook-16') 
+        cy.get('#add-button').click()
+        cy.get('#mat-input-0').type('testworkplace').should('have.value', 'testworkplace')
+        cy.get('#mat-input-1').type('testgoal').should('have.value', 'testgoal')
+        cy.get('#0')
+        cy.get('button').contains('SAVE').click()
+        cy.wait(1000)
+        cy.get('mat-card').contains('testworkplace').should('be.visible')
+        cy.get('app-workspace-card')
+        cy.get('.mat-card-image').eq(-1).click()
+        cy.get('#mat-dialog-0').should('be.visible')
+        cy.get('li').click('left', { multiple: true})
+        cy.get('button').contains('SAVE').click()
+        cy.wait(100)
+        cy.get('button').contains('build').click()
+        cy.get('#screen > mat-drawer > div > div.ng-star-inserted > img:nth-child(1)').should('be.visible').click()
+        cy.get('img').eq(7).click()
+        cy.get('.mat-form-field-infix').should('be.visible').type('Docum')
+
+        cy.get('.sidebar-extended').should('be.visible');
+        cy.get('mat-card').eq(0).should('be.visible').then(() => {
+            cy.get('app-card-selector-card').eq(0).then(el => {
+                const draggable = el[0]
+                cy.get('.card-list').then(el => {
+                  const droppable = el[0]
+                  const coords = droppable.getBoundingClientRect()
+                  draggable.dispatchEvent(new MouseEvent('mousemove'), { force: true });
+                  draggable.dispatchEvent(new MouseEvent('mousedown'));
+                  draggable.dispatchEvent(new MouseEvent('mousemove', {clientX: 10, clientY: 0}));
+                  draggable.dispatchEvent(new MouseEvent('mousemove', {clientX: coords.x+10, clientY: coords.y+10}));
+                  draggable.dispatchEvent(new MouseEvent('mouseup'));
+              
+                })
+              })
+        })
+    })
+
+    it('Drag  a card from group 1 to a group 2', function () {
+        cy.viewport('macbook-16') 
+        cy.get('#add-button').click()
+        cy.get('#mat-input-0').type('testworkplace').should('have.value', 'testworkplace')
+        cy.get('#mat-input-1').type('testgoal').should('have.value', 'testgoal')
+        cy.get('#0')
+        cy.get('button').contains('SAVE').click()
+        cy.wait(1000)
+        cy.get('mat-card').contains('testworkplace').should('be.visible')
+        cy.get('app-workspace-card')
+        cy.get('.mat-card-image').eq(-1).click()
+        cy.get('#mat-dialog-0').should('be.visible')
+        cy.get('li').click('left', { multiple: true})
+        cy.get('button').contains('SAVE').click()
+        cy.wait(100)
+        cy.get('button').contains('build').click()
+        cy.get('#screen > mat-drawer > div > div.ng-star-inserted > img:nth-child(1)').should('be.visible').dblclick()
+            cy.get('.group-header').eq(0).then(() => {
+                cy.get('.group-header').eq(0)
+                .trigger('mousedown', { force: true, button: 0 })
+                // .wait(1500)
+                .trigger('mousemove', { force: true,
+                       pageX: 0,
+                       pageY: 0
+                   })
+                 .trigger('mouseup', { force: true });
+            })
+        cy.get('img').eq(1).click()
+        cy.get('.sidebar-extended').should('be.visible');
+        cy.get('mat-card').eq(0).should('be.visible').then(() => {
+            cy.get('app-card-selector-card').eq(0).then(el => {
+                const draggable = el[0]
+                cy.get('.card-list').eq(1).then(el => {
+                  const droppable = el[0]
+                  const coords = droppable.getBoundingClientRect()
+                  draggable.dispatchEvent(new MouseEvent('mousemove'), { force: true });
+                  draggable.dispatchEvent(new MouseEvent('mousedown'));
+                  draggable.dispatchEvent(new MouseEvent('mousemove', {clientX: 10, clientY: 0}));
+                  draggable.dispatchEvent(new MouseEvent('mousemove', {clientX: coords.x+10, clientY: coords.y+10}));
+                  draggable.dispatchEvent(new MouseEvent('mouseup'));
+                })
+            })
+        })
+
+        cy.get('.card-listitem').eq(0).should('be.visible').then(() => {
+            cy.get('.card-listitem').eq(0).then((el) => {
+                const draggable = el[0]
+                cy.get('.card-list').eq(0).then(el => {
+                  const droppable = el[0]
+                  const coords = droppable.getBoundingClientRect()
+
+                  cy.get('.card-listitem').eq(0).trigger('mousedown', { force: true})
+                  .trigger('mousemove', { force: true,
+                    pageX: 0,
+                       pageY: 0
+                })
+                .trigger('mousemove', { force: true,
+                    clientX: coords.x+20,
+                    clientY: coords.y+20
+                })
+                .trigger('mouseup', { force: true });
+                  draggable.dispatchEvent(new MouseEvent('mousemove', {force: true}));
+                  draggable.dispatchEvent(new MouseEvent('mousedown'));
+                  draggable.dispatchEvent(new MouseEvent('mousemove', {clientX: 10, clientY: 0}));
+                  draggable.dispatchEvent(new MouseEvent('mousemove', {clientX: coords.x+10, clientY: coords.y+10}));
+                  draggable.dispatchEvent(new MouseEvent('mouseup'));
+                })
+            })
+        })
+})
+
     it('Drag cards from inspiration toolbar to a group', function () {
         cy.viewport('macbook-16') 
         cy.get('#add-button').click()
@@ -63,7 +172,7 @@ describe('Card Manipulation', function() {
                   draggable.dispatchEvent(new MouseEvent('mouseup'));
               
                 })
-              })
+            })
         })
 })
     
@@ -122,11 +231,10 @@ describe('Card Manipulation', function() {
                   draggable.dispatchEvent(new MouseEvent('mouseup'));
               
                 })
-              })
+            })
         })
         cy.wait(100);
         cy.get('app-card').eq(0).rightclick()
         cy.get('button').contains('Remove card').click()
     })
-
 })
