@@ -28,7 +28,6 @@ unit-test-job:
     - cp $adminKey backend/json/adminKey.json
     - cd backend
     - npm i
-    - node server.js & 
     - npm run test
     
 build-job:      
