@@ -1,7 +1,8 @@
 const { before } = require("mocha");
 const should = require('should');
 const assert = require('assert');
-const request = require('supertest')('http://localhost:13788');
+const request = require('supertest');
+const app = require('../server.js');
 const auth = require('./auth');
 
 before(async () => {

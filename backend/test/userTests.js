@@ -1,7 +1,8 @@
 const { before } = require("mocha");
 const should = require('should');
 const assert = require('assert');
-const request = require('supertest')('http://localhost:13788');
+const request = require('supertest');
+const app = require('../server.js');
 const auth = require('./auth');
 
 before(async () => {
@@ -21,7 +22,7 @@ describe('POST/ user', () => {
             school: 'testschool',
             uid: 'testing'
         }
-        request
+        request(app)
             .post('/user')
             .set('Authorization', global.testingToken)
             .send(body)
@@ -39,7 +40,7 @@ describe('POST/ user/check', () => {
         let body = {
             email: 'test@projectapproachtool.nl'
         }
-        request
+        request(app)
             .post('/user/check')
             .set('Authorization', global.testingToken)
             .send(body)
@@ -55,7 +56,7 @@ describe('POST/ user/check', () => {
         let body = {
             email: 'invalidemail@invalid.nl'
         }
-        request
+        request(app)
             .post('/user/check')
             .set('Authorization', global.testingToken)
             .send(body)
@@ -70,7 +71,7 @@ describe('POST/ user/check', () => {
 
 describe('POST/ user/:uid/role', () => {
     it('Check current user role', (done) => {
-        request
+        request(app)
             .get(`/user/${global.userId}`)
             .set('Authorization', global.testingToken)
             .expect(200)
@@ -85,7 +86,7 @@ describe('POST/ user/:uid/role', () => {
         let body = {
             role: 'teacher'
         }
-        request
+        request(app)
             .post(`/user/${global.userId}/role`)
             .set('Authorization', global.adminToken)
             .send(body)
@@ -93,7 +94,7 @@ describe('POST/ user/:uid/role', () => {
     })
 
     it('Check new user role', (done) => {
-        request
+        request(app)
             .get(`/user/${global.userId}`)
             .set('Authorization', global.testingToken)
             .expect(200)
@@ -112,7 +113,7 @@ describe('GET/ user/role', () => {
     // this gets all users
 
     it('Should get list of user roles', (done) => {
-        request
+        request(app)
             .get('/user/role')
             .set('Authorization', global.adminToken)
             .expect(200, done)
@@ -121,7 +122,7 @@ describe('GET/ user/role', () => {
 
 describe('GET/ user/:uid', () => {
     it('Should get user by ID', (done) => {
-        request
+        request(app)
             .get(`/user/${global.userId}`)
             .set('Authorization', global.testingToken)
             .expect(200, done)
@@ -130,7 +131,7 @@ describe('GET/ user/:uid', () => {
 
 describe('GET/ user/export/:uid', () => {
     it('Should get user', (done) => {
-        request
+        request(app)
             .get(`/user/export/${global.userId}`)
             .set('Authorization', global.testingToken)
             .expect(200)
@@ -145,7 +146,7 @@ describe('GET/ user/export/:uid', () => {
 
 describe('PUT/ user/:uid', () => {
     it('Check current user', (done) => {
-        request
+        request(app)
             .get(`/user/${global.userId}`)
             .set('Authorization', global.testingToken)
             .expect(200)
@@ -164,7 +165,7 @@ describe('PUT/ user/:uid', () => {
             lastName: 'updatelastname',
             email: 'updateemail@projectapproachtool.nl'
         }
-        request
+        request(app)
             .put(`/user/${global.userId}`)
             .set('Authorization', global.testingToken)
             .send(body)
@@ -172,7 +173,7 @@ describe('PUT/ user/:uid', () => {
     })
 
     it('Check updated user', (done) => {
-        request
+        request(app)
         .get(`/user/export/${global.userId}`)
         .set('Authorization', global.testingToken)
         .expect(200)
@@ -190,21 +191,21 @@ describe('PUT/ user/:uid', () => {
 
 describe('DELETE/ user/:uid', () => {
     it('Check if use is in database', (done) => {
-        request
+        request(app)
             .get(`/user/${global.userId}`)
             .set('Authorization', global.testingToken)
             .expect(200, done)
     })
 
     it('Should delete user', (done) => {
-        request
+        request(app)
             .delete(`/user/${global.userId}`)
             .set('Authorization', global.testingToken)
             .expect(200, done)
     })
 
     it('Check if user is not in database', (done) => {
-        request
+        request(app)
             .get(`/user/${global.userId}`)
             .set('Authorization', global.testingToken)
             .expect(404, done)
