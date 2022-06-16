@@ -1,5 +1,6 @@
-const request = require("supertest")("http://localhost:13788");
-const auth=require("./auth");
+const request = require('supertest');
+const app = require('../server.js');
+const auth = require("./auth");
 
 before(async ()=>{
     global.token=await auth.generateToken("student");
@@ -8,7 +9,7 @@ before(async ()=>{
 // test get all stepping stone cards good weather
 describe("GET /card/steppingstone", ()=>{
     it("Should get stepping stone cards", (done)=>{
-        request
+        request(app)
             .get("/card/steppingstone")
             .set("Authorization", global.token)
             .expect("Content-Type", /json/)
@@ -19,7 +20,7 @@ describe("GET /card/steppingstone", ()=>{
 // test get all stepping stone cards when unauthorized
 describe("GET /card/steppingstone", ()=>{
     it("Should not get stepping stone cards", (done)=>{
-        request
+        request(app)
             .get("/card/steppingstone")
             .expect(403, done);
     });
@@ -29,7 +30,7 @@ describe("GET /card/steppingstone", ()=>{
 // test get method cards good weather
 describe("GET /card/methods", ()=>{
     it("Should get method cards", (done)=>{
-        request
+        request(app)
             .get("/card/methods")
             .set("Authorization", global.token)
             .expect("Content-Type", /json/)
@@ -41,7 +42,7 @@ describe("GET /card/methods", ()=>{
 // test get method cards when unauthorized
 describe("GET /card/methods", ()=>{
     it("Should not get method cards", (done)=>{
-        request
+        request(app)
             .get("/card/methods")
             .expect(403, done);
     });
@@ -51,7 +52,7 @@ describe("GET /card/methods", ()=>{
 // test get a card by id good weather
 describe("GET /card/:cardId", ()=>{
     it("Should get a method card by given id", (done)=>{
-        request
+        request(app)
             .get("/card/5e30215695d55b4b3c79a897")
             .set("Authorization", global.token)
             .expect("Content-Type", /json/)
@@ -62,7 +63,7 @@ describe("GET /card/:cardId", ()=>{
 // test get a card by id bad weather
 describe("GET /card/:cardId", ()=>{
     it("Should not get a method card by given id because no card exists with given id", (done)=>{
-        request
+        request(app)
             .get("/card/5e30215695d55b4b3c79a897hahahah")
             .set("Authorization", global.token)
             .expect("Content-Type", /json/)
@@ -73,7 +74,7 @@ describe("GET /card/:cardId", ()=>{
 // test get a card by id when unauthorized
 describe("GET /card/:cardId", ()=>{
     it("Should not get a method card by given id", (done)=>{
-        request
+        request(app)
             .get("/card/5e30215695d55b4b3c79a897")
             .expect(403, done);
     });
@@ -83,7 +84,7 @@ describe("GET /card/:cardId", ()=>{
 // test get cards of a deck by given deck id good weather
 describe("GET /card/deck/:deck", ()=>{
     it("Should get cards of a deck by given deck id", (done)=>{
-        request
+        request(app)
             .get("/card/deck/5e30276e8b5f721a0cc1f416")
             .set("Authorization", global.token)
             .expect("Content-Type", /json/)
@@ -95,7 +96,7 @@ describe("GET /card/deck/:deck", ()=>{
 // test get cards of a deck by given deck id bad weather
 describe("GET /card/deck/:deck", ()=>{
     it("Should not get cards of a deck by given deck id because no deck exists with given id", (done)=>{
-        request
+        request(app)
             .get("/card/deck/5e30276e8b5f721a0cc1f416haha")
             .set("Authorization", global.token)
             .expect("Content-Type", /json/)
@@ -107,7 +108,7 @@ describe("GET /card/deck/:deck", ()=>{
 // test get cards of a deck by given deck id when unauthorized
 describe("GET /card/deck/:deck", ()=>{
     it("Should not get cards of a deck by given deck id", (done)=>{
-        request
+        request(app)
             .get("/card/deck/5e30276e8b5f721a0cc1f416")
             .expect(403, done);
     });
@@ -126,7 +127,7 @@ describe("POST /card", ()=>{
             title: "sample title",
             type: "Lab"
         };
-        request
+        request(app)
             .post("/card")
             .set("Authorization", global.token)
             .send(body)
@@ -148,7 +149,7 @@ describe("POST /card", ()=>{
             title: "sample title",
             type: "Lab"
         };
-        request
+        request(app)
             .post("/card")
             .set("Authorization", global.token)
             .send(body)
@@ -169,7 +170,7 @@ describe("POST /card", ()=>{
             title: "sample title",
             type: "Lab"
         };
-        request
+        request(app)
             .post("/card")
             .send(body)
             .expect(403, done);
@@ -188,7 +189,7 @@ describe("PUT /card/:cardId", ()=>{
             title: "sample title updated by put reqquest",
             type: "Lab"
         };
-        request
+        request(app)
             .post("/card/sampleid")
             .set("Authorization", global.token)
             .send(body)
@@ -208,7 +209,7 @@ describe("PUT /card/:cardId", ()=>{
             title: "sample title updated by put reqquest",
             type: "Lab"
         };
-        request
+        request(app)
             .post("/card/sampleidthatdoesntexist")
             .set("Authorization", global.token)
             .send(body)
@@ -228,7 +229,7 @@ describe("PUT /card/:cardId", ()=>{
             title: "sample title updated by put reqquest",
             type: "Lab"
         };
-        request
+        request(app)
             .post("/card/sampleid")
             .send(body)
             .expect(403, done);
@@ -239,7 +240,7 @@ describe("PUT /card/:cardId", ()=>{
 // delete a card good weather
 describe("DELETE /card/:cardId", ()=>{
     it("Should delete a deck by given id", (done)=>{
-        request
+        request(app)
             .delete("/card/sampleid")
             .set("Authorization", global.token)
             .expect("Content-Type", /json/)
@@ -251,7 +252,7 @@ describe("DELETE /card/:cardId", ()=>{
 // delete a card bad weather
 describe("DELETE /card/:cardId", ()=>{
     it("Should not delete a deck by given id", (done)=>{
-        request
+        request(app)
             .delete("/card/sampleidthatdoesntexist")
             .set("Authorization", global.token)
             .expect("Content-Type", /json/)
@@ -262,7 +263,7 @@ describe("DELETE /card/:cardId", ()=>{
 // delete a card when unauthorized
 describe("DELETE /card/:cardId", ()=>{
     it("Should not delete a deck by given id", (done)=>{
-        request
+        request(app)
             .delete("/card/sampleid")
             .expect(403, done);
     });

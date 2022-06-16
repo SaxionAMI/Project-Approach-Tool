@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "apidoc": "apidoc -i routes/ -o docs/apidoc/",
-    "test": "mocha",
+    "test": "mocha --exit",
     "test:report": "mocha ./test/*.js --reporter mocha-simple-html-reporter --reporter-options output=report.html",
     "test:coverage": "nyc --reporter=test npm run test",
     "test:coverage-html": "nyc --reporter=html npm run test",

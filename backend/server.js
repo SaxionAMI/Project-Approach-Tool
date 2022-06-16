@@ -89,3 +89,5 @@ app.use(require("./routes/deckRoutes"));
 app.use(require("./routes/vtRuleRoutes"));
 
 expressOasGenerator.init(app, {});
+
+module.exports = server;
