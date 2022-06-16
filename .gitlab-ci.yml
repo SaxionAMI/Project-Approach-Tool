@@ -65,4 +65,14 @@ cypress-test-job:
     - npm run cypress:ci 
     - npm run cypress:test
 
+deploy:
+  stage: deploy
+  only:
+    - development
+  script:
+    - mkdir -p ~/.ssh
+    - echo "$SSH_PRIVATE_KEY" >> ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
+    - ssh -o StrictHostKeyChecking=no devtools-151@vps2644.directvps.nl "cd PAT && sh update.sh"
+  environment: development
 
