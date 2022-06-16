@@ -1,5 +1,6 @@
-const request = require("supertest")("http://localhost:13788");
-const auth=require("./auth");
+const request = require('supertest');
+const app = require('../server.js');
+const auth = require("./auth");
 
 before(async ()=>{
     global.token=await auth.generateToken("student");
@@ -15,7 +16,7 @@ describe("POST /workspace", ()=>{
             goal: "sample goal",
             image: "../../../../../assets/image/whiteSmoke.PNG"
         };
-        request
+        request(app)
             .post("/workspace")
             .set("Authorization", global.token)
             .send(body)
@@ -33,7 +34,7 @@ describe("POST /workspace", ()=>{
             goal: "sample goal",
             image: "../../../../../assets/image/whiteSmoke.PNG"
         };
-        request
+        request(app)
             .post("/workspace")
             .set("Authorization", global.token)
             .send(body)
@@ -51,7 +52,7 @@ describe("POST /workspace", ()=>{
             goal: "sample goal",
             image: "../../../../../assets/image/whiteSmoke.PNG"
         };
-        request
+        request(app)
             .post("/workspace")
             .send(body)
             .expect(403, done);
@@ -62,7 +63,7 @@ describe("POST /workspace", ()=>{
 // test get workspace by id good weather
 describe("GET /workspace/:_id", ()=>{
     it("Should get a workspace by given id", (done)=>{
-        request
+        request(app)
             .get("/workspace/62905d8d67e5b552986ddd2b")
             .set("Authorization", global.token)
             .expect("Content-Type", /json/)
@@ -73,7 +74,7 @@ describe("GET /workspace/:_id", ()=>{
 // test get workspace by id bad weather
 describe("GET /workspace/:_id", ()=>{
     it("Should not be able to get a workspace by given id because no workspace with given id exists", (done)=>{
-        request
+        request(app)
             .get("/workspace/62905d8d67e5b552986ddd2bhaha")
             .set("Authorization", global.token)
             .expect("Content-Type", /json/)
@@ -84,7 +85,7 @@ describe("GET /workspace/:_id", ()=>{
 // test get workspace by id when unauthorized
 describe("GET /workspace/:_id", ()=>{
     it("Should not get a workspace by given id because unauthorized", (done)=>{
-        request
+        request(app)
             .get("/workspace/62905d8d67e5b552986ddd2b")
             .expect(403, done);
     });
@@ -100,7 +101,7 @@ describe("POST /workspace/:_id", ()=>{
             goal: "sample goal upsert first time",
             image: "../../../../../assets/image/whiteSmoke.PNG"
         };
-        request
+        request(app)
             .post("/workspace/62905d8d67e5b552986ddd16")
             .set("Authorization", global.token)
             .send(body)
@@ -119,7 +120,7 @@ describe("POST /workspace/:_id", ()=>{
             goal: "sample goal upsert first time",
             image: "../../../../../assets/image/whiteSmoke.PNG"
         };
-        request
+        request(app)
             .post("/workspace/62905d8d67e5b552986ddd16haha")
             .set("Authorization", global.token)
             .send(body)
@@ -138,7 +139,7 @@ describe("POST /workspace/:_id", ()=>{
             goal: "sample goal upsert first time",
             image: "../../../../../assets/image/whiteSmoke.PNG"
         };
-        request
+        request(app)
             .post("/workspace/62905d8d67e5b552986ddd16")
             .send(body)
             .expect(403, done);
@@ -155,7 +156,7 @@ describe("POST /workspace/:_id", ()=>{
             goal: "sample goal upsert second time",
             image: "../../../../../assets/image/whiteSmoke.PNG"
         };
-        request
+        request(app)
             .post("/workspace/62905d8d67e5b552986ddd16")
             .set("Authorization", global.token)
             .send(body)
@@ -174,7 +175,7 @@ describe("POST /workspace/:_id", ()=>{
             goal: "sample goal upsert second time wrong format",
             image: "../../../../../assets/image/whiteSmoke.PNG"
         };
-        request
+        request(app)
             .post("/workspace/62905d8d67e5b552986ddd16")
             .set("Authorization", global.token)
             .send(body)
@@ -193,7 +194,7 @@ describe("POST /workspace/:_id", ()=>{
             goal: "sample goal upsert second time",
             image: "../../../../../assets/image/whiteSmoke.PNG"
         };
-        request
+        request(app)
             .post("/workspace/62905d8d67e5b552986ddd16")
             .send(body)
             .expect(403, done);
@@ -210,7 +211,7 @@ describe("PUT /workspace/:_id", ()=>{
             goal: "sample goal updated with put request",
             image: "../../../../../assets/image/whiteSmoke.PNG"
         };
-        request
+        request(app)
             .put("/workspace/62905d8d67e5b552986ddd2b")
             .set("Authorization", global.token)
             .send(body)
@@ -228,7 +229,7 @@ describe("PUT /workspace/:_id", ()=>{
             goal: "sample goal updated with put request",
             image: "../../../../../assets/image/whiteSmoke.PNG"
         };
-        request
+        request(app)
             .put("/workspace/62905d8d67e5b552986ddd2bhahhiuhoi")
             .set("Authorization", global.token)
             .send(body)
@@ -246,7 +247,7 @@ describe("PUT /workspace/:_id", ()=>{
             goal: "sample goal updated with put request",
             image: "../../../../../assets/image/whiteSmoke.PNG"
         };
-        request
+        request(app)
             .put("/workspace/62905d8d67e5b552986ddd2b")
             .send(body)
             .expect(403, done);
@@ -260,7 +261,7 @@ describe("POST /workspaces", ()=>{
         const body = {
             uid: "studentid"
         };
-        request
+        request(app)
             .post("/workspaces")
             .set("Authorization", global.token)
             .send(body)
@@ -275,7 +276,7 @@ describe("POST /workspaces", ()=>{
         const body = {
             uid: "studentidlalala"
         };
-        request
+        request(app)
             .post("/workspaces")
             .set("Authorization", global.token)
             .send(body)
@@ -290,7 +291,7 @@ describe("POST /workspaces", ()=>{
         const body = {
             uid: "studentid"
         };
-        request
+        request(app)
             .post("/workspaces")
             .send(body)
             .expect(403, done);
@@ -302,7 +303,7 @@ describe("POST /workspaces", ()=>{
 // test get custom cards that belong to one workspace by workspace id good weather
 describe("GET /workspace/customCard/:_id", ()=>{
     it("Should get custom cards that belong to a workspace by given workspace id", (done)=>{
-        request
+        request(app)
             .get("/workspace/customCard/62905d8d67e5b552986ddd2b")
             .set("Authorization", global.token)
             .expect("Content-Type", /json/)
@@ -313,7 +314,7 @@ describe("GET /workspace/customCard/:_id", ()=>{
 // test get custom cards that belong to one workspace by workspace id bad weather
 describe("GET /workspace/customCard/:_id", ()=>{
     it("Should not get custom cards", (done)=>{
-        request
+        request(app)
             .get("/workspace/customCard/62905d8d67e5b552986dddhhhh2blalalal")
             .set("Authorization", global.token)
             .expect("Content-Type", /json/)
@@ -324,7 +325,7 @@ describe("GET /workspace/customCard/:_id", ()=>{
 // test get custom cards that belong to one workspace by workspace id when unauthorized
 describe("GET /workspace/customCard/:_id", ()=>{
     it("Should not get custom cards that belong to a workspace by given workspace id", (done)=>{
-        request
+        request(app)
             .get("/workspace/customCard/62905d8d67e5b552986ddd2b")
             .expect(403, done);
     });
@@ -334,7 +335,7 @@ describe("GET /workspace/customCard/:_id", ()=>{
 // test delete a workspace good weather
 describe("DELETE /workspace/:_id", ()=>{
     it("Should delete a workspace by given workspace id", (done)=>{
-        request
+        request(app)
             .delete("/workspace/62905d8d67e5b552986ddd2b")
             .set("Authorization", global.token)
             .expect("Content-Type", /json/)
@@ -345,7 +346,7 @@ describe("DELETE /workspace/:_id", ()=>{
 // test delete a workspace bad weather
 describe("DELETE /workspace/:_id", ()=>{
     it("Should not delete a workspace by given workspace id because no workspace exists with given id", (done)=>{
-        request
+        request(app)
             .delete("/workspace/62905d8d67e5b552986ddd2blallala")
             .set("Authorization", global.token)
             .expect("Content-Type", /json/)
@@ -357,7 +358,7 @@ describe("DELETE /workspace/:_id", ()=>{
 // test delete a workspace when unauthorized
 describe("DELETE /workspace/:_id", ()=>{
     it("Should not delete a workspace by given workspace id", (done)=>{
-        request
+        request(app)
             .delete("/workspace/62905d8d67e5b552986ddd2b")
             .expect(403, done);
     });

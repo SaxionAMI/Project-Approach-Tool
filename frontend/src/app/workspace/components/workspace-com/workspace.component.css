@@ -135,7 +135,7 @@
 
 .sidebar-extended {
   width: auto;
-  max-width: 500px; 
+  max-width: 500px;
   background-color: white;
 }
 
@@ -189,7 +189,7 @@
 }
 
 body {
-    overflow: hidden; 
+    overflow: hidden;
   }
 
   .onboard-btn {
@@ -203,17 +203,17 @@ body {
     font-size: 12px;
     font-weight: 700;
   }
-  
+
   .onboard-btn:hover {
     color: #04abd6;
     border: 2px solid #04abd6;
     background-color: #fff;
   }
 
-  ::ng-deep body {
-    overflow-x: hidden;
-    overflow-y: hidden;
-  }
+  /*::ng-deep body {*/
+  /*  overflow-x: hidden;*/
+  /*  overflow-y: hidden;*/
+  /*}*/
 
   #content {
     overflow-x: auto;
@@ -231,8 +231,8 @@ body {
 
   #groups-container {
     position:absolute;
-    top:0;
-    right:0;
+    top:90px;
+    right:90px;
     left:0;
     bottom:0;
     overflow:scroll;

@@ -131,13 +131,13 @@
             fxLayout="row wrap"
             fxLayoutAlign="flex-start"
             >
-            <!-- TODO:2: Implement the dragging right here! --> 
+            <!-- TODO:2: Implement the dragging right here! -->
             <app-card-selector-card
               *ngFor="let card of cardsOfSelectedDeck"
               fxFlex="0 1 calc(50% - 5px)"
               [detail]="false"
               (click)="addCard(card)"
-  
+
             cdkDrag
             (cdkDragStarted)="onDragCard(card)"
             (cdkDragEnded)="onDragCardEnded(card)"
@@ -145,7 +145,7 @@
             id="{{ card.id ? card.id : card._id }}"
             [card]="card"
             [room]="room"
-            
+
               ></app-card-selector-card>
           </div>
         <div *ngIf="this.categorySelected == 'Search'"
@@ -219,7 +219,7 @@
       </mat-drawer>
       <mat-drawer-content id="content" data-html2canvas-ignore="true">
         <div class="workspace-container" >
-          <!-- TODO:3: editing + dragging the card --> 
+          <!-- TODO:3: editing + dragging the card -->
           <div
             id="spawn-list"
             *ngIf="workspace.spawnList.cards.length > 0"
@@ -254,6 +254,7 @@
                 *ngFor="let group of workspace.groups"
                 [id]="group.id"
                 cdkDrag
+                cdkDragBoundary="#groups-container"
                 [group]="group"
                 [room]="room"
                 [cdkDragFreeDragPosition]="group.location"
