@@ -154,19 +154,30 @@
           fxLayoutAlign="stretch">
           <mat-form-field class="searchField"
             fxFlex="0 1 calc(100% - 5px)">
-            <mat-label>Search phrase:</mat-label>
+            <mat-label>Search a card:</mat-label>
             <input matInput type="text" placeholder="..." [(ngModel)]="searchPhrase" (input)="searchCards()" />
           </mat-form-field>
-          <div
+          <div cdkDropList
+          #searchList = "cdkDropList"
+          [cdkDropListData]="cardsOfSelectedDeck"
+          
             fxLayout="row wrap"
             fxLayoutGap="5px"
             fxLayoutAlign="flex-start">
+            <!-- HERE --> 
             <app-card-selector-card
               *ngFor="let card of cardsOfSelectedDeck"
               fxFlex="0 1 calc(50% - 5px)"
-              [card]="card"
               [detail]="false"
-              (click)="addCard(card)"></app-card-selector-card>
+              (click)="addCard(card)"
+
+            cdkDrag
+            (cdkDragStarted)="onDragCard(card)"
+            (cdkDragEnded)="onDragCardEnded(card)"
+            class="card-listitem-sidebar"
+            id="{{ card.id ? card.id : card._id }}"
+            [card]="card"
+            [room]="room"></app-card-selector-card>
           </div>
           <span class="searchHint" *ngIf="!searchPhrase">To begin, please specify a search phrase.</span>
           <span class="searchHint" *ngIf="searchPhrase">Not what you're looking for? Try a different search

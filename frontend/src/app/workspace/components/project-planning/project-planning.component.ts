@@ -95,8 +95,10 @@ export class ProjectPlanningComponent implements OnInit {
           type: card.type,
           note: card.note,
           picture: card.picture,
-          start: card.startDate ?? '2022-02-03', //startDate
-          end: card.endDate?? '2022-02-04', //endDate
+          start: card.startDate, 
+          // ?? '2022-02-03', //startDate
+          end: card.endDate, 
+          // ?? '2022-02-04', //endDate
           parentId: parentActivity.id,
           isGroup: false,
         }));
