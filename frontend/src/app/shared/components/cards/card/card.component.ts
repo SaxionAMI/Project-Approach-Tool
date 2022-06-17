@@ -65,6 +65,16 @@ export class CardComponent {
       } else {
         this.changedNote.emit();
       }
+
+      if (this.card.startDate == undefined) {
+        this.card.startDate = new Date();
+        this.card.endDate = new Date();
+      }
+
+      if (this.card.endDate == undefined) {
+        this.card.startDate = new Date();
+        this.card.endDate = new Date();
+      }
     });
   }
 
