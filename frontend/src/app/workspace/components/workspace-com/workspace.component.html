@@ -129,24 +129,20 @@
             [cdkDropListData]="cardsOfSelectedDeck"
             *ngIf="this.categorySelected != 'general' && this.categorySelected !== 'Search'"
             fxLayout="row wrap"
-            fxLayoutAlign="flex-start"
-            >
-            <!-- TODO:2: Implement the dragging right here! -->
+            fxLayoutAlign="flex-start">
             <app-card-selector-card
               *ngFor="let card of cardsOfSelectedDeck"
               fxFlex="0 1 calc(50% - 5px)"
               [detail]="false"
               (click)="addCard(card)"
-
-            cdkDrag
-            (cdkDragStarted)="onDragCard(card)"
-            (cdkDragEnded)="onDragCardEnded(card)"
-            class="card-listitem-sidebar"
-            id="{{ card.id ? card.id : card._id }}"
-            [card]="card"
-            [room]="room"
-
-              ></app-card-selector-card>
+              cdkDrag
+              (cdkDragStarted)="onDragCard(card)"
+              (cdkDragEnded)="onDragCardEnded(card)"
+              (cdkDragEnded)="onDragCardEndedOne(card)"
+              class="card-listitem-sidebar"
+              id="{{ card.id ? card.id : card._id }}"
+              [card]="card"
+              [room]="room"></app-card-selector-card>
           </div>
         <div *ngIf="this.categorySelected == 'Search'"
           fxLayout="column"
@@ -158,26 +154,24 @@
             <input matInput type="text" placeholder="..." [(ngModel)]="searchPhrase" (input)="searchCards()" />
           </mat-form-field>
           <div cdkDropList
-          #searchList = "cdkDropList"
-          [cdkDropListData]="cardsOfSelectedDeck"
-          
+            #searchList = "cdkDropList"
+            [cdkDropListData]="cardsOfSelectedDeck"
             fxLayout="row wrap"
             fxLayoutGap="5px"
             fxLayoutAlign="flex-start">
-            <!-- HERE --> 
             <app-card-selector-card
               *ngFor="let card of cardsOfSelectedDeck"
               fxFlex="0 1 calc(50% - 5px)"
               [detail]="false"
               (click)="addCard(card)"
-
-            cdkDrag
-            (cdkDragStarted)="onDragCard(card)"
-            (cdkDragEnded)="onDragCardEnded(card)"
-            class="card-listitem-sidebar"
-            id="{{ card.id ? card.id : card._id }}"
-            [card]="card"
-            [room]="room"></app-card-selector-card>
+              cdkDrag
+              (cdkDragStarted)="onDragCard(card)"
+              (cdkDragEnded)="onDragCardEnded(card)"
+              (cdkDragEnded)="onDragCardEndedTwo(card)"
+              class="card-listitem-sidebar"
+              id="{{ card.id ? card.id : card._id }}"
+              [card]="card"
+              [room]="room"></app-card-selector-card>
           </div>
           <span class="searchHint" *ngIf="!searchPhrase">To begin, please specify a search phrase.</span>
           <span class="searchHint" *ngIf="searchPhrase">Not what you're looking for? Try a different search
@@ -219,7 +213,6 @@
       </mat-drawer>
       <mat-drawer-content id="content" data-html2canvas-ignore="true">
         <div class="workspace-container" >
-          <!-- TODO:3: editing + dragging the card -->
           <div
             id="spawn-list"
             *ngIf="workspace.spawnList.cards.length > 0"
@@ -262,9 +255,7 @@
                 (cdkDragMoved)="drag(group)"
                 (cdkDragEnded)="onDragEnded($event, group)"
                 (mousedown)="check($event)"
-                (click)="
-                  workspaceConfig.drawing ? addArrow(group) : select(group, $event)
-                "
+                (click)="workspaceConfig.drawing ? addArrow(group) : select(group, $event)"
                 (dropped)="cardDropped($event)"
                 (title)="changeGroupTitle(group)"
                 (cardQuestion)="saveCardQuestionTitle($event)"

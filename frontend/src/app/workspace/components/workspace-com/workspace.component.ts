@@ -849,6 +849,104 @@ export class WorkspaceComponent implements OnInit {
     this.socketService.removeEffectFromCard(this.room, card);
   }
 
+  onDragCardEndedOne(card: Card): void {
+    if (card.type === 'Search') {
+      if (card.type === this.categorySelected) {
+        // this.isShowing = false;
+        this.cardsOfSelectedDeck = [];
+        var temp = 0;
+        var tempCard = this.preloadedCardsOfAllDecks[0];
+        this.preloadedCardsOfAllDecks.forEach((thisCard) => {
+          const thisDate =  Date.now().toString();
+          if (tempCard != card) {
+            temp += 1;
+          }
+
+          if (thisCard.type === card.type) {
+            thisCard.id = thisDate + temp;
+            this.cardsOfSelectedDeck.push(new Card(thisCard));
+          }
+        });
+        this.categorySelected = "";
+        this.repeatUpdate();
+      }
+      else {
+        this.categorySelected = card.type;
+        this.isShowing = true;
+        this.cardsOfSelectedDeck = [];
+        this.repeatUpdate();
+      }
+    } else if (card.type !== "general") {
+      if (card.type === this.categorySelected && card.type !== "general") {
+        // this.isShowing = false;
+        this.cardsOfSelectedDeck = [];
+        var temp = 0;
+        var tempCard = this.preloadedCardsOfAllDecks[0];
+        this.preloadedCardsOfAllDecks.forEach((thisCard) => {
+          const thisDate =  Date.now().toString();
+          if (tempCard != thisCard) {
+            temp += 1;
+          }
+
+          if (thisCard.type === card.type) {
+            card.id = thisDate + temp;
+            this.cardsOfSelectedDeck.push(new Card(thisCard));
+          }
+        });
+        this.categorySelected = "";
+        this.repeatUpdate();
+      } else { // TODO:1: The cards are shown when entering this. 
+        this.categorySelected = card.type;
+        this.isShowing = true;
+        this.cardsOfSelectedDeck = [];
+        var temp = 0;
+        var tempCard = this.preloadedCardsOfAllDecks[0];
+        this.preloadedCardsOfAllDecks.forEach((thisCard) => {
+          const thisDate =  Date.now().toString();
+          if (tempCard != thisCard) {
+            temp += 1;
+          }
+
+          if (thisCard.type === card.type) {
+            thisCard.id = thisDate + temp;
+            this.cardsOfSelectedDeck.push(new Card(thisCard));
+          }
+        });
+        this.repeatUpdate();
+      }
+    this.socketService.removeEffectFromCard(this.room, card);
+  }
+}
+
+onDragCardEndedTwo(card: Card): void {
+  if (this.searchPhrase && this.searchPhrase.length > 0) {
+    const limit = 10;
+    const toSearchFor = this.preloadedCardsOfAllDecks.filter(x => {
+      return x.title.toLowerCase().includes(this.searchPhrase.toLowerCase())
+    });
+    const cards = []
+    this.cardsOfSelectedDeck = [];
+    const thisDate =  Date.now().toString();
+    for(let i = 0; i < limit && i < toSearchFor.length; i++) {
+      const card = toSearchFor[i]
+      card.id = thisDate + i;
+      const newCard = new Card(card);
+      cards.push(newCard);
+    }
+    this.cardsOfSelectedDeck = cards.sort((a, b) => {
+      if (a.type < b.type) return -1;
+      else if (b.type < a.type) return 1;
+      else if (a.title < b.title) return -1;
+      else if (b.title < a.title) return 1;
+      else return 0;
+    })
+  }
+  else {
+    this.cardsOfSelectedDeck = [];
+  }
+  this.socketService.removeEffectFromCard(this.room, card);
+}
+
   /**
    * Revoking the access of users
    * @param  {User} user
@@ -880,6 +978,8 @@ export class WorkspaceComponent implements OnInit {
       for(let i = 0; i < limit && i < toSearchFor.length; i++) {
         const card = toSearchFor[i]
         card.id = thisDate + i;
+        card.startDate = new Date();
+        card.endDate = new Date();
         const newCard = new Card(card);
         cards.push(newCard);
       }
@@ -916,6 +1016,8 @@ export class WorkspaceComponent implements OnInit {
 
           if (card.type === category) {
             card.id = thisDate + temp;
+            card.startDate = new Date();
+            card.endDate = new Date();
             this.cardsOfSelectedDeck.push(new Card(card));
           }
         });
@@ -943,6 +1045,8 @@ export class WorkspaceComponent implements OnInit {
 
           if (card.type === category) {
             card.id = thisDate + temp;
+            card.startDate = new Date();
+            card.endDate = new Date();
             this.cardsOfSelectedDeck.push(new Card(card));
           }
         });
@@ -962,6 +1066,8 @@ export class WorkspaceComponent implements OnInit {
 
           if (card.type === category) {
             card.id = thisDate + temp;
+            card.startDate = new Date();
+            card.endDate = new Date();
             this.cardsOfSelectedDeck.push(new Card(card));
           }
         });
