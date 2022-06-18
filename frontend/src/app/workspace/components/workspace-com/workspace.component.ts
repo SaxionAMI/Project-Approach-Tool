@@ -978,6 +978,8 @@ onDragCardEndedTwo(card: Card): void {
       for(let i = 0; i < limit && i < toSearchFor.length; i++) {
         const card = toSearchFor[i]
         card.id = thisDate + i;
+        card.startDate = new Date();
+        card.endDate = new Date();
         const newCard = new Card(card);
         cards.push(newCard);
       }
@@ -1014,6 +1016,8 @@ onDragCardEndedTwo(card: Card): void {
 
           if (card.type === category) {
             card.id = thisDate + temp;
+            card.startDate = new Date();
+            card.endDate = new Date();
             this.cardsOfSelectedDeck.push(new Card(card));
           }
         });
@@ -1041,6 +1045,8 @@ onDragCardEndedTwo(card: Card): void {
 
           if (card.type === category) {
             card.id = thisDate + temp;
+            card.startDate = new Date();
+            card.endDate = new Date();
             this.cardsOfSelectedDeck.push(new Card(card));
           }
         });
@@ -1060,6 +1066,8 @@ onDragCardEndedTwo(card: Card): void {
 
           if (card.type === category) {
             card.id = thisDate + temp;
+            card.startDate = new Date();
+            card.endDate = new Date();
             this.cardsOfSelectedDeck.push(new Card(card));
           }
         });
