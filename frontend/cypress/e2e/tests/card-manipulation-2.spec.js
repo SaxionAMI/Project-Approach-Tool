@@ -36,7 +36,12 @@ describe('Card Manipulation', function () {
     cy.get('mat-card').eq(0).click()
 
     cy.get('mat-card').eq(0).should('be.visible').then(() => {
+
+
       cy.get('app-card').eq(0).then(el => {
+
+
+
         const draggable = el[0]  // Pick up this
         cy.get('.group-content').then(el => {
           const droppable = el[0]
@@ -47,7 +52,13 @@ describe('Card Manipulation', function () {
           draggable.dispatchEvent(new MouseEvent('mousemove', {clientX: coords.x + 10, clientY: coords.y + 10}));
           draggable.dispatchEvent(new MouseEvent('mouseup'));
         })
+
+
+
       })
+
+
+
     })
     cy.get('app-card-selector-card').should('be.visible')
     cy.get('mat-card').eq(1).click()

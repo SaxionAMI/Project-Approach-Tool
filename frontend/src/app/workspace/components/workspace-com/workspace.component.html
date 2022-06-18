@@ -247,6 +247,7 @@
                 *ngFor="let group of workspace.groups"
                 [id]="group.id"
                 cdkDrag
+                cdkDragBoundary="#groups-container"
                 [group]="group"
                 [room]="room"
                 [cdkDragFreeDragPosition]="group.location"

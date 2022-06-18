@@ -1,5 +1,6 @@
-const request = require("supertest")("http://localhost:13788");
-const auth=require("./auth");
+const request = require('supertest');
+const app = require('../server.js');
+const auth = require("./auth");
 
 before(async ()=>{
     global.token=await auth.generateToken("student");
@@ -9,7 +10,7 @@ before(async ()=>{
 // test get all templates good weather
 describe("GET /template", ()=>{
     it("Should get all templates", (done)=>{
-        request
+        request(app)
             .get("/template")
             .set("Authorization", global.token)
             .expect("Content-Type", /json/)
@@ -20,7 +21,7 @@ describe("GET /template", ()=>{
 // test get all templates when unauthorzied
 describe("GET /template", ()=>{
     it("Should not get templates", (done)=>{
-        request
+        request(app)
             .get("/template")
             .expect(403, done);
     });
@@ -29,7 +30,7 @@ describe("GET /template", ()=>{
 // test get example template
 describe("GET /template/example", ()=>{
     it("Should get all example templates", (done)=>{
-        request
+        request(app)
             .get("/template/example")
             .set("Authorization", global.token)
             .expect("Content-Type", /json/)
@@ -40,7 +41,7 @@ describe("GET /template/example", ()=>{
 // test get example tempalte when unauthorized
 describe("GET /template/example", ()=>{
     it("Should not get example templates", (done)=>{
-        request
+        request(app)
             .get("/template/example")
             .expect(403, done);
     });
@@ -55,7 +56,7 @@ describe("POST /template", ()=>{
             goal: "sample template goal",
             image: "../../../../../assets/image/whiteSmoke.PNG"
         };
-        request
+        request(app)
             .post("/template")
             .set("Authorization", global.token)
             .send(body)
@@ -73,7 +74,7 @@ describe("POST /template", ()=>{
             gooooooal: "sample template goal",
             image: "../../../../../assets/image/whiteSmoke.PNG"
         };
-        request
+        request(app)
             .post("/template")
             .set("Authorization", global.token)
             .send(body)
@@ -90,7 +91,7 @@ describe("POST /template", ()=>{
             goal: "sample template goal",
             image: "../../../../../assets/image/whiteSmoke.PNG"
         };
-        request
+        request(app)
             .post("/template")
             .send(body)
             .expect(403, done);

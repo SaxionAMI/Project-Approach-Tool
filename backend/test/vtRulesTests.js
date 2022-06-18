@@ -1,7 +1,8 @@
 const assert = require("assert");
 const { before } = require("mocha");
 const should = require('should');
-const request = require('supertest')('http://localhost:13788');
+const request = require('supertest');
+const app = require('../server.js');
 const auth = require('./auth');
 
 // TODO - GET requests
@@ -14,7 +15,7 @@ before(async () => {
 
 describe('GET/ vt-rules', () => {
   it('Should get all the enabled rules', (done) => {
-    request
+    request(app)
       .get('/vt-rules')
       .set('Authorization', global.studentToken)
       .expect('Content-Type', /json/)
@@ -25,7 +26,7 @@ describe('GET/ vt-rules', () => {
 
 describe('GET/ vt-rules/all', () => {
   it('Should get all the rules', (done) => {
-    request
+    request(app)
       .get('/vt-rules/all')
       .set('Authorization', global.teacherToken)
       .expect('Content-Type', /json/)
@@ -35,7 +36,7 @@ describe('GET/ vt-rules/all', () => {
 
 describe('GET/ vt-rules/actions', () => {
   it('Should get all the actions', (done) => {
-    request
+    request(app)
       .get('/vt-rules/actions')
       .set('Authorization', global.teacherToken)
       .expect('Content-Type', /json/)
@@ -45,7 +46,7 @@ describe('GET/ vt-rules/actions', () => {
 
 describe('GET/ vt-rules/conditions', () => {
   it('Should get all the conditions', (done) => {
-    request
+    request(app)
       .get('/vt-rules/conditions')
       .set('Authorization', global.teacherToken)
       .expect('Content-Type', /json/)
@@ -55,7 +56,7 @@ describe('GET/ vt-rules/conditions', () => {
 
 describe('GET/ vt-rules/comparisons', () => {
   it('Should get all the comparisons', (done) => {
-    request
+    request(app)
       .get('/vt-rules/comparisons')
       .set('Authorization', global.teacherToken)
       .expect('Content-Type', /json/)
@@ -65,7 +66,7 @@ describe('GET/ vt-rules/comparisons', () => {
 
 describe('GET/ vt-rules/scopes', () => {
   it('Should get all the scopes', (done) => {
-    request
+    request(app)
       .get('/vt-rules/scopes')
       .set('Authorization', global.teacherToken)
       .expect('Content-Type', /json/)
@@ -75,7 +76,7 @@ describe('GET/ vt-rules/scopes', () => {
 
 describe('GET/ vt-rules/catalog-tabs', () => {
   it('Should get all the catalog-tabs', (done) => {
-    request
+    request(app)
       .get('/vt-rules/catalog-tabs')
       .set('Authorization', global.teacherToken)
       .expect('Content-Type', /json/)
@@ -85,7 +86,7 @@ describe('GET/ vt-rules/catalog-tabs', () => {
 
 describe('GET/ vt-rules/severities', () => {
   it('Should get all the severities', (done) => {
-    request
+    request(app)
       .get('/vt-rules/severities')
       .set('Authorization', global.teacherToken)
       .expect('Content-Type', /json/)
@@ -95,7 +96,7 @@ describe('GET/ vt-rules/severities', () => {
 
 describe('GET/ vt-rules/phases', () => {
   it('Should get all the phases', (done) => {
-    request
+    request(app)
       .get('/vt-rules/phases')
       .set('Authorization', global.teacherToken)
       .expect('Content-Type', /json/)
@@ -105,7 +106,7 @@ describe('GET/ vt-rules/phases', () => {
 
 describe('GET/ vt-rules/strategies', () => {
   it('Should get all the strategies', (done) => {
-    request
+    request(app)
       .get('/vt-rules/strategies')
       .set('Authorization', global.teacherToken)
       .expect('Content-Type', /json/)
@@ -130,7 +131,7 @@ describe('POST/ vt-rules', () => {
       action: {},
       enabled: false
     }
-    request
+    request(app)
       .post('/vt-rules')
       .set('Authorization', global.teacherToken)
       .send(body)
@@ -145,7 +146,7 @@ describe('POST/ vt-rules', () => {
   })
 
   it('Check that rule was created', (done) => {
-    request
+    request(app)
       .get('/vt-rules/all')
       .set('Authorization', global.teacherToken)
       .expect('Content-Type', /json/)
@@ -170,7 +171,7 @@ describe('POST/ vt-rules/:_id', () => {
       action: {},
       enabled: false
     }
-    request
+    request(app)
       .post(`/vt-rules/${global.ruleId}`)
       .set('Authorization', global.teacherToken)
       .send(body)
@@ -180,7 +181,7 @@ describe('POST/ vt-rules/:_id', () => {
   })
 
   it('Check if rule was updated', (done) => {
-    request
+    request(app)
       .get('/vt-rules/all')
       .set('Authorization', global.teacherToken)
       .expect('Content-Type', /json/)
@@ -197,7 +198,7 @@ describe('POST/ vt-rules/:_id', () => {
 
 describe('POST/ vt-rules/:_id/set-enabled', () => {
   it('Should rule is not enabled', (done) => {
-    request
+    request(app)
       .get('/vt-rules')
       .set('Authorization', global.studentToken)
       .expect('Content-Type', /json/)
@@ -210,7 +211,7 @@ describe('POST/ vt-rules/:_id/set-enabled', () => {
   })
 
   it('Should set rule as enabled', (done) => {
-    request
+    request(app)
       .post(`/vt-rules/${global.ruleId}/set-enabled`)
       .set('Authorization', global.teacherToken)
       .send({ enable: true })
@@ -219,7 +220,7 @@ describe('POST/ vt-rules/:_id/set-enabled', () => {
   })
 
   it('Check rule is enabled', (done) => {
-    request
+    request(app)
       .get('/vt-rules')
       .set('Authorization', global.studentToken)
       .expect('Content-Type', /json/)
@@ -232,11 +233,11 @@ describe('POST/ vt-rules/:_id/set-enabled', () => {
   })
 })
 
-// TODO - DELETE requests
+// TODO - DELETE request(app)s
 
 describe('DELETE/ vt-rules/:_id', () => {
   it('Check if test rule is in database', (done) => {
-    request
+    request(app)
       .get('/vt-rules/all')
       .set('Authorization', global.teacherToken)
       .expect('Content-Type', /json/)
@@ -249,7 +250,7 @@ describe('DELETE/ vt-rules/:_id', () => {
   })
 
   it('Should delete test rule', (done) => {
-    request
+    request(app)
       .delete(`/vt-rules/${global.ruleId}`)
       .set('Authorization', global.teacherToken)
       .expect('Content-Type', /json/)
@@ -257,7 +258,7 @@ describe('DELETE/ vt-rules/:_id', () => {
   })
 
   it('Check if test rule is not in database', (done) => {
-    request
+    request(app)
       .get('/vt-rules/all')
       .set('Authorization', global.teacherToken)
       .expect('Content-Type', /json/)

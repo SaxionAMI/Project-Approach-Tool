@@ -14,7 +14,7 @@ import { ConfirmDeleteInviteComponent } from "../confirm-delete-invite/confirm-d
 import { MailService } from "@app/core/services/mail.service";
 import { Workspace } from "@app/core/models/workspace.model";
 import { WorkspaceService } from "@app/workspace/services/workspace.service";
-import { Permission } from "@app/core/models/Permission.model";
+import { Permission } from "@app/core/models/permission.model";
 import { AuthService } from "@app/auth/services/auth.service";
 
 @Component({
