@@ -61,6 +61,6 @@ deploy:
   only:
     - continuous-integration
   script:
-    - ssh -i $PAT_KEY_PEM -o StrictHostKeyChecking=no azuremanage@20.229.143.161 "cd PAT && sh update.sh"
+    - ssh -i $PAT_KEY_PEM azuremanage@20.229.143.161 "cd PAT && sh update.sh"
   environment: development
 
