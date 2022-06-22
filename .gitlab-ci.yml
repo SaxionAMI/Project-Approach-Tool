@@ -62,7 +62,7 @@ deploy:
     - continuous-integration
   script:
     - mkdir -p ~/.ssh
-    - echo "$PAT_KEY_PEM" > ~/.ssh/id_rsa
+    - echo "$PAT_KEY_PEM"
     - echo abc > ~/test
     - cat ~/test
     - chmod 600 ~/.ssh/id_rsa
