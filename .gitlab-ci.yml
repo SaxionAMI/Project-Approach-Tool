@@ -64,6 +64,6 @@ deploy:
     - mkdir -p ~/.ssh
     - echo "$SSH_PRIVATE_KEY" >> ~/.ssh/id_rsa
     - chmod 600 ~/.ssh/id_rsa
-    - ssh -o StrictHostKeyChecking=no devtools-151@vps2644.directvps.nl "cd PAT && sh update.sh"
+    - ssh -o StrictHostKeyChecking=no azuremanage@20.229.143.161 "cd PAT && sh update.sh"
   environment: development
 
