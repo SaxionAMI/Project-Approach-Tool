@@ -122,17 +122,11 @@ export class WorkspaceComponent implements OnInit {
           steps: [
             "step6@workspace/" + this.room,
             "step7@workspace/" + this.room,
-            "step8@workspace/" + this.room,
             "step9@workspace/" + this.room,
             "step10@workspace/" + this.room,
             "step11@workspace/" + this.room,
             "step12@workspace/" + this.room,
             "step13@workspace/" + this.room,
-            "step14@workspace/" + this.room,
-            "step15@workspace/" + this.room,
-            "step16@workspace/" + this.room,
-            "step17@workspace/" + this.room,
-            "step18@workspace/" + this.room,
             "step19@workspace/" + this.room,
             "step20@workspace/" + this.room,
             "step21@workspace/" + this.room,
@@ -895,7 +889,7 @@ export class WorkspaceComponent implements OnInit {
         });
         this.categorySelected = "";
         this.repeatUpdate();
-      } else { // TODO:1: The cards are shown when entering this. 
+      } else { // TODO:1: The cards are shown when entering this.
         this.categorySelected = card.type;
         this.isShowing = true;
         this.cardsOfSelectedDeck = [];
@@ -1052,7 +1046,7 @@ onDragCardEndedTwo(card: Card): void {
         });
         this.categorySelected = "";
         this.repeatUpdate();
-      } else { // TODO:1: The cards are shown when entering this. 
+      } else { // TODO:1: The cards are shown when entering this.
         this.categorySelected = category;
         this.isShowing = true;
         this.cardsOfSelectedDeck = [];

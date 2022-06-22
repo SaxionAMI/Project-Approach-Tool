@@ -1,9 +1,11 @@
-<mat-toolbar data-html2canvas-ignore="true">
+<mat-toolbar data-html2canvas-ignore="true"
+             joyrideStep="step7"
+             [stepContent]="step7Content">
   <mat-toolbar-row data-html2canvas-ignore="true">
     <button class="app-logo" mat-icon-button (click)="goBack()">
       <img
         src="../assets/image/Logo-wide.png"
-        title="Back to workspaces" />
+        title="Back to workspaces"/>
       <mat-icon>arrow_back</mat-icon>
     </button>
     <span id="title-container">
@@ -17,11 +19,9 @@
         (focusout)="moveFocusToSubtitle()"
         appFocusOnShow
         AutoSizeInput
-        placeholder="Title" />
+        placeholder="Title"/>
       <p
-        joyrideStep="step7"
         title="Title"
-        [stepContent]="step7Content"
         id="title"
         #title
         *ngIf="!workspaceConfig.canEditTitle"
@@ -91,11 +91,9 @@
         appFocusOnShow
         AutoSizeInput
         placeholder="Goal"
-        appClickStopPropagation />
+        appClickStopPropagation/>
       <p
-        joyrideStep="step8"
         title="Goal"
-        [stepContent]="step8Content"
         id="goal"
         #goal
         *ngIf="!workspaceConfig.canEditGoal"
@@ -107,17 +105,20 @@
   </mat-toolbar-row>
 </mat-toolbar>
 <ng-template #step7Content>
-  <br /> This is the project title, You can adjusted the title by <b>clicking</b> on it.<br />
-  <br />
+  <br/> This is the project title and the project goal. <br/>
+  You can adjust any of them by <b>clicking</b> on them.<br/>
+  <br/>
 </ng-template>
-<ng-template #step8Content>
-  <br /> This is the project goal, this defines the main goal of the project. <br /> You can adjust the goal by
-  <b>clicking</b> on it. <br />
-  <br />
-</ng-template>
+
+<!--<ng-template #step8Content>-->
+<!--  <br /> This is the project goal, this defines the main goal of the project. <br /> You can adjust the goal by-->
+<!--  <b>clicking</b> on it. <br />-->
+<!--  <br />-->
+<!--</ng-template>-->
+
 <ng-template #step20Content>
-  <br /> With this button you can <b>invite</b> other users. <br /> So you can cooperate with other users on <br /> the
-  same project approach. <br />
-  <br /> Only users with <b>existing</b> accounts can be added. <br />
-  <br />
+  <br/> With this button you can <b>invite</b> other users. <br/> So you can cooperate with other users on <br/> the
+  same project approach. <br/>
+  <br/> Only users with <b>existing</b> accounts can be added. <br/>
+  <br/>
 </ng-template>
