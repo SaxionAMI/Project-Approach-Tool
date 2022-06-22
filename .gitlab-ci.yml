@@ -61,6 +61,9 @@ deploy:
   only:
     - continuous-integration
   script:
-    - ssh -i $PAT_KEY_PEM azuremanage@20.229.143.161 "cd PAT && sh update.sh"
+    - mkdir -p ~/.ssh
+    - echo "$PAT_KEY_PEM" > ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
+    - ssh azuremanage@20.229.143.161 "cd PAT && sh update.sh"
   environment: development
 
