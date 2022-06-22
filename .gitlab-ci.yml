@@ -61,6 +61,7 @@ deploy:
   only:
     - continuous-integration
   script:
+    - mkdir -p key
     - chmod -R 755 key
     - cp $PAT_KEY_PEM key/PAT_key.pem
     - ssh -i ~/PAT_key.pem -o StrictHostKeyChecking=no azuremanage@20.229.143.161 "cd PAT && sh update.sh"
