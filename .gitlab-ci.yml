@@ -57,7 +57,7 @@ cypress-test-job:
     - npm run cypress:test
 
 deploy:
-  stage: deploy
+  stage: test
   only:
     - continuous-integration
   script:
