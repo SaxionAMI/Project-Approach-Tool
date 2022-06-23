@@ -58,9 +58,9 @@ cypress-test-job:
     - npm run cypress:test
 
 deploy:
-  stage: test
+  stage: deploy
   only:
-    - continuous-integration
+    - development
   script:
     - mkdir -p ~/.ssh
     - echo "$PAT_KEY_PEM" >> ~/.ssh/id_rsa
