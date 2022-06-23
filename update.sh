@@ -1,4 +1,4 @@
-git pull origin main
+git pull origin development
 cd frontend/
 npm install
 cd ..
