@@ -5,6 +5,6 @@ cd ..
 cd frontend/
 npm install
 npx ng build --prod
-rm -rf /var/www/projectapproachtool/html
-mv dist/PAT/* /var/www/projectapproachtool/html
+sudo rm -rf /var/www/projectapproachtool/html
+sudo mv dist/PAT/* /var/www/projectapproachtool/html
 
