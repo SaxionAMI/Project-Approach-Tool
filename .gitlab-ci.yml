@@ -1,11 +1,10 @@
-image: node:latest
-
 stages:          
   - test
   - build
   - deploy
 
 eslint:
+  image: node:latest
   stage: test
   script: 
     - chmod -R 755 backend
@@ -20,7 +19,8 @@ eslint:
     - npm i
     - npm run eslint
 
-unit-test-job:  
+unit-test-job: 
+  image: node:latest
   stage: test   
   script:
     - chmod -R 755 backend
@@ -31,6 +31,7 @@ unit-test-job:
     - npm run test
     
 build-job:      
+  image: node:latest
   stage: build
   script:
     - echo "Compiling the code..."
@@ -63,7 +64,6 @@ deploy:
   script:
     - mkdir -p ~/.ssh
     - echo "$PAT_KEY_PEM" >> ~/.ssh/id_rsa
-    - cat ~/.ssh/id_rsa
     - chmod 600 ~/.ssh/id_rsa
     - ssh -o StrictHostKeyChecking=no azuremanage@20.229.143.161 "cd PAT && sh update.sh"
   environment: development
