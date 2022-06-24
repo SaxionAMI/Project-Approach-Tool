@@ -49,22 +49,12 @@ describe('Workspace Manipulation', function() {
         })
     })
 
-    // Select random workplace
-    it('Select random workplace', function () {
-        console.log(randomIntFromInterval(0, '.mat-card-image'.length))
-        console.log(randomIntFromInterval(0, '.mat-card-image'.length))
-        console.log(randomIntFromInterval(0, '.mat-card-image'.length))
-        console.log(randomIntFromInterval(0, '.mat-card-image'.length))
-        console.log(randomIntFromInterval(0, '.mat-card-image'.length))
-        console.log(randomIntFromInterval(0, '.mat-card-image'.length))
-        console.log(randomIntFromInterval(0, '.mat-card-image'.length))
-        console.log(randomIntFromInterval(0, '.mat-card-image'.length))
-        console.log(randomIntFromInterval(0, '.mat-card-image'.length))
-        
-        eq(randomIntFromInterval(0, '.mat-card-image'.length)).click()
-        cy.wait(1000)
-        cy.get('mat-dialog-container')
-        cy.get('button').contains('CANCEL').click()
+   // Select a workplace
+   it('Select a workplace', function () {
+    cy.get.eq(0).click()
+    cy.wait(1000)
+    cy.get('mat-dialog-container')
+    cy.get('button').contains('CANCEL').click()
     })
 
     // Delete all workplaces -- ONLY USED TO CLEAN OUT TEST ACCOUNT WHILE TESTING -- DO NOT UNCOMMENT
@@ -79,8 +69,4 @@ describe('Workspace Manipulation', function() {
     //     })
     // })
 
-
-    function randomIntFromInterval(min, max) { // min and max included 
-        return Math.floor(Math.random() * (max - min + 1) + min)
-      }
 })

@@ -38,21 +38,15 @@ describe('Account creation and verification', function() {
     })
 
     // Set details  
-    it('Set details', function () {
-        cy.login()
-        cy.get('#profile-button').click()
-        cy.get('button').contains('Settings').click()
-        cy.get('#mat-input-0').clear().type('testfirstname').should('have.value', 'testfirstname')
-        cy.get('#mat-input-1').clear().type('testlastname').should('have.value', 'testlastname')
-        cy.get('#mat-input-2').clear().type('testschool').should('have.value', 'testschool')
-        cy.get('#mat-input-3').clear().type('teststudy').should('have.value', 'teststudy')
-        cy.get('#save').click()
-        // cy.get('#profile-button').click()
-        // cy.get('button').contains('Settings').click()        
-        // cy.get('#mat-input-0').should('have.value', 'testfirstname')
-        // cy.get('#mat-input-1').should('have.value', 'testlastname')
-        // cy.get('#mat-input-2').should('have.value', 'testschool')
-        // cy.get('#mat-input-3').should('have.value', 'teststudy')
-    })
+    // it('Set details', function () {
+    //     cy.login()
+    //     cy.get('#profile-button').click()
+    //     cy.get('button').contains('Settings').click()
+    //     cy.get('#mat-input-0').clear().type('testfirstname').should('have.value', 'testfirstname')
+    //     cy.get('#mat-input-1').clear().type('testlastname').should('have.value', 'testlastname')
+    //     cy.get('#mat-input-2').clear().type('testschool').should('have.value', 'testschool')
+    //     cy.get('#mat-input-3').clear().type('teststudy').should('have.value', 'teststudy')
+    //     cy.get('#save').click()
+    // })
 
 })
