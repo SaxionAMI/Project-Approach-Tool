@@ -3,13 +3,13 @@ before (() => {
 })
 
 beforeEach(() => {
+    cy.viewport(2000,2000) 
     cy.visit('localhost:4200')
     cy.wait(1000)
 })
 
 describe('Card Manipulation', function() {
     it('Click cards onto the board', function () {
-        cy.viewport('macbook-16') 
         cy.get('#add-button').click()
         cy.get('#mat-input-0').type('testworkplace').should('have.value', 'testworkplace')
         cy.get('#mat-input-1').type('testgoal').should('have.value', 'testgoal')
@@ -32,7 +32,6 @@ describe('Card Manipulation', function() {
     })
 
     it('Search for a card and drag it into the group', function () {
-        cy.viewport('macbook-16') 
         cy.get('#add-button').click()
         cy.get('#mat-input-0').type('testworkplace').should('have.value', 'testworkplace')
         cy.get('#mat-input-1').type('testgoal').should('have.value', 'testgoal')
@@ -70,7 +69,6 @@ describe('Card Manipulation', function() {
     })
 
     it('Drag  a card from group 1 to a group 2', function () {
-        cy.viewport('macbook-16') 
         cy.get('#add-button').click()
         cy.get('#mat-input-0').type('testworkplace').should('have.value', 'testworkplace')
         cy.get('#mat-input-1').type('testgoal').should('have.value', 'testgoal')
@@ -141,7 +139,6 @@ describe('Card Manipulation', function() {
 })
 
     it('Drag cards from inspiration toolbar to a group', function () {
-        cy.viewport('macbook-16') 
         cy.get('#add-button').click()
         cy.get('#mat-input-0').type('testworkplace').should('have.value', 'testworkplace')
         cy.get('#mat-input-1').type('testgoal').should('have.value', 'testgoal')
@@ -177,7 +174,6 @@ describe('Card Manipulation', function() {
 })
     
     it('View card', function () {
-        cy.viewport('macbook-16') 
         cy.get('#add-button').click()
         cy.get('#mat-input-0').type('testworkplace').should('have.value', 'testworkplace')
         cy.get('#mat-input-1').type('testgoal').should('have.value', 'testgoal')
@@ -199,7 +195,6 @@ describe('Card Manipulation', function() {
     })
 
     it('Remove cards from a group', function () {
-        cy.viewport('macbook-16') 
         cy.get('#add-button').click()
         cy.get('#mat-input-0').type('testworkplace').should('have.value', 'testworkplace')
         cy.get('#mat-input-1').type('testgoal').should('have.value', 'testgoal')

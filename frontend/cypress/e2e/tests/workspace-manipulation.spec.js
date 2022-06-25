@@ -28,7 +28,7 @@ describe('Workspace Manipulation', function() {
         cy.get('app-workspace-card').eq(-1).within(() => {
             cy.contains(workspaceName)
             cy.get('#more-button').click()
-        })       
+        })
         cy.get('.mat-menu-content').should('be.visible')
         cy.get('button').contains('Make copy').should('be.visible').click()
         cy.get('mat-card').contains(workspaceName + ' - copy').should('be.visible')
@@ -51,7 +51,7 @@ describe('Workspace Manipulation', function() {
 
    // Select a workplace
    it('Select a workplace', function () {
-    cy.get.eq(0).click()
+    cy.get('app-workspace-card').eq(-1).click()
     cy.wait(1000)
     cy.get('mat-dialog-container')
     cy.get('button').contains('CANCEL').click()

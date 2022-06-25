@@ -32,10 +32,10 @@ describe('Account creation and verification', function() {
     })
 
     // Help button - Report issue
-    it('Help button - Report issue', function () {
-        cy.get('#question-button').click()
-        cy.get('button').contains('Report issue').click()
-    })
+    // it('Help button - Report issue', function () {
+    //     cy.get('#question-button').click()
+    //     cy.get('button').contains('Report issue').click()
+    // })
 
     // Set details  
     // it('Set details', function () {

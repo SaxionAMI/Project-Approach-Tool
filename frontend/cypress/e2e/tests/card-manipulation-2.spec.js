@@ -3,6 +3,7 @@ before(() => {
 })
 
 beforeEach(() => {
+  cy.viewport(2000,2000)
   cy.visit('localhost:4200')
   cy.wait(1000)
 })
@@ -15,7 +16,6 @@ describe('Card Manipulation', function () {
     'See the cards ordered by activity starting dates' +
     'Adjust start date and end date on the planning step', function () {
 
-    cy.viewport('macbook-16')
     cy.get('#add-button').click()
     cy.get('#mat-input-0').type('testworkplace').should('have.value', 'testworkplace')
     cy.get('#mat-input-1').type('testgoal').should('have.value', 'testgoal')
