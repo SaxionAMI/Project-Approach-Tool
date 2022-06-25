@@ -61,6 +61,7 @@ export class WorkspaceComponent implements OnInit {
   room: string = this.route.snapshot.params.id;
   isShowing: boolean = false;
   categorySelected: string = "";
+  lastCard: Card;
   preloadedCardsOfAllDecks: Card[] = [];
   cardsOfSelectedDeck: Card[] = [];
   checkIfCardContextMenu: boolean = false;
@@ -191,14 +192,41 @@ export class WorkspaceComponent implements OnInit {
         (group) => group.id === Number(res.oldGroupId)
       );
 
-      if (Number(res.oldGroupId) === spawnlist.id) {
-        const card = spawnlist.cards[res.oldIndex];
-        spawnlist.cards.splice(res.oldIndex, 1);
-        newGroup.cards.splice(res.newIndex, 0, card);
-        this.updateArrows();
-      } else {
+      // if (res.sideCard) {
+      //   console.log(res);
+      //   const card = new Card(res.sideCard);
+      //   newGroup.cards.splice(res.newIndex, 0, card);
+      //   this.updateArrows();
+      // } else if (oldGroup) {
+      //   const card = oldGroup.cards[res.oldIndex];
+      //   oldGroup.cards.splice(res.oldIndex, 1);
+      //   newGroup.cards.splice(res.newIndex, 0, card);
+      //   this.updateArrows();
+      // } else if (spawnlist.cards[res.oldIndex]) {
+      //   const card = spawnlist.cards[res.oldIndex];
+      //   spawnlist.cards.splice(res.oldIndex, 1);
+      //   newGroup.cards.splice(res.newIndex, 0, card);
+      //   this.updateArrows();
+      // } 
+
+      if (oldGroup) {
+        console.log(1);
         const card = oldGroup.cards[res.oldIndex];
         oldGroup.cards.splice(res.oldIndex, 1);
+        newGroup.cards.splice(res.newIndex, 0, card);
+        this.updateArrows();
+      } 
+      else if (res.sideCard) {
+        console.log(2);
+        const card = new Card(res.sideCard);
+        console.log(card);
+        newGroup.cards.splice(res.newIndex, 0, card);
+        this.updateArrows();
+      } 
+      else {
+        console.log(3);
+        const card = spawnlist.cards[res.oldIndex];
+        spawnlist.cards.splice(res.oldIndex, 1);
         newGroup.cards.splice(res.newIndex, 0, card);
         this.updateArrows();
       }
@@ -674,8 +702,33 @@ export class WorkspaceComponent implements OnInit {
    * @returns void
    */
   cardDropped(value: any): void {
-    console.log(value);
-    this.socketService.moveCardToGroup(this.room, new Card(value), new VTWorkspaceData(this.workspace));
+    console.log("TOOO");
+    console.log(value.cardId);
+    // console.log(this.cardsOfSelectedDeck);
+    
+    var sCard;
+
+    if (this.lastCard) {    
+      if (this.lastCard.id === value.cardId) {
+        sCard = this.lastCard;
+        console.log("AAAAAA");
+      }
+    }
+
+    // this.cardsOfSelectedDeck.find(
+    // (card) => card.id === value.cardId);
+    // console.log(sCard.id);
+    
+    value = {
+      cardId: value.cardId,
+      newGroupId: value.newGroupId,
+      oldGroupId: value.oldGroupId,
+      newIndex: value.newIndex,
+      oldIndex: value.oldIndex,
+      sideCard: sCard
+    };
+    
+    this.socketService.moveCardToGroup(this.room, value, new VTWorkspaceData(this.workspace));
     this.updateWorkspace();
     setTimeout(() => this.updateArrows());
   }
@@ -840,6 +893,12 @@ export class WorkspaceComponent implements OnInit {
     this.socketService.setEffectOnCard(this.room, card);
   }
 
+  onDragCardOne(card: Card): void {
+    console.log(card.id);
+    this.lastCard = card;
+    this.socketService.setEffectOnCard(this.room, card);
+  }
+
   /**
    * When dragging of a card end, an effect is removed for other users.
    * @param  {Card} card
@@ -847,75 +906,80 @@ export class WorkspaceComponent implements OnInit {
    */
   onDragCardEnded(card: Card): void {
     this.socketService.removeEffectFromCard(this.room, card);
+    console.log(card.id);
   }
 
   onDragCardEndedOne(card: Card): void {
-    if (card.type === 'Search') {
-      if (card.type === this.categorySelected) {
-        // this.isShowing = false;
-        this.cardsOfSelectedDeck = [];
-        var temp = 0;
-        var tempCard = this.preloadedCardsOfAllDecks[0];
-        this.preloadedCardsOfAllDecks.forEach((thisCard) => {
-          const thisDate =  Date.now().toString();
-          if (tempCard != card) {
-            temp += 1;
-          }
+    // const tempCard = new Card(card);
+    // tempCard.id = new Date().toString() + 1;
+    // if (card.type === 'Search') {
+    //   console.log(1);
+      
+    //   if (card.type === this.categorySelected) {
+    //     this.cardsOfSelectedDeck = [];
+    //     var temp = 0;
+    //     this.preloadedCardsOfAllDecks.forEach((thisCard) => {
+    //       const thisDate =  Date.now().toString();
+    //         temp += 1;
 
-          if (thisCard.type === card.type) {
-            thisCard.id = thisDate + temp;
-            this.cardsOfSelectedDeck.push(new Card(thisCard));
-          }
-        });
-        this.categorySelected = "";
-        this.repeatUpdate();
-      }
-      else {
-        this.categorySelected = card.type;
-        this.isShowing = true;
-        this.cardsOfSelectedDeck = [];
-        this.repeatUpdate();
-      }
-    } else if (card.type !== "general") {
+    //       if (thisCard.type === card.type) {
+    //         thisCard.id = thisDate + temp;
+    //         this.cardsOfSelectedDeck.push(new Card(thisCard));
+    //       }
+    //     });
+    //     this.categorySelected = "";
+    //     this.repeatUpdate();
+    //   }
+    //   else {
+    //     console.log(2);
+        
+    //     this.categorySelected = card.type;
+    //     this.isShowing = true;
+    //     this.cardsOfSelectedDeck = [];
+    //     this.repeatUpdate();
+    //   }
+    // } else 
+    // if (card.type !== "general") {
+
+
+    
+      console.log(card.id);
       if (card.type === this.categorySelected && card.type !== "general") {
-        // this.isShowing = false;
+        console.log(4);
         this.cardsOfSelectedDeck = [];
         var temp = 0;
-        var tempCard = this.preloadedCardsOfAllDecks[0];
         this.preloadedCardsOfAllDecks.forEach((thisCard) => {
-          const thisDate =  Date.now().toString();
-          if (tempCard != thisCard) {
+          var thisDate =  Date.now().toString();
             temp += 1;
-          }
-
-          if (thisCard.type === card.type) {
-            card.id = thisDate + temp;
-            this.cardsOfSelectedDeck.push(new Card(thisCard));
-          }
-        });
-        this.categorySelected = "";
-        this.repeatUpdate();
-      } else { // TODO:1: The cards are shown when entering this. 
-        this.categorySelected = card.type;
-        this.isShowing = true;
-        this.cardsOfSelectedDeck = [];
-        var temp = 0;
-        var tempCard = this.preloadedCardsOfAllDecks[0];
-        this.preloadedCardsOfAllDecks.forEach((thisCard) => {
-          const thisDate =  Date.now().toString();
-          if (tempCard != thisCard) {
-            temp += 1;
-          }
-
           if (thisCard.type === card.type) {
             thisCard.id = thisDate + temp;
             this.cardsOfSelectedDeck.push(new Card(thisCard));
           }
         });
         this.repeatUpdate();
-      }
-    this.socketService.removeEffectFromCard(this.room, card);
-  }
+        console.log(card.id);
+      } 
+
+
+
+      // else { 
+      //   console.log(5);
+      //   this.categorySelected = card.type;
+      //   this.cardsOfSelectedDeck = [];
+      //   var temp = 0;
+      //   this.preloadedCardsOfAllDecks.forEach((thisCard) => {
+      //     const thisDate =  Date.now().toString();
+      //       temp += 1;
+      //     if (thisCard.type === card.type) {
+      //       // card.id = thisDate + temp;
+      //       thisCard.id = thisDate + temp;
+      //       this.cardsOfSelectedDeck.push(new Card(thisCard));
+      //     }
+      //   });
+      //   this.repeatUpdate();
+      // }
+  // }
+    // this.socketService.removeEffectFromCard(this.room, card);
 }
 
 onDragCardEndedTwo(card: Card): void {
