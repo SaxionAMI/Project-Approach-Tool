@@ -127,17 +127,6 @@ export class WorkspaceComponent implements OnInit {
             "step9@workspace/" + this.room,
             "step10@workspace/" + this.room,
             "step11@workspace/" + this.room,
-            "step12@workspace/" + this.room,
-            "step13@workspace/" + this.room,
-            "step14@workspace/" + this.room,
-            "step15@workspace/" + this.room,
-            "step16@workspace/" + this.room,
-            "step17@workspace/" + this.room,
-            "step18@workspace/" + this.room,
-            "step19@workspace/" + this.room,
-            "step20@workspace/" + this.room,
-            "step21@workspace/" + this.room,
-            "step22@workspace/" + this.room,
           ],
         })
         .subscribe(
@@ -1154,10 +1143,24 @@ onDragCardEndedTwo(card: Card): void {
    * @returns void
    */
   onboardingOpenSidebar(): void {
+
     document
       .querySelector(".backdrop-target")
       .setAttribute("style", "background-color: #3a545f");
+
     this.toggleSidebar("general");
+
+
+    document
+      .querySelector("#phase-image")
+      .setAttribute("joyrideStep","step10");
+
+
+    document
+      .querySelector("#phase-image")
+      .setAttribute("[stepContent]","step10Content");
+
+
   }
 
   /**
@@ -1300,4 +1303,4 @@ export class LeaderLineWithId {
   }
   line: LeaderLine
   id: number
-};
+}
