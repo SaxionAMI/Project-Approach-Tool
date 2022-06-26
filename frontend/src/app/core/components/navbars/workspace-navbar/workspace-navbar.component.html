@@ -1,6 +1,4 @@
-<mat-toolbar data-html2canvas-ignore="true"
-             joyrideStep="step7"
-             [stepContent]="step7Content">
+<mat-toolbar data-html2canvas-ignore="true">
   <mat-toolbar-row data-html2canvas-ignore="true">
     <button class="app-logo" mat-icon-button (click)="goBack()">
       <img
@@ -8,7 +6,9 @@
         title="Back to workspaces"/>
       <mat-icon>arrow_back</mat-icon>
     </button>
-    <span id="title-container">
+    <div joyrideStep="step7" style="margin-left: 60px;"
+    [stepContent]="step7Content">
+    <span id="title-container" >
       <input
         *ngIf="workspaceConfig.canEditTitle"
         id="title"
@@ -29,6 +29,30 @@
         {{ workspace.title }}
       </p>
     </span>
+    <span id="goal-container">
+      <input
+        id="goal"
+        *ngIf="workspaceConfig.canEditGoal"
+        #sbtitle
+        matInput
+        [(ngModel)]="workspace.goal"
+        (keyup.enter)="saveGoal()"
+        (focusout)="saveGoal()"
+        appFocusOnShow
+        AutoSizeInput
+        placeholder="Goal"
+        appClickStopPropagation/>
+      <p
+        title="Goal"
+        id="goal"
+        #goal
+        *ngIf="!workspaceConfig.canEditGoal"
+        (click)="openGoal()"
+        appClickStopPropagation>
+        {{ workspace.goal }}
+      </p>
+    </span>
+  </div>
     <button
       title="Settings"
       *ngIf="isTeacher()"
@@ -79,29 +103,6 @@
     </button>
   </mat-toolbar-row>
   <mat-toolbar-row data-html2canvas-ignore="true" id="goal">
-    <span id="goal-container">
-      <input
-        id="goal"
-        *ngIf="workspaceConfig.canEditGoal"
-        #sbtitle
-        matInput
-        [(ngModel)]="workspace.goal"
-        (keyup.enter)="saveGoal()"
-        (focusout)="saveGoal()"
-        appFocusOnShow
-        AutoSizeInput
-        placeholder="Goal"
-        appClickStopPropagation/>
-      <p
-        title="Goal"
-        id="goal"
-        #goal
-        *ngIf="!workspaceConfig.canEditGoal"
-        (click)="openGoal()"
-        appClickStopPropagation>
-        {{ workspace.goal }}
-      </p>
-    </span>
   </mat-toolbar-row>
 </mat-toolbar>
 <ng-template #step7Content>
