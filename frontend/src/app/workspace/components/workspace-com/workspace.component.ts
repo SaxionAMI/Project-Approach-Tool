@@ -126,6 +126,7 @@ export class WorkspaceComponent implements OnInit {
             "step9@workspace/" + this.room,
             "step10@workspace/" + this.room,
             "step11@workspace/" + this.room,
+            "step12@workspace/" + this.room,
           ],
         })
         .subscribe(
