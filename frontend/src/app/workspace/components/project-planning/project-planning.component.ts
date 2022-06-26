@@ -96,9 +96,9 @@ export class ProjectPlanningComponent implements OnInit {
           note: card.note,
           picture: card.picture,
           start: card.startDate
-          ?? new Date(), //startDate
+          ?? new Date(), 
           end: card.endDate
-          ?? new Date(), //endDate
+          ?? new Date(), 
           parentId: parentActivity.id,
           isGroup: false,
         }));
@@ -160,21 +160,12 @@ export class ProjectPlanningComponent implements OnInit {
   }
 
   onChanges(data) {
-    // console.log(this.activities.find(activity => activity.id === data.key));
     if (this.activities.find(activity => activity.id === data.key).isGroup) {
       return;
     }
-
-    // if (!data.values.start && !data.values.end) {
-    //   return;
-    // }
-
     let updatedFields = {};
     var startDate = data.values.start;
     var endDate = data.values.end;
-
-    // this.activities.find(activity => activity.id === data.key)
-
     if (startDate) {
       updatedFields = {
         ...updatedFields,
