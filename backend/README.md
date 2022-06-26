@@ -17,6 +17,7 @@ Before running the API run, npm install.
 |       JWTTOKEN      |                                                    A JWT token used for the inviting of users                                                    |
 |       INVITEURL     |                                                         this is the url to the invite api                                                        |
 |      REDIRECTURL    |                                               this is the url to redirect to when the invite is accepted                                         |
+|   FIREBASE_API_KEY  |                                                     this is the firebase api key                                                                 |
 
 ## For development:
 Run the project npm run start (This will restart the server if files are changed)
