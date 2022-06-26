@@ -52,7 +52,6 @@ export class VtSettingsStudentComponent implements OnInit {
         }
       }).afterClosed().subscribe(data => {
         if (data.disable) {
-          console.log('after closed');
           this.feedbackService.disableVirtualTeacher(data.temporary);
         }
       })

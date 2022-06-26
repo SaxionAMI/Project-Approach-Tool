@@ -61,6 +61,7 @@ export class WorkspaceComponent implements OnInit {
   room: string = this.route.snapshot.params.id;
   isShowing: boolean = false;
   categorySelected: string = "";
+  lastCard: Card;
   preloadedCardsOfAllDecks: Card[] = [];
   cardsOfSelectedDeck: Card[] = [];
   checkIfCardContextMenu: boolean = false;
@@ -126,17 +127,6 @@ export class WorkspaceComponent implements OnInit {
             "step9@workspace/" + this.room,
             "step10@workspace/" + this.room,
             "step11@workspace/" + this.room,
-            "step12@workspace/" + this.room,
-            "step13@workspace/" + this.room,
-            "step14@workspace/" + this.room,
-            "step15@workspace/" + this.room,
-            "step16@workspace/" + this.room,
-            "step17@workspace/" + this.room,
-            "step18@workspace/" + this.room,
-            "step19@workspace/" + this.room,
-            "step20@workspace/" + this.room,
-            "step21@workspace/" + this.room,
-            "step22@workspace/" + this.room,
           ],
         })
         .subscribe(
@@ -190,15 +180,20 @@ export class WorkspaceComponent implements OnInit {
       const oldGroup = this.workspace.groups.find(
         (group) => group.id === Number(res.oldGroupId)
       );
-
-      if (Number(res.oldGroupId) === spawnlist.id) {
-        const card = spawnlist.cards[res.oldIndex];
-        spawnlist.cards.splice(res.oldIndex, 1);
-        newGroup.cards.splice(res.newIndex, 0, card);
-        this.updateArrows();
-      } else {
+      if (oldGroup) {
         const card = oldGroup.cards[res.oldIndex];
         oldGroup.cards.splice(res.oldIndex, 1);
+        newGroup.cards.splice(res.newIndex, 0, card);
+        this.updateArrows();
+      } 
+      else if (res.sideCard) {
+        const card = new Card(res.sideCard);
+        newGroup.cards.splice(res.newIndex, 0, card);
+        this.updateArrows();
+      } 
+      else {
+        const card = spawnlist.cards[res.oldIndex];
+        spawnlist.cards.splice(res.oldIndex, 1);
         newGroup.cards.splice(res.newIndex, 0, card);
         this.updateArrows();
       }
@@ -218,9 +213,7 @@ export class WorkspaceComponent implements OnInit {
     });
 
     this.socketService.on("updateQuestionInGroup").subscribe((res) => {
-      console.log(res);
       this.workspace.groups.forEach((group) => {
-        console.log(group);
         if (group.cards.find((card) => card.id === res.id)) {
           group.cards.find((card) => card.id === res.id).title = res.title;
         }
@@ -616,8 +609,8 @@ export class WorkspaceComponent implements OnInit {
    * @returns void
    */
   addCard(card: Card): void {
-    card.id = Date.now().toString();
     this.workspace.spawnList.cards.push(new Card(card));
+    card.id = Date.now().toString();
     this.updateWorkspace();
     this.socketService.addCardToSpawnlist(this.room, card, new VTWorkspaceData(this.workspace));
   }
@@ -659,7 +652,6 @@ export class WorkspaceComponent implements OnInit {
     const x = Math.round(event.source.getFreeDragPosition().x / 100) * 100;
     const y = Math.round(event.source.getFreeDragPosition().y / 100) * 100;
     group.location = { x, y };
-    console.log(group);
     this.socketService.removeEffectFromGroup(this.room, group);
     this.socketService.moveGroup(this.room, group, new VTWorkspaceData(this.workspace));
 
@@ -674,8 +666,22 @@ export class WorkspaceComponent implements OnInit {
    * @returns void
    */
   cardDropped(value: any): void {
-    console.log(value);
-    this.socketService.moveCardToGroup(this.room, new Card(value), new VTWorkspaceData(this.workspace));
+    var sCard;
+    if (this.lastCard) {    
+      if (this.lastCard.id === value.cardId) {
+        sCard = this.lastCard;
+      }
+    }
+    value = {
+      cardId: value.cardId,
+      newGroupId: value.newGroupId,
+      oldGroupId: value.oldGroupId,
+      newIndex: value.newIndex,
+      oldIndex: value.oldIndex,
+      sideCard: sCard
+    };
+    
+    this.socketService.moveCardToGroup(this.room, value, new VTWorkspaceData(this.workspace));
     this.updateWorkspace();
     setTimeout(() => this.updateArrows());
   }
@@ -690,7 +696,6 @@ export class WorkspaceComponent implements OnInit {
       return;
     }
     this.lastCalled = new Date();
-    //await this.delay(0);
     this.lines.forEach((line) => {
       line.line.position();
     });
@@ -750,7 +755,6 @@ export class WorkspaceComponent implements OnInit {
    * @returns void
    */
   saveCardQuestionTitle(card: Card): void {
-    console.log(card);
     this.socketService.updateQuestionInGroup(this.room, card, new VTWorkspaceData(this.workspace));
     this.updateWorkspace();
   }
@@ -801,8 +805,6 @@ export class WorkspaceComponent implements OnInit {
    * @returns void
    */
   changeNoteInGroup(card: Card): void {
-    console.log(card);
-
     this.socketService.updateNoteInGroupCard(this.room, card, new VTWorkspaceData(this.workspace));
     this.updateWorkspace();
   }
@@ -839,6 +841,11 @@ export class WorkspaceComponent implements OnInit {
     this.socketService.setEffectOnCard(this.room, card);
   }
 
+  onDragCardOne(card: Card): void {
+    this.lastCard = card;
+    this.socketService.setEffectOnCard(this.room, card);
+  }
+
   /**
    * When dragging of a card end, an effect is removed for other users.
    * @param  {Card} card
@@ -847,6 +854,51 @@ export class WorkspaceComponent implements OnInit {
   onDragCardEnded(card: Card): void {
     this.socketService.removeEffectFromCard(this.room, card);
   }
+
+  onDragCardEndedOne(card: Card): void {  
+      if (card.type === this.categorySelected && card.type !== "general") {
+        this.cardsOfSelectedDeck = [];
+        var temp = 0;
+        this.preloadedCardsOfAllDecks.forEach((thisCard) => {
+          var thisDate =  Date.now().toString();
+            temp += 1;
+          if (thisCard.type === card.type) {
+            thisCard.id = thisDate + temp;
+            this.cardsOfSelectedDeck.push(new Card(thisCard));
+          }
+        });
+        this.repeatUpdate();
+      } 
+}
+
+onDragCardEndedTwo(card: Card): void {
+  if (this.searchPhrase && this.searchPhrase.length > 0) {
+    const limit = 10;
+    const toSearchFor = this.preloadedCardsOfAllDecks.filter(x => {
+      return x.title.toLowerCase().includes(this.searchPhrase.toLowerCase())
+    });
+    const cards = []
+    this.cardsOfSelectedDeck = [];
+    const thisDate =  Date.now().toString();
+    for(let i = 0; i < limit && i < toSearchFor.length; i++) {
+      const card = toSearchFor[i]
+      card.id = thisDate + i;
+      const newCard = new Card(card);
+      cards.push(newCard);
+    }
+    this.cardsOfSelectedDeck = cards.sort((a, b) => {
+      if (a.type < b.type) return -1;
+      else if (b.type < a.type) return 1;
+      else if (a.title < b.title) return -1;
+      else if (b.title < a.title) return 1;
+      else return 0;
+    })
+  }
+  else {
+    this.cardsOfSelectedDeck = [];
+  }
+  this.socketService.removeEffectFromCard(this.room, card);
+}
 
   /**
    * Revoking the access of users
@@ -875,9 +927,14 @@ export class WorkspaceComponent implements OnInit {
       });
       const cards = []
       this.cardsOfSelectedDeck = [];
+      const thisDate =  Date.now().toString();
       for(let i = 0; i < limit && i < toSearchFor.length; i++) {
         const card = toSearchFor[i]
-        cards.push(card);
+        card.id = thisDate + i;
+        card.startDate = new Date();
+        card.endDate = new Date();
+        const newCard = new Card(card);
+        cards.push(newCard);
       }
       this.cardsOfSelectedDeck = cards.sort((a, b) => {
         if (a.type < b.type) return -1;
@@ -902,9 +959,19 @@ export class WorkspaceComponent implements OnInit {
       if (category === this.categorySelected) {
         this.isShowing = false;
         this.cardsOfSelectedDeck = [];
+        var temp = 0;
+        var tempCard = this.preloadedCardsOfAllDecks[0];
         this.preloadedCardsOfAllDecks.forEach((card) => {
+          const thisDate =  Date.now().toString();
+          if (tempCard != card) {
+            temp += 1;
+          }
+
           if (card.type === category) {
-            this.cardsOfSelectedDeck.push(card);
+            card.id = thisDate + temp;
+            card.startDate = new Date();
+            card.endDate = new Date();
+            this.cardsOfSelectedDeck.push(new Card(card));
           }
         });
         this.categorySelected = "";
@@ -921,20 +988,40 @@ export class WorkspaceComponent implements OnInit {
       if (category === this.categorySelected && category !== "general") {
         this.isShowing = false;
         this.cardsOfSelectedDeck = [];
+        var temp = 0;
+        var tempCard = this.preloadedCardsOfAllDecks[0];
         this.preloadedCardsOfAllDecks.forEach((card) => {
+          const thisDate =  Date.now().toString();
+          if (tempCard != card) {
+            temp += 1;
+          }
+
           if (card.type === category) {
-            this.cardsOfSelectedDeck.push(card);
+            card.id = thisDate + temp;
+            card.startDate = new Date();
+            card.endDate = new Date();
+            this.cardsOfSelectedDeck.push(new Card(card));
           }
         });
         this.categorySelected = "";
         this.repeatUpdate();
-      } else {
+      } else { 
         this.categorySelected = category;
         this.isShowing = true;
         this.cardsOfSelectedDeck = [];
+        var temp = 0;
+        var tempCard = this.preloadedCardsOfAllDecks[0];
         this.preloadedCardsOfAllDecks.forEach((card) => {
+          const thisDate =  Date.now().toString();
+          if (tempCard != card) {
+            temp += 1;
+          }
+
           if (card.type === category) {
-            this.cardsOfSelectedDeck.push(card);
+            card.id = thisDate + temp;
+            card.startDate = new Date();
+            card.endDate = new Date();
+            this.cardsOfSelectedDeck.push(new Card(card));
           }
         });
         this.repeatUpdate();
@@ -1056,10 +1143,24 @@ export class WorkspaceComponent implements OnInit {
    * @returns void
    */
   onboardingOpenSidebar(): void {
+
     document
       .querySelector(".backdrop-target")
       .setAttribute("style", "background-color: #3a545f");
+
     this.toggleSidebar("general");
+
+
+    document
+      .querySelector("#phase-image")
+      .setAttribute("joyrideStep","step10");
+
+
+    document
+      .querySelector("#phase-image")
+      .setAttribute("[stepContent]","step10Content");
+
+
   }
 
   /**
@@ -1202,4 +1303,4 @@ export class LeaderLineWithId {
   }
   line: LeaderLine
   id: number
-};
+}

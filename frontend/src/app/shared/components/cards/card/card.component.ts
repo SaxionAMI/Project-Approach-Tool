@@ -62,6 +62,18 @@ export class CardComponent {
       }
       if (this.card.note !== undefined) {
         this.changedNote.emit();
+      } else {
+        this.changedNote.emit();
+      }
+
+      if (this.card.startDate == undefined) {
+        this.card.startDate = new Date();
+        this.card.endDate = new Date();
+      }
+
+      if (this.card.endDate == undefined) {
+        this.card.startDate = new Date();
+        this.card.endDate = new Date();
       }
     });
   }
@@ -71,8 +83,11 @@ export class CardComponent {
    * @returns void
    */
   saveTitle(): void {
-    this.card.title = this.cardControl.value;
-    console.log(this.card);
+    if (this.cardControl.value == '') {
+      this.card.title = "Question";
+    } else {
+      this.card.title = this.cardControl.value;
+    }
     this.save.emit(this.card);
     this.removeEffect.emit();
   }

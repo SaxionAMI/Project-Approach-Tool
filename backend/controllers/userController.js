@@ -6,21 +6,34 @@ const admin = require("../firebaseModule");
 
 //  create a user account
 exports.postUser = function (req, res) {
+  // create model object from schema and construct it with the req body
   const user = new User(req.body);
+  // update fields that need to be encryted
   user.firstName = cipherText(user.firstName);
   user.lastName = cipherText(user.lastName);
   user.email = cipherText(user.email);
-  user
-    .save()
-    .then((user) => {
-      res.status(200).json(user);
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message: err.message || "Some error occurred while creating the User.",
-      });
+
+  //  validate the value of the role key in the request body
+  if (req.body.role=="teacher"||req.body.role=="admin"||req.body.role==undefined){
+    // role either not submitted or submitted with expected values
+    user
+        .save()
+        .then((user) => {
+          res.status(200).json(user);
+        })
+        .catch((err) => {
+          res.status(500).send({
+            message: err.message || "Some error occurred while creating the User.",
+          });
+        });
+  } else {
+    // submitted unexpected values for role
+    res.status(403).send({
+      message: "Submitted unexpected value for role",
     });
+  }
 };
+
 
 //  check if the submitted email is valid
 exports.checkIfValidEmail = function (req, res) {
@@ -90,7 +103,7 @@ exports.updateUser = function (req, res) {
   const uid = req.params.uid;
   User.exists({ uid: uid }).then((exists) => {
     if (exists) {
-      const user = new User(req.body);
+      const user = req.body;
       user.firstName = cipherText(user.firstName);
       user.lastName = cipherText(user.lastName);
       user.email = cipherText(user.email);
@@ -113,7 +126,7 @@ exports.deleteUser = function (req, res) {
   User.findOneAndDelete({ uid: uid })
     .then((user) => {
       admin.auth().deleteUser(uid);
-      res.json(user);
+      res.status(200).json(user);
     })
     .catch((err) => {
       res.status(500).send({

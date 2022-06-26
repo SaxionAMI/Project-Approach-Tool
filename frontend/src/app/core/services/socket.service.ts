@@ -78,7 +78,7 @@ export class SocketService {
    * @returns void
    */
   addCardToSpawnlist(room: string, card: Card, workspace: VTWorkspaceData): void  {
-    this.socket.emit("addCardToSpawnlist", { room, data: card.data(), workspace: workspace });
+    this.socket.emit("addCardToSpawnlist", { room, data: card, workspace: workspace });
   }
 
   /**
@@ -87,8 +87,8 @@ export class SocketService {
    * @param  {Card} card - the card object
    * @returns void
    */
-  moveCardToGroup(room: string, card: Card, workspace: VTWorkspaceData): void  {
-    this.socket.emit("moveCardToGroup", { room, data: card.data(), workspace: workspace });
+  moveCardToGroup(room: string, value: any, workspace: VTWorkspaceData): void  {
+    this.socket.emit("moveCardToGroup", { room, data: value, workspace: workspace});
   }
 
   /**

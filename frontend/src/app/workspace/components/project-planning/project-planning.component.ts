@@ -95,8 +95,10 @@ export class ProjectPlanningComponent implements OnInit {
           type: card.type,
           note: card.note,
           picture: card.picture,
-          start: card.startDate ?? '2022-02-03', //startDate
-          end: card.endDate?? '2022-02-04', //endDate
+          start: card.startDate
+          ?? new Date(), 
+          end: card.endDate
+          ?? new Date(), 
           parentId: parentActivity.id,
           isGroup: false,
         }));
@@ -161,23 +163,16 @@ export class ProjectPlanningComponent implements OnInit {
     if (this.activities.find(activity => activity.id === data.key).isGroup) {
       return;
     }
-
-    if (!data.values.start && !data.values.end) {
-      return;
-    }
-
     let updatedFields = {};
-    const startDate = data.values.start;
-    const endDate = data.values.end;
-
+    var startDate = data.values.start;
+    var endDate = data.values.end;
     if (startDate) {
       updatedFields = {
         ...updatedFields,
         startDate,
       };
-
-      this.updateTimeBoxBuffer({id: data.key, startDate});
-      this.bufferTimer$.next();
+    } else {
+      startDate = this.activities.find(activity => activity.id === data.key).start
     }
 
     if (endDate) {
@@ -185,9 +180,16 @@ export class ProjectPlanningComponent implements OnInit {
         ...updatedFields,
         endDate,
       };
-      this.updateTimeBoxBuffer({id: data.key, endDate});
-      this.bufferTimer$.next();
+    } else {
+      endDate = this.activities.find(activity => activity.id === data.key).end
     }
+
+      this.updateTimeBoxBuffer({id: data.key, startDate, endDate});
+      this.bufferTimer$.next();
+    
+      this.updateTimeBoxBuffer({id: data.key, startDate, endDate});
+      this.bufferTimer$.next();
+    
   }
 
   /**

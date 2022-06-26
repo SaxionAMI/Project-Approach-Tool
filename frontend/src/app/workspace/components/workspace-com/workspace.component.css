@@ -76,6 +76,11 @@
   margin: 10px;
 }
 
+.card-listitem-sidebar {
+  display: flex;
+  align-items: center;
+}
+
 .bucket {
   padding: 20px 10px;
   border-bottom: solid 1px #ccc;
@@ -109,11 +114,10 @@
 }
 
 .cdk-drag-preview {
-  padding: 20px;
   box-sizing: border-box;
-  border-radius: 4px;
+  border-radius: 10px;
   box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
-    0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
 }
 
 .container {
@@ -130,7 +134,7 @@
 
 .sidebar-extended {
   width: auto;
-  max-width: 500px; 
+  max-width: 500px;
   background-color: white;
 }
 
@@ -184,7 +188,7 @@
 }
 
 body {
-    overflow: hidden; 
+    overflow: hidden;
   }
 
   .onboard-btn {
@@ -198,17 +202,17 @@ body {
     font-size: 12px;
     font-weight: 700;
   }
-  
+
   .onboard-btn:hover {
     color: #04abd6;
     border: 2px solid #04abd6;
     background-color: #fff;
   }
 
-  ::ng-deep body {
-    overflow-x: hidden;
-    overflow-y: hidden;
-  }
+  /*::ng-deep body {*/
+  /*  overflow-x: hidden;*/
+  /*  overflow-y: hidden;*/
+  /*}*/
 
   #content {
     overflow-x: auto;
@@ -226,8 +230,8 @@ body {
 
   #groups-container {
     position:absolute;
-    top:0;
-    right:0;
+    top:90px;
+    right:90px;
     left:0;
     bottom:0;
     overflow:scroll;

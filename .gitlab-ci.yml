@@ -1,0 +1,75 @@
+stages:   
+  - test
+  - build
+  - deploy       
+
+eslint:
+  image: node:latest
+  stage: test
+  script: 
+    - chmod -R 755 backend
+    - cp $backendEnv backend/.env
+    - cp $adminKey backend/json/adminKey.json
+    - cd backend
+    - npm i
+    - npm run eslint
+    - cd ../frontend
+    - cp $environment frontend/src/environments/environment.ts
+    - cp $adminKey fronted/serviceAccount.json
+    - npm i
+    - npm run eslint
+  
+
+
+
+build-job:      
+  stage: build
+  script:
+    - echo "Compiling the code..."
+    - echo "Compile complete."
+
+unit-test-job: 
+  image: node:latest
+  stage: test   
+  script:
+    - chmod -R 755 backend
+    - cp $backendEnv backend/.env
+    - cp $adminKey backend/json/adminKey.json
+    - cd backend
+    - npm i
+    - npm run start
+    - npm run test
+    - npm run test:report
+    - npm run test:coverage-html
+    
+
+cypress-test-job:
+  image: cypress/browsers:node12.14.1-chrome85-ff81
+  stage: test
+  script: 
+    - chmod -R 755 backend
+    - cp $backendEnv backend/.env
+    - cp $adminKey backend/json/adminKey.json
+    - cd backend
+    - npm i
+    - npm run start &
+    - cd ..
+    - chmod -R 755 frontend
+    - cp $adminKey frontend/serviceAccount.json
+    - cp $environment frontend/src/environments/environment.ts
+    - cp $testUID frontend/cypress.env.json
+    - cd frontend 
+    - npm i --legacy-peer-deps
+    - npm run cypress:ci 
+    - npm run cypress:test
+
+deploy:
+  stage: deploy
+  only:
+    - development
+  script:
+    - mkdir -p ~/.ssh
+    - echo "$PAT_KEY_PEM" >> ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
+    - ssh -o StrictHostKeyChecking=no azuremanage@20.229.143.161 "cd PAT && sh update.sh"
+  environment: development

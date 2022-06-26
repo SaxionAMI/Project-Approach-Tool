@@ -1,6 +1,6 @@
 import { Group, IGroupData } from "./group.model";
 import { Line } from "./line.model";
-import { Permission } from "./Permission.model";
+import { Permission } from "./permission.model";
 import { Card, ICardData } from "./card.model";
 import { Deck } from "./deck.model";
 import { VTFeedbackCategoriesModel } from "./virtual-teacher/vt-feedback-categories-model";
