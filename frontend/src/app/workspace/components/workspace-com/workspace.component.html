@@ -16,17 +16,15 @@
   class="sidenav-container"
   [ngStyle]="{ visibility: loading ? 'hidden' : 'visible' }"
   id="page">
-  <mat-drawer mode="side" opened>
+  <mat-drawer mode="side" opened
+  >
     <div style="height: 90px"></div>
-    <div class="button-row"
-         joyrideStep="step13"
-         (prev)="onboardingOpenSidebar()"
-         [stepContent]="step13Content"
-    >
+    <div class="button-row">
+
       <button
-        joyrideStep="step9"
-        title="The building blocks"
-        [stepContent]="step9Content"
+        joyrideStep="step7"
+        title="Building blocks"
+        [stepContent]="step7Content"
         (next)="onboardingOpenSidebar()"
         [doneTemplate]="doneButton"
         [nextTemplate]="nextButton"
@@ -36,16 +34,21 @@
         (click)="toggleSidebar('general')">
         <mat-icon class="general-icon">build</mat-icon>
       </button>
+      <div>
       <button
         title="Field research methods"
-        (prev)="onboardingOpenSidebar()"
         *ngIf="checkForType('Field')"
+        joyrideStep = "step9"
+        [stepContent]="step9Content"
+        (prev)="toggleSidebar('general')"
+        (next)="toggleSidebar('Field')"
         mat-icon-button
         (click)="toggleSidebar('Field')">
         <img
           class="sidebar-btn"
           src="/assets/image/icons/logo-field.png" />
       </button>
+      </div>
       <button
         title="Lab research methods"
         *ngIf="checkForType('Lab')"
@@ -98,9 +101,10 @@
           src="/assets/image/icons/logo-search.png" />
       </button>
       <button
-        joyrideStep="step19"
+        joyrideStep="step11"
         title="Selecting a deck"
-        [stepContent]="step19Content"
+        [stepContent]="step11Content"
+        (prev)="toggleSidebar('Field')"
         stepPosition="top"
         class="settings-sidebar"
         mat-icon-button
@@ -134,7 +138,11 @@
               class="card-listitem-sidebar"
               id="{{ card.id ? card.id : card._id }}"
               [card]="card"
-              [room]="room"></app-card-selector-card>
+              [room]="room"
+              joyrideStep = "step10"
+              [stepContent] = step10Content
+              (prev)="toggleSidebar('Field')"
+              (next)="toggleSidebar('Field')" ></app-card-selector-card>
           </div>
         <div *ngIf="this.categorySelected == 'Search'"
           fxLayout="column"
@@ -173,12 +181,13 @@
           *ngIf="this.categorySelected == 'general'"
           fxLayout="column wrap"
           fxLayoutGap="5px"
-          fxLayoutAlign="flex-start">
+          fxLayoutAlign="flex-start"
+          joyrideStep="step8"
+          [stepContent]="step8Content"
+          (next)="onboardingOpenSidebar()"
+          (prev)="onboardingOpenSidebar()">
           <img
-            joyrideStep="step10"
             title="Phase"
-            [stepContent]="step10Content"
-            (prev)="onboardingOpenSidebar()"
             fxFlex="0 1 calc(50% - 10px)"
             class="general-image"
             src="/assets/image/phase.png"
@@ -193,10 +202,7 @@
             src="/assets/image/arrow.png"
             (click)="startArrow()" /> -->
           <img
-            joyrideStep="step12"
             title="Question"
-            [stepContent]="step12Content"
-            (next)="onboardingOpenSidebar()"
             fxFlex="0 1 calc(50% - 10px)"
             class="general-image"
             src="/assets/image/question.png"
@@ -272,17 +278,7 @@
   title="Workspace"
   [stepContent]="step6Content"
   stepPosition="center"></div>
-<!--<div-->
-<!--  joyrideStep="step21"-->
-<!--  title="Deleting"-->
-<!--  [stepContent]="step21Content"-->
-<!--  stepPosition="center"></div>-->
 
-<!--<div-->
-<!--  joyrideStep="step22"-->
-<!--  title="The end"-->
-<!--  [stepContent]="step22Content"-->
-<!--  stepPosition="center"></div>-->
 <ng-template #doneButton>
   <button class="onboard-btn">done</button>
 </ng-template>
@@ -296,88 +292,45 @@
   <br /> This is a workspace. A project approach example is displayed here.<br />
   <br /> Click <b>next</b> to continue with the walkthrough of the workspace. <br /> Or click the <b>X</b> in the right
   top corner to stop the workspace tour. <br /> <br/>
-  You can always <b>restart</b> the tour from the help menu.
+  You can always <b>restart</b> the tour by <b>clicking</b> on the help button.
   <br />
   <br />
 </ng-template>
-<ng-template #step9Content>
-  <br /> The building blocks are used to create the structure of your project. <br />
+<ng-template #step7Content>
+  <br /> The building blocks are used to create the structure of your project.
   <br /> Click <b>next</b> to learn more about these elements. <br />
   <br />
 </ng-template>
-<ng-template #step10Content>
-  <br /> This is a <b>phase</b>, one of the main building blocks. <br /> This is used to group and prioritize cards. <br />
-  <br /> You can add one to the workspace by <b>clicking</b> on it. <br />
+<ng-template #step8Content>
+  <br /> The first building block is a <b>phase</b>. <br /> It is used to group and prioritize cards. <br />
+  <br /> The second is a <b>question</b>. <br /> It is used to place research questions within a <b>phase</b>. <br />
+  <br /> You can add any of the blocks to the workspace by <b>clicking</b> on them. <br />
   <br />
 </ng-template>
+
 <!--<ng-template #step11Content>-->
 <!--  <br /> An <b>arrow</b> is used to define the flow of the project approach. <br /> This arrow connects two phases to-->
 <!--  each other. <br />-->
 <!--  <br /> You can add an arrow by <b>clicking</b> this button. Then you will have to select <br /> the start phase and-->
 <!--  after that the end phase. <br />-->
 <!--  <br />-->
-<!--</ng-template>-->
-<ng-template #step12Content>
-  <br /> This is a <b>question</b>, one of the main building blocks. <br /> This is used to place research questions within a
-  <b>phase</b>. <br />
-  <br /> You can add one to the workspace by <b>clicking</b> on it. <br />
-  <br />
-</ng-template>
-<ng-template #step13Content>
-  <br /> You can apply various research methods to shape your project. <br />
-  <br /> You can add a card to the workspace by either <b>clicking</b> on it or <b>dragging</b> it to a phase. <br> <br/>
-  <br />
-</ng-template>
-<!--<ng-template #step14Content>-->
-<!--  <br /> With lab research, you can test (parts of) your solution, <br /> to find out if things indeed work as intended.-->
-<!--  <br />-->
-<!--  <br /> You can add a card to the workspace by <b>clicking</b> on it. <br /> Afterwards you can drag them into-->
-<!--  <b>phases</b>. <br />-->
-<!--  <br />-->
-<!--</ng-template>-->
-<!--<ng-template #step15Content>-->
-<!--  <br /> Library research is done to explore what has already been done and <br /> what guidelines and theories exist-->
-<!--  that could help you further your solution. <br />-->
-<!--  <br /> You can add a card to the workspace by <b>clicking</b> on it. <br /> Afterwards you can drag them into-->
-<!--  <b>phases</b>. <br />-->
-<!--  <br />-->
-<!--</ng-template>-->
-<!--<ng-template #step16Content>-->
-<!--  <br /> Research within the showroom strategy is conducted to compare <br /> your ideas with available work. <br />-->
-<!--  <br /> You can add a card to the workspace by <b>clicking</b> on it. <br /> Afterwards you can drag them into-->
-<!--  <b>phases</b>. <br />-->
-<!--  <br />-->
-<!--</ng-template>-->
-<!--<ng-template #step17Content>-->
-<!--  <br /> Workshop research is done to explore possibilities to gain <br /> insights into what is possible and how things-->
-<!--  could work (better). <br />-->
-<!--  <br /> You can add a card to the workspace by <b>clicking</b> on it. <br /> Afterwards you can drag them into-->
-<!--  <b>phases</b>. <br />-->
-<!--  <br />-->
-<!--</ng-template>-->
-<!--<ng-template #step18Content>-->
-<!--  <br /> Stepping stones are used to define outcomes of activities. <br />-->
-<!--  <br /> You can add a card to the workspace by <b>clicking</b> on it. <br /> Afterwards you can drag them into-->
-<!--  <b>phases</b>. <br />-->
-<!--  <br />-->
-<!--</ng-template>-->
-<ng-template #step19Content>
-  <br /> With this button different types of decks can be <br /> selected. Check before making a project approach <br />
-  which decks fit your study best. <br />
-  <br />
-</ng-template>
-<!--<ng-template #step21Content>-->
-<!--  <br /> You can <b>delete cards and groups</b> by <b>right clicking</b> on them. <br /> This will open a menu in which-->
-<!--  you can remove them. <br />-->
-<!--  <br />-->
-<!--</ng-template>-->
 
-<!--<ng-template #step22Content>-->
-<!--  <br /> This is the end of the tour. <br />-->
-<!--  <br /> You can always <b>restart</b> the tour, by clicking <br />-->
-<!--  <b>restart tour</b> in the help menu. <br />-->
-<!--  <br />-->
-<!--</ng-template>-->
+<ng-template #step9Content>
+  <br /> You can apply various research methods by <b>selecting</b> a deck of cards on the left. <br />
+  <br />
+</ng-template>
+<ng-template #step10Content>
+  <br /> You can spawn a card to the workspace by either <b>clicking</b> on it
+  <br/> and <b>dragging</b> it to a phase or by directly <b>dragging</b> it to a phase from the sidebar. <br/>
+  <br/> You can <b>delete cards and groups</b> by <b>right clicking</b> on them. <br />
+  <br/>
+  </ng-template>
+  <ng-template #step11Content>
+    <br /> With this button different types of decks can be <br /> selected. Check before making a project approach <br />
+    which decks fit your study best. <br />
+    <br />
+  </ng-template>
+
 <div style="visibility: hidden; position: fixed"
   [style.left]="contextMenuPosition.x"
   [style.top]="contextMenuPosition.y"
