@@ -1188,6 +1188,18 @@ onDragCardEndedTwo(card: Card): void {
       .querySelector(".backdrop-target")
       .setAttribute("style", "background-color: #3a545f");
     this.toggleSidebar("general");
+
+
+    document
+      .querySelector("#phase-image")
+      .setAttribute("joyrideStep","step10");
+
+
+    document
+      .querySelector("#phase-image")
+      .setAttribute("[stepContent]","step10Content");
+
+
   }
 
   /**
