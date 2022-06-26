@@ -128,8 +128,7 @@
               [detail]="false"
               (click)="addCard(card)"
               cdkDrag
-              (cdkDragStarted)="onDragCard(card)"
-              (cdkDragEnded)="onDragCardEnded(card)"
+              (cdkDragStarted)="onDragCardOne(card)"
               (cdkDragEnded)="onDragCardEndedOne(card)"
               class="card-listitem-sidebar"
               id="{{ card.id ? card.id : card._id }}"
@@ -157,8 +156,7 @@
               [detail]="false"
               (click)="addCard(card)"
               cdkDrag
-              (cdkDragStarted)="onDragCard(card)"
-              (cdkDragEnded)="onDragCardEnded(card)"
+              (cdkDragStarted)="onDragCardOne(card)"
               (cdkDragEnded)="onDragCardEndedTwo(card)"
               class="card-listitem-sidebar"
               id="{{ card.id ? card.id : card._id }}"
