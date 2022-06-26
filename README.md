@@ -14,17 +14,17 @@ See the readme files in the front-end and back-end folders.
 
 ## Version history
 
-### v1 - Basic functionality - july 2020
+### v1 - Basic functionality - July 2020
 Allows an end user to define phases (groups of cards), select stepping stone and methods cards already present in the server, and to locally add question cards and any custom cards of preference. Relationships between phases can be indicated by adding arrows.
 Developed by Matyas Köne as part of his graduation project.
 
-### v2 - Online collaboration - january 2021
+### v2 - Online collaboration - January 2021
 In version 2, a full online collaboration system was introduced. With this system, multiple users can collaborate on a single project approach. The collaboration is real-time thanks to the use of a websocket connection, so that each user can receive changes from others.
 Also new in version 2 is an "on-boarding" system that helps new users to familiarize themselves with the Project Approach Tool. 
 Another new feature is that workspaces (project approaches) are now stored persistently and online, instead of locally for each user.
 Version 2 was developed by Lars Hendriks, a Saxion HBO-ICT software engineering student for his graduation project.
 
-### v3 - Virtual teacher - july 2021
+### v3 - Virtual teacher - July 2021
 In version 3, an automatic feedback system was introduced called the "Virtual Teacher". Prior to this version, users of the Project Approach Tool experienced a lack of guidance because of their often low experience with the DOT Framework. 
 To combat this problem, an automatic feedback system was introduced that can give feedback to users based on their project approach. Currently, a flexible configurable rule engine is used to perform a variety of low-level checks.
 
@@ -36,4 +36,6 @@ A few examples:
 The rule engine allows teachers to fully customize feedback. Meanwhile, students can choose which kinds of feedback they want to get, in order to tailor to as many students and project types as possible.
 The virtual teacher was developed by Robin van Alst, a Saxion HBO-ICT software engineering student for his graduation project.
 
+### v4 - Project Update - May/June 2021
 
+In version 4, the project was updated and an improvement of development was the main focus. Changes to functionality that the client wanted was added, (such as dragging of cards), and tests for both backend and frontend were created. A pipeline was created for GitLab which runs the tests and if the testing stage passes autodeploys the website once the pipeline is complete. Version 3 was developed by a HBO-IT group consisting of Siyovush Tokhir, Henry Wright, Simona Ilieva, Yibing Chen, and Oleksii Soloviov. 
