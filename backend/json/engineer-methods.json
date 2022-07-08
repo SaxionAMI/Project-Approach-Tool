@@ -1,0 +1,532 @@
+[
+  {
+    "_id": "5e30276e8b5f801a0cc1f489",
+    "__v": 0,
+    "color": "#817DAF",
+    "deck": "ENGINEERING",
+    "picture": "../assets/research methods illustraties/png/Computer-simulation.png",
+    "shortDescription": "Computer simulations are used when a real-world process, system or event situation is not available or feasible.",
+    "title": "Computer simulation",
+    "type": "Lab"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f490",
+    "__v": 0,
+    "color": "#817DAF",
+    "deck": "ENGINEERING",
+    "picture": "../assets/research methods illustraties/png/Security-test.png",
+    "shortDescription": "Understand the security risks of an IT system.",
+    "title": "Security test",
+    "type": "Lab"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f491",
+    "__v": 0,
+    "color": "#817DAF",
+    "deck": "ENGINEERING",
+    "picture": "../assets/research methods illustraties/png/Stress-test.png",
+    "shortDescription": "Check whether your system can handle all critical load situations in practice.",
+    "title": "Stress test",
+    "type": "Lab"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f492",
+    "__v": 0,
+    "color": "#817DAF",
+    "deck": "ENGINEERING",
+    "picture": "../assets/research methods illustraties/png/Enviromental-impact-test.png",
+    "shortDescription": "To investigate the impact of the product on the environment.",
+    "title": "Environmental impact test",
+    "type": "Lab"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f493",
+    "__v": 0,
+    "color": "#817DAF",
+    "deck": "ENGINEERING",
+    "picture": "../assets/research methods illustraties/png/Subsystem-test.png",
+    "shortDescription": "See if the deployment of your subsystems complies with expectations.",
+    "title": "Subsystem test",
+    "type": "Lab"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f494",
+    "__v": 0,
+    "color": "#817DAF",
+    "deck": "ENGINEERING",
+    "picture": "../assets/research methods illustraties/png/Risk-analysis.png",
+    "shortDescription": "All things that can go wrong, will - eventually. To avoid or mitigate risks, it’s useful to understand what can go wrong, how likely this is, and what the consequences will be.",
+    "title": "Risk analysis",
+    "type": "Lab"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f495",
+    "__v": 0,
+    "color": "#817DAF",
+    "deck": "ENGINEERING",
+    "picture": "../assets/research methods illustraties/png/Big-data-analytics.png",
+    "shortDescription": "Big data is a recent phenomenon. Traditional data analytics are not able to handle large quantities of data, so specific algorithms have been developed: Big Data Analytics.",
+    "title": "Big-data analytics",
+    "type": "Lab"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f496",
+    "__v": 0,
+    "color": "#817DAF",
+    "deck": "ENGINEERING",
+    "picture": "../assets/research methods illustraties/png/system-intergration-test.png",
+    "shortDescription": "Solve problems before your system goes into production, and demonstrate that the system operates according to its requirements.",
+    "title": "System integration test",
+    "type": "Lab"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f497",
+    "__v": 0,
+    "color": "#817DAF",
+    "deck": "ENGINEERING",
+    "picture": "../assets/research methods illustraties/png/Field-trial.png",
+    "shortDescription": "Find out the practical value of your results in the real world; in a non-conditioned environment.",
+    "title": "Field trail",
+    "type": "Lab"
+  },
+  {
+    "_id": "5e3022138b5f801a0cc1f498",
+    "__v": 0,
+    "color": "#80C4D2",
+    "deck": "ENGINEERING",
+    "picture": "../assets/research methods illustraties/png/Prototyping.png",
+    "shortDescription": "Develop, evaluate or communicate a concept, design or problem solution to make your ideas concrete, to learn whether they work and to discover the technical limitations or possibilities.",
+    "title": "Prototyping",
+    "type": "Workshop"
+  },
+  {
+    "_id": "5e3022138b5f801a0cc1f499",
+    "__v": 0,
+    "color": "#80C4D2",
+    "deck": "ENGINEERING",
+    "picture": "../assets/research methods illustraties/png/Co-creation.png",
+    "shortDescription": "Gain inspiration from your users by involving them in the design process. Co-creation may lead to unexpected and sensible project outcomes.",
+    "title": "Co-creation",
+    "type": "Workshop"
+  },
+  {
+    "_id": "5e3022138b5f801a0cc1f500",
+    "__v": 0,
+    "color": "#80C4D2",
+    "deck": "ENGINEERING",
+    "picture": "../assets/research methods illustraties/png/Sketching.png",
+    "shortDescription": "Explore and communicate forms and ideas.",
+    "title": "Sketching",
+    "type": "Workshop"
+  },
+  {
+    "_id": "5e3022138b5f801a0cc1f501",
+    "__v": 0,
+    "color": "#80C4D2",
+    "deck": "ENGINEERING",
+    "picture": "../assets/research methods illustraties/png/Ideation.png",
+    "shortDescription": "Generate and develop new ideas.",
+    "title": "Ideation",
+    "type": "Workshop"
+  },
+  {
+    "_id": "5e3022138b5f801a0cc1f502",
+    "__v": 0,
+    "color": "#80C4D2",
+    "deck": "ENGINEERING",
+    "picture": "../assets/research methods illustraties/png/Morphological-chart.png",
+    "shortDescription": "Generating ideas in a systematic manner.",
+    "title": "Morphological chart",
+    "type": "Workshop"
+  },
+  {
+    "_id": "5e3022138b5f801a0cc1f503",
+    "__v": 0,
+    "color": "#80C4D2",
+    "deck": "ENGINEERING",
+    "picture": "../assets/research methods illustraties/png/Requirements-engineering.png",
+    "shortDescription": "To define and weigh the requirements of a new design or redesign, considering the interests of all concerned stakeholders.",
+    "title": "Requirements engineering",
+    "type": "Workshop"
+  },
+  {
+    "_id": "5e3022138b5f801a0cc1f504",
+    "__v": 0,
+    "color": "#80C4D2",
+    "deck": "ENGINEERING",
+    "picture": "../assets/research methods illustraties/png/Multi-criteria-decision-making-2.png",
+    "shortDescription": "Improve the quality of complex decisions.",
+    "title": "Multi-criteria decision making",
+    "type": "Workshop"
+  },
+  {
+    "_id": "5e3022138b5f801a0cc1f505",
+    "__v": 0,
+    "color": "#80C4D2",
+    "deck": "ENGINEERING",
+    "picture": "../assets/research methods illustraties/png/Modeling.png",
+    "shortDescription": "To get a thorough understanding of the process. Mathematical models can form input for requirements, discussion with different stakeholders, and problem analysis.",
+    "title": "Modeling",
+    "type": "Workshop"
+  },
+  {
+    "_id": "5e3022138b5f801a0cc1f506",
+    "__v": 0,
+    "color": "#80C4D2",
+    "deck": "ENGINEERING",
+    "picture": "../assets/research methods illustraties/png/Tear-down.png",
+    "shortDescription": "Breaking a complex system or problem into smaller parts to focus on the root cause of a problem. Understand the interaction between parts and the role of smaller parts in the bigger scheme.",
+    "title": "Tear down",
+    "type": "Workshop"
+  },
+  {
+    "_id": "5e3022138b5f801a0cc1f507",
+    "__v": 0,
+    "color": "#80C4D2",
+    "deck": "ENGINEERING",
+    "picture": "../assets/research methods illustraties/png/Convergence-tools.png",
+    "shortDescription": "Use these tools when you need to combine ideas or concepts, or when you have to make choices and want to be sure that you correctly evaluate all alternatives.",
+    "title": "Convergence tools",
+    "type": "Workshop"
+  },
+  {
+    "_id": "5e3022138b5f801a0cc1f508",
+    "__v": 0,
+    "color": "#80C4D2",
+    "deck": "ENGINEERING",
+    "picture": "../assets/research methods illustraties/png/Design-for-X.png",
+    "shortDescription": "This broad range of design tools helps you detail your concept in order to achieve an excellent (X) design. DfX allows you to execute activities concurrently in order to increase productivity and quality.",
+    "title": "Design for X",
+    "type": "Workshop"
+  },
+  {
+    "_id": "5e3022d38b5f801a0cc1f509",
+    "__v": 0,
+    "color": "#F6DC92",
+    "deck": "ENGINEERING",
+    "picture": "../assets/research methods illustraties/png/Product-review.png",
+    "shortDescription": "Ensure the product is perfect before it is released to the client or users.",
+    "title": "(Product) Quality Review",
+    "type": "Showroom"
+  },
+  {
+    "_id": "5e3022d38b5f801a0cc1f510",
+    "__v": 0,
+    "color": "#F6DC92",
+    "deck": "ENGINEERING",
+    "picture": "../assets/research methods illustraties/png/Peer-review_2.png",
+    "shortDescription": "“With many eye-balls on the code, all bugs are shallow.” Colleagues and experts can help position and improve your work, certainly if it needs to be reused by them.",
+    "title": "Peer Review",
+    "type": "Showroom"
+  },
+  {
+    "_id": "5e3022d38b5f801a0cc1f511",
+    "__v": 0,
+    "color": "#F6DC92",
+    "deck": "ENGINEERING",
+    "picture": "../assets/research methods illustraties/png/Unique-selling-points.png",
+    "shortDescription": "In a competitive business situation you need to be able to identify and communicate clearly and concisely what it is that sets you apart.",
+    "title": "USP (Unique Selling Points)",
+    "type": "Showroom"
+  },
+  {
+    "_id": "5e3022d38b5f801a0cc1f512",
+    "__v": 0,
+    "color": "#F6DC92",
+    "deck": "ENGINEERING",
+    "picture": "../assets/research methods illustraties/png/Pitch.png",
+    "shortDescription": "Get an idea of the unique selling points of the opportunity you have found, or of the idea you have to tackle a problem, and practice concise communication about them.",
+    "title": "Pitch",
+    "type": "Showroom"
+  },
+  {
+    "_id": "5e3022d38b5f801a0cc1f513",
+    "__v": 0,
+    "color": "#F6DC92",
+    "deck": "ENGINEERING",
+    "picture": "../assets/research methods illustraties/png/Benchmark-test.png",
+    "shortDescription": "A standardised set allows you to compare your product to similar products.",
+    "title": "Benchmark test",
+    "type": "Showroom"
+  },
+  {
+    "_id": "5e3022d38b5f801a0cc1f514",
+    "__v": 0,
+    "color": "#F6DC92",
+    "deck": "ENGINEERING",
+    "picture": "../assets/research methods illustraties/png/Audit.png",
+    "shortDescription": "Audit a product, service, or company to validate the viability for use in a business case, or to determine compliance with regulations used in the applicable sector.",
+    "title": "Audit",
+    "type": "Showroom"
+  },
+  {
+    "_id": "5e3022d38b5f801a0cc1f515",
+    "__v": 0,
+    "color": "#F6DC92",
+    "deck": "ENGINEERING",
+    "picture": "../assets/research methods illustraties/png/Ethical-check.png",
+    "shortDescription": "Norms and values differ between people and societies. Make sure your design and development decisions do not lead to conflicts with certain norms and values.",
+    "title": "Ethical check",
+    "type": "Showroom"
+  },
+  {
+    "_id": "5e3023158b5f801a0cc1f516",
+    "__v": 0,
+    "color": "#5DBCB3",
+    "deck": "ENGINEERING",
+    "picture": "../assets/research methods illustraties/png/Interview.png",
+    "shortDescription": "Learn from potential users of your new product and other stakeholders.",
+    "title": "Interview",
+    "type": "Field"
+  },
+  {
+    "_id": "5e3023158b5f801a0cc1f517",
+    "__v": 0,
+    "color": "#5DBCB3",
+    "deck": "ENGINEERING",
+    "picture": "../assets/research methods illustraties/png/Focus-group.png",
+    "shortDescription": "Efficiently gather opinions and experiences through group discussions with stakeholders, users or experts.",
+    "title": "Focus group",
+    "type": "Field"
+  },
+   {
+    "_id": "5e3023158b5f801a0cc1f518",
+    "__v": 0,
+    "color": "#5DBCB3",
+    "deck": "ENGINEERING",
+    "picture": "../assets/research methods illustraties/png/Problem-analyis.png",
+    "shortDescription": "Before solving a problem, it is important to understand it. Moreover, problem analysis ensures that you are not solving the wrong problem.",
+    "title": "Problem analysis",
+    "type": "Field"
+  },
+  {
+    "_id": "5e3023158b5f801a0cc1f519",
+    "__v": 0,
+    "color": "#5DBCB3",
+    "deck": "ENGINEERING",
+    "picture": "../assets/research methods illustraties/png/Observation.png",
+    "shortDescription": "Get a feeling for how your intended users will use your product by unobtrusively observing them and their behaviour in their daily environment.",
+    "title": "Observation",
+    "type": "Field"
+  },
+  {
+    "_id": "5e3023158b5f801a0cc1f520",
+    "__v": 0,
+    "color": "#5DBCB3",
+    "deck": "ENGINEERING",
+    "picture": "../assets/research methods illustraties/png/Stakeholder-analysis.png",
+    "shortDescription": "Identify the stakeholders and ensure that their needs are considered.",
+    "title": "Stakeholder analysis",
+    "type": "Field"
+  },
+  {
+    "_id": "5e3023158b5f801a0cc1f521",
+    "__v": 0,
+    "color": "#5DBCB3",
+    "deck": "ENGINEERING",
+    "picture": "../assets/research methods illustraties/png/Functional-anaylis.png",
+    "shortDescription": "To gain an overview of all the functions a future product should perform. In this way you can come up with more specific solutions.",
+    "title": "Function analysis",
+    "type": "Field"
+  },
+  {
+    "_id": "5e3023158b5f801a0cc1f522",
+    "__v": 0,
+    "color": "#5DBCB3",
+    "deck": "ENGINEERING",
+    "picture": "../assets/research methods illustraties/png/Product-lifecycle-analysis.png",
+    "shortDescription": "To make sure you cover requirements pertaining to all stages of the product lifecycle.",
+    "title": "Product life cycle analysis",
+    "type": "Field"
+  },
+  {
+    "_id": "5e3023158b5f801a0cc1f523",
+    "__v": 0,
+    "color": "#5DBCB3",
+    "deck": "ENGINEERING",
+    "picture": "../assets/research methods illustraties/png/Process-analysis.png",
+    "shortDescription": "To gain an understanding of every step or stage within a process. It serves as a tool for understanding, improving, executing and/or managing a process.",
+    "title": "Process analysis",
+    "type": "Field"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f524",
+    "__v": 0,
+    "color": "#D1F087",
+    "deck": "ENGINEERING",
+    "picture": "../assets/research methods illustraties/png/Trend-analysis.png",
+    "shortDescription": "Catch up with novel developments before your competitors do.",
+    "title": "Trend analysis",
+    "type": "Library"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f525",
+    "__v": 0,
+    "color": "#D1F087",
+    "deck": "ENGINEERING",
+    "picture": "../assets/research methods illustraties/png/Best-good-and-bad-practices.png",
+    "shortDescription": "Incorporating what has proven to work somewhere else forms the basis of any high-quality project.",
+    "title": "Best good and bad practices",
+    "type": "Library"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f526",
+    "__v": 0,
+    "color": "#D1F087",
+    "deck": "ENGINEERING",
+    "picture": "../assets/research methods illustraties/png/Expert-interview.png",
+    "shortDescription": "A domain expert can put you on the right track when you enter a new domain or field of expertise. The expert can recommend sources, give you a sense of direction or point out common pitfalls.",
+    "title": "Expert interview",
+    "type": "Library"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f527",
+    "__v": 0,
+    "color": "#D1F087",
+    "deck": "ENGINEERING",
+    "picture": "../assets/research methods illustraties/png/Competitive-analysis.png",
+    "shortDescription": "Find a niche or unique selling point competitors are not filling.",
+    "title": "Competitive analysis",
+    "type": "Library"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f528",
+    "__v": 0,
+    "color": "#D1F087",
+    "deck": "ENGINEERING",
+    "picture": "../assets/research methods illustraties/png/Literature-study.png",
+    "shortDescription": "Find general information, guidance and best practices.",
+    "title": "Literature study",
+    "type": "Library"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f529",
+    "__v": 0,
+    "color": "#D1F087",
+    "deck": "ENGINEERING",
+    "picture": "../assets/research methods illustraties/png/Available-product-analysis.png",
+    "shortDescription": "Find out if what you are planning has already been done (in full or in part) by someone else. Your analysis can also be used as an inspiration tool.",
+    "title": "Available technology analysis",
+    "type": "Library"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f530",
+    "__v": 0,
+    "color": "#D1F087",
+    "deck": "ENGINEERING",
+    "picture": "../assets/research methods illustraties/png/Patent-scan.png",
+    "shortDescription": "Find out if what you are planning has already been done (in full or in part) by someone else. Your analysis can also be used as an inspiration tool.",
+    "title": "Patent scan",
+    "type": "Library"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f531",
+    "__v": 0,
+    "color": "#D1F087",
+    "deck": "ENGINEERING",
+    "picture": "../assets/research methods illustraties/png/Legal-scan.png",
+    "shortDescription": "Find the regulations that govern the product or service you want to design; they will form input for the requirements analysis.",
+    "title": "Legal scan",
+    "type": "Library"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f532",
+    "__v": 0,
+    "color": "#ff4d8e",
+    "deck": "ENGINEERING",
+    "picture": "../assets/research methods illustraties/png/Proof-of-concept.png",
+    "shortDescription": "Demonstrate the feasibility of your idea, concept or principle.",
+    "title": "Proof of concept",
+    "type": "Deliverables"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f533",
+    "__v": 0,
+    "color": "#ff4d8e",
+    "deck": "ENGINEERING",
+    "picture": "../assets/research methods illustraties/png/SWOT.png",
+    "shortDescription": "A SWOT analysis is used to find a strategic fit as this increases the chances of success of an organisation, product development process, or a project.",
+    "title": "SWOT",
+    "type": "Deliverables"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f534",
+    "__v": 0,
+    "color": "#ff4d8e",
+    "deck": "ENGINEERING",
+    "picture": "../assets/research methods illustraties/png/Focus-.png",
+    "shortDescription": "To get and maintain a sense of the direction of the project and prevent spending time on the wrong tasks. In later phases, to delve deep into the content.",
+    "title": "Focus",
+    "type": "Deliverables"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f535",
+    "__v": 0,
+    "color": "#ff4d8e",
+    "deck": "ENGINEERING",
+    "picture": "../assets/research methods illustraties/png/Control-strategy.png",
+    "shortDescription": "In all projects that require automation, a process has to be monitored and controlled. Control necessitates the weighing of different factors and choosing which one is most important in each specific case.",
+    "title": "Control strategy",
+    "type": "Deliverables"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f536",
+    "__v": 0,
+    "color": "#ff4d8e",
+    "deck": "ENGINEERING",
+    "picture": "../assets/research methods illustraties/png/Model-or-prototype.png",
+    "shortDescription": "Test an early model of product functionality, user experience, content breakdown, usability, or technical feasibility with users, peers, experts or your client.",
+    "title": "Model or prototype",
+    "type": "Deliverables"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f537",
+    "__v": 0,
+    "color": "#ff4d8e",
+    "deck": "ENGINEERING",
+    "picture": "../assets/research methods illustraties/png/Concept.png",
+    "shortDescription": "When you develop a new product or service, the concept summarises ‘the big idea’ or ‘the main principle’ on which your solution will be based. For example, when designing and constructing churches, the floor plan is commonly based on a cross, so ‘God can recognise a church from heaven’.",
+    "title": "Concept solutions",
+    "type": "Deliverables"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f538",
+    "__v": 0,
+    "color": "#ff4d8e",
+    "deck": "ENGINEERING",
+    "picture": "../assets/research methods illustraties/png/Requirement-list.png",
+    "shortDescription": "To create a starting point for design choices during the project, and to measure whether the project succeeded.",
+    "title": "Requirement list",
+    "type": "Deliverables"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f539",
+    "__v": 0,
+    "color": "#ff4d8e",
+    "deck": "ENGINEERING",
+    "picture": "../assets/research methods illustraties/png/Scenario-_--Explore-user-requirements.png",
+    "shortDescription": "To specify a series of events to observe the behaviour of the developed solution.",
+    "title": "Scenario",
+    "type": "Deliverables"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f540",
+    "__v": 0,
+    "color": "#ff4d8e",
+    "deck": "ENGINEERING",
+    "picture": "../assets/research methods illustraties/png/Detailed-design.png",
+    "shortDescription": "Detail the chosen concept by describing characteristics in order to manufacture the product and to inform the client and other disciplines, for example: manufacturing, assembly, and suppliers.",
+    "title": "Detailed design",
+    "type": "Deliverables"
+  },
+  {
+    "_id": "5e30276e8b5f801a0cc1f541",
+    "__v": 0,
+    "color": "#ff4d8e",
+    "deck": "ENGINEERING",
+    "picture": "../assets/research methods illustraties/png/Business-model-canvas.png",
+    "shortDescription": "Develop a structured visualisation of how a new company can reach its customers and earn revenue in order to understand, discuss, create, and analyse a new business idea.",
+    "title": "Business model canvas",
+    "type": "Deliverables"
+  }
+]

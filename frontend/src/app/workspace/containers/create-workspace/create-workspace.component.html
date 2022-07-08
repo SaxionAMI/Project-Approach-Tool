@@ -1,0 +1,67 @@
+<app-navbar></app-navbar>
+
+<mat-card id="outerCard">
+  <h1 class="mat-display-1">Create new workspace</h1>
+  <div class="forms">
+    <form>
+      <mat-form-field matInput>
+        <mat-label>Title</mat-label>
+        <input
+          matInput
+          #wsTitle
+          type="text"
+          maxlength="60"
+          name="workspaceTitle"
+          [formControl]="titleControl"
+          required
+        />
+        <mat-error *ngIf="titleControl.invalid"
+          >You must enter a valid title</mat-error
+        >
+        <mat-hint align="end">{{ wsTitle.value.length }} / 60</mat-hint>
+      </mat-form-field>
+      <mat-form-field matInput>
+        <mat-label>Goal</mat-label>
+        <input
+          matInput
+          #wsGoal
+          type="text"
+          maxlength="60"
+          name="workspaceGoal"
+          [formControl]="goalControl"
+          required
+        />
+        <mat-error *ngIf="goalControl.invalid"
+          >You must enter a valid title</mat-error
+        >
+        <mat-hint align="end">{{ wsGoal.value.length }} / 60</mat-hint>
+      </mat-form-field>
+    </form>
+  </div>
+  <mat-card id="innerCard">
+    <div
+      class="gridlist"
+      fxflexfill
+      fxLayout="row wrap"
+      fxLayoutAlign="space-around start"
+    >
+      <mat-card
+        class="notClicked"
+        *ngFor="let template of templates; let i = index"
+        fxFlex="0 1 calc(33.3% - 32px)"
+        (click)="onTemplateClick(i)"
+        id="{{ i }}"
+      >
+        <img mat-card-image src="{{ template.image }}" />
+        <mat-card-title>{{ template.title || "Title" }}</mat-card-title>
+      </mat-card>
+    </div>
+  </mat-card>
+  <mat-error class="errorAboveButtons" *ngIf="showErrorRequiredValues"
+    >A workspace requires a valid title and goal!</mat-error
+  >
+  <div class="buttonWrap">
+    <button mat-raised-button (click)="onSave()">SAVE</button>
+    <button mat-button (click)="onBack()">CANCEL</button>
+  </div>
+</mat-card>

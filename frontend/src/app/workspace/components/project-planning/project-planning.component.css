@@ -1,0 +1,20 @@
+:host {
+  position: relative;
+  display: block;
+}
+
+.custom-task {
+  display: block;
+  overflow: hidden;
+}
+
+.custom-task-wrapper {
+  padding: 8px;
+  color: #fff;
+}
+
+.custom-task-wrapper > * {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

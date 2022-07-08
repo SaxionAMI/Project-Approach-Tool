@@ -1,0 +1,11 @@
+<app-navbar></app-navbar>
+<div class="flex">
+    <div class="flex-item" id="promote-users" *ngIf="isAdmin()">
+        <h3>Manage user roles</h3>
+        <app-user-role-list></app-user-role-list>
+    </div>
+    <div class="flex-item" id="manage-vt-rules">
+        <h3>Manage Virtual Teacher rules</h3>
+        <app-vt-rules-list has-actions (ruleEnabledChanged)="onRuleEnabledChanged($event)" [getRules]="getRules"></app-vt-rules-list>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="header">
+        <span>{{display}}</span>
+        <button mat-icon-button color="warn" (click)="deleteClicked()">
+            <mat-icon>delete</mat-icon>
+        </button>
+    </div>
+    <table class="attributes">
+        <tr>
+            <th>Search phrase:</th>
+            <td>
+                <input type="text" [(ngModel)]="searchPhrase" [class.invalid]="!searchPhraseValid && searchPhraseChanged" placeholder="e.g. 'test''"/>
+            </td>
+        </tr>
+        <tr>
+            <th>Display as:</th>
+            <td>
+                <input type="text" [(ngModel)]="displayAs" [class.invalid]="!displayAsValid && displayAsChanged" placeholder="e.g. Open Website"/>
+            </td>
+        </tr>
+    </table>
+</div>
+

@@ -1,0 +1,303 @@
+[
+  {
+    "_id": "5f16aef97f07831118082930",
+    "groups": [],
+    "storedLines": [],
+    "users": [
+      {
+        "uid": "QCNVX3KZnZhpDHG4phPPuW7y78u2",
+        "type": 0
+      }
+    ],
+    "customCards": [],
+    "decks": [],
+    "spawnList": {
+      "id": 1595322105646.0,
+      "title": "spawngroup",
+      "location": {
+        "x": 0,
+        "y": 0
+      },
+      "cards": [],
+      "selected": false
+    },
+    "title": "Blank",
+    "goal": "Blank",
+    "image": "../../../../../assets/image/whiteSmoke.PNG",
+    "__v": 0
+  },
+  {
+    "_id": "5f60acfcf07924e04a696f2f",
+    "groups": [
+      {
+        "id": 1600159769245.0,
+        "title": "Testing",
+        "location": {
+          "x": 1200,
+          "y": 200
+        },
+        "cards": [
+          {
+            "type": "Question",
+            "id": "1600161231989",
+            "title": "Does this prototype fulfill the requirements?"
+          },
+          {
+            "_id": "5e30215695d55b4b3c79a903",
+            "__v": 0,
+            "color": "#817DAF",
+            "deck": "ICT",
+            "picture": "../assets/research methods illustraties/png/System-test.png",
+            "shortDescription": "Solve problems before your system goes into production and demonstrate that the system operates according to its requirements.",
+            "title": "System test",
+            "type": "Lab",
+            "id": "1600161396635"
+          },
+          {
+            "_id": "5e4974b82bcf2540785ce957",
+            "__v": 0,
+            "color": "#ff4d8e",
+            "deck": "STEPPING STONES",
+            "picture": "../assets/research methods illustraties/png/Test-report.png",
+            "reflectiveQuestions": "What is the matter?",
+            "shortDescription": "Taxation of a performance or situation.",
+            "title": "Assessment",
+            "type": "Deliverables",
+            "id": "1600161679972"
+          },
+          {
+            "type": "Question",
+            "id": "1600159874609",
+            "title": "Does this robot help grandma feel less lonely?"
+          },
+          {
+            "_id": "5e30276e8b5f801a0cc1f456",
+            "__v": 0,
+            "color": "#817DAF",
+            "deck": "CMD",
+            "picture": "../assets/research methods illustraties/png/Field-trial.png",
+            "shortDescription": "Participants never act completely naturally in a lab setting, so consider testing your product in the ‘wild’. This can be particularly valuable when real-life disturbances are important for your design, as is the case with mobile apps.",
+            "title": "Field Trial",
+            "type": "Lab",
+            "id": "1600161328493"
+          },
+          {
+            "_id": "5e497b162bcf2540785ce970",
+            "__v": 0,
+            "color": "#ff4d8e",
+            "deck": "STEPPING STONES",
+            "picture": "../assets/research methods illustraties/png/Trend-analysis.png",
+            "reflectiveQuestions": "Doest it work? Is it accepted?",
+            "shortDescription": "Analysis to determine the value of a result or process during and after implementation.",
+            "title": "Evaluation",
+            "type": "Deliverables",
+            "id": "1600161705777"
+          },
+          {
+            "_id": "5e4979f32bcf2540785ce968",
+            "__v": 0,
+            "color": "#ff4d8e",
+            "deck": "STEPPING STONES",
+            "picture": "../assets/research methods illustraties/png/Prototyping.png",
+            "reflectiveQuestions": "How do you make it work?",
+            "shortDescription": "A scale model or release of a product to test a concept before taken tot production.",
+            "title": "Prototype",
+            "type": "Deliverables",
+            "id": "1600161584760"
+          }
+        ],
+        "selected": false
+      },
+      {
+        "id": 1600159770181.0,
+        "title": "Analysis",
+        "location": {
+          "x": 400,
+          "y": 200
+        },
+        "cards": [
+          {
+            "type": "Question",
+            "id": "1600159866791",
+            "title": "When does grandma feel lonely?"
+          },
+          {
+            "_id": "5e3023158b5f801a0cc1f441",
+            "__v": 0,
+            "color": "#5DBCB3",
+            "deck": "ICT",
+            "picture": "../assets/research methods illustraties/png/Interview.png",
+            "shortDescription": "Learn from potential users of your new product and other stakeholders.",
+            "title": "Interview",
+            "type": "Field",
+            "id": "1600160406256"
+          },
+          {
+            "_id": "5e30276e8b5f801a0cc1f449",
+            "__v": 0,
+            "color": "#D1F087",
+            "deck": "ICT",
+            "picture": "../assets/research methods illustraties/png/Literature-study.png",
+            "shortDescription": "Find general information, guidance and best practices.",
+            "title": "Literature study",
+            "type": "Library",
+            "id": "1600160418241"
+          },
+          {
+            "_id": "5e4974302bcf2540785ce955",
+            "__v": 0,
+            "color": "#ff4d8e",
+            "deck": "STEPPING STONES",
+            "picture": "../assets/research methods illustraties/png/Problem-analyis.png",
+            "reflectiveQuestions": "What is the matter?",
+            "shortDescription": "Description of symptoms, causes and consequences of a situation (IST).",
+            "title": "Problem diagnosis",
+            "type": "Deliverables",
+            "id": "1600160428541"
+          },
+          {
+            "type": "Question",
+            "id": "1600159871961",
+            "title": "Which already existing robots are there to help the elderly feel less lonely? "
+          },
+          {
+            "_id": "5e30276e8b5f801a0cc1f442",
+            "__v": 0,
+            "color": "#D1F087",
+            "deck": "ICT",
+            "picture": "../assets/research methods illustraties/png/Available-product-analysis.png",
+            "shortDescription": "Find out if what you are planning to do has already been done (in full or in part) by someone else.",
+            "title": "Available product analysis",
+            "type": "Library",
+            "id": "1600160597316"
+          },
+          {
+            "_id": "5e4975ee2bcf2540785ce95c",
+            "__v": 0,
+            "color": "#ff4d8e",
+            "deck": "STEPPING STONES",
+            "picture": "../assets/research methods illustraties/png/Requirements-priorization.png",
+            "reflectiveQuestions": "What do they want?",
+            "shortDescription": "Design criteria specifications that stakeholders demanded for the solution.",
+            "title": "Requirements",
+            "type": "Deliverables",
+            "id": "1600160448015"
+          }
+        ],
+        "selected": false
+      },
+      {
+        "id": 1600159773304.0,
+        "title": "Prototyping",
+        "location": {
+          "x": 800,
+          "y": 200
+        },
+        "cards": [
+          {
+            "type": "Question",
+            "id": "1600160857783",
+            "title": "What could a fitting solution be like?"
+          },
+          {
+            "_id": "5e3022138b5f801a0cc1f412",
+            "__v": 0,
+            "color": "#80C4D2",
+            "deck": "ICT",
+            "picture": "../assets/research methods illustraties/png/Brainstorm.png",
+            "shortDescription": "Generate and develop new ideas.",
+            "title": "Brainstorm",
+            "type": "Workshop",
+            "id": "1600160615017"
+          },
+          {
+            "_id": "5e4978592bcf2540785ce960",
+            "__v": 0,
+            "color": "#ff4d8e",
+            "deck": "STEPPING STONES",
+            "picture": "../assets/research methods illustraties/png/Brainstorm.png",
+            "reflectiveQuestions": "How it can be solved?",
+            "shortDescription": "A global and preliminary image of a solution.",
+            "title": "Idea",
+            "type": "Deliverables",
+            "id": "1600160898127"
+          },
+          {
+            "_id": "5e3022138b5f801a0cc1f421",
+            "__v": 0,
+            "color": "#80C4D2",
+            "deck": "ICT",
+            "picture": "../assets/research methods illustraties/png/Prototyping.png",
+            "shortDescription": "Develop, evaluate or communicate a concept, design or problem solution to make your ideas concrete, to learn whether they work and to discover the technical limitations or possibilities.",
+            "title": "Prototyping",
+            "type": "Workshop",
+            "id": "1600161104504"
+          },
+          {
+            "_id": "5e4979f32bcf2540785ce968",
+            "__v": 0,
+            "color": "#ff4d8e",
+            "deck": "STEPPING STONES",
+            "picture": "../assets/research methods illustraties/png/Prototyping.png",
+            "reflectiveQuestions": "How do you make it work?",
+            "shortDescription": "A scale model or release of a product to test a concept before taken tot production.",
+            "title": "Prototype",
+            "type": "Deliverables",
+            "id": "1600161584760"
+          }
+        ],
+        "selected": false
+      }
+    ],
+    "storedLines": [
+      {
+        "id": 2,
+        "start": 1600159770181.0,
+        "end": 1600159773304.0
+      },
+      {
+        "id": 4,
+        "start": 1600159773304.0,
+        "end": 1600159769245.0
+      }
+    ],
+    "users": [],
+    "customCards": [],
+    "decks": [
+      {
+        "shortDescription": "This deck contains all research methods cards for the ICT studies.",
+        "title": "ICT",
+        "types": ["Lab", "Field", "Showroom", "Workshop", "Library"]
+      },
+      {
+        "shortDescription": "This deck contains all research methods cards for the ICT studies.",
+        "title": "CMD",
+        "types": ["Lab", "Field", "Showroom", "Workshop", "Library"]
+      },
+      {
+        "shortDescription": "This deck contains all research methods cards for the ICT studies.",
+        "title": "ENGINEERING",
+        "types": ["Lab", "Field", "Showroom", "Workshop", "Library"]
+      },
+      {
+        "shortDescription": "This deck contains all stepping stone cards for the all studies.",
+        "title": "STEPPING STONES",
+        "types": ["Deliverables", "Methods"]
+      }
+    ],
+    "spawnList": {
+      "id": 1600159740623.0,
+      "title": "spawngroup",
+      "location": {
+        "x": 0,
+        "y": 0
+      },
+      "cards": [],
+      "selected": false
+    },
+    "title": "EXAMPLE - GRANDMA'S ROBOT",
+    "goal": "How can a robot make grandma feel less lonely?",
+    "image": "../../../../../assets/image/whiteSmoke.PNG",
+    "__v": 0
+  }
+]

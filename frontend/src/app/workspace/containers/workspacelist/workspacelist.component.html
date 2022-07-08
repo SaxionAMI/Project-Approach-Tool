@@ -1,0 +1,33 @@
+<app-navbar [wsId]="onboardingWorkspaceId" (onboard)="startOnboarding()"></app-navbar>
+
+<mat-card>
+  <h1 class="mat-display-1">Your workspaces</h1>
+  <div
+    class="gridlist"
+    fxflexfill
+    fxLayout="row wrap"
+    fxLayoutGap="32px grid"
+    fxLayoutAlign="space-around center"
+  >
+    <app-workspace-card
+      joyrideStep="step5"
+      title="Workspace"
+      [stepContent]="step5Content"
+      stepPosition="top"
+      (done)="onDone()"
+      *ngFor="let workspace of workspaces"
+      [workspace]="workspace"
+      (deleteConfirmation)="deleteWorkspace($event)"
+      (addCopy)="makeCopy($event)"
+      fxFlex="0 1 calc(25% - 32px)"
+    ></app-workspace-card>
+  </div>
+</mat-card>
+
+<ng-template #step5Content>
+  <br />
+  This is a workspace, you can enter this workspace by clicking on it, <br />
+  <br />
+  Click <b>go to workspace</b> to go into the workspace <br />
+  <br />
+</ng-template>

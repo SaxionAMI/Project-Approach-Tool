@@ -1,0 +1,32 @@
+.mat-card {
+  width: 190px;
+  height: 270px;
+  margin: 5px;
+}
+
+.short-description {
+  height: 50px;
+  overflow: auto;
+}
+
+
+.mat-card-image {
+ width: 150px;
+ height: 220px;
+ margin-left: 20px;
+ margin-top: 10px;
+}
+
+/* .mat-card-actions .mat-button,
+.mat-card-actions .mat-stroked-button {
+  margin-left: 0;
+  margin-right: 0;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+} */
+
+.mat-card-title{
+  font-size: 16px;
+  text-align: center;
+}

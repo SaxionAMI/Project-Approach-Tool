@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="header">
+        <img src="/assets/image/icons/arrow-half-R.png" class="arrow left">
+        <h3> Do analysis / check condition: </h3>
+        <img src="/assets/image/icons/arrow-half-L.png" class="arrow right">
+    </div>
+    <div class="conditions">
+        <ng-template appDynamicComponentAnchor></ng-template>
+        <div class="placeholder" [matMenuTriggerFor]="addCondition" *ngIf="conditionComponent === null">Click to add a condition</div>
+        <mat-menu #addCondition="matMenu">
+            <button mat-menu-item *ngFor="let item of supportedConditions" (click)="addChild(item.type)">{{item.display}}</button>
+        </mat-menu>
+    </div>
+</div>

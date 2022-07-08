@@ -1,0 +1,10 @@
+<h1>Discard changes?</h1>
+<div mat-dialog-content>
+    <p>Some changes are not yet saved. If you go back, all changes since the rule was last saved will be lost.</p>
+    <p>Are you sure you want to go back?</p>
+
+    <div class="button-container">
+        <button mat-raised-button color="primary" (click)="no()">No, stay here</button>
+        <button mat-raised-button color="warn" (click)="yes()">Yes, discard changes.</button>
+    </div>
+</div>

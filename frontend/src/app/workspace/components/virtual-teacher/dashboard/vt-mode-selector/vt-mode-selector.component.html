@@ -1,0 +1,39 @@
+<div class="vt-mode-container">
+    <div class="vt-disabled-overlay" *ngIf="!isVtEnabled">
+        <strong>Virtual Teacher is disabled.</strong>
+        <i>Can be re-enabled in settings <mat-icon>arrow_right_alt</mat-icon></i>
+    </div>
+    <div class="vt-mode-track">
+        <div [class]="actualMode"></div>
+        <div [class]="actualMode"></div>
+    </div>
+    <div [ngClass]="!pending && actualMode == 'creating' ? 'vt-mode-bubble active' : 'vt-mode-bubble'"
+        id="vt-mode-creating" (click)="onModeSelected('creating')">
+        <div>
+            <mat-icon>add</mat-icon>
+        </div>
+        <span>Creating</span>
+    </div>
+    <div [ngClass]="!pending && actualMode == 'editing' ? 'vt-mode-bubble active' : 'vt-mode-bubble'"
+        id="vt-mode-editing" (click)="onModeSelected('editing')">
+        <div>
+            <mat-icon>build</mat-icon>
+        </div>
+        <span>Editing</span>
+    </div>
+    <div [ngClass]="!pending && actualMode == 'planning' ? 'vt-mode-bubble active' : 'vt-mode-bubble'"
+        id="vt-mode-planning" (click)="onModeSelected('planning')">
+        <div>
+            <mat-icon>calendar_today</mat-icon>
+        </div>
+        <span>Planning</span>
+    </div>
+    <div [ngClass]="!pending && actualMode == 'reviewing' ? 'vt-mode-bubble active' : 'vt-mode-bubble'"
+        id="vt-mode-reviewing"
+        (click)="onModeSelected('reviewing')">
+        <div>
+            <mat-icon>search</mat-icon>
+        </div>
+        <span>Reviewing</span>
+    </div>
+</div>

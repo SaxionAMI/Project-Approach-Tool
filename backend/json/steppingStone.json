@@ -1,0 +1,302 @@
+[
+    {
+        "_id": "5e4973612bcf2540785ce954",
+        "color": "#ff4d8e",
+        "deck": "STEPPING STONES",
+        "picture": "../assets/research methods illustraties/png/Domain-modelling.png",
+        "reflectiveQuestions": "What is the matter?",
+        "shortDescription": "Symptoms and context of the problem in the perception of the stakeholders.",
+        "title": "Problem perception",
+        "type": "Deliverables"
+    },
+    {
+        "_id": "5e4974302bcf2540785ce955",
+        "color": "#ff4d8e",
+        "deck": "STEPPING STONES",
+        "picture": "../assets/research methods illustraties/png/Problem-analyis.png",
+        "reflectiveQuestions": "What is the matter?",
+        "shortDescription": "Description of symptoms, causes and consequences of a situation (IST).",
+        "title": "Problem diagnosis",
+        "type": "Deliverables"
+    },
+    {
+        "_id": "5e49747f2bcf2540785ce956",
+        "color": "#ff4d8e",
+        "deck": "STEPPING STONES",
+        "picture": "../assets/research methods illustraties/png/Gap-analysis.png",
+        "reflectiveQuestions": "What is the matter?",
+        "shortDescription": "Analysis of indicators at a reference point in time, used for monitoring. Often before an intervention.",
+        "title": "Baseline analysis",
+        "type": "Deliverables"
+    },
+    {
+        "_id": "5e4974b82bcf2540785ce957",
+        "color": "#ff4d8e",
+        "deck": "STEPPING STONES",
+        "picture": "../assets/research methods illustraties/png/Test-report.png",
+        "reflectiveQuestions": "What is the matter?",
+        "shortDescription": "Taxation of a performance or situation.",
+        "title": "Assessment",
+        "type": "Deliverables"
+    },
+    {
+        "_id": "5e4974d62bcf2540785ce958",
+        "color": "#ff4d8e",
+        "deck": "STEPPING STONES",
+        "picture": "../assets/research methods illustraties/png/Biometrics.png",
+        "reflectiveQuestions": "What is the matter?",
+        "shortDescription": "History of illness, complaints or other problems in the perception of a patient or client.",
+        "title": "Anamnesis",
+        "type": "Deliverables"
+    },
+    {
+        "_id": "5e4974e92bcf2540785ce959",
+        "color": "#ff4d8e",
+        "deck": "STEPPING STONES",
+        "picture": "../assets/research methods illustraties/png/Process-analysis.png",
+        "reflectiveQuestions": "What is the matter?",
+        "shortDescription": "Description of current processes involved with the question or perceived problems.",
+        "title": "Process chart",
+        "type": "Deliverables"
+    },
+    {
+        "_id": "5e4975c72bcf2540785ce95a",
+        "color": "#ff4d8e",
+        "deck": "STEPPING STONES",
+        "picture": "../assets/research methods illustraties/png/Requirement-list.png",
+        "reflectiveQuestions": "What do they want?",
+        "shortDescription": "What is lacking in a specific situation by someone or some group (GAP).",
+        "title": "Needs",
+        "type": "Deliverables"
+    },
+    {
+        "_id": "5e4975da2bcf2540785ce95b",
+        "color": "#ff4d8e",
+        "deck": "STEPPING STONES",
+        "picture": "../assets/research methods illustraties/png/Focus-.png",
+        "reflectiveQuestions": "What do they want?",
+        "shortDescription": "What the client wants to reach or improve in the middle and long term (SOLL).",
+        "title": "Goal",
+        "type": "Deliverables"
+    },
+    {
+        "_id": "5e4975ee2bcf2540785ce95c",
+        "color": "#ff4d8e",
+        "deck": "STEPPING STONES",
+        "picture": "../assets/research methods illustraties/png/Requirements-priorization.png",
+        "reflectiveQuestions": "What do they want?",
+        "shortDescription": "Design criteria specifications that stakeholders demanded for the solution.",
+        "title": "Requirements",
+        "type": "Deliverables"
+    },
+    {
+        "_id": "5e4976322bcf2540785ce95d",
+        "color": "#ff4d8e",
+        "deck": "STEPPING STONES",
+        "picture": "../assets/research methods illustraties/png/Risk-analysis.png",
+        "reflectiveQuestions": "What do they want?",
+        "shortDescription": "Conditions, protocols, norms and regulations to be taken into account for the solution (SOLL).",
+        "title": "Restraints",
+        "type": "Deliverables"
+    },
+    {
+        "_id": "5e4976522bcf2540785ce95e",
+        "color": "#ff4d8e",
+        "deck": "STEPPING STONES",
+        "picture": "../assets/research methods illustraties/png/Task-analysis.png",
+        "reflectiveQuestions": "What do they want?",
+        "shortDescription": "A list of actions that define the interactions between someone’ s tasks and a system, to define partial solutions.",
+        "title": "Use case",
+        "type": "Deliverables"
+    },
+    {
+        "_id": "5e4976682bcf2540785ce95f",
+        "color": "#ff4d8e",
+        "deck": "STEPPING STONES",
+        "picture": "../assets/research methods illustraties/png/Stakeholder-analysis.png",
+        "reflectiveQuestions": "What do they want?",
+        "shortDescription": "Description of actors with an interest in the situation and solution, e.g.: client, users, investors, designers.",
+        "title": "Stakeholder map",
+        "type": "Deliverables"
+    },
+    {
+        "_id": "5e4978592bcf2540785ce960",
+        "color": "#ff4d8e",
+        "deck": "STEPPING STONES",
+        "picture": "../assets/research methods illustraties/png/Brainstorm.png",
+        "reflectiveQuestions": "How it can be solved?",
+        "shortDescription": "A global and preliminary image of a solution.",
+        "title": "Idea",
+        "type": "Deliverables"
+    },
+    {
+        "_id": "5e49786b2bcf2540785ce961",
+        "color": "#ff4d8e",
+        "deck": "STEPPING STONES",
+        "picture": "../assets/research methods illustraties/png/Design-specification.png",
+        "reflectiveQuestions": "How it can be solved?",
+        "shortDescription": "Design at system level that describes the structure and relations between components.",
+        "title": "Outline design",
+        "type": "Deliverables"
+    },
+    {
+        "_id": "5e4979412bcf2540785ce963",
+        "color": "#ff4d8e",
+        "deck": "STEPPING STONES",
+        "picture": "../assets/research methods illustraties/png/Detailed-design.png",
+        "reflectiveQuestions": "How it can be solved?",
+        "shortDescription": "Design at component level to elaborate and materialize the solution.",
+        "title": "Detailed design",
+        "type": "Deliverables"
+    },
+    {
+        "_id": "5e4979522bcf2540785ce964",
+        "color": "#ff4d8e",
+        "deck": "STEPPING STONES",
+        "picture": "../assets/research methods illustraties/png/Scenario-_--Explore-user-requirements.png",
+        "reflectiveQuestions": "How it can be solved?",
+        "shortDescription": "Direction of a solution or an advice to solve a particular problem or improve a  specific situation.",
+        "title": "Solution scenario",
+        "type": "Deliverables"
+    },
+    {
+        "_id": "5e4979672bcf2540785ce965",
+        "color": "#ff4d8e",
+        "deck": "STEPPING STONES",
+        "picture": "../assets/research methods illustraties/png/Focus-group.png",
+        "reflectiveQuestions": "How it can be solved?",
+        "shortDescription": "Approach of designed actions, stimuli and means to change a  situation, attitude or behavior.",
+        "title": "Intervention",
+        "type": "Deliverables"
+    },
+    {
+        "_id": "5e4979772bcf2540785ce966",
+        "color": "#ff4d8e",
+        "deck": "STEPPING STONES",
+        "picture": "../assets/research methods illustraties/png/IT-architecture-sketching.png",
+        "reflectiveQuestions": "How it can be solved?",
+        "shortDescription": "A stepwise way with means and times to achieve a given goal.",
+        "title": "Plan",
+        "type": "Deliverables"
+    },
+    {
+        "_id": "5e4979e42bcf2540785ce967",
+        "color": "#ff4d8e",
+        "deck": "STEPPING STONES",
+        "picture": "../assets/research methods illustraties/png/Expo.png",
+        "reflectiveQuestions": "How do you make it work?",
+        "shortDescription": "Functional model to show the possible applications of the design solution to the stakeholders.",
+        "title": "Demonstrator",
+        "type": "Deliverables"
+    },
+    {
+        "_id": "5e4979f32bcf2540785ce968",
+        "color": "#ff4d8e",
+        "deck": "STEPPING STONES",
+        "picture": "../assets/research methods illustraties/png/Prototyping.png",
+        "reflectiveQuestions": "How do you make it work?",
+        "shortDescription": "A scale model or release of a product to test a concept before taken tot production.",
+        "title": "Prototype",
+        "type": "Deliverables"
+    },
+    {
+        "_id": "5e497a032bcf2540785ce969",
+        "color": "#ff4d8e",
+        "deck": "STEPPING STONES",
+        "picture": "../assets/research methods illustraties/png/Prototyping.png",
+        "reflectiveQuestions": "How do you make it work?",
+        "shortDescription": "Bringing a plan into action regarding a new system, process, product, policy to achieve set goals.",
+        "title": "Implementation",
+        "type": "Deliverables"
+    },
+    {
+        "_id": "5e497a182bcf2540785ce96a",
+        "color": "#ff4d8e",
+        "deck": "STEPPING STONES",
+        "picture": "../assets/research methods illustraties/png/Hardware-validation.png",
+        "reflectiveQuestions": "How do you make it work?",
+        "shortDescription": "A realized partial solution for machine, software, building or other manufacture.",
+        "title": "Unit",
+        "type": "Deliverables"
+    },
+    {
+        "_id": "5e497a262bcf2540785ce96b",
+        "color": "#ff4d8e",
+        "deck": "STEPPING STONES",
+        "picture": "../assets/research methods illustraties/png/Provocative-prototyping.png",
+        "reflectiveQuestions": "How do you make it work?",
+        "shortDescription": "A treatment, performance, transaction interaction to a client, patient, audience, pupil or professional partner.",
+        "title": "Action",
+        "type": "Deliverables"
+    },
+    {
+        "_id": "5e497a342bcf2540785ce96c",
+        "color": "#ff4d8e",
+        "deck": "STEPPING STONES",
+        "picture": "../assets/research methods illustraties/png/joker-card.png",
+        "reflectiveQuestions": "How do you make it work?",
+        "shortDescription": "A diverse product range, e.g.: code, unit, component, artwork, text, movie, software product, database, fashion, all types of tools.",
+        "title": "Final manufacture",
+        "type": "Deliverables"
+    },
+    {
+        "_id": "5e497adc2bcf2540785ce96d",
+        "color": "#ff4d8e",
+        "deck": "STEPPING STONES",
+        "picture": "../assets/research methods illustraties/png/Requirements-priorization.png",
+        "reflectiveQuestions": "Doest it work? Is it accepted?",
+        "shortDescription": "The check whether a design solution meets the requirements of the stakeholders.",
+        "title": "Requirements check",
+        "type": "Deliverables"
+    },
+    {
+        "_id": "5e497af32bcf2540785ce96e",
+        "color": "#ff4d8e",
+        "deck": "STEPPING STONES",
+        "picture": "../assets/research methods illustraties/png/system-intergration-test.png",
+        "reflectiveQuestions": "Doest it work? Is it accepted?",
+        "shortDescription": "Test whether the prototype or final product performs as agreed with the stakeholders.",
+        "title": "Performance test",
+        "type": "Deliverables"
+    },
+    {
+        "_id": "5e497b052bcf2540785ce96f",
+        "color": "#ff4d8e",
+        "deck": "STEPPING STONES",
+        "picture": "../assets/research methods illustraties/png/Field-trial_2.png",
+        "reflectiveQuestions": "Doest it work? Is it accepted?",
+        "shortDescription": "Evaluation of a product by testing it on users in test conditions or in real-life context.",
+        "title": "Pilot",
+        "type": "Deliverables"
+    },
+    {
+        "_id": "5e497b162bcf2540785ce970",
+        "color": "#ff4d8e",
+        "deck": "STEPPING STONES",
+        "picture": "../assets/research methods illustraties/png/Trend-analysis.png",
+        "reflectiveQuestions": "Doest it work? Is it accepted?",
+        "shortDescription": "Analysis to determine the value of a result or process during and after implementation.",
+        "title": "Evaluation",
+        "type": "Deliverables"
+    },
+    {
+        "_id": "5e497b252bcf2540785ce971",
+        "color": "#ff4d8e",
+        "deck": "STEPPING STONES",
+        "picture": "../assets/research methods illustraties/png/Audit.png",
+        "reflectiveQuestions": "Doest it work? Is it accepted?",
+        "shortDescription": "Analysis of indicators after an intervention, often combined with baseline measurement.",
+        "title": "Post test",
+        "type": "Deliverables"
+    },
+    {
+        "_id": "5e497b342bcf2540785ce972",
+        "color": "#ff4d8e",
+        "deck": "STEPPING STONES",
+        "picture": "../assets/research methods illustraties/png/Usability-testing.png",
+        "reflectiveQuestions": "Doest it work? Is it accepted?",
+        "shortDescription": "Analysis of measurements with calibrated instruments under controlled conditions.",
+        "title": "Lab test",
+        "type": "Deliverables"
+    }
+]

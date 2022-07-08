@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="user-role" *ngFor="let user of userRoles">
+        <div class="user-info">
+            <span class="user-name">{{capitalize(user.lastName)}}, {{capitalize(user.firstName)}}</span>
+            <span>{{capitalize(user.role)}} at {{user.study}}</span>
+            <span>{{capitalize(user.school)}}</span>
+        </div>
+        <div class="user-buttons">
+            <button mat-raised-button color="warn" (click)="promote(user)" [disabled]="!canBePromoted(user)">Promote to {{higherRole(user)}}</button>
+            <button mat-raised-button color="warn" (click)="demote(user)" [disabled]="!canBeDemoted(user)">Demote to {{lowerRole(user)}}</button>
+        </div>
+    </div>
+</div>
+

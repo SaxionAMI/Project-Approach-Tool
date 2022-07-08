@@ -1,0 +1,72 @@
+.mat-raised-button {
+  width: 200px;
+  height: 40px;
+  margin: 2%;
+  background-color: #04abd6;
+  color: white;
+}
+
+.mat-button {
+  width: 200px;
+  height: 40px;
+  margin: 2%;
+  color: #04abd6;
+  background-color: white;
+}
+
+.buttonWrap {
+  margin-top: 3%;
+  text-align: center;
+}
+
+input {
+    color: black;
+    width: 100%;
+  }
+  
+  mat-form-field {
+    width: 100%;
+  }
+
+  #buttons-container {
+    width:100%;
+    height:auto;
+  }
+
+  .flex {
+    display:flex;
+    justify-content: space-between;
+  }
+
+  #save {
+    display:block;
+    margin:auto;
+    margin-right:0;
+  }
+
+  .top-button {
+    border-radius:5px;
+    padding:5px;
+    font-size:20pt;
+    line-height:35px;
+    border:solid gray 1px;
+    background-color:transparent;
+    width:50px;
+    height:50px;
+  }
+
+  .top-button:hover {
+    background-color:rgba(0,0,0,0.2);
+  }
+
+  input[readonly] {
+    color:rgba(0,0,0,0.7);
+    cursor:not-allowed;
+  }
+  
+  #title {
+    text-align:center;
+    flex-grow:1;
+    margin-left:15px;
+    margin-right:15px;
+  }

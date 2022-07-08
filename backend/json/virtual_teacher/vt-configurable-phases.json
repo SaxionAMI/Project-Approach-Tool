@@ -1,0 +1,14 @@
+[
+    {
+        "display": "Creating",
+        "identifier": "creating"
+    },
+    {
+        "display": "Editing",
+        "identifier": "editing"
+    },
+    {
+        "display": "Reviewing",
+        "identifier": "reviewing"
+    }
+]
