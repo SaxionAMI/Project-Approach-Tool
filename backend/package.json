@@ -48,7 +48,7 @@
     "firebase-admin": "^9.8.0",
     "fs": "0.0.1-security",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.12.8",
+    "mongoose": "^5.13.15",
     "morgan": "^1.10.0",
     "multer": "^1.4.2",
     "nodemailer": "^6.6.0",
